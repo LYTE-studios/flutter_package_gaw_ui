@@ -1,7 +1,7 @@
 name: flutter_package_gaw_ui
 description: A UI Package for the Get-a-Wash application stack.
 
-version: 1.0.0+1
+version: 1.1.0
 
 environment:
   sdk: '>=3.1.0 <4.0.0'
@@ -12,6 +12,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   themed: ^4.0.0
   flutter_svg: ^2.0.7
+  carousel_slider: ^4.2.1
+  google_fonts: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -21,3 +23,17 @@ dev_dependencies:
 flutter:
   assets:
     - assets/images/core/
+    - assets/images/map/
+    - assets/icons/pixel_perfect/Bold/SVG/UI Basic/
+    - assets/icons/pixel_perfect/Medium/SVG/UI Basic/
+    - assets/icons/pixel_perfect/Normal/SVG/UI Basic/
+    - assets/icons/pixel_perfect/Bold/SVG/Arrows/
+    - assets/icons/pixel_perfect/Medium/SVG/Arrows/
+    - assets/icons/pixel_perfect/Normal/SVG/Arrows/
+    - assets/icons/custom/
+
+  fonts:
+    - family: General Sans
+      fonts: 
+        - asset: assets/fonts/GeneralSans-Variable.ttf
+        - asset: assets/fonts/GeneralSans-VariableItalic.ttf
