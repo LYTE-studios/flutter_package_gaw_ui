@@ -16,5 +16,8 @@ class PixelPerfectIcons {
 
   static const String clockNormal = '$normalBasePath/UI Basic/clock.svg';
 
-  static const String settingsNormal = '$normalBasePath/UI Basic/settings.svg';
+  static const String settingsNormal =
+      '$normalBasePath/UI Basic/settings-1.svg';
+
+  static const String personMedium = '$mediumBasePath/UI Basic/person.svg';
 }
