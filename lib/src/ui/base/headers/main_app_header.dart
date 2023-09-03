@@ -4,19 +4,22 @@ import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
 class MainAppHeader extends StatelessWidget {
   final String? label;
 
+  final bool colorless;
+
   final Widget? trailing;
 
   const MainAppHeader({
     super.key,
     this.label,
+    this.colorless = false,
     this.trailing,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 230,
-      color: GawTheme.secondaryTint,
+      height: 210,
+      color: colorless ? null : GawTheme.secondaryTint,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
@@ -30,7 +33,7 @@ class MainAppHeader extends StatelessWidget {
                   child: MainText(
                     label!,
                     textStyleOverride: TextStyles.titleStyle.copyWith(
-                      color: GawTheme.mainTintText,
+                      color: colorless ? GawTheme.text : GawTheme.mainTintText,
                     ),
                   ),
                 ),
