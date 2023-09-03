@@ -1,5 +1,6 @@
 name: flutter_package_gaw_ui
 description: A UI Package for the Get-a-Wash application stack.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 version: 1.2.0
 
@@ -16,10 +17,23 @@ dependencies:
   google_fonts: ^5.1.0
   toggle_switch: ^2.1.0
 
+  # Get-a-Wash
+
+  flutter_package_gaw_api:
+    git:
+      url: https://lyte-manager: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@github.com/LYTE-studios/flutter_package_gaw_api
+      ref: main 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+
+
+dependency_overrides:
+  flutter_package_gaw_api: 
+    path: ../flutter_package_gaw_api
+
 
 flutter:
   assets:
