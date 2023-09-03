@@ -8,17 +8,21 @@ class MainText extends StatelessWidget {
 
   final TextStyle? textStyleOverride;
 
+  final TextOverflow? overflow;
+
   const MainText(
     this.text, {
     super.key,
     this.color,
     this.textStyleOverride,
+    this.overflow,
   });
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
+      overflow: overflow ?? TextOverflow.fade,
       style: textStyleOverride ??
           TextStyles.mainStyle.copyWith(
             color: color,

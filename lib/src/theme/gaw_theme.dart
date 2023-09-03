@@ -11,7 +11,15 @@ class GawTheme {
   );
 
   static const background = ColorRef(
-    Color.fromRGBO(228, 228, 228, 1),
+    Color.fromRGBO(242, 242, 242, 1),
+  );
+
+  static const clearBackground = ColorRef(
+    Color.fromRGBO(248, 248, 248, 1),
+  );
+
+  static const unselectedBackground = ColorRef(
+    Color.fromRGBO(217, 217, 217, 1),
   );
 
   static const text = ColorRef(
@@ -20,5 +28,13 @@ class GawTheme {
 
   static const unselectedText = ColorRef(
     Color.fromRGBO(142, 146, 149, 1),
+  );
+
+  static const mainTintText = ColorRef(
+    Color.fromRGBO(248, 248, 248, 1),
+  );
+
+  static const shadow = ColorRef(
+    Color.fromRGBO(142, 146, 149, 0.2),
   );
 }

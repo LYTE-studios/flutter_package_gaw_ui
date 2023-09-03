@@ -85,7 +85,7 @@ class JobCarouselItem extends StatelessWidget {
                 ],
               )
             ],
-          )
+          ),
         ],
       ),
     );

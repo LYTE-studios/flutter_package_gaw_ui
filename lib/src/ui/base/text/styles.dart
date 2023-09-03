@@ -9,5 +9,9 @@ class TextStyles {
     fontSize: 16,
   );
 
-  static const TextStyle titleStyle = TextStyle(fontFamily: 'General Sans');
+  static const TextStyle titleStyle = TextStyle(
+    fontFamily: 'General Sans',
+    fontWeight: FontWeight.bold,
+    fontSize: 30,
+  );
 }
