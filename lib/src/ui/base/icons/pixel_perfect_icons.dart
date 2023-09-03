@@ -16,9 +16,6 @@ class PixelPerfectIcons {
 
   static const String clockNormal = '$normalBasePath/UI Basic/clock.svg';
 
-<<<<<<< Updated upstream
-  static const String settingsNormal = '$normalBasePath/UI Basic/settings.svg';
-=======
   static const String settingsNormal =
       '$normalBasePath/UI Basic/settings-1.svg';
 
@@ -27,5 +24,4 @@ class PixelPerfectIcons {
   static const String editNormal = '$normalBasePath/UI Basic/edit.svg';
 
   static const String arrowRightNormal = '$normalBasePath/Arrows/Right 21.svg';
->>>>>>> Stashed changes
 }
