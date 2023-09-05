@@ -10,10 +10,13 @@ class ProfilePictureAvatar extends StatelessWidget {
 
   final bool canEdit;
 
+  final bool showCircle;
+
   const ProfilePictureAvatar({
     super.key,
     this.bytes,
     this.canEdit = false,
+    this.showCircle = false,
   });
 
   @override
@@ -26,10 +29,12 @@ class ProfilePictureAvatar extends StatelessWidget {
             width: constraints.maxWidth,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(
-                color: GawTheme.mainTint,
-                width: 1,
-              ),
+              border: showCircle
+                  ? Border.all(
+                      color: GawTheme.mainTint,
+                      width: 1,
+                    )
+                  : null,
             ),
             alignment: Alignment.center,
             child: bytes == null

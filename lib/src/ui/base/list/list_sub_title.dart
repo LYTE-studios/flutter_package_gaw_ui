@@ -25,7 +25,7 @@ class ListSubTitle extends StatelessWidget {
         MainText(
           label,
           textStyleOverride: TextStyles.mainStyleTitle.copyWith(
-            fontSize: 12,
+            fontSize: 16,
           ),
         ),
         const Spacer(),
@@ -33,20 +33,11 @@ class ListSubTitle extends StatelessWidget {
           visible: showViewMore,
           child: InkWell(
             onTap: onViewMore,
-            child: const Row(
-              children: [
-                MainText(
-                  'View more',
-                  color: GawTheme.mainTint,
-                ),
-                SizedBox(
-                  width: PaddingSizes.smallPadding,
-                ),
-                SvgIcon(
-                  PixelPerfectIcons.plusMedium,
-                  color: GawTheme.mainTint,
-                ),
-              ],
+            child: MainText(
+              'View more +',
+              textStyleOverride: TextStyles.mainStyle.copyWith(
+                color: GawTheme.secondaryTint,
+              ),
             ),
           ),
         ),

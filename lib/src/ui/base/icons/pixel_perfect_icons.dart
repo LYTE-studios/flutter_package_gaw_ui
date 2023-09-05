@@ -26,4 +26,9 @@ class PixelPerfectIcons {
   static const String arrowRightNormal = '$normalBasePath/Arrows/Right 21.svg';
 
   static const String plusMedium = '$mediumBasePath/UI Basic/plus 3.svg';
+
+  static const String warningNormal =
+      '$normalBasePath/UI Basic/warning-circle.svg';
+
+  static const String checkNormal = '$normalBasePath/UI Basic/check.svg';
 }
