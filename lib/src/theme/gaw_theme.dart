@@ -37,4 +37,12 @@ class GawTheme {
   static const shadow = ColorRef(
     Color.fromRGBO(142, 146, 149, 0.2),
   );
+
+  static const error = ColorRef(
+    Color.fromRGBO(232, 47, 0, 1),
+  );
+
+  static const success = ColorRef(
+    Color.fromRGBO(0, 168, 48, 1),
+  );
 }
