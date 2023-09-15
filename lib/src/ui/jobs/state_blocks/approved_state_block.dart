@@ -10,7 +10,6 @@ class ApprovedStateBlock extends StatelessWidget {
     return const BaseStateBlock(
       color: GawTheme.success,
       label: 'Approved',
-      iconName: PixelPerfectIcons.checkNormal,
     );
   }
 }
