@@ -4,6 +4,7 @@ import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
 class Shadows {
   static const BoxShadow mainShadow = BoxShadow(
     color: GawTheme.shadow,
-    blurRadius: 4,
+    offset: Offset(4, 12),
+    blurRadius: 8,
   );
 }

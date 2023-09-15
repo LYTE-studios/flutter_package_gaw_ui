@@ -10,7 +10,7 @@ class ApplyStateBlock extends StatelessWidget {
     return const BaseStateBlock(
       color: GawTheme.mainTint,
       label: 'Apply',
-      iconName: PixelPerfectIcons.arrowRightNormal,
+      iconName: PixelPerfectIcons.arrowRightCircleMedium,
     );
   }
 }

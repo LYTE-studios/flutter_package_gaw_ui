@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_api/flutter_package_gaw_api.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
-import 'package:flutter_package_gaw_ui/src/ui/base/shadow/shadows.dart';
 import 'package:flutter_package_gaw_ui/src/ui/jobs/state_blocks/apply_state_block.dart';
 import 'package:flutter_package_gaw_ui/src/ui/jobs/state_blocks/approved_state_block.dart';
+import 'package:flutter_package_gaw_ui/src/ui/jobs/state_blocks/done_state_block.dart';
 import 'package:flutter_package_gaw_ui/src/ui/jobs/state_blocks/pending_state_block.dart';
 import 'package:flutter_package_gaw_ui/src/ui/jobs/state_blocks/rejected_state_block.dart';
-import 'package:flutter_package_gaw_ui/src/ui/profile/avatar/initials_avatar.dart';
 
 class JobListItem extends StatelessWidget {
   final Job job;
@@ -19,7 +18,7 @@ class JobListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 86,
+      height: 98,
       decoration: BoxDecoration(
         color: GawTheme.clearBackground,
         borderRadius: BorderRadius.circular(12),
@@ -36,52 +35,98 @@ class JobListItem extends StatelessWidget {
               horizontal: PaddingSizes.mainPadding,
             ),
             child: SizedBox(
-              height: 42,
-              width: 42,
+              height: 64,
+              width: 64,
               child: buildPicture(),
             ),
           ),
           Expanded(
-            child: Column(
-              children: [
-                Row(),
-                Padding(
-                  padding: const EdgeInsets.all(PaddingSizes.smallPadding),
-                  child: MainText(
-                    job.application == null
-                        ? job.address.shortAddress()
-                        : job.application?.state == JobApplicationState.approved
-                            ? job.address.formattedAddres()
-                            : job.address.shortAddress(),
+            child: Padding(
+              padding: const EdgeInsets.all(
+                PaddingSizes.smallPadding,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: PaddingSizes.mainPadding,
+                    ),
+                    child: Row(
+                      children: [
+                        MainText(
+                          GawDateUtil.formatDate(
+                            GawDateUtil.fromApi(job.startTime),
+                          ),
+                          textStyleOverride: TextStyles.mainStyle.copyWith(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: PaddingSizes.smallPadding,
+                        ),
+                        MainText(
+                          GawDateUtil.formatTimeInterval(
+                            GawDateUtil.fromApi(job.startTime),
+                            GawDateUtil.fromApi(job.endTime),
+                          ),
+                          color: GawTheme.unselectedText,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: PaddingSizes.extraSmallPadding,
+                    ),
+                    child:
+                        job.application?.state != JobApplicationState.approved
+                            ? MainText(job.address.shortAddress())
+                            : Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  MainText(
+                                    job.address.formattedStreetAddress(),
+                                  ),
+                                  MainText(
+                                    job.address.shortAddress(),
+                                    color: GawTheme.unselectedText,
+                                  )
+                                ],
+                              ),
+                  ),
+                ],
+              ),
             ),
           ),
           SizedBox(
             width: 150,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(PaddingSizes.smallPadding),
-                  child: SizedBox(
-                    width: 21,
-                    child: SvgIcon(
-                      PixelPerfectIcons.arrowRightNormal,
-                      color: GawTheme.text,
-                    ),
-                  ),
-                ),
-                const Spacer(),
+                [JobState.done, JobState.cancelled].contains(job.state)
+                    ? const SizedBox()
+                    : const Padding(
+                        padding: EdgeInsets.only(
+                          bottom: PaddingSizes.bigPadding,
+                          right: PaddingSizes.bigPadding,
+                        ),
+                        child: SizedBox(
+                          width: 21,
+                          child: SvgIcon(
+                            PixelPerfectIcons.arrowRightMedium,
+                            color: GawTheme.text,
+                          ),
+                        ),
+                      ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    right: PaddingSizes.mainPadding,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: PaddingSizes.bigPadding,
                   ),
                   child: buildStateBlock(),
-                ),
-                const SizedBox(
-                  height: PaddingSizes.mainPadding,
                 ),
               ],
             ),
@@ -92,6 +137,10 @@ class JobListItem extends StatelessWidget {
   }
 
   Widget buildStateBlock() {
+    if ([JobState.done, JobState.cancelled].contains(job.state)) {
+      return const DoneStateBlock();
+    }
+
     if (job.application == null) {
       return const ApplyStateBlock();
     }
@@ -103,9 +152,11 @@ class JobListItem extends StatelessWidget {
         return const RejectedStateBlock();
       case JobApplicationState.pending:
         return const PendingStateBlock();
+      case JobApplicationState.unknown:
+        return const DoneStateBlock();
     }
 
-    return PendingStateBlock();
+    return const PendingStateBlock();
   }
 
   Widget buildPicture() {

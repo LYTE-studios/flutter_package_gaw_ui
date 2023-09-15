@@ -9,7 +9,7 @@ class RejectedStateBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return const BaseStateBlock(
       color: GawTheme.error,
-      label: 'Rejected X',
+      label: 'Rejected',
     );
   }
 }

@@ -8,11 +8,14 @@ class MainAppHeader extends StatelessWidget {
 
   final Widget? trailing;
 
+  final Function()? goBack;
+
   const MainAppHeader({
     super.key,
     this.label,
     this.colorless = false,
     this.trailing,
+    this.goBack,
   });
 
   @override
@@ -30,15 +33,59 @@ class MainAppHeader extends StatelessWidget {
                     left: PaddingSizes.bigPadding,
                     bottom: PaddingSizes.mainPadding,
                   ),
-                  child: MainText(
-                    label!,
-                    textStyleOverride: TextStyles.titleStyle.copyWith(
-                      color: colorless ? GawTheme.text : GawTheme.mainTintText,
-                    ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      goBack == null
+                          ? const SizedBox.shrink()
+                          : InkWell(
+                              onTap: goBack,
+                              child: const Row(
+                                children: [
+                                  SvgIcon(
+                                    PixelPerfectIcons.leftArrowNormal,
+                                    color: GawTheme.mainTintText,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      left: PaddingSizes.smallPadding,
+                                    ),
+                                    child: MainText(
+                                      'Back',
+                                      color: GawTheme.mainTintText,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                      const SizedBox(
+                        height: PaddingSizes.mainPadding,
+                      ),
+                      MainText(
+                        label!,
+                        textStyleOverride: TextStyles.titleStyle.copyWith(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 30,
+                          color:
+                              colorless ? GawTheme.text : GawTheme.mainTintText,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
           const Spacer(),
-          trailing == null ? const SizedBox.shrink() : trailing!,
+          trailing == null
+              ? const SizedBox.shrink()
+              : Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: PaddingSizes.mainPadding,
+                    vertical: PaddingSizes.mainPadding,
+                  ),
+                  child: IntrinsicHeight(
+                    child: trailing!,
+                  ),
+                ),
         ],
       ),
     );

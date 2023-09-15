@@ -16,15 +16,13 @@ class SvgIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SvgPicture.asset(
-        assetName,
-        package: kPackageName,
-        fit: BoxFit.contain,
-        colorFilter: ColorFilter.mode(
-          color ?? GawTheme.mainTint,
-          BlendMode.srcIn,
-        ),
+    return SvgPicture.asset(
+      assetName,
+      package: kPackageName,
+      fit: BoxFit.contain,
+      colorFilter: ColorFilter.mode(
+        color ?? GawTheme.mainTint,
+        BlendMode.srcIn,
       ),
     );
   }

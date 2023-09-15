@@ -11,7 +11,7 @@ class GawTheme {
   );
 
   static const background = ColorRef(
-    Color.fromRGBO(242, 242, 242, 1),
+    Color.fromRGBO(243, 243, 243, 1),
   );
 
   static const clearBackground = ColorRef(
@@ -22,8 +22,12 @@ class GawTheme {
     Color.fromRGBO(217, 217, 217, 1),
   );
 
+  static const toolBarItem = ColorRef(
+    Color.fromRGBO(155, 155, 155, 1),
+  );
+
   static const text = ColorRef(
-    Color.fromRGBO(18, 18, 18, 1),
+    Color.fromRGBO(51, 54, 63, 1),
   );
 
   static const unselectedText = ColorRef(
@@ -34,8 +38,20 @@ class GawTheme {
     Color.fromRGBO(248, 248, 248, 1),
   );
 
+  static const clearText = ColorRef(
+    Colors.white,
+  );
+
+  static const mainTintUnselectedText = ColorRef(
+    Color.fromRGBO(248, 248, 248, 0.7),
+  );
+
   static const shadow = ColorRef(
-    Color.fromRGBO(142, 146, 149, 0.2),
+    Color.fromRGBO(142, 146, 149, 0.1),
+  );
+
+  static const blur = ColorRef(
+    Color.fromRGBO(0, 0, 0, 0.35),
   );
 
   static const error = ColorRef(

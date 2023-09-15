@@ -9,6 +9,9 @@ class InitialsAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      constraints: const BoxConstraints(
+        minHeight: 48,
+      ),
       decoration: const BoxDecoration(
         shape: BoxShape.circle,
         color: GawTheme.unselectedBackground,
@@ -19,7 +22,9 @@ class InitialsAvatar extends StatelessWidget {
           alignment: TextAlign.center,
           textStyleOverride: TextStyles.titleStyle.copyWith(
             fontSize: 14,
-            color: GawTheme.unselectedText,
+            color: GawTheme.text.withOpacity(
+              0.9,
+            ),
             overflow: TextOverflow.fade,
           ),
         ),
