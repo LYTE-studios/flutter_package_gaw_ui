@@ -41,19 +41,23 @@ class MainAppHeader extends StatelessWidget {
                           ? const SizedBox.shrink()
                           : InkWell(
                               onTap: goBack,
-                              child: const Row(
+                              child: Row(
                                 children: [
                                   SvgIcon(
                                     PixelPerfectIcons.leftArrowNormal,
-                                    color: GawTheme.mainTintText,
+                                    color: colorless == true
+                                        ? GawTheme.text
+                                        : GawTheme.mainTintText,
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                       left: PaddingSizes.smallPadding,
                                     ),
                                     child: MainText(
                                       'Back',
-                                      color: GawTheme.mainTintText,
+                                      color: colorless == true
+                                          ? GawTheme.text
+                                          : GawTheme.mainTintText,
                                     ),
                                   ),
                                 ],

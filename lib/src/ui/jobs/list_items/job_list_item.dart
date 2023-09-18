@@ -102,7 +102,7 @@ class JobListItem extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 150,
+            width: 126,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -123,8 +123,8 @@ class JobListItem extends StatelessWidget {
                         ),
                       ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: PaddingSizes.bigPadding,
+                  padding: const EdgeInsets.only(
+                    right: PaddingSizes.bigPadding,
                   ),
                   child: buildStateBlock(),
                 ),

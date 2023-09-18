@@ -7,4 +7,20 @@ class Shadows {
     offset: Offset(4, 12),
     blurRadius: 8,
   );
+
+  static const BoxShadow lightShadow = BoxShadow(
+    color: GawTheme.shadow,
+    spreadRadius: 2,
+    blurRadius: 3,
+  );
+
+  static const BoxShadow bottomSheetShadow = BoxShadow(
+    color: GawTheme.shadow,
+    offset: Offset(
+      0,
+      -2,
+    ),
+    spreadRadius: 2,
+    blurRadius: 3,
+  );
 }

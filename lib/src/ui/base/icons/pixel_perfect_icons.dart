@@ -21,7 +21,7 @@ class PixelPerfectIcons {
   static const String settingsNormal =
       '$normalBasePath/UI Basic/settings-1.svg';
 
-  static const String personMedium = '$mediumBasePath/UI Basic/person.svg';
+  static const String personMedium = '$mediumBasePath/UI Basic/profile.svg';
 
   static const String editNormal = '$normalBasePath/UI Basic/edit.svg';
 
@@ -40,4 +40,16 @@ class PixelPerfectIcons {
   static const String calendarNormal = '$normalBasePath/UI Basic/calendar.svg';
 
   static const String leftArrowNormal = '$normalBasePath/Arrows/Left 24.svg';
+
+  static const String doorMedium = '$mediumBasePath/UI Basic/home 8.svg';
+
+  static const String zoomMedium = '$mediumBasePath/UI Basic/search 3.svg';
+
+  static const String trashMedium = '$mediumBasePath/UI Basic/delete 4.svg';
+
+  static const String timeIndicator = '$customBasePath/time-indicator.svg';
+
+  static const String placeIndicator = '$customBasePath/place-indicator.svg';
+
+  static const String flagMedium = '$customBasePath/destination-flag.svg';
 }
