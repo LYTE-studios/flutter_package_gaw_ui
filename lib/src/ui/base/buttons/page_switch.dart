@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 
 class PageSwitch extends StatelessWidget {
   final List<String> pageNames;
@@ -24,35 +23,77 @@ class PageSwitch extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        return Container(
-          decoration: BoxDecoration(
-            color: GawTheme.unselectedBackground,
-            borderRadius: BorderRadius.circular(
-              20,
+        return InkWell(
+          highlightColor: Colors.transparent,
+          onTap: () {
+            onChangedIndex?.call(selectedIndex == 0 ? 1 : 0);
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: GawTheme.unselectedBackground,
+              borderRadius: BorderRadius.circular(
+                20,
+              ),
             ),
-          ),
-          width: constraints.maxWidth,
-          child: Padding(
-            padding: EdgeInsets.all(
-              switchPadding,
-            ),
-            child: ToggleSwitch(
-              customWidths: [
-                (constraints.maxWidth / 2) - switchPadding - switchFaultMargin,
-                (constraints.maxWidth / 2) - switchPadding - switchFaultMargin,
-              ],
-              animate: true,
-              totalSwitches: pageNames.length,
-              labels: pageNames,
-              initialLabelIndex: selectedIndex,
-              onToggle: onChangedIndex,
-              radiusStyle: true,
-              cornerRadius: 20,
-              activeBgColor: const [GawTheme.clearBackground],
-              activeFgColor: GawTheme.text,
-              inactiveBgColor: GawTheme.unselectedBackground.withOpacity(0),
-              inactiveFgColor: GawTheme.unselectedText,
-              centerText: true,
+            height: 42,
+            width: constraints.maxWidth,
+            child: Padding(
+              padding: EdgeInsets.all(
+                switchPadding,
+              ),
+              child: LayoutBuilder(builder: (context, constraints) {
+                return Stack(
+                  children: [
+                    AnimatedAlign(
+                      alignment: selectedIndex == 0
+                          ? Alignment.centerLeft
+                          : Alignment.centerRight,
+                      duration: const Duration(
+                        milliseconds: 200,
+                      ),
+                      child: Container(
+                        width: constraints.maxWidth / 2,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: GawTheme.clearBackground,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 0,
+                      bottom: 0,
+                      left: 0,
+                      child: SizedBox(
+                        width: constraints.maxWidth / 2,
+                        child: Center(
+                          child: MainText(
+                            pageNames[0],
+                            color: selectedIndex == 0
+                                ? GawTheme.text
+                                : GawTheme.unselectedText,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 0,
+                      bottom: 0,
+                      right: 0,
+                      child: SizedBox(
+                        width: constraints.maxWidth / 2,
+                        child: Center(
+                          child: MainText(
+                            pageNames[1],
+                            color: selectedIndex == 1
+                                ? GawTheme.text
+                                : GawTheme.unselectedText,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              }),
             ),
           ),
         );

@@ -157,10 +157,10 @@ class _DateRangePickerState extends State<_DateRangePicker> {
 
                       return Container(
                         height: 42,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           border: Border(
                             bottom: BorderSide(
-                              color: GawTheme.unselectedText,
+                              color: GawTheme.unselectedText.withOpacity(0.6),
                             ),
                           ),
                         ),
@@ -230,50 +230,54 @@ class _DateRangePickerState extends State<_DateRangePicker> {
                     },
                   ),
                   Expanded(
-                    child: SfDateRangePicker(
-                      onSelectionChanged:
-                          (dateRangePickerSelectionChangedArgs) {
-                        if (dateRangePickerSelectionChangedArgs
-                            is PickerDateRange) {
-                          PickerDateRange range =
-                              dateRangePickerSelectionChangedArgs
-                                  as PickerDateRange;
-                          setState(() {
-                            start = range.startDate;
-                            end = range.endDate;
-                          });
-                        }
-                      },
-                      viewSpacing: 0,
-                      selectionMode: DateRangePickerSelectionMode.range,
-                      view: DateRangePickerView.month,
-                      selectionShape: DateRangePickerSelectionShape.rectangle,
-                      enableMultiView: true,
-                      allowViewNavigation: true,
-                      todayHighlightColor: GawTheme.secondaryTint,
-                      rangeSelectionColor: GawTheme.secondaryTint.withOpacity(
-                        0.1,
-                      ),
-                      startRangeSelectionColor: GawTheme.secondaryTint,
-                      endRangeSelectionColor: GawTheme.secondaryTint,
-                      navigationDirection:
-                          DateRangePickerNavigationDirection.vertical,
-                      navigationMode: DateRangePickerNavigationMode.scroll,
-                      headerStyle: DateRangePickerHeaderStyle(
-                        backgroundColor: GawTheme.clearBackground,
-                        textStyle: TextStyles.titleStyle.copyWith(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
+                    child: SingleChildScrollView(
+                      child: SizedBox(
+                        height: 650,
+                        child: SfDateRangePicker(
+                          onSelectionChanged:
+                              (dateRangePickerSelectionChangedArgs) {
+                            PickerDateRange range =
+                                dateRangePickerSelectionChangedArgs.value;
+
+                            setState(() {
+                              start = range.startDate;
+                              end = range.endDate;
+                            });
+                          },
+                          viewSpacing: PaddingSizes.mainPadding,
+                          selectionMode: DateRangePickerSelectionMode.range,
+                          view: DateRangePickerView.month,
+                          selectionShape:
+                              DateRangePickerSelectionShape.rectangle,
+                          enableMultiView: true,
+                          allowViewNavigation: true,
+                          todayHighlightColor: GawTheme.secondaryTint,
+                          rangeSelectionColor:
+                              GawTheme.secondaryTint.withOpacity(
+                            0.1,
+                          ),
+                          startRangeSelectionColor: GawTheme.secondaryTint,
+                          endRangeSelectionColor: GawTheme.secondaryTint,
+                          navigationDirection:
+                              DateRangePickerNavigationDirection.vertical,
+                          navigationMode: DateRangePickerNavigationMode.scroll,
+                          headerStyle: DateRangePickerHeaderStyle(
+                            backgroundColor: GawTheme.clearBackground,
+                            textStyle: TextStyles.titleStyle.copyWith(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          selectionColor: GawTheme.secondaryTint,
+                          monthViewSettings: DateRangePickerMonthViewSettings(
+                            viewHeaderHeight: 0,
+                            viewHeaderStyle: DateRangePickerViewHeaderStyle(
+                              backgroundColor: Colors.transparent,
+                              textStyle: TextStyles.mainStyle,
+                            ),
+                            dayFormat: 'E',
+                          ),
                         ),
-                      ),
-                      selectionColor: GawTheme.secondaryTint,
-                      monthViewSettings: DateRangePickerMonthViewSettings(
-                        viewHeaderHeight: 0,
-                        viewHeaderStyle: DateRangePickerViewHeaderStyle(
-                          backgroundColor: Colors.transparent,
-                          textStyle: TextStyles.mainStyle,
-                        ),
-                        dayFormat: 'E',
                       ),
                     ),
                   ),
