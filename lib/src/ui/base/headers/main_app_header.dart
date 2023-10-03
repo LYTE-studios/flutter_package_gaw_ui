@@ -1,8 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_package_gaw_api/flutter_package_gaw_api.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
 
 class MainAppHeader extends StatelessWidget {
   final String? label;
+
+  final bool showDate;
 
   final bool colorless;
 
@@ -16,6 +20,7 @@ class MainAppHeader extends StatelessWidget {
     this.colorless = false,
     this.trailing,
     this.goBack,
+    this.showDate = false,
   });
 
   @override
@@ -39,7 +44,7 @@ class MainAppHeader extends StatelessWidget {
                     children: [
                       goBack == null
                           ? const SizedBox.shrink()
-                          : InkWell(
+                          : GestureDetector(
                               onTap: goBack,
                               child: Row(
                                 children: [
@@ -54,7 +59,7 @@ class MainAppHeader extends StatelessWidget {
                                       left: PaddingSizes.smallPadding,
                                     ),
                                     child: MainText(
-                                      'Back',
+                                      LocaleKeys.back.tr(),
                                       color: colorless == true
                                           ? GawTheme.text
                                           : GawTheme.mainTintText,
@@ -73,6 +78,15 @@ class MainAppHeader extends StatelessWidget {
                           fontSize: 30,
                           color:
                               colorless ? GawTheme.text : GawTheme.mainTintText,
+                        ),
+                      ),
+                      Visibility(
+                        visible: showDate,
+                        child: MainText(
+                          GawDateUtil.formatReadableDate(
+                            DateTime.now(),
+                          ),
+                          color: GawTheme.mainTintUnselectedText,
                         ),
                       ),
                     ],

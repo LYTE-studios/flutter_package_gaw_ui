@@ -1,0 +1,67 @@
+// DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
+
+abstract class  LocaleKeys {
+  static const customers = 'customers';
+  static const hi = 'hi';
+  static const productivity = 'productivity';
+  static const week = 'week';
+  static const month = 'month';
+  static const jobsDoneThisWeek = 'jobsDoneThisWeek';
+  static const jobsScheduledThisWeek = 'jobsScheduledThisWeek';
+  static const jobsDoneThisMonth = 'jobsDoneThisMonth';
+  static const jobsScheduledThisMonth = 'jobsScheduledThisMonth';
+  static const setLocation = 'setLocation';
+  static const search = 'search';
+  static const items = 'items';
+  static const paramPerPage = 'paramPerPage';
+  static const ofParamPages = 'ofParamPages';
+  static const paramOfParamParam = 'paramOfParamParam';
+  static const applications = 'applications';
+  static const washers = 'washers';
+  static const back = 'back';
+  static const viewMore = 'viewMore';
+  static const dateAndTime = 'dateAndTime';
+  static const location = 'location';
+  static const iAmPayingForMyOwnTransport = 'iAmPayingForMyOwnTransport';
+  static const fromYou = 'fromYou';
+  static const jobInfo = 'jobInfo';
+  static const anytime = 'anytime';
+  static const thisWeek = 'thisWeek';
+  static const thisMonth = 'thisMonth';
+  static const earlier = 'earlier';
+  static const upcomingJobs = 'upcomingJobs';
+  static const myJobs = 'myJobs';
+  static const viewAll = 'viewAll';
+  static const selectDates = 'selectDates';
+  static const sun = 'sun';
+  static const mon = 'mon';
+  static const tue = 'tue';
+  static const wed = 'wed';
+  static const thu = 'thu';
+  static const fri = 'fri';
+  static const sat = 'sat';
+  static const address = 'address';
+  static const dateOfBirth = 'dateOfBirth';
+  static const phoneNumber = 'phoneNumber';
+  static const language = 'language';
+  static const password = 'password';
+  static const logout = 'logout';
+  static const profile = 'profile';
+  static const more = 'more';
+  static const termsAndConditions = 'termsAndConditions';
+  static const privacyPolicy = 'privacyPolicy';
+  static const licenses = 'licenses';
+  static const apply = 'apply';
+  static const approved = 'approved';
+  static const rejected = 'rejected';
+  static const pending = 'pending';
+  static const applyForJob = 'applyForJob';
+  static const cancelled = 'cancelled';
+  static const completed = 'completed';
+  static const home = 'home';
+  static const statistics = 'statistics';
+  static const jobs = 'jobs';
+  static const history = 'history';
+  static const settings = 'settings';
+
+}

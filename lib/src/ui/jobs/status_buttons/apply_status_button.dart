@@ -15,7 +15,7 @@ class ApplyStatusButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: const BaseStatusButton(
-        label: 'Apply',
+        label: 'Apply for job',
         color: GawTheme.mainTint,
       ),
     );

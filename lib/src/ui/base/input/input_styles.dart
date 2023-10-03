@@ -13,7 +13,10 @@ class InputStyles {
 
   static InputDecoration largeDecoration = InputDecoration(
     border: OutlineInputBorder(
-      borderSide: Borders.mainSide,
+      borderSide: Borders.mainSide.copyWith(
+        color: GawTheme.unselectedBackground,
+        width: 0.3,
+      ),
       borderRadius: BorderRadius.circular(8),
     ),
     contentPadding: const EdgeInsets.all(

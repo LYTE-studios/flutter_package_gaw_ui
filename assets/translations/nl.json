@@ -1,0 +1,95 @@
+{   
+    "customers": "Klanten",
+    
+
+    "hi": "Dag",
+
+    "productivity": "Productiviteit",
+    "week": "Week",
+    "month": "Maand",
+
+    "jobsDoneThisWeek": "jobs gedaan deze week",
+    "jobsScheduledThisWeek": "jobs ingepland deze week",
+    "jobsDoneThisMonth": "jobs gedaan deze month",
+    "jobsScheduledThisMonth": "jobs ingepland deze month",
+
+    "setLocation": "Locatie selecteren",
+
+    "search": "Zoeken",
+
+    "items": "Items",
+
+    "paramPerPage": "{item} per pagina",
+
+    "ofParamPages": "van de {pages} paginas",
+
+    "paramOfParamParam": "{range} van de {total} {item}",
+
+
+    "applications": "Aanmeldingen",
+
+
+    "washers": "Washers",
+
+
+
+    "back": "Terug",
+
+    "viewMore": "Meer",
+
+    "dateAndTime": "Datum & tijd",
+    "location": "Locatie",
+    "iAmPayingForMyOwnTransport": "Ik hoef geen transport kosten",
+    "fromYou": "van jou",
+
+    "jobInfo": "Job info",
+
+    "anytime": "Altijd",
+    "thisWeek": "Deze week",
+    "thisMonth": "Deze maand",
+    "earlier": "Eerder",
+
+    "upcomingJobs": "Aankomende jobs",
+    "myJobs": "Mijn jobs",
+    "viewAll": "Alles bekijken",
+
+    "selectDates": "Datums selecteren",
+    "sun": "Zon",
+    "mon": "Maa",
+    "tue": "Din",
+    "wed": "Woe",
+    "thu": "Don",
+    "fri": "Vri",
+    "sat": "Zat",
+
+    "address": "Adres",
+    "dateOfBirth": "Geboortedatum",
+    "phoneNumber": "Telefoon nummer",
+    "language": "Taal",
+    "password": "Wachtwoord",
+    "logout": "Uitloggen",
+    "profile": "Profiel",
+    "more": "Meer",
+
+    "termsAndConditions": "Terms & conditions",
+    "privacyPolicy": "Privacy policy",
+    "licenses": "Licenties",
+
+
+    "apply": "Aanmelden",
+    "approved": "Goedgekeurd",
+    "rejected": "Afgewezen",
+    "pending": "In afwachting",
+
+    "applyForJob": "Aanmelden voor job",
+    "cancelled": "Gecancelled",
+    "completed": "Voltooid",
+
+
+    "home": "Home",
+    "statistics": "Statistieken",
+    "jobs": "Jobs",
+    "history": "Geschiedenis",
+    "settings":  "Instellingen"
+
+}

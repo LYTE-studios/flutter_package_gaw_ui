@@ -1,31 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
 
-class EnclosedTitle extends StatelessWidget {
+class FormNumberSelector extends StatelessWidget {
   final String label;
 
-  const EnclosedTitle({
+  final bool active;
+
+  const FormNumberSelector({
     super.key,
     required this.label,
+    this.active = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 38,
-      width: 128,
+      height: 21,
+      width: 21,
       decoration: BoxDecoration(
-        color: GawTheme.mainTint,
-        borderRadius: BorderRadius.circular(12),
+        color: active ? GawTheme.secondaryTint : GawTheme.unselectedMainTint,
+        shape: BoxShape.circle,
       ),
       child: Center(
         child: MainText(
           label,
-          textStyleOverride: TextStyles.titleStyle.copyWith(
-            color: GawTheme.mainTintText,
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-          ),
+          color: GawTheme.mainTintText,
         ),
       ),
     );

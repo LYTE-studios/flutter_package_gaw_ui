@@ -25,6 +25,7 @@ class BaseStatusButton extends StatelessWidget {
           textStyleOverride: TextStyles.titleStyle.copyWith(
             color: GawTheme.clearText,
             fontSize: 18,
+            fontWeight: FontWeight.w900,
           ),
         ),
       ),

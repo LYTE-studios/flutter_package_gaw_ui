@@ -37,6 +37,8 @@ class PixelPerfectIcons {
 
   static const String checkNormal = '$normalBasePath/UI Basic/check.svg';
 
+  static const String checkMedium = '$mediumBasePath/UI Basic/check.svg';
+
   static const String calendarNormal = '$normalBasePath/UI Basic/calendar.svg';
 
   static const String leftArrowNormal = '$normalBasePath/Arrows/Left 24.svg';
@@ -52,4 +54,10 @@ class PixelPerfectIcons {
   static const String placeIndicator = '$customBasePath/place-indicator.svg';
 
   static const String flagMedium = '$customBasePath/destination-flag.svg';
+
+  static const String eyeHideNormal = '$normalBasePath/UI Basic/eye-hide-2.svg';
+
+  static const String eyeNormal = '$normalBasePath/UI Basic/eye-hide.svg';
+
+  static const String documentNormal = '$normalBasePath/UI Basic/document.svg';
 }
