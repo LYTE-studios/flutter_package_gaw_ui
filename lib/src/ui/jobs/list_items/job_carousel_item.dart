@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_api/flutter_package_gaw_api.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
@@ -143,15 +144,15 @@ class JobCarouselItem extends StatelessWidget {
                         color: GawTheme.clearBackground,
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           MainText(
-                            'Apply',
+                            LocaleKeys.apply.tr(),
                             color: GawTheme.secondaryTint,
                           ),
-                          SvgIcon(
+                          const SvgIcon(
                             PixelPerfectIcons.arrowRightCircleMedium,
                             color: GawTheme.secondaryTint,
                           ),

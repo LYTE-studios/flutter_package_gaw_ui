@@ -15,7 +15,18 @@
 
     "items": "Items",
 
-    
+    "paramPerPage": "{item} per page",
+
+    "ofParamPages": "of {pages} pages",
+
+    "paramOfParamParam": "{range} of {total} {item}",
+
+    "applications": "Applications",
+
+
+    "washers": "Washers",
+
+
 
     "setLocation": "Set location",
 

@@ -6,10 +6,13 @@ class BaseStatusButton extends StatelessWidget {
 
   final Color color;
 
+  final bool loading;
+
   const BaseStatusButton({
     super.key,
     required this.label,
     required this.color,
+    this.loading = false,
   });
 
   @override
@@ -20,14 +23,22 @@ class BaseStatusButton extends StatelessWidget {
         color: color,
       ),
       child: Center(
-        child: MainText(
-          label,
-          textStyleOverride: TextStyles.titleStyle.copyWith(
-            color: GawTheme.clearText,
-            fontSize: 18,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
+        child: loading
+            ? const SizedBox(
+                height: 16,
+                width: 16,
+                child: CircularProgressIndicator(
+                  color: GawTheme.mainTintText,
+                ),
+              )
+            : MainText(
+                label,
+                textStyleOverride: TextStyles.titleStyle.copyWith(
+                  color: GawTheme.clearText,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
       ),
     );
   }

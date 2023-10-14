@@ -2,7 +2,7 @@ name: flutter_package_gaw_ui
 description: A UI Package for the Get-a-Wash application stack.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.6.0
+version: 1.7.0
 
 environment:
   sdk: '>=3.1.0 <4.0.0'
@@ -26,7 +26,7 @@ dependencies:
   flutter_package_gaw_api:
     git:
       url: https://lyte-manager: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@github.com/LYTE-studios/flutter_package_gaw_api
-      ref: main 
+      ref: main
 
 dev_dependencies:
   flutter_test:
@@ -34,9 +34,9 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 
-dependency_overrides:
-  flutter_package_gaw_api: 
-    path: ../flutter_package_gaw_api
+#dependency_overrides:
+#  flutter_package_gaw_api:
+#    path: ../flutter_package_gaw_api
 
 
 flutter:
@@ -53,6 +53,6 @@ flutter:
 
   fonts:
     - family: General Sans
-      fonts: 
+      fonts:
         - asset: assets/fonts/GeneralSans-Variable.ttf
         - asset: assets/fonts/GeneralSans-VariableItalic.ttf

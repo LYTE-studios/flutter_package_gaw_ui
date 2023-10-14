@@ -60,7 +60,7 @@ class _DateIntervalPickerState extends State<DateIntervalPicker> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      return GestureDetector(
+      return InkWell(
         onTap: showPicker,
         child: Container(
           height: 56,

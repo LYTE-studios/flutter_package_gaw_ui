@@ -16,6 +16,7 @@ export 'src/ui/base/list/settings_list_tile.dart';
 export 'src/ui/profile/avatar/profile_picture_avatar.dart';
 export 'src/ui/base/list/list_sub_title.dart';
 export 'src/ui/jobs/list_items/job_list_item.dart';
+export 'src/ui/base/buttons/small_check_box.dart';
 export 'src/ui/profile/avatar/initials_avatar.dart';
 export 'src/ui/base/buttons/generic_button.dart';
 export 'src/ui/base/shadow/shadows.dart';

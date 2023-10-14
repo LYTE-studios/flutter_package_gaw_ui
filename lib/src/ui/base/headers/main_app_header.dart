@@ -1,7 +1,7 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_api/flutter_package_gaw_api.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
+import 'package:flutter_package_gaw_ui/src/ui/base/headers/header_back_button.dart';
 
 class MainAppHeader extends StatelessWidget {
   final String? label;
@@ -44,29 +44,11 @@ class MainAppHeader extends StatelessWidget {
                     children: [
                       goBack == null
                           ? const SizedBox.shrink()
-                          : GestureDetector(
-                              onTap: goBack,
-                              child: Row(
-                                children: [
-                                  SvgIcon(
-                                    PixelPerfectIcons.leftArrowNormal,
-                                    color: colorless == true
-                                        ? GawTheme.text
-                                        : GawTheme.mainTintText,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                      left: PaddingSizes.smallPadding,
-                                    ),
-                                    child: MainText(
-                                      LocaleKeys.back.tr(),
-                                      color: colorless == true
-                                          ? GawTheme.text
-                                          : GawTheme.mainTintText,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                          : HeaderBackButton(
+                              color: colorless == true
+                                  ? GawTheme.text
+                                  : GawTheme.mainTintText,
+                              goBack: goBack,
                             ),
                       const SizedBox(
                         height: PaddingSizes.mainPadding,

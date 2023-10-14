@@ -10,12 +10,15 @@ class GenericButton extends StatelessWidget {
 
   final Color? textColor;
 
+  final TextStyle? textStyleOverride;
+
   const GenericButton({
     super.key,
     this.label,
     this.onTap,
     this.color,
     this.textColor,
+    this.textStyleOverride,
   });
 
   @override
@@ -36,10 +39,11 @@ class GenericButton extends StatelessWidget {
           child: MainText(
             label ?? '',
             alignment: TextAlign.center,
-            textStyleOverride: TextStyles.mainStyleTitle.copyWith(
-              fontSize: 18,
-              color: textColor ?? GawTheme.mainTintText,
-            ),
+            textStyleOverride: textStyleOverride ??
+                TextStyles.mainStyleTitle.copyWith(
+                  fontSize: 18,
+                  color: textColor ?? GawTheme.mainTintText,
+                ),
           ),
         ),
       ),

@@ -16,7 +16,7 @@ class FormTitle extends StatelessWidget {
       textStyleOverride: TextStyles.titleStyle.copyWith(
         color: GawTheme.text,
         fontSize: 21,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w600,
       ),
     );
   }

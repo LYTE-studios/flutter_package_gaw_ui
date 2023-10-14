@@ -13,6 +13,6 @@ class WorkedHoursChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseChart();
+    return const BaseChart();
   }
 }

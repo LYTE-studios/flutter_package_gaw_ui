@@ -30,7 +30,9 @@ class BaseChart extends StatelessWidget {
         child: Column(
           children: [
             Row(
-              children: [],
+              children: [
+                
+              ],
             ),
           ],
         ),
