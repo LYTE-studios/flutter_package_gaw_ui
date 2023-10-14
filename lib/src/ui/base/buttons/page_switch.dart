@@ -23,8 +23,7 @@ class PageSwitch extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        return InkWell(
-          highlightColor: Colors.transparent,
+        return GestureDetector(
           onTap: () {
             onChangedIndex?.call(selectedIndex == 0 ? 1 : 0);
           },
@@ -68,9 +67,13 @@ class PageSwitch extends StatelessWidget {
                         child: Center(
                           child: MainText(
                             pageNames[0],
-                            color: selectedIndex == 0
-                                ? GawTheme.text
-                                : GawTheme.unselectedText,
+                            textStyleOverride: TextStyles.titleStyle.copyWith(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: selectedIndex == 0
+                                  ? GawTheme.text
+                                  : GawTheme.unselectedText,
+                            ),
                           ),
                         ),
                       ),
@@ -84,9 +87,13 @@ class PageSwitch extends StatelessWidget {
                         child: Center(
                           child: MainText(
                             pageNames[1],
-                            color: selectedIndex == 1
-                                ? GawTheme.text
-                                : GawTheme.unselectedText,
+                            textStyleOverride: TextStyles.titleStyle.copyWith(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: selectedIndex == 1
+                                  ? GawTheme.text
+                                  : GawTheme.unselectedText,
+                            ),
                           ),
                         ),
                       ),

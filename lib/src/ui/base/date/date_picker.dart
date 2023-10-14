@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_api/flutter_package_gaw_api.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
-import 'package:flutter_package_gaw_ui/src/ui/base/tools/tool_selector.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class DateIntervalPicker extends StatefulWidget {
@@ -139,7 +139,7 @@ class _DateRangePickerState extends State<_DateRangePicker> {
               bottom: PaddingSizes.mainPadding,
             ),
             child: MainText(
-              'Select dates',
+              LocaleKeys.selectDates.tr(),
               textStyleOverride: TextStyles.titleStyle.copyWith(
                 fontSize: 18,
                 fontWeight: FontWeight.w800,
@@ -170,57 +170,57 @@ class _DateRangePickerState extends State<_DateRangePicker> {
                           children: [
                             SizedBox(
                               width: cellWidth,
-                              child: const Center(
+                              child: Center(
                                 child: MainText(
-                                  'Sun',
+                                  LocaleKeys.sun.tr(),
                                 ),
                               ),
                             ),
                             SizedBox(
                               width: cellWidth,
-                              child: const Center(
+                              child: Center(
                                 child: MainText(
-                                  'Mon',
+                                  LocaleKeys.mon.tr(),
                                 ),
                               ),
                             ),
                             SizedBox(
                               width: cellWidth,
-                              child: const Center(
+                              child: Center(
                                 child: MainText(
-                                  'Tue',
+                                  LocaleKeys.tue.tr(),
                                 ),
                               ),
                             ),
                             SizedBox(
                               width: cellWidth,
-                              child: const Center(
+                              child: Center(
                                 child: MainText(
-                                  'Wed',
+                                  LocaleKeys.wed.tr(),
                                 ),
                               ),
                             ),
                             SizedBox(
                               width: cellWidth,
-                              child: const Center(
+                              child: Center(
                                 child: MainText(
-                                  'Thu',
+                                  LocaleKeys.thu.tr(),
                                 ),
                               ),
                             ),
                             SizedBox(
                               width: cellWidth,
-                              child: const Center(
+                              child: Center(
                                 child: MainText(
-                                  'Fri',
+                                  LocaleKeys.fri.tr(),
                                 ),
                               ),
                             ),
                             SizedBox(
                               width: cellWidth,
-                              child: const Center(
+                              child: Center(
                                 child: MainText(
-                                  'Sat',
+                                  LocaleKeys.sat.tr(),
                                 ),
                               ),
                             ),
@@ -296,7 +296,7 @@ class _DateRangePickerState extends State<_DateRangePicker> {
                           }
                           widget.onRangeSelected?.call(start!, end!);
                         },
-                        label: 'Select dates',
+                        label: LocaleKeys.selectDates.tr(),
                         color: start == null || end == null
                             ? GawTheme.unselectedBackground
                             : GawTheme.secondaryTint,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
-import 'package:flutter_package_gaw_ui/src/ui/base/shadow/shadows.dart';
 
 class SettingsListTile extends StatelessWidget {
   final Widget? trailing;

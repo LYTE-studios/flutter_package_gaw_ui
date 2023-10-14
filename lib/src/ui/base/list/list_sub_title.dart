@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
 
@@ -35,7 +36,7 @@ class ListSubTitle extends StatelessWidget {
           child: InkWell(
             onTap: onViewMore,
             child: MainText(
-              'View All +',
+              '${LocaleKeys.viewAll.tr()} +',
               textStyleOverride: TextStyles.mainStyle.copyWith(
                 color: GawTheme.secondaryTint,
                 fontSize: 16,

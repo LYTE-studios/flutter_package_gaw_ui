@@ -6,4 +6,9 @@ class Borders {
     color: GawTheme.unselectedText,
     width: 0.3,
   );
+
+  static const BorderSide lightSide = BorderSide(
+    color: GawTheme.unselectedText,
+    width: 0.1,
+  );
 }

@@ -2,7 +2,7 @@ name: flutter_package_gaw_ui
 description: A UI Package for the Get-a-Wash application stack.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.6.0
+version: 1.7.0
 
 environment:
   sdk: '>=3.1.0 <4.0.0'
@@ -16,14 +16,17 @@ dependencies:
   carousel_slider: ^4.2.1
   google_fonts: ^5.1.0
   toggle_switch: ^2.1.0
-  syncfusion_flutter_datepicker: ^22.2.12
+  syncfusion_flutter_datepicker: ^23.1.36
+  syncfusion_flutter_charts: ^23.1.36
+  smooth_page_indicator: ^1.1.0
+  easy_localization: ^3.0.2
 
   # Get-a-Wash
 
   flutter_package_gaw_api:
     git:
       url: https://lyte-manager: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@github.com/LYTE-studios/flutter_package_gaw_api
-      ref: main 
+      ref: main
 
 dev_dependencies:
   flutter_test:
@@ -31,9 +34,9 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 
-dependency_overrides:
-  flutter_package_gaw_api: 
-    path: ../flutter_package_gaw_api
+#dependency_overrides:
+#  flutter_package_gaw_api:
+#    path: ../flutter_package_gaw_api
 
 
 flutter:
@@ -50,6 +53,6 @@ flutter:
 
   fonts:
     - family: General Sans
-      fonts: 
+      fonts:
         - asset: assets/fonts/GeneralSans-Variable.ttf
         - asset: assets/fonts/GeneralSans-VariableItalic.ttf

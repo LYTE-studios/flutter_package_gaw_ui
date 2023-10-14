@@ -1,0 +1,93 @@
+{   
+    "customers": "Customers",
+
+    "hi": "Hi",
+
+    "productivity": "Productivity",
+    "week": "Week",
+    "month": "Month",
+    "jobsDoneThisWeek": "jobs done this week",
+    "jobsScheduledThisWeek": "jobs scheduled this week",
+    "jobsDoneThisMonth": "jobs done this month",
+    "jobsScheduledThisMonth": "jobs scheduled this month",
+
+    "search": "Search",
+
+    "items": "Items",
+
+    "paramPerPage": "{item} per page",
+
+    "ofParamPages": "of {pages} pages",
+
+    "paramOfParamParam": "{range} of {total} {item}",
+
+    "applications": "Applications",
+
+
+    "washers": "Washers",
+
+
+
+    "setLocation": "Set location",
+
+
+    "back": "Back",
+
+    "viewMore": "View more",
+
+    "dateAndTime": "Date & time",
+    "location": "Location",
+    "iAmPayingForMyOwnTransport": "I am paying for my own transport",
+    "fromYou": "from you",
+
+    "jobInfo": "Job info",
+
+    "anytime": "Anytime",
+    "thisWeek": "This week",
+    "thisMonth": "This month",
+    "earlier": "Earlier",
+
+    "upcomingJobs": "Upcoming jobs",
+    "myJobs": "My jobs",
+    "viewAll": "View all",
+
+    "selectDates": "Select dates",
+    "sun": "Sun",
+    "mon": "Mon",
+    "tue": "Tue",
+    "wed": "Wed",
+    "thu": "Thu",
+    "fri": "Fri",
+    "sat": "Sat",
+
+    "address": "Address",
+    "dateOfBirth": "Date of birth",
+    "phoneNumber": "Phone number",
+    "language": "Language",
+    "password": "Password",
+    "logout": "Logout",
+    "profile": "Profile",
+    "more": "More",
+
+    "termsAndConditions": "Terms & conditions",
+    "privacyPolicy": "Privacy policy",
+    "licenses": "Licenses",
+
+
+    "apply": "Apply",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "pending": "Pending",
+
+    "applyForJob": "Apply for job",
+    "cancelled": "Cancelled",
+    "completed": "Completed",
+
+
+    "home": "Home",
+    "statistics": "Statistics",
+    "jobs": "Jobs",
+    "history": "History",
+    "settings":  "Settings"
+
+}

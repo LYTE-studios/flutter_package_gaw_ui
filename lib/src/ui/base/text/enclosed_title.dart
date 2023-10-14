@@ -12,7 +12,7 @@ class EnclosedTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 48,
+      height: 38,
       width: 128,
       decoration: BoxDecoration(
         color: GawTheme.mainTint,
@@ -21,8 +21,11 @@ class EnclosedTitle extends StatelessWidget {
       child: Center(
         child: MainText(
           label,
-          textStyleOverride: TextStyles.mainStyleTitle.copyWith(
-              color: GawTheme.mainTintText, fontWeight: FontWeight.w500),
+          textStyleOverride: TextStyles.titleStyle.copyWith(
+            color: GawTheme.mainTintText,
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
