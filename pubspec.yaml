@@ -34,9 +34,9 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 
-dependency_overrides:
-  flutter_package_gaw_api:
-    path: ../flutter_package_gaw_api
+#dependency_overrides:
+#  flutter_package_gaw_api:
+#    path: ../flutter_package_gaw_api
 
 
 flutter:
