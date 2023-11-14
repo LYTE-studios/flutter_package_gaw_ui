@@ -81,21 +81,21 @@ class JobListItem extends StatelessWidget {
                     padding: const EdgeInsets.only(
                       top: PaddingSizes.extraSmallPadding,
                     ),
-                    child:
-                        job.application?.state != JobApplicationState.approved
-                            ? MainText(job.address.shortAddress())
-                            : Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  MainText(
-                                    job.address.formattedStreetAddress(),
-                                  ),
-                                  MainText(
-                                    job.address.shortAddress(),
-                                    color: GawTheme.unselectedText,
-                                  )
-                                ],
+                    child: JobApplicationState.approved !=
+                            JobApplicationState.approved
+                        ? MainText(job.address.shortAddress())
+                        : Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              MainText(
+                                job.address.formattedStreetAddress(),
                               ),
+                              MainText(
+                                job.address.shortAddress(),
+                                color: GawTheme.unselectedText,
+                              )
+                            ],
+                          ),
                   ),
                 ],
               ),
@@ -141,11 +141,11 @@ class JobListItem extends StatelessWidget {
       return const DoneStateBlock();
     }
 
-    if (job.application == null) {
+    if (job == null) {
       return const ApplyStateBlock();
     }
 
-    switch (job.application!.state) {
+    switch (JobApplicationState.approved) {
       case JobApplicationState.approved:
         return const ApprovedStateBlock();
       case JobApplicationState.rejected:

@@ -60,4 +60,6 @@ class PixelPerfectIcons {
   static const String eyeNormal = '$normalBasePath/UI Basic/eye-hide.svg';
 
   static const String documentNormal = '$normalBasePath/UI Basic/document.svg';
+
+  static const String xNormal = '$normalBasePath/UI Basic/cancel.svg';
 }
