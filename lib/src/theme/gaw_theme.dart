@@ -65,4 +65,8 @@ class GawTheme {
   static const success = ColorRef(
     Color.fromRGBO(0, 168, 48, 1),
   );
+
+  static const statsText = ColorRef(
+    Color.fromRGBO(144, 147, 157, 1),
+  );
 }
