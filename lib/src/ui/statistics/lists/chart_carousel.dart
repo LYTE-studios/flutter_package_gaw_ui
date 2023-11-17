@@ -14,9 +14,12 @@ class ChartCarousel extends StatelessWidget {
     return CarouselSlider.builder(
       itemCount: charts.length,
       options: CarouselOptions(
+        reverse: true,
+        aspectRatio: 1.05,
         enableInfiniteScroll: false,
-        enlargeCenterPage: true,
-        viewportFraction: 0.9,
+        enlargeCenterPage: false,
+        viewportFraction: 1,
+        padEnds: false,
       ),
       itemBuilder: (context, index, realIndex) => charts[index],
     );

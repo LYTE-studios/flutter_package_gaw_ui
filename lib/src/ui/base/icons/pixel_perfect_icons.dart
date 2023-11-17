@@ -62,4 +62,8 @@ class PixelPerfectIcons {
   static const String documentNormal = '$normalBasePath/UI Basic/document.svg';
 
   static const String xNormal = '$normalBasePath/UI Basic/cancel.svg';
+
+  static const String barChart = '$customBasePath/bar_chart.svg';
+
+  static const String lineChart = '$customBasePath/line_chart.svg';
 }
