@@ -29,6 +29,7 @@ class _AppInputFieldState extends State<AppInputField> {
       enableSuggestions: !widget.isPasswordField,
       autocorrect: !widget.isPasswordField,
       controller: widget.controller,
+      cursorColor: GawTheme.mainTint,
       decoration: InputDecoration(
         label: MainText(widget.hint ?? ''),
         suffixIcon: !widget.isPasswordField
@@ -56,10 +57,6 @@ class _AppInputFieldState extends State<AppInputField> {
                   ),
                 ),
               ),
-        border: OutlineInputBorder(
-          borderSide: Borders.lightSide,
-          borderRadius: BorderRadius.circular(8),
-        ),
         contentPadding: const EdgeInsets.all(
           PaddingSizes.smallPadding,
         ),
