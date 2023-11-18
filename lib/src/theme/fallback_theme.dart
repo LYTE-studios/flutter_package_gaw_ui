@@ -3,9 +3,11 @@ import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
 
 final ThemeData fallbackTheme = ThemeData(
   primaryColor: GawTheme.mainTint,
-  canvasColor: GawTheme.background,
-  cardColor: GawTheme.unselectedMainTint,
   focusColor: GawTheme.mainTint,
+  indicatorColor: GawTheme.mainTint,
+  progressIndicatorTheme: const ProgressIndicatorThemeData(
+    circularTrackColor: GawTheme.mainTint,
+  ),
   inputDecorationTheme: InputDecorationTheme(
     focusedBorder: OutlineInputBorder(
       borderSide: Borders.selectedInputSide,

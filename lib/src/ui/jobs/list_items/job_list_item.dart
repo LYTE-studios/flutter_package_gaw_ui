@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_api/flutter_package_gaw_api.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
 import 'package:flutter_package_gaw_ui/src/ui/jobs/state_blocks/apply_state_block.dart';
-import 'package:flutter_package_gaw_ui/src/ui/jobs/state_blocks/approved_state_block.dart';
 import 'package:flutter_package_gaw_ui/src/ui/jobs/state_blocks/done_state_block.dart';
-import 'package:flutter_package_gaw_ui/src/ui/jobs/state_blocks/pending_state_block.dart';
-import 'package:flutter_package_gaw_ui/src/ui/jobs/state_blocks/rejected_state_block.dart';
 
 class JobListItem extends StatelessWidget {
   final Job job;
@@ -140,29 +137,13 @@ class JobListItem extends StatelessWidget {
     if ([JobState.done, JobState.cancelled].contains(job.state)) {
       return const DoneStateBlock();
     }
-
-    if (job == null) {
-      return const ApplyStateBlock();
-    }
-
-    switch (JobApplicationState.approved) {
-      case JobApplicationState.approved:
-        return const ApprovedStateBlock();
-      case JobApplicationState.rejected:
-        return const RejectedStateBlock();
-      case JobApplicationState.pending:
-        return const PendingStateBlock();
-      case JobApplicationState.unknown:
-        return const DoneStateBlock();
-    }
-
-    return const PendingStateBlock();
+    return const ApplyStateBlock();
   }
 
   Widget buildPicture() {
     if (job.customer.profilePictureUrl == null) {
       return InitialsAvatar(
-        initials: job.customer.initials,
+        initials: job.customer.initials ?? '',
       );
     }
 

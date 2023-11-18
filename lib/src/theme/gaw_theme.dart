@@ -11,7 +11,7 @@ class GawTheme {
   );
 
   static const background = ColorRef(
-    Color.fromRGBO(243, 243, 243, 1),
+    Color.fromRGBO(236, 236, 236, 1),
   );
 
   static const clearBackground = ColorRef(
