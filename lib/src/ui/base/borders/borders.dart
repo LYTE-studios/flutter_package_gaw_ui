@@ -9,7 +9,7 @@ class Borders {
 
   static const BorderSide lightSide = BorderSide(
     color: GawTheme.unselectedText,
-    width: 0.2,
+    width: 0.1,
   );
 
   static const BorderSide unselectedInputSide = BorderSide(

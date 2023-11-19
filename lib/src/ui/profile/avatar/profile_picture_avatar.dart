@@ -42,6 +42,7 @@ class ProfilePictureAvatar extends StatelessWidget {
                     'assets/images/core/default_profile_picture.svg',
                     package: kPackageName,
                     fit: BoxFit.fitWidth,
+                    color: GawTheme.clearBackground,
                   )
                 : CircleAvatar(
                     foregroundImage: MemoryImage(bytes!),

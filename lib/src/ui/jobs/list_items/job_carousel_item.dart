@@ -18,6 +18,7 @@ class JobCarouselItem extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       height: 200,
       decoration: BoxDecoration(
+        color: GawTheme.unselectedBackground,
         border: Border.all(
           color: GawTheme.unselectedText.withOpacity(0.4),
         ),
@@ -92,13 +93,13 @@ class JobCarouselItem extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             MainText(
-                              job.address.shortAddress(),
+                              job.address.city ?? job.address.postalCode ?? '',
                               textStyleOverride: TextStyles.mainStyle.copyWith(
                                 color: GawTheme.mainTintText,
                               ),
                             ),
                             MainText(
-                              job.customer.initials,
+                              job.customer.initials ?? '',
                               textStyleOverride: TextStyles.mainStyle.copyWith(
                                 fontSize: 14,
                                 color: GawTheme.mainTintUnselectedText,

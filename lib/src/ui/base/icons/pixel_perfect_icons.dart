@@ -7,10 +7,14 @@ class PixelPerfectIcons {
 
   // NAVIGATION
 
-  static const String homeNormal = '$normalBasePath/UI Basic/home 15.svg';
+  static const String notificationMedium = '$customBasePath/notification.svg';
+
+  static const String openNotificationMedium = '$customBasePath/open-notification.svg';
+
+  static const String homeNormal = '$mediumBasePath/UI Basic/home 8.svg';
 
   static const String statisticsNormal =
-      '$normalBasePath/Arrows/Trend Up 7.svg';
+      '$mediumBasePath/Arrows/Trend Up 4.svg';
 
   static const String waterDripNormal = '$customBasePath/water_drip.svg';
 
@@ -19,7 +23,7 @@ class PixelPerfectIcons {
   static const String clockNormal = '$normalBasePath/UI Basic/clock.svg';
 
   static const String settingsNormal =
-      '$normalBasePath/UI Basic/settings-1.svg';
+      '$mediumBasePath/UI Basic/settings-1.svg';
 
   static const String personMedium = '$mediumBasePath/UI Basic/profile.svg';
 

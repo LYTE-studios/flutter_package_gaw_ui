@@ -5,7 +5,7 @@ class Shadows {
   static const BoxShadow mainShadow = BoxShadow(
     color: GawTheme.shadow,
     offset: Offset(4, 12),
-    blurRadius: 8,
+    blurRadius: 16,
   );
 
   static const BoxShadow lightShadow = BoxShadow(

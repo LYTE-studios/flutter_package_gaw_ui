@@ -17,22 +17,28 @@ class HeaderBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: goBack,
-      child: Row(
-        children: [
-          SvgIcon(
-            PixelPerfectIcons.leftArrowNormal,
-            color: color ?? GawTheme.mainTintText,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              left: PaddingSizes.smallPadding,
-            ),
-            child: MainText(
-              LocaleKeys.back.tr(),
+      child: Padding(
+        padding: const EdgeInsets.only(
+          top: PaddingSizes.bigPadding,
+          bottom: PaddingSizes.smallPadding,
+        ),
+        child: Row(
+          children: [
+            SvgIcon(
+              PixelPerfectIcons.leftArrowNormal,
               color: color ?? GawTheme.mainTintText,
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.only(
+                left: PaddingSizes.smallPadding,
+              ),
+              child: MainText(
+                LocaleKeys.back.tr(),
+                color: color ?? GawTheme.mainTintText,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
