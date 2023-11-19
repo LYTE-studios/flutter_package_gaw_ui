@@ -78,21 +78,9 @@ class JobListItem extends StatelessWidget {
                     padding: const EdgeInsets.only(
                       top: PaddingSizes.extraSmallPadding,
                     ),
-                    child: JobApplicationState.approved !=
-                            JobApplicationState.approved
-                        ? MainText(job.address.shortAddress())
-                        : Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              MainText(
-                                job.address.formattedStreetAddress(),
-                              ),
-                              MainText(
-                                job.address.shortAddress(),
-                                color: GawTheme.unselectedText,
-                              )
-                            ],
-                          ),
+                    child: MainText(
+                      job.address.shortAddress(),
+                    ),
                   ),
                 ],
               ),

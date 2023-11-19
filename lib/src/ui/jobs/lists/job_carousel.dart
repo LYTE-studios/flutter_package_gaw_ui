@@ -4,6 +4,7 @@ import 'package:flutter_package_gaw_api/flutter_package_gaw_api.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
 import 'package:flutter_package_gaw_ui/src/ui/base/padding/padding_sizes.dart';
 import 'package:flutter_package_gaw_ui/src/ui/jobs/list_items/job_carousel_item.dart';
+import 'package:flutter_package_gaw_ui/src/ui/jobs/list_items/no_items_item.dart';
 
 class JobCarousel extends StatefulWidget {
   final List<Job> jobs;
@@ -23,45 +24,47 @@ class JobCarousel extends StatefulWidget {
 class _JobCarouselState extends State<JobCarousel> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CarouselSlider.builder(
-          options: CarouselOptions(
-            height: 200,
-            enlargeCenterPage: false,
-            viewportFraction: 0.45,
-            enableInfiniteScroll: false,
-            padEnds: false,
-          ),
-          itemCount: widget.jobs.length,
-          itemBuilder: (context, index, pageId) {
-            if (widget.jobs.isEmpty) {
-              return const SizedBox();
-            }
-
-            Job job = widget.jobs[index];
-
-            return GestureDetector(
-              onTap: () {
-                widget.onPressJob?.call(
-                  job,
-                );
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: PaddingSizes.mainPadding,
+    return widget.jobs.isEmpty
+        ? const NoItemsItem()
+        : Column(
+            children: [
+              CarouselSlider.builder(
+                options: CarouselOptions(
+                  height: 200,
+                  enlargeCenterPage: false,
+                  viewportFraction: 0.45,
+                  enableInfiniteScroll: false,
+                  padEnds: false,
                 ),
-                child: SizedBox(
-                  width: 200,
-                  child: JobCarouselItem(
-                    job: job,
-                  ),
-                ),
+                itemCount: widget.jobs.length,
+                itemBuilder: (context, index, pageId) {
+                  if (widget.jobs.isEmpty) {
+                    return const SizedBox();
+                  }
+
+                  Job job = widget.jobs[index];
+
+                  return GestureDetector(
+                    onTap: () {
+                      widget.onPressJob?.call(
+                        job,
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: PaddingSizes.mainPadding,
+                      ),
+                      child: SizedBox(
+                        width: 200,
+                        child: JobCarouselItem(
+                          job: job,
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
-            );
-          },
-        ),
-      ],
-    );
+            ],
+          );
   }
 }

@@ -93,7 +93,7 @@ class JobCarouselItem extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             MainText(
-                              job.address.shortAddress(),
+                              job.address.city ?? job.address.postalCode ?? '',
                               textStyleOverride: TextStyles.mainStyle.copyWith(
                                 color: GawTheme.mainTintText,
                               ),
