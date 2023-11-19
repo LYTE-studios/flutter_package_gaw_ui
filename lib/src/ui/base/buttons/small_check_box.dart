@@ -20,6 +20,7 @@ class SmallCheckBox extends StatelessWidget {
         border: value
             ? null
             : Border.all(
+                width: 1,
                 color: GawTheme.unselectedText,
               ),
       ),

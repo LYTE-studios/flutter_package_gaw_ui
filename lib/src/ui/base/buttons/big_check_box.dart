@@ -26,6 +26,7 @@ class BigCheckBox extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
+            width: 1,
             color: value ? GawTheme.secondaryTint : GawTheme.unselectedText,
           ),
         ),

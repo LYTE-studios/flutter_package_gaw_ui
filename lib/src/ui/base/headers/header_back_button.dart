@@ -35,6 +35,11 @@ class HeaderBackButton extends StatelessWidget {
               child: MainText(
                 LocaleKeys.back.tr(),
                 color: color ?? GawTheme.mainTintText,
+                textStyleOverride: TextStyles.titleStyle.copyWith(
+                  color: color ?? GawTheme.mainTintText,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ],

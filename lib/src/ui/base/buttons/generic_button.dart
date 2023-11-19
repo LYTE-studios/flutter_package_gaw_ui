@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
+import 'package:flutter_package_gaw_ui/src/ui/base/loading/loading_spinner.dart';
 
 class GenericButton extends StatelessWidget {
   final String? label;
@@ -12,6 +13,8 @@ class GenericButton extends StatelessWidget {
 
   final TextStyle? textStyleOverride;
 
+  final bool loading;
+
   const GenericButton({
     super.key,
     this.label,
@@ -19,11 +22,12 @@ class GenericButton extends StatelessWidget {
     this.color,
     this.textColor,
     this.textStyleOverride,
+    this.loading = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
       child: Container(
         constraints: const BoxConstraints(
@@ -32,19 +36,26 @@ class GenericButton extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: color ?? GawTheme.mainTint,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: const [
+            Shadows.mainShadow,
+          ],
         ),
         alignment: Alignment.center,
         child: Center(
-          child: MainText(
-            label ?? '',
-            alignment: TextAlign.center,
-            textStyleOverride: textStyleOverride ??
-                TextStyles.mainStyleTitle.copyWith(
-                  fontSize: 18,
-                  color: textColor ?? GawTheme.mainTintText,
+          child: loading
+              ? const LoadingSpinner(
+                  color: GawTheme.clearBackground,
+                )
+              : MainText(
+                  label ?? '',
+                  alignment: TextAlign.center,
+                  textStyleOverride: textStyleOverride ??
+                      TextStyles.mainStyleTitle.copyWith(
+                        fontSize: 18,
+                        color: textColor ?? GawTheme.mainTintText,
+                      ),
                 ),
-          ),
         ),
       ),
     );

@@ -7,9 +7,16 @@ class PixelPerfectIcons {
 
   // NAVIGATION
 
+  static const String logoutMedium = '$customBasePath/logout.svg';
+
+  static const String bellMedium = '$customBasePath/bell.svg';
+
+  static const String workMedium = '$customBasePath/work.svg';
+
   static const String notificationMedium = '$customBasePath/notification.svg';
 
-  static const String openNotificationMedium = '$customBasePath/open-notification.svg';
+  static const String openNotificationMedium =
+      '$customBasePath/open-notification.svg';
 
   static const String homeNormal = '$mediumBasePath/UI Basic/home 8.svg';
 
@@ -45,7 +52,7 @@ class PixelPerfectIcons {
 
   static const String calendarNormal = '$normalBasePath/UI Basic/calendar.svg';
 
-  static const String leftArrowNormal = '$normalBasePath/Arrows/Left 24.svg';
+  static const String leftArrowNormal = '$mediumBasePath/Arrows/Left 16.svg';
 
   static const String doorMedium = '$mediumBasePath/UI Basic/home 8.svg';
 
