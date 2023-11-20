@@ -12,11 +12,14 @@ class ProfilePictureAvatar extends StatelessWidget {
 
   final bool showCircle;
 
+  final VoidCallback? onEditPressed;
+
   const ProfilePictureAvatar({
     super.key,
     this.bytes,
     this.canEdit = false,
     this.showCircle = false,
+    this.onEditPressed,
   });
 
   @override
@@ -48,6 +51,33 @@ class ProfilePictureAvatar extends StatelessWidget {
                     foregroundImage: MemoryImage(bytes!),
                   ),
           ),
+          if (canEdit) // Show the edit button only if canEdit is true
+            Positioned(
+              right: 0, // Adjust the position as needed
+              bottom: 0, // Adjust the position as needed
+              child: Container(
+                alignment: Alignment.center,
+                width: 40,
+                height: 40,
+                padding: const EdgeInsets.all(0),
+                decoration: BoxDecoration(
+                  color: GawTheme.clearBackground, // Change as needed for your theme
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: GawTheme.mainTint, // Change as needed for your theme
+                    width: 1,
+                  ),
+                ),
+                child: IconButton(
+                  iconSize: 24, // Change as needed
+                  icon: const Icon(
+                    Icons.edit, // Change the icon if needed
+                    color: GawTheme.mainTint, // Change as needed for your theme
+                  ),
+                  onPressed: onEditPressed,
+                ),
+              ),
+            ),
         ],
       );
     });
