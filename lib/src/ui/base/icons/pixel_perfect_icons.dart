@@ -7,6 +7,8 @@ class PixelPerfectIcons {
 
   // NAVIGATION
 
+  static const String sentMedium = '$customBasePath/sent.svg';
+
   static const String logoutMedium = '$customBasePath/logout.svg';
 
   static const String bellMedium = '$customBasePath/bell.svg';

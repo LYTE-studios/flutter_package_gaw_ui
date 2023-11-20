@@ -12,6 +12,12 @@ class GenericListView extends StatefulWidget {
 
   final bool showFooter;
 
+  final List<Widget> rows;
+
+  final int? totalItems;
+
+  final int? itemsPerPage;
+
   const GenericListView({
     super.key,
     this.title,
@@ -19,6 +25,9 @@ class GenericListView extends StatefulWidget {
     this.onDelete,
     this.onSearch,
     this.showFooter = true,
+    required this.rows,
+    this.totalItems,
+    this.itemsPerPage,
   });
 
   @override
@@ -42,7 +51,7 @@ class _GenericListViewState extends State<GenericListView> {
         ),
         Expanded(
           child: ListView(
-            children: [],
+            children: widget.rows,
           ),
         ),
         Visibility(
@@ -53,9 +62,11 @@ class _GenericListViewState extends State<GenericListView> {
             ),
             child: ListViewFooter(
               valueName: widget.valueName,
-              totalItems: 100,
-              pages: 100 ~/ 25,
-              itemsPerPage: 25,
+              totalItems: widget.totalItems ?? 0,
+              pages: widget.totalItems == null || widget.itemsPerPage == null
+                  ? 0
+                  : widget.totalItems! ~/ widget.itemsPerPage!,
+              itemsPerPage: widget.totalItems ?? 0,
             ),
           ),
         ),

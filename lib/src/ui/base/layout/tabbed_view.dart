@@ -79,10 +79,14 @@ class _TabHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(left: PaddingSizes.smallPadding),
+        padding: const EdgeInsets.symmetric(
+          horizontal: PaddingSizes.smallPadding,
+          vertical: PaddingSizes.extraSmallPadding,
+        ),
         decoration: BoxDecoration(
           color: selected
               ? GawTheme.unselectedMainTint
