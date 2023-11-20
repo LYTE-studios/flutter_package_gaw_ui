@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 class ChartCarousel extends StatelessWidget {
   final List<Widget> charts;
 
+  final Function(int)? pageIndexChanged;
+
   const ChartCarousel({
     super.key,
     required this.charts,
+    this.pageIndexChanged,
   });
 
   @override
@@ -14,12 +17,16 @@ class ChartCarousel extends StatelessWidget {
     return CarouselSlider.builder(
       itemCount: charts.length,
       options: CarouselOptions(
-        reverse: true,
-        aspectRatio: 1.05,
+        onPageChanged: (index, reason) {
+          pageIndexChanged?.call(index);
+        },
+        reverse: false,
+        aspectRatio: 1.1,
+        initialPage: charts.length,
         enableInfiniteScroll: false,
-        enlargeCenterPage: false,
+        enlargeCenterPage: true,
         viewportFraction: 1,
-        padEnds: false,
+        padEnds: true,
       ),
       itemBuilder: (context, index, realIndex) => charts[index],
     );

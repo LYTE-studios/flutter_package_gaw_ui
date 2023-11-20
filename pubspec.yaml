@@ -20,6 +20,7 @@ dependencies:
   syncfusion_flutter_charts: ^23.1.36
   smooth_page_indicator: ^1.1.0
   easy_localization: ^3.0.2
+  carousel_indicator: ^1.0.6
 
   # Get-a-Wash
 

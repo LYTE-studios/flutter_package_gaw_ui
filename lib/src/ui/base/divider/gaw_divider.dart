@@ -8,7 +8,7 @@ class GawDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Divider(
       color: GawTheme.text.withOpacity(
-        0.6,
+        0.2,
       ),
     );
   }

@@ -262,7 +262,7 @@ class _DateRangePickerState extends State<_DateRangePicker> {
                               DateRangePickerNavigationDirection.vertical,
                           navigationMode: DateRangePickerNavigationMode.scroll,
                           headerStyle: DateRangePickerHeaderStyle(
-                            backgroundColor: GawTheme.clearBackground,
+                            backgroundColor: GawTheme.background,
                             textStyle: TextStyles.titleStyle.copyWith(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,

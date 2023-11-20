@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
 
-class AppInputField extends StatefulWidget {
+class CmsInputField extends StatefulWidget {
   final TextEditingController controller;
+
+  final String? label;
 
   final String? hint;
 
   final bool isPasswordField;
 
-  const AppInputField({
+  const CmsInputField({
     super.key,
     required this.controller,
+    this.label,
     this.hint,
     this.isPasswordField = false,
   });
 
   @override
-  State<AppInputField> createState() => _AppInputFieldState();
+  State<CmsInputField> createState() => _CmsInputFieldState();
 }
 
-class _AppInputFieldState extends State<AppInputField> {
+class _CmsInputFieldState extends State<CmsInputField> {
   late bool showValues = !widget.isPasswordField;
 
   @override
@@ -31,13 +34,29 @@ class _AppInputFieldState extends State<AppInputField> {
       controller: widget.controller,
       cursorColor: GawTheme.mainTint,
       decoration: InputDecoration(
-        label: MainText(widget.hint ?? ''),
-        floatingLabelStyle: TextStyles.mainStyle.copyWith(
+        hintText: widget.hint,
+        hintStyle: TextStyles.mainStyle.copyWith(
+          color: GawTheme.unselectedText,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: Borders.mainTintLightSide,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: Borders.lightSide,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        border: OutlineInputBorder(
+          borderSide: Borders.lightSide,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        label: MainText(
+          widget.label ?? '',
           color: GawTheme.unselectedText,
         ),
         suffixIcon: !widget.isPasswordField
             ? const SizedBox()
-            : GestureDetector(
+            : InkWell(
                 onTap: () {
                   setState(() {
                     showValues = !showValues;
@@ -60,9 +79,8 @@ class _AppInputFieldState extends State<AppInputField> {
                   ),
                 ),
               ),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: PaddingSizes.smallPadding,
-          vertical: PaddingSizes.mainPadding + PaddingSizes.extraSmallPadding,
+        contentPadding: const EdgeInsets.all(
+          PaddingSizes.smallPadding,
         ),
       ),
     );
