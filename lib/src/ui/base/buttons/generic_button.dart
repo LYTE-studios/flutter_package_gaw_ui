@@ -36,7 +36,7 @@ class GenericButton extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: color ?? GawTheme.mainTint,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(12),
           boxShadow: const [
             Shadows.mainShadow,
           ],

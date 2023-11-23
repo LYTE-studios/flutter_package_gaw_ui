@@ -79,4 +79,10 @@ class PixelPerfectIcons {
   static const String barChart = '$customBasePath/bar_chart.svg';
 
   static const String lineChart = '$customBasePath/line_chart.svg';
+
+  static const String applicationSent = '$customBasePath/application_sent.svg';
+
+  static const String emailSent = '$customBasePath/email_sent.svg';
+
+  static const String arrowDown = '$customBasePath/arrow_down.svg';
 }
