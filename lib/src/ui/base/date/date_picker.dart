@@ -46,7 +46,7 @@ class _DateIntervalPickerState extends State<DateIntervalPicker> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
-      backgroundColor: GawTheme.clearBackground,
+      backgroundColor: GawTheme.background,
       constraints: BoxConstraints(
         maxHeight: widget.scaffoldKey.currentContext!.size!.height * 0.85,
       ),
@@ -261,6 +261,7 @@ class _DateRangePickerState extends State<_DateRangePicker> {
                           navigationDirection:
                               DateRangePickerNavigationDirection.vertical,
                           navigationMode: DateRangePickerNavigationMode.scroll,
+                          backgroundColor: GawTheme.background,
                           headerStyle: DateRangePickerHeaderStyle(
                             backgroundColor: GawTheme.background,
                             textStyle: TextStyles.titleStyle.copyWith(

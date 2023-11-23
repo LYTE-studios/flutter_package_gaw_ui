@@ -10,12 +10,15 @@ class CmsInputField extends StatefulWidget {
 
   final bool isPasswordField;
 
+  final bool enabled;
+
   const CmsInputField({
     super.key,
     required this.controller,
     this.label,
     this.hint,
     this.isPasswordField = false,
+    this.enabled = true,
   });
 
   @override
@@ -28,6 +31,7 @@ class _CmsInputFieldState extends State<CmsInputField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      enabled: widget.enabled,
       obscureText: !showValues,
       enableSuggestions: !widget.isPasswordField,
       autocorrect: !widget.isPasswordField,

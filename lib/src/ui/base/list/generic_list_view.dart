@@ -12,6 +12,8 @@ class GenericListView extends StatefulWidget {
 
   final bool showFooter;
 
+  final Widget header;
+
   final List<Widget> rows;
 
   final int? totalItems;
@@ -26,6 +28,7 @@ class GenericListView extends StatefulWidget {
     this.onSearch,
     this.showFooter = true,
     required this.rows,
+    required this.header,
     this.totalItems,
     this.itemsPerPage,
   });
@@ -37,29 +40,27 @@ class GenericListView extends StatefulWidget {
 class _GenericListViewState extends State<GenericListView> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: PaddingSizes.mainPadding,
-          ),
-          child: ListViewHeader(
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: PaddingSizes.mainPadding,
+      ),
+      child: Column(
+        children: [
+          ListViewHeader(
             headerLabel: widget.title ?? '',
             onDelete: widget.onDelete,
             onSearch: widget.onSearch,
           ),
-        ),
-        Expanded(
-          child: ListView(
-            children: widget.rows,
-          ),
-        ),
-        Visibility(
-          visible: widget.showFooter,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: PaddingSizes.mainPadding,
+          Expanded(
+            child: ListView(
+              children: [
+                widget.header,
+                ...widget.rows,
+              ],
             ),
+          ),
+          Visibility(
+            visible: widget.showFooter,
             child: ListViewFooter(
               valueName: widget.valueName,
               totalItems: widget.totalItems ?? 0,
@@ -69,8 +70,8 @@ class _GenericListViewState extends State<GenericListView> {
               itemsPerPage: widget.totalItems ?? 0,
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

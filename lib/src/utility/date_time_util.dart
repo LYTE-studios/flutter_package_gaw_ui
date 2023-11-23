@@ -1,6 +1,8 @@
+import 'package:flutter_package_gaw_api/flutter_package_gaw_api.dart';
+
 class DateTimeUtil {
   static String toHoursMinutes(DateTime time) {
-    return '${time.hour}:${time.minute}';
+    return '${GawDateUtil.formatTime(time.hour)}:${GawDateUtil.formatTime(time.minute)}';
   }
 
   static String toHoursMinutesInterval(DateTime start, DateTime end) {
