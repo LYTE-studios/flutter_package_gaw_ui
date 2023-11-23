@@ -25,6 +25,9 @@ class FormInputField extends StatelessWidget {
       ),
       child: Row(
         children: [
+          const SizedBox(
+            width: PaddingSizes.mainPadding,
+          ),
           MainText(
             previewText,
             overflow: TextOverflow.fade,
