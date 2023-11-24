@@ -85,4 +85,6 @@ class PixelPerfectIcons {
   static const String emailSent = '$customBasePath/email_sent.svg';
 
   static const String arrowDown = '$customBasePath/arrow_down.svg';
+
+  static const String emptyNotif= '$customBasePath/notification_empty.svg';
 }

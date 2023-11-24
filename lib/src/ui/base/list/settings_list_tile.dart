@@ -12,6 +12,8 @@ class SettingsListTile extends StatelessWidget {
 
   final bool onlyBottomRadius;
 
+  final Color color;
+
   const SettingsListTile({
     super.key,
     required this.label,
@@ -19,6 +21,7 @@ class SettingsListTile extends StatelessWidget {
     this.onTap,
     this.onlyTopRadius = false,
     this.onlyBottomRadius = false,
+    this.color = GawTheme.clearBackground
   });
 
   final Radius radius = const Radius.circular(12);
@@ -46,11 +49,11 @@ class SettingsListTile extends StatelessWidget {
       child: Container(
         height: 52,
         decoration: BoxDecoration(
-          color: GawTheme.clearBackground,
+          color: color,
           borderRadius: borderRadius,
-          boxShadow: const [
+          /*boxShadow: const [
             Shadows.mainShadow,
-          ],
+          ],*/
         ),
         child: Row(
           children: [
