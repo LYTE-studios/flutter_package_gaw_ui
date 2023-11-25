@@ -14,15 +14,14 @@ class SettingsListTile extends StatelessWidget {
 
   final Color color;
 
-  const SettingsListTile({
-    super.key,
-    required this.label,
-    this.trailing,
-    this.onTap,
-    this.onlyTopRadius = false,
-    this.onlyBottomRadius = false,
-    this.color = GawTheme.clearBackground
-  });
+  const SettingsListTile(
+      {super.key,
+      required this.label,
+      this.trailing,
+      this.onTap,
+      this.onlyTopRadius = false,
+      this.onlyBottomRadius = false,
+      this.color = GawTheme.clearBackground});
 
   final Radius radius = const Radius.circular(12);
 
@@ -46,31 +45,35 @@ class SettingsListTile extends StatelessWidget {
 
     return InkWell(
       onTap: onTap,
-      child: Container(
-        height: 52,
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: borderRadius,
-          /*boxShadow: const [
-            Shadows.mainShadow,
-          ],*/
-        ),
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(PaddingSizes.mainPadding),
-              child: MainText(
-                label,
-                textStyleOverride: TextStyles.mainStyleTitle.copyWith(
-                  color: GawTheme.text,
+      child: LayoutBuilder(builder: (context, constraints) {
+        return Container(
+          height: 52,
+          width: constraints.maxWidth,
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: borderRadius,
+            /*boxShadow: const [
+                Shadows.mainShadow,
+              ],*/
+          ),
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(PaddingSizes.mainPadding),
+                child: MainText(
+                  label,
+                  overflow: TextOverflow.fade,
+                  textStyleOverride: TextStyles.mainStyleTitle.copyWith(
+                    color: GawTheme.text,
+                  ),
                 ),
               ),
-            ),
-            const Spacer(),
-            trailing ?? const SizedBox.shrink(),
-          ],
-        ),
-      ),
+              const Spacer(),
+              trailing ?? const SizedBox.shrink(),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

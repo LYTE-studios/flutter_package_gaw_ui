@@ -2,8 +2,6 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
-import 'package:flutter_package_gaw_ui/src/utility/constants.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfilePictureAvatar extends StatelessWidget {
   final Uint8List? bytes;
@@ -41,11 +39,10 @@ class ProfilePictureAvatar extends StatelessWidget {
             ),
             alignment: Alignment.center,
             child: bytes == null
-                ? SvgPicture.asset(
-                    'assets/images/core/default_profile_picture.svg',
-                    package: kPackageName,
-                    fit: BoxFit.fitWidth,
-                    color: GawTheme.clearBackground,
+                ? const SvgIcon(
+                    PixelPerfectIcons.profilePicture,
+                    fit: BoxFit.fill,
+                    color: GawTheme.unselectedBackground,
                   )
                 : CircleAvatar(
                     foregroundImage: MemoryImage(bytes!),
@@ -61,7 +58,8 @@ class ProfilePictureAvatar extends StatelessWidget {
                 height: 40,
                 padding: const EdgeInsets.all(0),
                 decoration: BoxDecoration(
-                  color: GawTheme.clearBackground, // Change as needed for your theme
+                  color: GawTheme.clearBackground,
+                  // Change as needed for your theme
                   shape: BoxShape.circle,
                   border: Border.all(
                     color: GawTheme.mainTint, // Change as needed for your theme

@@ -6,6 +6,8 @@ class PixelPerfectIcons {
   static const String customBasePath = 'assets/icons/custom';
 
   // NAVIGATION
+  static const String profilePicture =
+      '$customBasePath/default_profile_picture.svg';
 
   static const String sentMedium = '$customBasePath/sent.svg';
 
@@ -86,5 +88,5 @@ class PixelPerfectIcons {
 
   static const String arrowDown = '$customBasePath/arrow_down.svg';
 
-  static const String emptyNotif= '$customBasePath/notification_empty.svg';
+  static const String emptyNotif = '$customBasePath/notification_empty.svg';
 }

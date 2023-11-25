@@ -50,9 +50,6 @@ class MainAppHeader extends StatelessWidget {
                                   : GawTheme.mainTintText,
                               goBack: goBack,
                             ),
-                      const SizedBox(
-                        height: PaddingSizes.mainPadding,
-                      ),
                       MainText(
                         label!,
                         textStyleOverride: TextStyles.titleStyle.copyWith(

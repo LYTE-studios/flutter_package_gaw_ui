@@ -234,6 +234,7 @@ class _DateRangePickerState extends State<_DateRangePicker> {
                       child: SizedBox(
                         height: 650,
                         child: SfDateRangePicker(
+                          backgroundColor: GawTheme.background,
                           onSelectionChanged:
                               (dateRangePickerSelectionChangedArgs) {
                             PickerDateRange range =

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
 
 class PageSwitch extends StatelessWidget {
@@ -25,6 +26,7 @@ class PageSwitch extends StatelessWidget {
       builder: (context, constraints) {
         return GestureDetector(
           onTap: () {
+            HapticFeedback.lightImpact();
             onChangedIndex?.call(selectedIndex == 0 ? 1 : 0);
           },
           child: Container(
