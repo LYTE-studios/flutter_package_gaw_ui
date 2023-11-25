@@ -23,11 +23,12 @@ class ProfilePictureAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
+      double imageSize = constraints.maxWidth - (showCircle ? 2 : 0);
       return Stack(
         children: [
           Container(
-            height: constraints.maxHeight,
-            width: constraints.maxWidth,
+            height: imageSize,
+            width: imageSize,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: showCircle
@@ -45,6 +46,7 @@ class ProfilePictureAvatar extends StatelessWidget {
                     color: GawTheme.unselectedBackground,
                   )
                 : CircleAvatar(
+                    radius: imageSize / 2,
                     foregroundImage: MemoryImage(bytes!),
                   ),
           ),
