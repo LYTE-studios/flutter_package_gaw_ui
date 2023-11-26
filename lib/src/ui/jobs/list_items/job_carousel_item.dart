@@ -112,19 +112,33 @@ class JobCarouselItem extends StatelessWidget {
                         padding: const EdgeInsets.only(
                           right: PaddingSizes.bigPadding,
                         ),
-                        child: Row(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            const SvgIcon(
-                              PixelPerfectIcons.personMedium,
-                              color: GawTheme.mainTintText,
+                            const Padding(
+                              padding: EdgeInsets.only(
+                                top: PaddingSizes.smallPadding,
+                              ),
+                              child: SizedBox(
+                                height: 22,
+                                width: 22,
+                                child: SvgIcon(
+                                  PixelPerfectIcons.personMedium,
+                                  color: GawTheme.mainTintText,
+                                ),
+                              ),
                             ),
                             const SizedBox(
                               width: PaddingSizes.smallPadding,
                             ),
                             MainText(
-                              '${job.selectedWashers} / ${job.maxWashers}',
-                              textStyleOverride: TextStyles.mainStyleTitle
-                                  .copyWith(color: GawTheme.mainTintText),
+                              '${job.selectedWashers}/${job.maxWashers}',
+                              textStyleOverride:
+                                  TextStyles.mainStyleTitle.copyWith(
+                                color: GawTheme.mainTintText,
+                                fontSize: 14,
+                              ),
                             ),
                           ],
                         ),

@@ -7,10 +7,15 @@ class SvgImage extends StatelessWidget {
 
   final BoxFit? fit;
 
-  const SvgImage(
-    this.assetName, {
+  final double? height;
+
+  final double? width;
+
+  const SvgImage(this.assetName, {
     super.key,
     this.fit,
+    this.width,
+    this.height,
   });
 
   @override
@@ -18,6 +23,8 @@ class SvgImage extends StatelessWidget {
     return Center(
       child: SvgPicture.asset(
         assetName,
+        height: height,
+        width: width,
         package: kPackageName,
         fit: fit ?? BoxFit.fitWidth,
       ),
