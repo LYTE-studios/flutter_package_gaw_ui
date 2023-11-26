@@ -38,6 +38,7 @@ export 'src/ui/base/list/settings_list_tile.dart';
 export 'src/ui/base/logos/main_logo_big.dart';
 export 'src/ui/base/logos/main_logo_small.dart';
 export 'src/ui/base/padding/padding_sizes.dart';
+export 'src/ui/base/shadow/bottom_shadow.dart';
 export 'src/ui/base/shadow/shadows.dart';
 export 'src/ui/base/sheets/screen_sheet.dart';
 export 'src/ui/base/text/enclosed_title.dart';

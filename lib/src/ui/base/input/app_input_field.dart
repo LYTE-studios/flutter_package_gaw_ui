@@ -20,7 +20,12 @@ class AppInputField extends StatefulWidget {
 }
 
 class _AppInputFieldState extends State<AppInputField> {
-  final FocusNode focusNode = FocusNode();
+  late final FocusNode focusNode = FocusNode()
+    ..addListener(() {
+      setState(
+        () {},
+      );
+    });
 
   late bool showValues = !widget.isPasswordField;
 

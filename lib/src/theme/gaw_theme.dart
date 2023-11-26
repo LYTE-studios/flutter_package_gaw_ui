@@ -54,6 +54,10 @@ class GawTheme {
     Color.fromRGBO(142, 146, 149, 0.1),
   );
 
+  static const darkShadow = ColorRef(
+    Color.fromRGBO(142, 146, 149, 0.2),
+  );
+
   static const blur = ColorRef(
     Color.fromRGBO(0, 0, 0, 0.35),
   );

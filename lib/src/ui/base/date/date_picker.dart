@@ -7,6 +7,8 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 class DateIntervalPicker extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
 
+  final GlobalKey<DateRangePickerState> pickerKey;
+
   final DateTime? startDate;
 
   final DateTime? endDate;
@@ -20,6 +22,7 @@ class DateIntervalPicker extends StatefulWidget {
   const DateIntervalPicker({
     super.key,
     required this.scaffoldKey,
+    required this.pickerKey,
     this.onShowPicker,
     this.onPopPicker,
     this.startDate,
@@ -31,30 +34,44 @@ class DateIntervalPicker extends StatefulWidget {
   State<DateIntervalPicker> createState() => _DateIntervalPickerState();
 }
 
-class _DateIntervalPickerState extends State<DateIntervalPicker> {
+class _DateIntervalPickerState extends State<DateIntervalPicker>
+    with SingleTickerProviderStateMixin {
   PersistentBottomSheetController? controller;
 
   void showPicker() {
     widget.onShowPicker?.call();
     controller = widget.scaffoldKey.currentState?.showBottomSheet(
-      (context) => _DateRangePicker(
+      (context) => DateRangePicker(
+        key: widget.pickerKey,
         onRangeSelected: (start, end) {
           controller?.close();
           widget.onRangeSelected?.call(start, end);
         },
+      ),
+      transitionAnimationController: AnimationController(
+        vsync: this,
+        duration: const Duration(
+          milliseconds: 100,
+        ),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
       backgroundColor: GawTheme.clearBackground,
       constraints: BoxConstraints(
-        maxHeight: widget.scaffoldKey.currentContext!.size!.height * 0.85,
+        maxHeight: widget.scaffoldKey.currentContext!.size!.height * 0.7,
       ),
     );
 
     controller?.closed.whenComplete(() {
       widget.onPopPicker?.call();
     });
+  }
+
+  @override
+  void dispose() {
+    controller?.close.call();
+    super.dispose();
   }
 
   @override
@@ -102,19 +119,19 @@ class _DateIntervalPickerState extends State<DateIntervalPicker> {
   }
 }
 
-class _DateRangePicker extends StatefulWidget {
+class DateRangePicker extends StatefulWidget {
   final Function(DateTime, DateTime)? onRangeSelected;
 
-  const _DateRangePicker({
+  const DateRangePicker({
     super.key,
     this.onRangeSelected,
   });
 
   @override
-  State<_DateRangePicker> createState() => _DateRangePickerState();
+  State<DateRangePicker> createState() => DateRangePickerState();
 }
 
-class _DateRangePickerState extends State<_DateRangePicker> {
+class DateRangePickerState extends State<DateRangePicker> {
   DateTime? start;
 
   DateTime? end;
@@ -232,7 +249,7 @@ class _DateRangePickerState extends State<_DateRangePicker> {
                   Expanded(
                     child: SingleChildScrollView(
                       child: SizedBox(
-                        height: 650,
+                        height: 540,
                         child: SfDateRangePicker(
                           backgroundColor: GawTheme.background,
                           onSelectionChanged:

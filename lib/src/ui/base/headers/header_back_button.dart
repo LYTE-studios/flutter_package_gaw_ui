@@ -39,7 +39,7 @@ class HeaderBackButton extends StatelessWidget {
                       color: color ?? GawTheme.mainTintText,
                       textStyleOverride: TextStyles.titleStyle.copyWith(
                         color: color ?? GawTheme.mainTintText,
-                        fontSize: 12,
+                        fontSize: 18,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
