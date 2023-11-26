@@ -189,14 +189,6 @@ class DateRangePickerState extends State<DateRangePicker> {
                               width: cellWidth,
                               child: Center(
                                 child: MainText(
-                                  LocaleKeys.sun.tr(),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: cellWidth,
-                              child: Center(
-                                child: MainText(
                                   LocaleKeys.mon.tr(),
                                 ),
                               ),
@@ -238,6 +230,14 @@ class DateRangePickerState extends State<DateRangePicker> {
                               child: Center(
                                 child: MainText(
                                   LocaleKeys.sat.tr(),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: cellWidth,
+                              child: Center(
+                                child: MainText(
+                                  LocaleKeys.sun.tr(),
                                 ),
                               ),
                             ),
@@ -294,6 +294,7 @@ class DateRangePickerState extends State<DateRangePicker> {
                               textStyle: TextStyles.mainStyle,
                             ),
                             dayFormat: 'E',
+                            firstDayOfWeek: 1,
                           ),
                         ),
                       ),

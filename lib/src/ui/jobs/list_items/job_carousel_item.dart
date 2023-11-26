@@ -139,10 +139,10 @@ class JobCarouselItem extends StatelessWidget {
                       bottom: PaddingSizes.mainPadding,
                     ),
                     child: Container(
-                      height: 28,
+                      height: 30,
                       decoration: BoxDecoration(
                         color: GawTheme.clearBackground,
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(16),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -151,6 +151,14 @@ class JobCarouselItem extends StatelessWidget {
                           MainText(
                             LocaleKeys.apply.tr(),
                             color: GawTheme.secondaryTint,
+                            textStyleOverride: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w900,
+                              color: GawTheme.secondaryTint,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: PaddingSizes.extraSmallPadding,
                           ),
                           const SvgIcon(
                             PixelPerfectIcons.arrowRightCircleMedium,
