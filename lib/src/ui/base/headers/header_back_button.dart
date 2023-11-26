@@ -17,30 +17,38 @@ class HeaderBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: goBack,
-      child: Padding(
-        padding: const EdgeInsets.only(
-          top: PaddingSizes.bigPadding,
-          bottom: PaddingSizes.smallPadding,
-        ),
-        child: Row(
+      child: SizedBox(
+        height: 78,
+        width: 250,
+        child: Column(
           children: [
-            SvgIcon(
-              PixelPerfectIcons.leftArrowNormal,
-              color: color ?? GawTheme.mainTintText,
+            const Spacer(),
+            Center(
+              child: Row(
+                children: [
+                  SvgIcon(
+                    PixelPerfectIcons.leftArrowNormal,
+                    color: color ?? GawTheme.mainTintText,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: PaddingSizes.smallPadding,
+                    ),
+                    child: MainText(
+                      LocaleKeys.back.tr(),
+                      color: color ?? GawTheme.mainTintText,
+                      textStyleOverride: TextStyles.titleStyle.copyWith(
+                        color: color ?? GawTheme.mainTintText,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: PaddingSizes.smallPadding,
-              ),
-              child: MainText(
-                LocaleKeys.back.tr(),
-                color: color ?? GawTheme.mainTintText,
-                textStyleOverride: TextStyles.titleStyle.copyWith(
-                  color: color ?? GawTheme.mainTintText,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+            const SizedBox(
+              height: PaddingSizes.bigPadding,
             ),
           ],
         ),

@@ -8,10 +8,13 @@ class SvgIcon extends StatelessWidget {
 
   final Color? color;
 
+  final BoxFit? fit;
+
   const SvgIcon(
     this.assetName, {
     super.key,
     this.color,
+    this.fit,
   });
 
   @override
@@ -19,7 +22,7 @@ class SvgIcon extends StatelessWidget {
     return SvgPicture.asset(
       assetName,
       package: kPackageName,
-      fit: BoxFit.contain,
+      fit: fit ?? BoxFit.contain,
       colorFilter: ColorFilter.mode(
         color ?? GawTheme.mainTint,
         BlendMode.srcIn,

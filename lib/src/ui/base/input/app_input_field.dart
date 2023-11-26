@@ -20,11 +20,19 @@ class AppInputField extends StatefulWidget {
 }
 
 class _AppInputFieldState extends State<AppInputField> {
+  late final FocusNode focusNode = FocusNode()
+    ..addListener(() {
+      setState(
+        () {},
+      );
+    });
+
   late bool showValues = !widget.isPasswordField;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      focusNode: focusNode,
       obscureText: !showValues,
       enableSuggestions: !widget.isPasswordField,
       autocorrect: !widget.isPasswordField,
@@ -33,7 +41,8 @@ class _AppInputFieldState extends State<AppInputField> {
       decoration: InputDecoration(
         label: MainText(widget.hint ?? ''),
         floatingLabelStyle: TextStyles.mainStyle.copyWith(
-          color: GawTheme.unselectedText,
+          color:
+              focusNode.hasFocus ? GawTheme.mainTint : GawTheme.unselectedText,
         ),
         suffixIcon: !widget.isPasswordField
             ? const SizedBox()

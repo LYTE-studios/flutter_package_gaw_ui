@@ -2,9 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_api/flutter_package_gaw_api.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
-import 'package:flutter_package_gaw_ui/src/ui/base/padding/padding_sizes.dart';
 import 'package:flutter_package_gaw_ui/src/ui/jobs/list_items/job_carousel_item.dart';
-import 'package:flutter_package_gaw_ui/src/ui/jobs/list_items/no_items_item.dart';
 
 class JobCarousel extends StatefulWidget {
   final List<Job> jobs;
@@ -30,7 +28,7 @@ class _JobCarouselState extends State<JobCarousel> {
             children: [
               CarouselSlider.builder(
                 options: CarouselOptions(
-                  height: 200,
+                  height: 180,
                   enlargeCenterPage: false,
                   viewportFraction: 0.45,
                   enableInfiniteScroll: false,
@@ -52,7 +50,7 @@ class _JobCarouselState extends State<JobCarousel> {
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: PaddingSizes.mainPadding,
+                        horizontal: PaddingSizes.smallPadding,
                       ),
                       child: SizedBox(
                         width: 200,

@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_api/flutter_package_gaw_api.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
-import 'package:flutter_package_gaw_ui/src/utility/date_time_util.dart';
 
 class JobCarouselItem extends StatelessWidget {
   final Job job;
@@ -16,7 +15,7 @@ class JobCarouselItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.hardEdge,
-      height: 200,
+      height: 170,
       decoration: BoxDecoration(
         color: GawTheme.unselectedBackground,
         border: Border.all(
@@ -48,7 +47,7 @@ class JobCarouselItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       MainText(
-                        DateTimeUtil.toMonthYear(
+                        GawDateUtil.formatDate(
                           GawDateUtil.fromApi(job.startTime),
                         ),
                         textStyleOverride: TextStyles.titleStyle.copyWith(
@@ -61,7 +60,7 @@ class JobCarouselItem extends StatelessWidget {
                         height: PaddingSizes.smallPadding,
                       ),
                       MainText(
-                        DateTimeUtil.toHoursMinutesInterval(
+                        GawDateUtil.formatTimeInterval(
                           GawDateUtil.fromApi(job.startTime),
                           GawDateUtil.fromApi(job.endTime),
                         ),
@@ -86,7 +85,7 @@ class JobCarouselItem extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(
-                          top: PaddingSizes.bigPadding,
+                          top: PaddingSizes.smallPadding,
                           left: PaddingSizes.bigPadding,
                         ),
                         child: Column(

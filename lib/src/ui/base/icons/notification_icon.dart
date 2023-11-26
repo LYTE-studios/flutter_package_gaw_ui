@@ -13,9 +13,7 @@ class NotificationIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SvgIcon(
-      openNotifications
-          ? PixelPerfectIcons.openNotificationMedium
-          : PixelPerfectIcons.notificationMedium,
+      PixelPerfectIcons.bellMedium,
       color: GawTheme.clearBackground,
     );
   }
