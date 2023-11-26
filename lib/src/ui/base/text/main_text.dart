@@ -12,17 +12,22 @@ class MainText extends StatelessWidget {
 
   final TextAlign? alignment;
 
+  final bool softWrap;
+
   const MainText(this.text,
       {super.key,
-      this.color,
-      this.textStyleOverride,
-      this.overflow,
-      this.alignment});
+        this.color,
+        this.textStyleOverride,
+        this.overflow,
+        this.alignment,
+        this.softWrap = true,
+      });
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
+      softWrap: softWrap,
       textAlign: alignment,
       overflow: overflow ?? TextOverflow.clip,
       style: textStyleOverride ??

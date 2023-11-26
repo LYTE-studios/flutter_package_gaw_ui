@@ -29,97 +29,106 @@ class JobListItem extends StatelessWidget {
           Shadows.mainShadow,
         ],
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: PaddingSizes.mainPadding,
-            ),
-            child: SizedBox(
-              height: 64,
-              width: 64,
-              child: buildPicture(),
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(
-                PaddingSizes.smallPadding,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: PaddingSizes.mainPadding,
+                ),
+                child: SizedBox(
+                  height: 64,
+                  width: 64,
+                  child: buildPicture(),
+                ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: PaddingSizes.mainPadding,
-                    ),
-                    child: Row(
-                      children: [
-                        MainText(
-                          GawDateUtil.formatDate(
-                            GawDateUtil.fromApi(job.startTime),
-                          ),
-                          textStyleOverride: TextStyles.mainStyle.copyWith(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 18,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: PaddingSizes.smallPadding,
-                        ),
-                        MainText(
-                          GawDateUtil.formatTimeInterval(
-                            GawDateUtil.fromApi(job.startTime),
-                            GawDateUtil.fromApi(job.endTime),
-                          ),
-                          color: GawTheme.unselectedText,
-                        ),
-                      ],
-                    ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(
+                    PaddingSizes.smallPadding,
                   ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: PaddingSizes.mainPadding,
+                        ),
+                        child: Row(
+                          children: [
+                            MainText(
+                              GawDateUtil.formatDate(
+                                GawDateUtil.fromApi(job.startTime),
+                              ),
+                              textStyleOverride: TextStyles.mainStyle.copyWith(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 18,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: PaddingSizes.smallPadding,
+                            ),
+                            MainText(
+                              GawDateUtil.formatTimeInterval(
+                                GawDateUtil.fromApi(job.startTime),
+                                GawDateUtil.fromApi(job.endTime),
+                              ),
+                              color: GawTheme.unselectedText,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: PaddingSizes.extraSmallPadding,
+                        ),
+                        child: MainText(
+                          job.address.shortAddress(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Positioned(
+            top: 0,
+            bottom: 0,
+            right: 0,
+            child: SizedBox(
+              width: 126,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  [JobState.done, JobState.cancelled].contains(job.state)
+                      ? const SizedBox()
+                      : const Padding(
+                          padding: EdgeInsets.only(
+                            bottom: PaddingSizes.bigPadding,
+                            right: PaddingSizes.bigPadding,
+                          ),
+                          child: SizedBox(
+                            width: 21,
+                            child: SvgIcon(
+                              PixelPerfectIcons.arrowRightMedium,
+                              color: GawTheme.text,
+                            ),
+                          ),
+                        ),
                   Padding(
                     padding: const EdgeInsets.only(
-                      top: PaddingSizes.extraSmallPadding,
+                      right: PaddingSizes.bigPadding,
                     ),
-                    child: MainText(
-                      job.address.shortAddress(),
-                    ),
+                    child: buildStateBlock(),
                   ),
                 ],
               ),
-            ),
-          ),
-          SizedBox(
-            width: 126,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                [JobState.done, JobState.cancelled].contains(job.state)
-                    ? const SizedBox()
-                    : const Padding(
-                  padding: EdgeInsets.only(
-                    bottom: PaddingSizes.bigPadding,
-                    right: PaddingSizes.bigPadding,
-                  ),
-                  child: SizedBox(
-                    width: 21,
-                    child: SvgIcon(
-                      PixelPerfectIcons.arrowRightMedium,
-                      color: GawTheme.text,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    right: PaddingSizes.bigPadding,
-                  ),
-                  child: buildStateBlock(),
-                ),
-              ],
             ),
           ),
         ],
