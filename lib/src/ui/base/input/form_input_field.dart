@@ -28,12 +28,14 @@ class FormInputField extends StatelessWidget {
           const SizedBox(
             width: PaddingSizes.mainPadding,
           ),
-          MainText(
-            previewText,
-            overflow: TextOverflow.fade,
-            color: GawTheme.unselectedText,
+          Expanded(
+            child: MainText(
+              previewText,
+              overflow: TextOverflow.fade,
+              softWrap: false,
+              color: GawTheme.unselectedText,
+            ),
           ),
-          const Spacer(),
           InkWell(
             onTap: onEdit,
             child: Container(

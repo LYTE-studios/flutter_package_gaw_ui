@@ -27,8 +27,6 @@ class ProfilePictureAvatar extends StatelessWidget {
       return Stack(
         children: [
           Container(
-            height: imageSize,
-            width: imageSize,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: showCircle
@@ -39,16 +37,21 @@ class ProfilePictureAvatar extends StatelessWidget {
                   : null,
             ),
             alignment: Alignment.center,
-            child: bytes == null
-                ? const SvgIcon(
-                    PixelPerfectIcons.profilePicture,
-                    fit: BoxFit.fill,
-                    color: GawTheme.unselectedBackground,
-                  )
-                : CircleAvatar(
-                    radius: imageSize / 2,
-                    foregroundImage: MemoryImage(bytes!),
-                  ),
+            child: Padding(
+              padding: const EdgeInsets.all(
+                PaddingSizes.smallPadding,
+              ),
+              child: bytes == null
+                  ? const SvgIcon(
+                      PixelPerfectIcons.profilePicture,
+                      fit: BoxFit.fill,
+                      color: GawTheme.unselectedBackground,
+                    )
+                  : CircleAvatar(
+                      radius: imageSize / 2,
+                      foregroundImage: MemoryImage(bytes!),
+                    ),
+            ),
           ),
           if (canEdit) // Show the edit button only if canEdit is true
             Positioned(

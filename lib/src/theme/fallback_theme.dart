@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
 
@@ -7,6 +8,9 @@ final ThemeData fallbackTheme = ThemeData(
   indicatorColor: GawTheme.mainTint,
   progressIndicatorTheme: const ProgressIndicatorThemeData(
     circularTrackColor: GawTheme.mainTint,
+  ),
+  cupertinoOverrideTheme: const CupertinoThemeData(
+    primaryColor: GawTheme.mainTint,
   ),
   inputDecorationTheme: InputDecorationTheme(
     focusedBorder: OutlineInputBorder(

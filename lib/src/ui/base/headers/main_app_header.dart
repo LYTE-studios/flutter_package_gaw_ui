@@ -14,6 +14,8 @@ class MainAppHeader extends StatelessWidget {
 
   final Function()? goBack;
 
+  final double? height;
+
   const MainAppHeader({
     super.key,
     this.label,
@@ -21,12 +23,13 @@ class MainAppHeader extends StatelessWidget {
     this.trailing,
     this.goBack,
     this.showDate = false,
+    this.height
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 210,
+      height: height ?? 180,
       color: colorless ? null : GawTheme.secondaryTint,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -34,55 +37,55 @@ class MainAppHeader extends StatelessWidget {
           label == null
               ? const SizedBox.shrink()
               : Padding(
-                  padding: const EdgeInsets.only(
-                    left: PaddingSizes.bigPadding,
-                    bottom: PaddingSizes.mainPadding,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      goBack == null
-                          ? const SizedBox.shrink()
-                          : HeaderBackButton(
-                              color: colorless == true
-                                  ? GawTheme.text
-                                  : GawTheme.mainTintText,
-                              goBack: goBack,
-                            ),
-                      MainText(
-                        label!,
-                        textStyleOverride: TextStyles.titleStyle.copyWith(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 30,
-                          color:
-                              colorless ? GawTheme.text : GawTheme.mainTintText,
-                        ),
-                      ),
-                      Visibility(
-                        visible: showDate,
-                        child: MainText(
-                          GawDateUtil.formatReadableDate(
-                            DateTime.now(),
-                          ),
-                          color: GawTheme.mainTintUnselectedText,
-                        ),
-                      ),
-                    ],
+            padding: const EdgeInsets.only(
+              left: PaddingSizes.bigPadding,
+              bottom: PaddingSizes.mainPadding,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                goBack == null
+                    ? const SizedBox.shrink()
+                    : HeaderBackButton(
+                  color: colorless == true
+                      ? GawTheme.text
+                      : GawTheme.mainTintText,
+                  goBack: goBack,
+                ),
+                MainText(
+                  label!,
+                  textStyleOverride: TextStyles.titleStyle.copyWith(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 30,
+                    color:
+                    colorless ? GawTheme.text : GawTheme.mainTintText,
                   ),
                 ),
+                Visibility(
+                  visible: showDate,
+                  child: MainText(
+                    GawDateUtil.formatReadableDate(
+                      DateTime.now(),
+                    ),
+                    color: GawTheme.mainTintUnselectedText,
+                  ),
+                ),
+              ],
+            ),
+          ),
           const Spacer(),
           trailing == null
               ? const SizedBox.shrink()
               : Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: PaddingSizes.mainPadding,
-                    vertical: PaddingSizes.mainPadding,
-                  ),
-                  child: IntrinsicHeight(
-                    child: trailing!,
-                  ),
-                ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: PaddingSizes.mainPadding,
+              vertical: PaddingSizes.mainPadding,
+            ),
+            child: IntrinsicHeight(
+              child: trailing!,
+            ),
+          ),
         ],
       ),
     );
