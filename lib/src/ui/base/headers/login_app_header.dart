@@ -8,10 +8,13 @@ class LoginAppHeader extends StatelessWidget {
 
   final Function()? onGoBack;
 
+  final double opacity;
+
   const LoginAppHeader({
     super.key,
     required this.label,
     this.onGoBack,
+    this.opacity = 0.13,
   });
 
   @override
@@ -19,16 +22,24 @@ class LoginAppHeader extends StatelessWidget {
     return Container(
       height: 290,
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: GawTheme.secondaryTint,
         image: DecorationImage(
-          image: AssetImage(
+          image: const AssetImage(
             'assets/images/core/login_banner.png',
             package: kPackageName,
           ),
           fit: BoxFit.cover,
-          opacity: 0.13,
+          opacity: opacity,  
         ),
+        boxShadow: opacity == 1
+          ? [
+              BoxShadow(
+                color: GawTheme.unselectedText.withOpacity(0.7),
+                offset: Offset(0, 4),
+                blurRadius: 2,
+              ),
+            ] : null,
       ),
       child: Stack(
         children: [
