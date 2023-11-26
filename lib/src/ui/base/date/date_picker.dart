@@ -69,12 +69,6 @@ class DateIntervalPickerState extends State<DateIntervalPicker>
   }
 
   @override
-  void dispose() {
-    animationController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return InkWell(
