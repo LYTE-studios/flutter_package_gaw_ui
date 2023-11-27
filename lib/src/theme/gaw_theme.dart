@@ -14,6 +14,10 @@ class GawTheme {
     Color.fromRGBO(236, 236, 236, 1),
   );
 
+  static const pickerBackground = ColorRef(
+    Color.fromRGBO(229, 229, 229, 1.0),
+  );
+
   static const clearBackground = ColorRef(
     Color.fromRGBO(248, 248, 248, 1),
   );

@@ -8,11 +8,13 @@ class JobCarousel extends StatefulWidget {
   final List<Job> jobs;
 
   final Function(Job)? onPressJob;
+  final Function(int)? pageIndexChanged;
 
   const JobCarousel({
     super.key,
     required this.jobs,
     this.onPressJob,
+    this.pageIndexChanged,
   });
 
   @override
@@ -28,9 +30,13 @@ class _JobCarouselState extends State<JobCarousel> {
             children: [
               CarouselSlider.builder(
                 options: CarouselOptions(
+                  onPageChanged: (index, reason) {
+                    widget.pageIndexChanged?.call(index);
+                  },
                   height: 180,
+                  //aspectRatio: 6/3,
                   enlargeCenterPage: false,
-                  viewportFraction: 0.45,
+                  viewportFraction: 0.48,
                   enableInfiniteScroll: false,
                   padEnds: false,
                 ),
@@ -50,10 +56,10 @@ class _JobCarouselState extends State<JobCarousel> {
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: PaddingSizes.smallPadding,
+                        horizontal: PaddingSizes.extraSmallPadding,
                       ),
                       child: SizedBox(
-                        width: 200,
+                        width: 240,
                         child: JobCarouselItem(
                           job: job,
                         ),

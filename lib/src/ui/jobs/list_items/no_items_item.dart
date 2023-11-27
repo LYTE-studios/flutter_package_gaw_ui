@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
 
 class NoItemsItem extends StatelessWidget {
-  const NoItemsItem({super.key});
+  final String label;
+  const NoItemsItem({super.key, this.label = 'No items'});
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +12,8 @@ class NoItemsItem extends StatelessWidget {
         padding: const EdgeInsets.all(
           PaddingSizes.mainPadding,
         ),
-        child: const MainText(
-          'No items',
+        child: MainText(
+          label,
           color: GawTheme.unselectedText,
         ),
       ),

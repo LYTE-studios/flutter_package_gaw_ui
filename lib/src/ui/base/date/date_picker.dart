@@ -7,8 +7,6 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 class DateIntervalPicker extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
 
-  final GlobalKey<DateRangePickerState> pickerKey;
-
   final DateTime? startDate;
 
   final DateTime? endDate;
@@ -22,7 +20,6 @@ class DateIntervalPicker extends StatefulWidget {
   const DateIntervalPicker({
     super.key,
     required this.scaffoldKey,
-    required this.pickerKey,
     this.onShowPicker,
     this.onPopPicker,
     this.startDate,
@@ -31,47 +28,47 @@ class DateIntervalPicker extends StatefulWidget {
   });
 
   @override
-  State<DateIntervalPicker> createState() => _DateIntervalPickerState();
+  State<DateIntervalPicker> createState() => DateIntervalPickerState();
 }
 
-class _DateIntervalPickerState extends State<DateIntervalPicker>
-    with SingleTickerProviderStateMixin {
+class DateIntervalPickerState extends State<DateIntervalPicker>
+    with TickerProviderStateMixin {
   PersistentBottomSheetController? controller;
+
+  late AnimationController animationController = AnimationController(
+    vsync: this,
+    duration: const Duration(
+      milliseconds: 100,
+    ),
+  );
 
   void showPicker() {
     widget.onShowPicker?.call();
     controller = widget.scaffoldKey.currentState?.showBottomSheet(
       (context) => DateRangePicker(
-        key: widget.pickerKey,
         onRangeSelected: (start, end) {
           controller?.close();
           widget.onRangeSelected?.call(start, end);
         },
       ),
-      transitionAnimationController: AnimationController(
-        vsync: this,
-        duration: const Duration(
-          milliseconds: 100,
-        ),
+      transitionAnimationController: animationController,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(12),
+          topRight: Radius.circular(12),
+        )
       ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
-      backgroundColor: GawTheme.clearBackground,
+      backgroundColor: GawTheme.background,
       constraints: BoxConstraints(
         maxHeight: widget.scaffoldKey.currentContext!.size!.height * 0.7,
       ),
-    );
-
-    controller?.closed.whenComplete(() {
-      widget.onPopPicker?.call();
-    });
+    )?..closed.whenComplete(() {
+        widget.onPopPicker?.call();
+      });
   }
 
-  @override
-  void dispose() {
+  void closeSheet() {
     controller?.close.call();
-    super.dispose();
   }
 
   @override
@@ -189,14 +186,6 @@ class DateRangePickerState extends State<DateRangePicker> {
                               width: cellWidth,
                               child: Center(
                                 child: MainText(
-                                  LocaleKeys.sun.tr(),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: cellWidth,
-                              child: Center(
-                                child: MainText(
                                   LocaleKeys.mon.tr(),
                                 ),
                               ),
@@ -241,6 +230,14 @@ class DateRangePickerState extends State<DateRangePicker> {
                                 ),
                               ),
                             ),
+                            SizedBox(
+                              width: cellWidth,
+                              child: Center(
+                                child: MainText(
+                                  LocaleKeys.sun.tr(),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       );
@@ -251,7 +248,7 @@ class DateRangePickerState extends State<DateRangePicker> {
                       child: SizedBox(
                         height: 540,
                         child: SfDateRangePicker(
-                          backgroundColor: GawTheme.background,
+                          backgroundColor: Colors.transparent,
                           onSelectionChanged:
                               (dateRangePickerSelectionChangedArgs) {
                             PickerDateRange range =
@@ -270,6 +267,7 @@ class DateRangePickerState extends State<DateRangePicker> {
                           enableMultiView: true,
                           allowViewNavigation: true,
                           todayHighlightColor: GawTheme.secondaryTint,
+                          selectionRadius: 1,
                           rangeSelectionColor:
                               GawTheme.secondaryTint.withOpacity(
                             0.1,
@@ -280,7 +278,7 @@ class DateRangePickerState extends State<DateRangePicker> {
                               DateRangePickerNavigationDirection.vertical,
                           navigationMode: DateRangePickerNavigationMode.scroll,
                           headerStyle: DateRangePickerHeaderStyle(
-                            backgroundColor: GawTheme.background,
+                            backgroundColor: GawTheme.pickerBackground,
                             textStyle: TextStyles.titleStyle.copyWith(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
@@ -294,6 +292,8 @@ class DateRangePickerState extends State<DateRangePicker> {
                               textStyle: TextStyles.mainStyle,
                             ),
                             dayFormat: 'E',
+                            firstDayOfWeek: 1,
+                            numberOfWeeksInView: 5,
                           ),
                         ),
                       ),

@@ -11,6 +11,7 @@ final ThemeData fallbackTheme = ThemeData(
   ),
   cupertinoOverrideTheme: const CupertinoThemeData(
     primaryColor: GawTheme.mainTint,
+    primaryContrastingColor: GawTheme.secondaryTint,
   ),
   inputDecorationTheme: InputDecorationTheme(
     focusedBorder: OutlineInputBorder(

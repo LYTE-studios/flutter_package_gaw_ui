@@ -26,7 +26,13 @@ class JobListItem extends StatelessWidget {
         color: GawTheme.clearBackground,
         borderRadius: BorderRadius.circular(12),
         boxShadow: const [
-          Shadows.mainShadow,
+          //Shadows.mainShadow,
+          BoxShadow(
+            color: Colors.black12,
+            offset: Offset(2, 4),
+            blurRadius: 8,
+            spreadRadius: 0,
+          ),
         ],
       ),
       child: Stack(
