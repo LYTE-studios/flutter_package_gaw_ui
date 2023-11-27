@@ -9,19 +9,22 @@ class ListSubTitle extends StatelessWidget {
 
   final Function()? onViewMore;
 
+  final bool homePage;
+
   const ListSubTitle({
     super.key,
     required this.label,
     this.showViewMore = false,
     this.onViewMore,
+    this.homePage = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const SizedBox(
-          width: PaddingSizes.mainPadding,
+        SizedBox(
+          width: !homePage ? PaddingSizes.mainPadding : 0,
         ),
         MainText(
           label,
@@ -45,8 +48,8 @@ class ListSubTitle extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(
-          width: PaddingSizes.bigPadding,
+        SizedBox(
+          width: !homePage ? PaddingSizes.bigPadding : 0,
         ),
       ],
     );

@@ -36,7 +36,7 @@ class _JobCarouselState extends State<JobCarousel> {
                   height: 180,
                   //aspectRatio: 6/3,
                   enlargeCenterPage: false,
-                  viewportFraction: 0.49,
+                  viewportFraction: 0.48,
                   enableInfiniteScroll: false,
                   padEnds: false,
                 ),

@@ -52,8 +52,11 @@ class DateIntervalPickerState extends State<DateIntervalPicker>
         },
       ),
       transitionAnimationController: animationController,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(12),
+          topRight: Radius.circular(12),
+        )
       ),
       backgroundColor: GawTheme.background,
       constraints: BoxConstraints(
