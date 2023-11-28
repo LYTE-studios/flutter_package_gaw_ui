@@ -95,4 +95,8 @@ class PixelPerfectIcons {
   static const String takePhoto = '$customBasePath/take_photo.svg';
 
   static const String removePicture = '$customBasePath/remove_picture.svg';
+
+  static const String arrowBack = '$customBasePath/arrow_back.svg';
+
+  static const String washers = '$customBasePath/washers.svg';
 }
