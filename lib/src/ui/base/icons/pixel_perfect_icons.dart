@@ -1,9 +1,74 @@
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter_package_gaw_ui/src/utility/constants.dart';
+
 class PixelPerfectIcons {
   static const String normalBasePath = 'assets/icons/pixel_perfect/Normal/SVG';
   static const String mediumBasePath = 'assets/icons/pixel_perfect/Medium/SVG';
   static const String boldBasePath = 'assets/icons/pixel_perfect/Bold/SVG';
 
   static const String customBasePath = 'assets/icons/custom';
+
+  static List<String> preloads = [
+    profilePicture,
+    logoutMedium,
+    bellMedium,
+    workMedium,
+    notificationMedium,
+    openNotificationMedium,
+    homeNormal,
+    statisticsNormal,
+    waterDripNormal,
+    timeDiamondpNormal,
+    clockNormal,
+    settingsNormal,
+    personMedium,
+    editNormal,
+    arrowRightMedium,
+    arrowRightCircleMedium,
+    plusMedium,
+    warningNormal,
+    checkNormal,
+    checkMedium,
+    calendarNormal,
+    leftArrowNormal,
+    doorMedium,
+    zoomMedium,
+    trashMedium,
+    timeIndicator,
+    placeIndicator,
+    flagMedium,
+    eyeHideNormal,
+    eyeNormal,
+    documentNormal,
+    xNormal,
+    barChart,
+    lineChart,
+    applicationSent,
+    emailSent,
+    arrowDown,
+    emptyNotif,
+    chooseLibrary,
+    takePhoto,
+    removePicture,
+    arrowBack,
+    washers,
+  ];
+
+  static String resolvePackageName(String path) {
+    return 'packages/$kPackageName/$path';
+  }
+
+  static Future<void> loadIcons() async {
+    List<Future> futures = [];
+    for (String icon in preloads) {
+      futures.add(
+        Future(
+          () => rootBundle.load(resolvePackageName(icon)),
+        ),
+      );
+    }
+    await Future.wait(futures);
+  }
 
   // NAVIGATION
 
