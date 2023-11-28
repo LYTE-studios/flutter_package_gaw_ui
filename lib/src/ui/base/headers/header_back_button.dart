@@ -27,8 +27,8 @@ class HeaderBackButton extends StatelessWidget {
               child: Row(
                 children: [
                   SvgIcon(
-                    PixelPerfectIcons.leftArrowNormal,
-                    color: color ?? GawTheme.mainTintText,
+                    PixelPerfectIcons.arrowBack,
+                    color: color == GawTheme.text ? GawTheme.secondaryTint : GawTheme.mainTintText,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
