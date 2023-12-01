@@ -38,20 +38,23 @@ class DateIntervalPickerState extends State<DateIntervalPicker>
   late AnimationController animationController = AnimationController(
     vsync: this,
     duration: const Duration(
-      milliseconds: 100,
+      milliseconds: 1000,
     ),
   );
 
   void showPicker() {
     widget.onShowPicker?.call();
-    controller = widget.scaffoldKey.currentState?.showBottomSheet(
+    controller = (showModalBottomSheet(context: widget.scaffoldKey.currentContext!, 
+    builder://widget.scaffoldKey.currentState?.showBottomSheet(
       (context) => DateRangePicker(
         onRangeSelected: (start, end) {
-          controller?.close();
+          //controller?.close();
           widget.onRangeSelected?.call(start, end);
+          Navigator.of(context).pop();
         },
       ),
       transitionAnimationController: animationController,
+      isScrollControlled: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(12),
@@ -60,11 +63,11 @@ class DateIntervalPickerState extends State<DateIntervalPicker>
       ),
       backgroundColor: GawTheme.background,
       constraints: BoxConstraints(
-        maxHeight: widget.scaffoldKey.currentContext!.size!.height * 0.7,
+        maxHeight: widget.scaffoldKey.currentContext!.size!.height * 0.85,
       ),
-    )?..closed.whenComplete(() {
+    )..whenComplete(() {
         widget.onPopPicker?.call();
-      });
+      })) as PersistentBottomSheetController?;
   }
 
   void closeSheet() {
