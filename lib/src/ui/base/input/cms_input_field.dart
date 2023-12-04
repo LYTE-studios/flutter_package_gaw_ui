@@ -10,12 +10,15 @@ class CmsInputField extends StatefulWidget {
 
   final bool isPasswordField;
 
+  final bool enabled;
+
   const CmsInputField({
     super.key,
     required this.controller,
     this.label,
     this.hint,
     this.isPasswordField = false,
+    this.enabled = true,
   });
 
   @override
@@ -28,6 +31,7 @@ class _CmsInputFieldState extends State<CmsInputField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      enabled: widget.enabled,
       obscureText: !showValues,
       enableSuggestions: !widget.isPasswordField,
       autocorrect: !widget.isPasswordField,
@@ -57,28 +61,28 @@ class _CmsInputFieldState extends State<CmsInputField> {
         suffixIcon: !widget.isPasswordField
             ? const SizedBox()
             : InkWell(
-                onTap: () {
-                  setState(() {
-                    showValues = !showValues;
-                  });
-                },
-                child: SizedBox(
-                  width: 32,
-                  height: 32,
-                  child: Center(
-                    child: SizedBox(
-                      height: 28,
-                      width: 28,
-                      child: SvgIcon(
-                        showValues
-                            ? PixelPerfectIcons.eyeHideNormal
-                            : PixelPerfectIcons.eyeNormal,
-                        color: GawTheme.unselectedText,
-                      ),
-                    ),
-                  ),
+          onTap: () {
+            setState(() {
+              showValues = !showValues;
+            });
+          },
+          child: SizedBox(
+            width: 32,
+            height: 32,
+            child: Center(
+              child: SizedBox(
+                height: 28,
+                width: 28,
+                child: SvgIcon(
+                  showValues
+                      ? PixelPerfectIcons.eyeHideNormal
+                      : PixelPerfectIcons.eyeNormal,
+                  color: GawTheme.unselectedText,
                 ),
               ),
+            ),
+          ),
+        ),
         contentPadding: const EdgeInsets.all(
           PaddingSizes.smallPadding,
         ),

@@ -18,6 +18,8 @@ class GenericListView extends StatefulWidget {
 
   final int? itemsPerPage;
 
+  final Widget header;
+
   const GenericListView({
     super.key,
     this.title,
@@ -28,6 +30,8 @@ class GenericListView extends StatefulWidget {
     required this.rows,
     this.totalItems,
     this.itemsPerPage,
+    required this.header,
+
   });
 
   @override
@@ -50,8 +54,13 @@ class _GenericListViewState extends State<GenericListView> {
           ),
         ),
         Expanded(
-          child: ListView(
-            children: widget.rows,
+          child: Column(
+            children: [
+              widget.header,
+              ListView(
+                children: widget.rows,
+              ),
+            ],
           ),
         ),
         Visibility(
