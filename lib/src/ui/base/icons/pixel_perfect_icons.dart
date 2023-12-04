@@ -164,4 +164,8 @@ class PixelPerfectIcons {
   static const String arrowBack = '$customBasePath/arrow_back.svg';
 
   static const String washers = '$customBasePath/washers.svg';
+
+  static const String roundedPinpointer = '$customBasePath/rounded_pinpointer.svg';
+
+  static const String dropPin = '$customBasePath/drop_pin.svg';
 }

@@ -56,6 +56,7 @@ export 'src/ui/jobs/status_buttons/base_status_button.dart';
 export 'src/ui/jobs/status_buttons/cancelled_status_button.dart';
 export 'src/ui/jobs/status_buttons/completed_status_button.dart';
 export 'src/ui/jobs/status_buttons/pending_status_button.dart';
+export 'src/ui/jobs/status_buttons/approved_status_button.dart';
 export 'src/ui/profile/avatar/initials_avatar.dart';
 export 'src/ui/profile/avatar/profile_picture_avatar.dart';
 export 'src/ui/statistics/charts/base_chart.dart';

@@ -46,7 +46,7 @@ class SettingsListTile extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: LayoutBuilder(builder: (context, constraints) {
-        return Container(
+        return Ink(
           height: 52,
           width: constraints.maxWidth,
           decoration: BoxDecoration(

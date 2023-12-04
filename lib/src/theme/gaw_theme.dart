@@ -11,7 +11,7 @@ class GawTheme {
   );
 
   static const background = ColorRef(
-    Color.fromRGBO(236, 236, 236, 1),
+    Color.fromRGBO(240, 240, 240, 1),
   );
   static const darkBackground = ColorRef(
     Color.fromRGBO(83, 84, 92, 1),
