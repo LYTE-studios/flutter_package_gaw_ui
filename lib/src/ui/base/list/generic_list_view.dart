@@ -31,7 +31,6 @@ class GenericListView extends StatefulWidget {
     this.totalItems,
     this.itemsPerPage,
     required this.header,
-
   });
 
   @override
@@ -53,16 +52,20 @@ class _GenericListViewState extends State<GenericListView> {
             onSearch: widget.onSearch,
           ),
         ),
-        Expanded(
-          child: Column(
-            children: [
-              widget.header,
-              ListView(
-                children: widget.rows,
-              ),
-            ],
-          ),
-        ),
+        LayoutBuilder(builder: (context, constraints) {
+          return SizedBox(
+            height: constraints.maxHeight,
+            width: constraints.maxWidth,
+            child: Column(
+              children: [
+                widget.header,
+                ListView(
+                  children: widget.rows,
+                ),
+              ],
+            ),
+          );
+        }),
         Visibility(
           visible: widget.showFooter,
           child: Padding(
