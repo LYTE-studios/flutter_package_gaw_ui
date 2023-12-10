@@ -78,12 +78,15 @@ class JobListItem extends StatelessWidget {
                             const SizedBox(
                               width: PaddingSizes.smallPadding,
                             ),
-                            MainText(
-                              GawDateUtil.formatTimeInterval(
-                                GawDateUtil.fromApi(job.startTime),
-                                GawDateUtil.fromApi(job.endTime),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 3.0),
+                              child: MainText(
+                                GawDateUtil.formatTimeInterval(
+                                  GawDateUtil.fromApi(job.startTime),
+                                  GawDateUtil.fromApi(job.endTime),
+                                ),
+                                color: GawTheme.unselectedText,
                               ),
-                              color: GawTheme.unselectedText,
                             ),
                           ],
                         ),

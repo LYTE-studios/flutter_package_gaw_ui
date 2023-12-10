@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
 import 'package:flutter_package_gaw_ui/src/ui/jobs/state_blocks/base_state_block.dart';
 
-class PendingStatusButton extends StatelessWidget {
-  const PendingStatusButton({super.key});
+class RejectedStatusButton extends StatelessWidget {
+  const RejectedStatusButton({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BaseStatusButton(
-      color: GawTheme.unselectedBackground,
-      label: LocaleKeys.pending.tr(),
+      color: GawTheme.error,
+      label: LocaleKeys.rejected.tr(),
     );
   }
 }
