@@ -50,6 +50,7 @@ export 'src/ui/base/shadow/bottom_shadow.dart';
 export 'src/ui/base/shadow/shadows.dart';
 export 'src/ui/base/sheets/screen_sheet.dart';
 export 'src/ui/base/text/enclosed_title.dart';
+export 'src/ui/jobs/state_blocks/rejected_state_block.dart';
 export 'src/ui/base/text/main_text.dart';
 export 'src/ui/base/text/styles.dart';
 export 'src/ui/base/tools/tool_selector.dart';
