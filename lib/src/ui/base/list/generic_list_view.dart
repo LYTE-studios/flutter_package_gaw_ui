@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
-import 'package:flutter_package_gaw_ui/src/ui/base/loading/loading_switcher.dart';
 
 class GenericListView extends StatefulWidget {
   final String? title;
@@ -70,11 +69,16 @@ class _GenericListViewState extends State<GenericListView> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 widget.header,
-                LoadingSwitcher(
-                  loading: widget.loading,
-                  child: ListView(
-                    shrinkWrap: true,
-                    children: widget.rows,
+                ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    minHeight: 42,
+                  ),
+                  child: LoadingSwitcher(
+                    loading: widget.loading,
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: widget.rows,
+                    ),
                   ),
                 ),
               ],
