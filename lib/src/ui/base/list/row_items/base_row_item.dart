@@ -16,12 +16,14 @@ class BaseRowItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: fixedWidth,
-      child: Expanded(
-        flex: flex ?? 1,
-        child: child,
-      ),
-    );
+    return fixedWidth == null
+        ? Expanded(
+            flex: flex ?? 1,
+            child: child,
+          )
+        : SizedBox(
+            width: fixedWidth,
+            child: child,
+          );
   }
 }

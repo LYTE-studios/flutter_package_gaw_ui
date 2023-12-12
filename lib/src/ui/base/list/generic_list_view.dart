@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
+import 'package:flutter_package_gaw_ui/src/ui/base/loading/loading_switcher.dart';
 
 class GenericListView extends StatefulWidget {
   final String? title;
+
+  final bool loading;
 
   final String? valueName;
 
@@ -23,6 +26,7 @@ class GenericListView extends StatefulWidget {
   const GenericListView({
     super.key,
     this.title,
+    this.loading = false,
     this.valueName,
     this.onDelete,
     this.onSearch,
@@ -33,6 +37,10 @@ class GenericListView extends StatefulWidget {
     required this.header,
   });
 
+  static const double sColumn = 120;
+  static const double mColumn = 160;
+  static const double lColumn = 210;
+
   @override
   State<GenericListView> createState() => _GenericListViewState();
 }
@@ -41,6 +49,7 @@ class _GenericListViewState extends State<GenericListView> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.max,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(
@@ -52,20 +61,26 @@ class _GenericListViewState extends State<GenericListView> {
             onSearch: widget.onSearch,
           ),
         ),
-        LayoutBuilder(builder: (context, constraints) {
-          return SizedBox(
-            height: constraints.maxHeight,
-            width: constraints.maxWidth,
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: PaddingSizes.extraBigPadding,
+            ),
             child: Column(
+              mainAxisSize: MainAxisSize.max,
               children: [
                 widget.header,
-                ListView(
-                  children: widget.rows,
+                LoadingSwitcher(
+                  loading: widget.loading,
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: widget.rows,
+                  ),
                 ),
               ],
             ),
-          );
-        }),
+          ),
+        ),
         Visibility(
           visible: widget.showFooter,
           child: Padding(

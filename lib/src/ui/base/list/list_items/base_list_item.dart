@@ -15,7 +15,7 @@ class BaseListItem extends StatelessWidget {
       height: 42,
       decoration: const BoxDecoration(
         border: Border(
-          bottom: Borders.mainSide,
+          bottom: Borders.lightSide,
         ),
       ),
       child: Row(
