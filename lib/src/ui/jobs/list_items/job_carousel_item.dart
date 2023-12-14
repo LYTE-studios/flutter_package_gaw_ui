@@ -157,6 +157,15 @@ class JobCarouselItem extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: GawTheme.clearBackground,
                         borderRadius: BorderRadius.circular(16),
+                        boxShadow: const [
+                          //Shadows.mainShadow,
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: Offset(2, 4),
+                            blurRadius: 8,
+                            spreadRadius: 0,
+                          ),
+                        ],
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
