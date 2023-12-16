@@ -39,7 +39,7 @@ class BaseStateBlock extends StatelessWidget {
                 color: GawTheme.unselectedText,
               ),
         borderRadius: BorderRadius.circular(
-          16,
+          14,
         ),
       ),
       child: IntrinsicWidth(

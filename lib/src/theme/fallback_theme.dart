@@ -1,40 +1,82 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
 
+const ColorScheme _scheme = ColorScheme(
+  background: GawTheme.unselectedBackground,
+  brightness: Brightness.light,
+  error: GawTheme.error,
+  errorContainer: GawTheme.error,
+  inversePrimary: GawTheme.mainTintText,
+  inverseSurface: GawTheme.secondaryTint,
+  onBackground: GawTheme.text,
+  onError: GawTheme.error,
+  onErrorContainer: GawTheme.error,
+  onInverseSurface: GawTheme.text,
+  onPrimary: GawTheme.mainTintText,
+  onPrimaryContainer: GawTheme.mainTintText,
+  onSecondary: GawTheme.mainTintText,
+  onSecondaryContainer: GawTheme.mainTintText,
+  onSurface: GawTheme.text,
+  onSurfaceVariant: GawTheme.unselectedText,
+  onTertiary: GawTheme.mainTintText,
+  onTertiaryContainer: GawTheme.mainTintText,
+  outline: GawTheme.unselectedText,
+  outlineVariant: GawTheme.unselectedBackground,
+  primary: GawTheme.mainTint,
+  primaryContainer: GawTheme.background,
+  scrim: GawTheme.text,
+  secondary: GawTheme.secondaryTint,
+  secondaryContainer: GawTheme.secondaryTint,
+  shadow: GawTheme.shadow,
+  surface: GawTheme.background,
+  surfaceTint: GawTheme.secondaryTint,
+  surfaceVariant: GawTheme.clearBackground,
+  tertiary: GawTheme.background,
+  tertiaryContainer: GawTheme.background,
+);
+
+const IconThemeData _iconThemeData = IconThemeData(
+  color: GawTheme.text,
+);
+
 final ThemeData fallbackTheme = ThemeData(
-  primaryColor: GawTheme.mainTint,
+  applyElevationOverlayColor: false,
+  brightness: Brightness.light,
+  buttonTheme: const ButtonThemeData(
+    alignedDropdown: false,
+    colorScheme: _scheme,
+  ),
+  canvasColor: GawTheme.background,
+  cardColor: GawTheme.clearBackground,
+  colorScheme: _scheme,
+  dialogBackgroundColor: GawTheme.clearBackground,
+  disabledColor: GawTheme.unselectedBackground,
+  dividerColor: GawTheme.unselectedText,
   focusColor: GawTheme.mainTint,
-  indicatorColor: GawTheme.mainTint,
-  progressIndicatorTheme: const ProgressIndicatorThemeData(
-    circularTrackColor: GawTheme.mainTint,
+  highlightColor: GawTheme.mainTint,
+  hintColor: GawTheme.unselectedText,
+  hoverColor: GawTheme.mainTint,
+  iconTheme: _iconThemeData,
+  indicatorColor: GawTheme.text,
+  inputDecorationTheme: const InputDecorationTheme(
+    alignLabelWithHint: false,
+    filled: false,
+    floatingLabelAlignment: FloatingLabelAlignment.start,
+    floatingLabelBehavior: FloatingLabelBehavior.auto,
+    isCollapsed: false,
+    isDense: false,
   ),
-  cupertinoOverrideTheme: const CupertinoThemeData(
-    primaryColor: GawTheme.mainTint,
-    primaryContrastingColor: GawTheme.secondaryTint,
-  ),
-  inputDecorationTheme: InputDecorationTheme(
-    focusedBorder: OutlineInputBorder(
-      borderSide: Borders.selectedInputSide,
-      borderRadius: BorderRadius.circular(8),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderSide: Borders.unselectedInputSide,
-      borderRadius: BorderRadius.circular(8),
-    ),
-    border: OutlineInputBorder(
-      borderSide: Borders.lightSide,
-      borderRadius: BorderRadius.circular(8),
-    ),
-    fillColor: GawTheme.mainTint,
-    labelStyle: TextStyles.mainStyle,
-    floatingLabelStyle: TextStyles.mainStyle.copyWith(
-      color: GawTheme.mainTint,
-    ),
-    focusColor: GawTheme.mainTint,
-    hoverColor: GawTheme.mainTint,
-    errorStyle: TextStyles.mainStyle.copyWith(
-      color: GawTheme.error,
-    ),
-  ),
+  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+  primaryColor: GawTheme.mainTint,
+  primaryColorDark: GawTheme.mainTint,
+  primaryColorLight: GawTheme.mainTint,
+  primaryIconTheme: _iconThemeData,
+  scaffoldBackgroundColor: GawTheme.background,
+  secondaryHeaderColor: GawTheme.text,
+  shadowColor: GawTheme.shadow,
+  splashColor: GawTheme.unselectedBackground,
+  splashFactory: InkSplash.splashFactory,
+  unselectedWidgetColor: GawTheme.unselectedBackground,
+  useMaterial3: true,
+  visualDensity: VisualDensity.compact,
 );

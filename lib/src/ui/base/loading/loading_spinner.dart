@@ -16,7 +16,8 @@ class LoadingSpinner extends StatelessWidget {
         height: 16,
         width: 16,
         child: CircularProgressIndicator(
-          color: color ?? GawTheme.clearBackground,
+          color: color ?? GawTheme.secondaryTint,
+          strokeWidth: 2,
         ),
       ),
     );

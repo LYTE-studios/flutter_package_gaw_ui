@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_package_gaw_api/flutter_package_gaw_api.dart';
 import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
@@ -44,9 +43,10 @@ class DateIntervalPickerState extends State<DateIntervalPicker>
 
   void showPicker() {
     widget.onShowPicker?.call();
-    controller = (showModalBottomSheet(context: widget.scaffoldKey.currentContext!, 
-    builder://widget.scaffoldKey.currentState?.showBottomSheet(
-      (context) => DateRangePicker(
+    controller = (showModalBottomSheet(
+      context: widget.scaffoldKey.currentContext!,
+      builder: //widget.scaffoldKey.currentState?.showBottomSheet(
+          (context) => DateRangePicker(
         onRangeSelected: (start, end) {
           //controller?.close();
           widget.onRangeSelected?.call(start, end);
@@ -56,11 +56,10 @@ class DateIntervalPickerState extends State<DateIntervalPicker>
       transitionAnimationController: animationController,
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(12),
-          topRight: Radius.circular(12),
-        )
-      ),
+          borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(12),
+        topRight: Radius.circular(12),
+      )),
       backgroundColor: GawTheme.background,
       constraints: BoxConstraints(
         maxHeight: widget.scaffoldKey.currentContext!.size!.height * 0.85,
