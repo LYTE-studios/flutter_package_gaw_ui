@@ -33,7 +33,7 @@ class PageSwitch extends StatelessWidget {
             decoration: BoxDecoration(
               color: GawTheme.unselectedBackground,
               borderRadius: BorderRadius.circular(
-                20,
+                19,
               ),
             ),
             height: 42,
@@ -55,7 +55,7 @@ class PageSwitch extends StatelessWidget {
                       child: Container(
                         width: constraints.maxWidth / 2,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(18),
                           color: GawTheme.clearBackground,
                         ),
                       ),
