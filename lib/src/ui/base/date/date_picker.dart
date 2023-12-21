@@ -34,14 +34,36 @@ class DateIntervalPickerState extends State<DateIntervalPicker>
     with TickerProviderStateMixin {
   PersistentBottomSheetController? controller;
 
-  late AnimationController animationController = AnimationController(
+  late AnimationController animationController; /*= AnimationController(
     vsync: this,
     duration: const Duration(
       milliseconds: 1000,
     ),
-  );
+  );*/
+
+  bool isClosing = false;
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000), // Default duration for opening
+    );
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
 
   void showPicker() {
+    setState(() {
+      isClosing = false; // Reset the flag when showing the picker
+      animationController.duration = const Duration(milliseconds: 1000); // Duration for opening
+    });
+
     widget.onShowPicker?.call();
     controller = (showModalBottomSheet(
       context: widget.scaffoldKey.currentContext!,
@@ -65,8 +87,23 @@ class DateIntervalPickerState extends State<DateIntervalPicker>
         maxHeight: widget.scaffoldKey.currentContext!.size!.height * 0.85,
       ),
     )..whenComplete(() {
+        if (mounted) {
+          setState(() {
+            isClosing = true; // Set the flag when closing starts
+            animationController.duration = const Duration(milliseconds: 100); // Faster duration for closing
+          });
+        }
         widget.onPopPicker?.call();
       })) as PersistentBottomSheetController?;
+
+    controller?.closed.whenComplete(() {
+      if (mounted) {
+        setState(() {
+          isClosing = true; // Set the flag when closing starts
+          animationController.duration = const Duration(milliseconds: 1000); // Faster duration for closing
+        });
+      }
+    });
   }
 
   void closeSheet() {
