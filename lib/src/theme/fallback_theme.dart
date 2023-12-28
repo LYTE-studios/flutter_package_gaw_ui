@@ -58,13 +58,35 @@ final ThemeData fallbackTheme = ThemeData(
   hoverColor: GawTheme.mainTint,
   iconTheme: _iconThemeData,
   indicatorColor: GawTheme.text,
-  inputDecorationTheme: const InputDecorationTheme(
+  inputDecorationTheme: InputDecorationTheme(
     alignLabelWithHint: false,
     filled: false,
     floatingLabelAlignment: FloatingLabelAlignment.start,
     floatingLabelBehavior: FloatingLabelBehavior.auto,
     isCollapsed: false,
     isDense: false,
+    focusedBorder: OutlineInputBorder(
+      borderSide: Borders.selectedInputSide,
+      borderRadius: BorderRadius.circular(8),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderSide: Borders.unselectedInputSide,
+      borderRadius: BorderRadius.circular(8),
+    ),
+    border: OutlineInputBorder(
+      borderSide: Borders.lightSide,
+      borderRadius: BorderRadius.circular(8),
+    ),
+    fillColor: GawTheme.mainTint,
+    labelStyle: TextStyles.mainStyle,
+    floatingLabelStyle: TextStyles.mainStyle.copyWith(
+      color: GawTheme.mainTint,
+    ),
+    focusColor: GawTheme.mainTint,
+    hoverColor: GawTheme.mainTint,
+    errorStyle: TextStyles.mainStyle.copyWith(
+      color: GawTheme.error,
+    ),
   ),
   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
   primaryColor: GawTheme.mainTint,

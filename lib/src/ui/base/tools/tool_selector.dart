@@ -16,7 +16,7 @@ class ToolSelector extends StatelessWidget {
       width: 56,
       decoration: BoxDecoration(
         color: color ?? GawTheme.toolBarItem,
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(2.7),
       ),
     );
   }
