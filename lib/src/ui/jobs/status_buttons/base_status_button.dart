@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
+import 'package:gaw_ui/gaw_ui.dart';
 
 class BaseStatusButton extends StatelessWidget {
   final String label;
@@ -48,35 +48,36 @@ class BaseStatusButton extends StatelessWidget {
                       fontSize: 18,
                       fontWeight: FontWeight.w900,
                     ),
-                ),
+                  ),
           ),
-          label == LocaleKeys.applyForJob.tr() ? Positioned(
-            right: 32, 
-            top: 14,
-            child: SizedBox(
-              height: 28,
-              width: 28,
-              child: SvgIcon(
-                PixelPerfectIcons.arrowRightCircleMedium, 
-                color: GawTheme.clearText,
-              ),
-            )
-          ) : const SizedBox(),
+          label == LocaleKeys.applyForJob.tr()
+              ? Positioned(
+                  right: 32,
+                  top: 14,
+                  child: SizedBox(
+                    height: 28,
+                    width: 28,
+                    child: SvgIcon(
+                      PixelPerfectIcons.arrowRightCircleMedium,
+                      color: GawTheme.clearText,
+                    ),
+                  ))
+              : const SizedBox(),
         ],
       ),
     );
   }
 
-  Widget buttonContent(ctx, bool isApply){
+  Widget buttonContent(ctx, bool isApply) {
     //if (!isApply) {
-      return MainText(
-        label,
-        textStyleOverride: TextStyles.titleStyle.copyWith(
-          color: GawTheme.clearText,
-          fontSize: 18,
-          fontWeight: FontWeight.w900,
-        ),
-      );
+    return MainText(
+      label,
+      textStyleOverride: TextStyles.titleStyle.copyWith(
+        color: GawTheme.clearText,
+        fontSize: 18,
+        fontWeight: FontWeight.w900,
+      ),
+    );
     /*} else {
       return Stack(
         alignment: Alignment.center,

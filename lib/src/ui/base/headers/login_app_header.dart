@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
-import 'package:flutter_package_gaw_ui/src/ui/base/headers/header_back_button.dart';
-import 'package:flutter_package_gaw_ui/src/utility/constants.dart';
+import 'package:gaw_ui/gaw_ui.dart';
+import 'package:gaw_ui/src/ui/base/headers/header_back_button.dart';
+import 'package:gaw_ui/src/utility/constants.dart';
 
 class LoginAppHeader extends StatelessWidget {
   final String label;
@@ -30,16 +30,17 @@ class LoginAppHeader extends StatelessWidget {
             package: kPackageName,
           ),
           fit: BoxFit.cover,
-          opacity: opacity,  
+          opacity: opacity,
         ),
         boxShadow: opacity == 1
-          ? [
-              BoxShadow(
-                color: GawTheme.unselectedText.withOpacity(0.7),
-                offset: Offset(0, 4),
-                blurRadius: 2,
-              ),
-            ] : null,
+            ? [
+                BoxShadow(
+                  color: GawTheme.unselectedText.withOpacity(0.7),
+                  offset: Offset(0, 4),
+                  blurRadius: 2,
+                ),
+              ]
+            : null,
       ),
       child: Stack(
         children: [

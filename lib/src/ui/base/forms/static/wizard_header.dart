@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_package_gaw_ui/src/ui/base/forms/static/form_item_divider.dart';
-import 'package:flutter_package_gaw_ui/src/ui/base/forms/static/wizard_header_item.dart';
+import 'package:gaw_ui/src/ui/base/forms/static/form_item_divider.dart';
+import 'package:gaw_ui/src/ui/base/forms/static/wizard_header_item.dart';
 
 class WizardHeader extends StatelessWidget {
   final int selectedIndex;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_package_gaw_ui/src/utility/constants.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gaw_ui/src/utility/constants.dart';
 
 class MainLogoBig extends StatelessWidget {
   final BoxFit? fit;

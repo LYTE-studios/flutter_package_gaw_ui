@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
-import 'package:flutter_package_gaw_ui/src/utility/constants.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gaw_ui/gaw_ui.dart';
+import 'package:gaw_ui/src/utility/constants.dart';
 
 class SvgIcon extends StatelessWidget {
   final String assetName;
