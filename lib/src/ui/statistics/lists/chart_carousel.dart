@@ -2,12 +2,15 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class ChartCarousel extends StatelessWidget {
+  final CarouselController? controller;
+
   final List<Widget> charts;
 
   final Function(int)? pageIndexChanged;
 
   const ChartCarousel({
     super.key,
+    this.controller,
     required this.charts,
     this.pageIndexChanged,
   });
@@ -15,6 +18,7 @@ class ChartCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CarouselSlider.builder(
+      carouselController: controller,
       itemCount: charts.length,
       options: CarouselOptions(
         onPageChanged: (index, reason) {
