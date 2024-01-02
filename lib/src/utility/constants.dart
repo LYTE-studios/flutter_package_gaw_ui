@@ -1,1 +1,1 @@
-const String kPackageName = 'flutter_package_gaw_ui';
+const String kPackageName = 'gaw_ui';

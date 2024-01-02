@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../flutter_package_gaw_ui.dart';
+import '../../../../gaw_ui.dart';
 
 class NotificationIcon extends StatelessWidget {
   final bool openNotifications;

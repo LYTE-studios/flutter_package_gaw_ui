@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:flutter_package_gaw_ui/src/utility/constants.dart';
+import 'package:gaw_ui/src/utility/constants.dart';
 
 class PixelPerfectIcons {
   static const String normalBasePath = 'assets/icons/pixel_perfect/Normal/SVG';
@@ -165,7 +165,8 @@ class PixelPerfectIcons {
 
   static const String washers = '$customBasePath/washers.svg';
 
-  static const String roundedPinpointer = '$customBasePath/rounded_pinpointer.svg';
+  static const String roundedPinpointer =
+      '$customBasePath/rounded_pinpointer.svg';
 
   static const String dropPin = '$customBasePath/drop_pin.svg';
 }

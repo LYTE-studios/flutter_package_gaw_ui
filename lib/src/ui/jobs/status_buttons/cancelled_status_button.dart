@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
+import 'package:gaw_ui/gaw_ui.dart';
 
 class CancelledStatusButton extends StatelessWidget {
   const CancelledStatusButton({super.key});

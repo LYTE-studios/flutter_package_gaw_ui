@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_package_gaw_ui/flutter_package_gaw_ui.dart';
+import 'package:gaw_ui/gaw_ui.dart';
 
 class HeaderBackButton extends StatelessWidget {
   final Color? color;
@@ -28,7 +28,9 @@ class HeaderBackButton extends StatelessWidget {
                 children: [
                   SvgIcon(
                     PixelPerfectIcons.arrowBack,
-                    color: color == GawTheme.text ? GawTheme.secondaryTint : GawTheme.mainTintText,
+                    color: color == GawTheme.text
+                        ? GawTheme.secondaryTint
+                        : GawTheme.mainTintText,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
