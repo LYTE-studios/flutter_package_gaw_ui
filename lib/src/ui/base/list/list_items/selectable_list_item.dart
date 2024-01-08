@@ -3,7 +3,7 @@ import 'package:gaw_ui/gaw_ui.dart';
 
 class SelectableListItem extends StatelessWidget {
   final Function()? onSelected;
-  final List<Widget> items;
+  final Map<Widget, double> items;
 
   const SelectableListItem({
     super.key,

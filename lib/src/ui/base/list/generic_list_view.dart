@@ -47,61 +47,47 @@ class GenericListView extends StatefulWidget {
 class _GenericListViewState extends State<GenericListView> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: PaddingSizes.mainPadding,
-          ),
-          child: ListViewHeader(
-            headerLabel: widget.title ?? '',
-            onDelete: widget.onDelete,
-            onSearch: widget.onSearch,
-          ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: PaddingSizes.extraBigPadding,
+    return LayoutBuilder(builder: (context, constraints) {
+      return SizedBox(
+        height: constraints.maxHeight,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: PaddingSizes.mainPadding,
+              ),
+              child: ListViewHeader(
+                headerLabel: widget.title ?? '',
+                onDelete: widget.onDelete,
+                onSearch: widget.onSearch,
+              ),
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                widget.header,
-                ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    minHeight: 42,
-                  ),
-                  child: LoadingSwitcher(
-                    loading: widget.loading,
-                    child: ListView(
-                      shrinkWrap: true,
-                      children: widget.rows,
-                    ),
-                  ),
+            widget.header,
+            Expanded(
+              child: ListView(
+                children: widget.rows,
+              ),
+            ),
+            Visibility(
+              visible: widget.showFooter,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: PaddingSizes.mainPadding,
                 ),
-              ],
+                child: ListViewFooter(
+                  valueName: widget.valueName,
+                  totalItems: widget.totalItems ?? 0,
+                  pages:
+                      widget.totalItems == null || widget.itemsPerPage == null
+                          ? 0
+                          : widget.totalItems! ~/ widget.itemsPerPage!,
+                  itemsPerPage: widget.totalItems ?? 0,
+                ),
+              ),
             ),
-          ),
+          ],
         ),
-        Visibility(
-          visible: widget.showFooter,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: PaddingSizes.mainPadding,
-            ),
-            child: ListViewFooter(
-              valueName: widget.valueName,
-              totalItems: widget.totalItems ?? 0,
-              pages: widget.totalItems == null || widget.itemsPerPage == null
-                  ? 0
-                  : widget.totalItems! ~/ widget.itemsPerPage!,
-              itemsPerPage: widget.totalItems ?? 0,
-            ),
-          ),
-        ),
-      ],
-    );
+      );
+    });
   }
 }
