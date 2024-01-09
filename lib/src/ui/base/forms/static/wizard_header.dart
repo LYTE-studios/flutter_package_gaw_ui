@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gaw_ui/src/ui/base/forms/static/form_item_divider.dart';
+import 'package:gaw_ui/gaw_ui.dart';
 import 'package:gaw_ui/src/ui/base/forms/static/wizard_header_item.dart';
 
 class WizardHeader extends StatelessWidget {
@@ -15,8 +15,13 @@ class WizardHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: buildItems(context),
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: PaddingSizes.bigPadding,
+      ),
+      child: Row(
+        children: buildItems(context),
+      ),
     );
   }
 

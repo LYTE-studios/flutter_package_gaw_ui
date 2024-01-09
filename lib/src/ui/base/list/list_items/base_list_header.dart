@@ -13,28 +13,42 @@ class BaseListHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> widgets = [];
 
-    for (String label in items.keys) {
+    items.forEach((label, width) {
       widgets.add(
         SizedBox(
-          width: items[label],
-          child: MainText(label),
+          width: width,
+          child: MainText(
+            label,
+            textStyleOverride: TextStyles.mainStyleTitle.copyWith(
+              fontWeight: FontWeight.w700,
+            ),
+          ),
         ),
       );
-    }
+    });
 
-    return Container(
-      height: 56,
-      decoration: const BoxDecoration(
-        border: Border(
-          bottom: Borders.mainSide,
-        ),
+    widgets.add(
+      const Spacer(),
+    );
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: PaddingSizes.bigPadding,
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: PaddingSizes.smallPadding,
+      child: Container(
+        height: 48,
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: Borders.mainSide,
+          ),
         ),
-        child: Row(
-          children: widgets,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: PaddingSizes.smallPadding,
+          ),
+          child: Row(
+            children: widgets,
+          ),
         ),
       ),
     );

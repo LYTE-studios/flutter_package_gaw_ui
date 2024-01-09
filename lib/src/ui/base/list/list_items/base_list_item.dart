@@ -11,7 +11,7 @@ class BaseListItem extends StatelessWidget {
 
   static List<Widget> inflateRow(List<Widget> widgets) {
     widgets.insert(
-      widgets.length - 2,
+      widgets.length - 1,
       const Spacer(),
     );
     return widgets;
@@ -21,28 +21,33 @@ class BaseListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> widgets = [];
 
-    for (Widget widgetKey in items.keys) {
+    items.forEach((widget, width) {
       widgets.add(
         SizedBox(
-          width: items[widgetKey],
-          child: widgetKey,
+          width: width,
+          child: widget,
         ),
       );
-    }
+    });
 
-    return Container(
-      height: 42,
-      decoration: const BoxDecoration(
-        border: Border(
-          bottom: Borders.lightSide,
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: PaddingSizes.bigPadding,
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: PaddingSizes.smallPadding,
+      child: Container(
+        height: 42,
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: Borders.lightSide,
+          ),
         ),
-        child: Row(
-          children: inflateRow(widgets),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: PaddingSizes.smallPadding,
+          ),
+          child: Row(
+            children: inflateRow(widgets),
+          ),
         ),
       ),
     );

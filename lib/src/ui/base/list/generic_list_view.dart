@@ -45,6 +45,9 @@ class GenericListView extends StatefulWidget {
 }
 
 class _GenericListViewState extends State<GenericListView> {
+  late final bool showPages =
+      widget.totalItems == null || widget.itemsPerPage == null;
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
@@ -77,10 +80,9 @@ class _GenericListViewState extends State<GenericListView> {
                 child: ListViewFooter(
                   valueName: widget.valueName,
                   totalItems: widget.totalItems ?? 0,
-                  pages:
-                      widget.totalItems == null || widget.itemsPerPage == null
-                          ? 0
-                          : widget.totalItems! ~/ widget.itemsPerPage!,
+                  pages: showPages
+                      ? 0
+                      : widget.totalItems! ~/ widget.itemsPerPage!,
                   itemsPerPage: widget.totalItems ?? 0,
                 ),
               ),
