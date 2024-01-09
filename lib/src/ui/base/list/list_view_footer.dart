@@ -39,7 +39,7 @@ class ListViewFooter extends StatelessWidget {
   String getRange() {
     final int total = (itemsPerPage * pages);
 
-    return '${(total - itemsPerPage).toString()} - ${total.toString()}';
+    return (itemsPerPage - total).toString();
   }
 
   @override
