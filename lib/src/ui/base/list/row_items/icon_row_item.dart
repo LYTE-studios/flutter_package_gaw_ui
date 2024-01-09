@@ -15,13 +15,11 @@ class IconRowItem extends StatelessWidget {
     return Row(
       children: [
         const Spacer(),
-        IntrinsicWidth(
-          child: BaseRowItem(
-            fixedWidth: 16,
-            child: SvgIcon(
-              icon,
-              color: GawTheme.unselectedText,
-            ),
+        BaseRowItem(
+          fixedWidth: 16,
+          child: SvgIcon(
+            icon,
+            color: GawTheme.unselectedText,
           ),
         ),
       ],
