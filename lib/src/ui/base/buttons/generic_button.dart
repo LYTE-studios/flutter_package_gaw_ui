@@ -34,7 +34,7 @@ class GenericButton extends StatelessWidget {
         child: Container(
           constraints: const BoxConstraints(
             minWidth: 120,
-            minHeight: 40,
+            minHeight: 45,
           ),
           decoration: BoxDecoration(
             color: color ?? GawTheme.mainTint,
