@@ -33,7 +33,7 @@ class _TabbedViewState extends State<TabbedView> {
         Container(
           decoration: BoxDecoration(
             border: Border.all(
-              color: Color.fromRGBO(191, 191, 191, 1),
+              color: GawTheme.unselectedBackground,
             ),
             borderRadius: BorderRadius.circular(7),
             color: Colors.white,
@@ -98,13 +98,13 @@ class _TabHeader extends StatelessWidget {
                       offset: Offset(0, 1.2),
                       blurRadius: 4.8,
                       spreadRadius: 0,
-                      color: Color.fromRGBO(0, 0, 0, 0.13),
+                      color: GawTheme.shadow,
                     ),
                   ]
                 : [],
             color: selected
-                ? const Color.fromRGBO(211, 234, 249, 1)
-                : const Color.fromRGBO(233, 233, 233, 1),
+                ? GawTheme.mainTint
+                : GawTheme.pickerBackground,
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(10),
               topRight: Radius.circular(10),
@@ -114,7 +114,7 @@ class _TabHeader extends StatelessWidget {
             label,
             textStyleOverride: TextStyle(
               color: selected
-                  ? const Color.fromRGBO(53, 115, 183, 1)
+                  ? GawTheme.secondaryTint
                   : GawTheme.unselectedText,
               fontWeight: FontWeight.w700,
             ),
