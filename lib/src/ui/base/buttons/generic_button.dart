@@ -15,6 +15,8 @@ class GenericButton extends StatelessWidget {
 
   final bool loading;
 
+  final EdgeInsetsGeometry? padding;
+
   const GenericButton({
     super.key,
     this.label,
@@ -22,6 +24,7 @@ class GenericButton extends StatelessWidget {
     this.color,
     this.textColor,
     this.textStyleOverride,
+    this.padding,
     this.loading = false,
   });
 
@@ -43,6 +46,7 @@ class GenericButton extends StatelessWidget {
               Shadows.mainShadow,
             ],
           ),
+          padding: padding,
           alignment: Alignment.center,
           child: Center(
             child: loading

@@ -16,6 +16,8 @@ class MainText extends StatelessWidget {
 
   final bool softWrap;
 
+  final FontWeight? fontWeight;
+
   const MainText(
     this.text, {
     super.key,
@@ -24,6 +26,7 @@ class MainText extends StatelessWidget {
     this.overflow,
     this.alignment,
     this.fontSize,
+    this.fontWeight,
     this.softWrap = true,
   });
 
@@ -37,7 +40,8 @@ class MainText extends StatelessWidget {
       style: textStyleOverride ??
           TextStyles.mainStyle.copyWith(
             color: color,
-            fontSize: fontSize
+            fontSize: fontSize,
+            fontWeight: fontWeight,
           ),
     );
   }
