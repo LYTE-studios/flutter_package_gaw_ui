@@ -33,10 +33,10 @@ class _TabbedViewState extends State<TabbedView> {
         Container(
           decoration: BoxDecoration(
             border: Border.all(
-              color: GawTheme.unselectedText,
+              color: GawTheme.unselectedBackground,
             ),
-            borderRadius: BorderRadius.circular(12),
-            color: GawTheme.clearBackground,
+            borderRadius: BorderRadius.circular(7),
+            color: GawTheme.clearText,
           ),
           child: widget.pages[widget.selectedIndex],
         ),
@@ -81,24 +81,44 @@ class _TabHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        margin: const EdgeInsets.only(left: PaddingSizes.smallPadding),
-        padding: const EdgeInsets.symmetric(
-          horizontal: PaddingSizes.smallPadding,
-          vertical: PaddingSizes.extraSmallPadding,
-        ),
-        decoration: BoxDecoration(
-          color: selected
-              ? GawTheme.unselectedMainTint
-              : GawTheme.unselectedBackground,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(8),
-            topRight: Radius.circular(8),
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: Container(
+          margin: const EdgeInsets.only(left: PaddingSizes.smallPadding),
+          padding: const EdgeInsets.only(
+            top: PaddingSizes.mainPadding,
+            left: PaddingSizes.bigPadding,
+            right: PaddingSizes.bigPadding,
+            bottom: PaddingSizes.smallPadding,
           ),
-        ),
-        child: MainText(
-          label,
-          color: selected ? GawTheme.secondaryTint : GawTheme.unselectedText,
+          decoration: BoxDecoration(
+            boxShadow: selected
+                ? const [
+                    BoxShadow(
+                      offset: Offset(0, 1.2),
+                      blurRadius: 4.8,
+                      spreadRadius: 0,
+                      color: GawTheme.shadow,
+                    ),
+                  ]
+                : [],
+            color: selected
+                ? GawTheme.mainTint
+                : GawTheme.pickerBackground,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+            ),
+          ),
+          child: MainText(
+            label,
+            textStyleOverride: TextStyle(
+              color: selected
+                  ? GawTheme.secondaryTint
+                  : GawTheme.unselectedText,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
         ),
       ),
     );

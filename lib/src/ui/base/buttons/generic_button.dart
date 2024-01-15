@@ -15,6 +15,8 @@ class GenericButton extends StatelessWidget {
 
   final bool loading;
 
+  final EdgeInsetsGeometry? padding;
+
   const GenericButton({
     super.key,
     this.label,
@@ -22,6 +24,7 @@ class GenericButton extends StatelessWidget {
     this.color,
     this.textColor,
     this.textStyleOverride,
+    this.padding,
     this.loading = false,
   });
 
@@ -29,33 +32,37 @@ class GenericButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        constraints: const BoxConstraints(
-          minWidth: 120,
-          minHeight: 40,
-        ),
-        decoration: BoxDecoration(
-          color: color ?? GawTheme.mainTint,
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: const [
-            Shadows.mainShadow,
-          ],
-        ),
-        alignment: Alignment.center,
-        child: Center(
-          child: loading
-              ? const LoadingSpinner(
-                  color: GawTheme.clearBackground,
-                )
-              : MainText(
-                  label ?? '',
-                  alignment: TextAlign.center,
-                  textStyleOverride: textStyleOverride ??
-                      TextStyles.mainStyleTitle.copyWith(
-                        fontSize: 18,
-                        color: textColor ?? GawTheme.mainTintText,
-                      ),
-                ),
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: Container(
+          constraints: const BoxConstraints(
+            minWidth: 120,
+            minHeight: 45,
+          ),
+          decoration: BoxDecoration(
+            color: color ?? GawTheme.mainTint,
+            borderRadius: BorderRadius.circular(5),
+            boxShadow: const [
+              Shadows.mainShadow,
+            ],
+          ),
+          padding: padding,
+          alignment: Alignment.center,
+          child: Center(
+            child: loading
+                ? const LoadingSpinner(
+                    color: GawTheme.clearBackground,
+                  )
+                : MainText(
+                    label ?? '',
+                    alignment: TextAlign.center,
+                    textStyleOverride: textStyleOverride ??
+                        TextStyles.mainStyleTitle.copyWith(
+                          fontSize: 18,
+                          color: textColor ?? GawTheme.mainTintText,
+                        ),
+                  ),
+          ),
         ),
       ),
     );
