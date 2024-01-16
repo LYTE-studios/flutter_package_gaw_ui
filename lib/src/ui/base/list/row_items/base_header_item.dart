@@ -19,8 +19,6 @@ class BaseHeaderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseRowItem(
-      fixedWidth: fixedWidth,
-      flex: flex,
       child: MainText(
         label,
       ),
