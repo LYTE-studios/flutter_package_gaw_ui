@@ -10,18 +10,21 @@ class SvgIcon extends StatelessWidget {
 
   final BoxFit? fit;
 
+  final bool useRootPackage;
+
   const SvgIcon(
     this.assetName, {
     super.key,
     this.color,
     this.fit,
+    this.useRootPackage = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
       assetName,
-      package: kPackageName,
+      package: useRootPackage ? null : kPackageName,
       fit: fit ?? BoxFit.contain,
       colorFilter: ColorFilter.mode(
         color ?? GawTheme.mainTint,

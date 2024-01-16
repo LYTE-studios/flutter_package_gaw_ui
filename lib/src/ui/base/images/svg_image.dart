@@ -11,12 +11,15 @@ class SvgImage extends StatelessWidget {
 
   final double? width;
 
+  final bool useRootPackage;
+
   const SvgImage(
     this.assetName, {
     super.key,
     this.fit,
     this.width,
     this.height,
+    this.useRootPackage = false,
   });
 
   @override
@@ -26,7 +29,7 @@ class SvgImage extends StatelessWidget {
         assetName,
         height: height,
         width: width,
-        package: kPackageName,
+        package: useRootPackage ? null : kPackageName,
         fit: fit ?? BoxFit.fitWidth,
       ),
     );
