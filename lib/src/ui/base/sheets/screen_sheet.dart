@@ -18,7 +18,6 @@ class ScreenSheet extends StatelessWidget {
         horizontal: PaddingSizes.mainPadding,
       ).copyWith(top: topPadding),
       child: Container(
-        height: MediaQuery.of(context).size.height - topPadding,
         decoration: const BoxDecoration(
           color: GawTheme.clearText,
           borderRadius: BorderRadius.only(
@@ -26,7 +25,7 @@ class ScreenSheet extends StatelessWidget {
             topRight: Radius.circular(12),
           ),
         ),
-        child: SingleChildScrollView(child: child),
+        child: child,
       ),
     );
   }
