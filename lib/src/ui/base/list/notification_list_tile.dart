@@ -64,9 +64,6 @@ class NotificationsListTile extends StatelessWidget {
           decoration: BoxDecoration(
             color: color,
             borderRadius: borderRadius,
-            /*boxShadow: const [
-                Shadows.mainShadow,
-              ],*/
           ),
           child: Row(
             children: [
@@ -101,7 +98,6 @@ class NotificationsListTile extends StatelessWidget {
               label,
               maxLines: 2,
               softWrap: true,
-              //overflow: TextOverflow.fade,
               style: TextStyles.mainStyleTitle.copyWith(
                 color: GawTheme.text,
                 fontWeight: FontWeight.w500,
