@@ -16,7 +16,6 @@ class IconRowItem extends StatelessWidget {
       children: [
         const Spacer(),
         BaseRowItem(
-          fixedWidth: 16,
           child: SvgIcon(
             icon,
             color: GawTheme.unselectedText,

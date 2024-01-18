@@ -55,7 +55,7 @@ final ThemeData fallbackTheme = ThemeData(
   focusColor: GawTheme.mainTint,
   highlightColor: GawTheme.mainTint,
   hintColor: GawTheme.unselectedText,
-  hoverColor: GawTheme.mainTint,
+  hoverColor: Colors.transparent,
   iconTheme: _iconThemeData,
   indicatorColor: GawTheme.text,
   inputDecorationTheme: InputDecorationTheme(

@@ -19,8 +19,6 @@ class TextRowItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseRowItem(
-      fixedWidth: fixedWidth,
-      flex: flex,
       child: MainText(
         value ?? '',
         alignment: TextAlign.left,
