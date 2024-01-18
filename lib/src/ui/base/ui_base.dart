@@ -16,6 +16,7 @@ export 'forms/static/form_title.dart';
 export 'forms/static/wizard_header.dart';
 export 'headers/login_app_header.dart';
 export 'headers/main_app_header.dart';
+export 'headers/header_back_button.dart';
 export 'icons/notification_icon.dart';
 export 'icons/pixel_perfect_icons.dart';
 export 'icons/svg_icon.dart';
