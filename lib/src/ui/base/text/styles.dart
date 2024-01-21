@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TextStyles {
-  static TextStyle mainStyle = GoogleFonts.sourceSans3();
+  static TextStyle mainStyle = GoogleFonts.inter();
 
   static TextStyle mainStyleTitle = mainStyle.copyWith(
     fontWeight: FontWeight.w500,

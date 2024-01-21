@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 import 'package:gaw_ui/src/ui/base/loading/loading_spinner.dart';
 
-class GenericButton extends StatelessWidget {
+class EditButton extends StatelessWidget {
   final String? label;
 
   final Function()? onTap;
@@ -15,13 +15,11 @@ class GenericButton extends StatelessWidget {
 
   final TextStyle? textStyleOverride;
 
-  final bool loading;
-
   final EdgeInsetsGeometry? padding;
 
   final double minHeight;
 
-  const GenericButton({
+  const EditButton({
     super.key,
     this.label,
     this.onTap,
@@ -30,7 +28,6 @@ class GenericButton extends StatelessWidget {
     this.textStyleOverride,
     this.fontSize,
     this.padding,
-    this.loading = false,
     this.minHeight = 45,
   });
 
@@ -51,24 +48,30 @@ class GenericButton extends StatelessWidget {
             boxShadow: const [
               Shadows.mainShadow,
             ],
+            border: Border.all(color: GawTheme.unselectedBackground),
           ),
           padding: padding,
           alignment: Alignment.center,
           child: Center(
-            child: loading
-                ? const LoadingSpinner(
-                    color: GawTheme.clearBackground,
-                  )
-                : MainText(
-                    label ?? '',
-                    alignment: TextAlign.center,
-                    textStyleOverride: textStyleOverride ??
-                        TextStyles.mainStyleTitle.copyWith(
-                          fontSize: fontSize ?? 18,
-                          color: textColor ?? GawTheme.mainTintText,
-                        ),
-                  ),
-          ),
+              child: Row(
+            children: [
+              const SizedBox(
+                width: 10.5,
+                height: 10.5,
+                child: SvgIcon(PixelPerfectIcons.editNormal),
+              ),
+              const SizedBox(width: PaddingSizes.extraSmallPadding),
+              MainText(
+                label ?? '',
+                alignment: TextAlign.center,
+                textStyleOverride: textStyleOverride ??
+                    TextStyles.mainStyleTitle.copyWith(
+                      fontSize: fontSize ?? 18,
+                      color: textColor ?? GawTheme.text,
+                    ),
+              ),
+            ],
+          )),
         ),
       ),
     );
