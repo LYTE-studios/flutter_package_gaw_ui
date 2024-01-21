@@ -60,7 +60,7 @@ class _CmsInputFieldState extends State<CmsInputField> {
         ),
         suffixIcon: !widget.isPasswordField
             ? const SizedBox()
-            : InkWell(
+            : ColorlessInkWell(
                 onTap: () {
                   setState(() {
                     showValues = !showValues;

@@ -33,6 +33,7 @@ flutter:
   assets:
     - assets/images/core/
     - assets/images/map/
+    - assets/images/banner/
     - assets/icons/pixel_perfect/Bold/SVG/UI Basic/
     - assets/icons/pixel_perfect/Medium/SVG/UI Basic/
     - assets/icons/pixel_perfect/Normal/SVG/UI Basic/
