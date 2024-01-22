@@ -37,6 +37,10 @@ class GawDateUtil {
     return DateTime.fromMillisecondsSinceEpoch(dateTime * 1000);
   }
 
+  static int toApi(DateTime dateTime) {
+    return dateTime.millisecondsSinceEpoch ~/ 1000;
+  }
+
   static String formatTime(int time) {
     if (time < 10) {
       return '0$time';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
+import 'package:gaw_ui/src/ui/statistics/static/base_overview_block.dart';
 
 /// Overview block to display count statistics
 class StatisticsOverviewBlock extends StatelessWidget {
@@ -9,30 +10,24 @@ class StatisticsOverviewBlock extends StatelessWidget {
   /// Description to the block
   final String description;
 
+  final EdgeInsets? paddingOverride;
+
   const StatisticsOverviewBlock({
     super.key,
     required this.value,
     required this.description,
+    this.paddingOverride,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: PaddingSizes.extraBigPadding,
-        horizontal: PaddingSizes.smallPadding,
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          color: GawTheme.clearBackground,
-          borderRadius: BorderRadius.circular(12),
-          border: const Border.fromBorderSide(
-            Borders.mainSide,
+      padding: paddingOverride ??
+          const EdgeInsets.symmetric(
+            vertical: PaddingSizes.extraBigPadding,
+            horizontal: PaddingSizes.smallPadding,
           ),
-          boxShadow: const [
-            Shadows.mainShadow,
-          ],
-        ),
+      child: BaseOverviewBlock(
         child: Padding(
           padding: const EdgeInsets.only(
             top: PaddingSizes.bigPadding,
