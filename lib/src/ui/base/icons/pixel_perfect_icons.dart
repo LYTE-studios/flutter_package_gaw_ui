@@ -122,6 +122,8 @@ class PixelPerfectIcons {
 
   static const String calendarNormal = '$normalBasePath/UI Basic/calendar.svg';
 
+  static const String calendarMedium = '$mediumBasePath/UI Basic/calendar.svg';
+
   static const String leftArrowNormal = '$mediumBasePath/Arrows/Left 16.svg';
 
   static const String doorMedium = '$mediumBasePath/UI Basic/home 8.svg';
