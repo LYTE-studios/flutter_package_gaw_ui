@@ -125,6 +125,9 @@ class CmsDateRangePicker extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: GawTheme.clearBackground,
+        boxShadow: const [
+          Shadows.heavyShadow,
+        ],
       ),
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -132,9 +135,7 @@ class CmsDateRangePicker extends StatelessWidget {
         children: [
           DateIntervalSelector(
             value: selectable,
-            onIntervalSelected: (selectable) {
-              onUpdateSelectable?.call(selectable);
-            },
+            onIntervalSelected: onUpdateSelectable,
           ),
           Expanded(
             child: Padding(

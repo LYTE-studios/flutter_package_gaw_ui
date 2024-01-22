@@ -73,6 +73,8 @@ class PixelPerfectIcons {
 
   // NAVIGATION
 
+  static const String customUser = '$customBasePath/2 User.svg';
+
   static const String profilePicture =
       '$customBasePath/default_profile_picture.svg';
   static const String sentMedium = '$customBasePath/sent.svg';

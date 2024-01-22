@@ -10,19 +10,23 @@ class StatisticsOverviewBlock extends StatelessWidget {
   /// Description to the block
   final String description;
 
+  final EdgeInsets? paddingOverride;
+
   const StatisticsOverviewBlock({
     super.key,
     required this.value,
     required this.description,
+    this.paddingOverride,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: PaddingSizes.extraBigPadding,
-        horizontal: PaddingSizes.smallPadding,
-      ),
+      padding: paddingOverride ??
+          const EdgeInsets.symmetric(
+            vertical: PaddingSizes.extraBigPadding,
+            horizontal: PaddingSizes.smallPadding,
+          ),
       child: BaseOverviewBlock(
         child: Padding(
           padding: const EdgeInsets.only(

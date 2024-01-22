@@ -8,6 +8,11 @@ class Shadows {
     blurRadius: 16,
   );
 
+  static const BoxShadow heavyShadow = BoxShadow(
+    color: GawTheme.darkShadow,
+    blurRadius: 21,
+  );
+
   static const BoxShadow bottomShadow = BoxShadow(
     color: GawTheme.darkShadow,
     offset: Offset(0, 48),

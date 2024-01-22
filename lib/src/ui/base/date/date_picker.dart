@@ -139,21 +139,27 @@ class DateRangePicker extends StatefulWidget {
 }
 
 class DateRangePickerState extends State<DateRangePicker> {
-  late DateTime? start = widget.initialStart;
+  DateRangePickerController controller = DateRangePickerController();
 
+  late DateTime? oldStart;
+  late DateTime? oldEnd;
+
+  late DateTime? start = widget.initialStart;
   late DateTime? end = widget.initialEnd;
 
   @override
-  void didChangeDependencies() {
-    setState(() {
-      start = widget.initialStart;
-      end = widget.initialEnd;
-    });
-    super.didChangeDependencies();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    if (oldStart != widget.initialStart || oldEnd != widget.initialEnd) {
+      setState(() {
+        start = widget.initialStart;
+        end = widget.initialEnd;
+
+        oldStart = widget.initialStart;
+        oldEnd = widget.initialEnd;
+      });
+      controller.notifyPropertyChangedListeners('update');
+    }
+
     return Padding(
       padding: !widget.isSheet
           ? const EdgeInsets.all(PaddingSizes.smallPadding)
@@ -278,6 +284,7 @@ class DateRangePickerState extends State<DateRangePicker> {
                       child: SizedBox(
                         height: 540,
                         child: SfDateRangePicker(
+                          controller: DateRangePickerController(),
                           initialSelectedRange: PickerDateRange(
                             start,
                             end,
