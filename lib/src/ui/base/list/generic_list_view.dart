@@ -50,46 +50,39 @@ class _GenericListViewState extends State<GenericListView> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return SizedBox(
-        height: constraints.maxHeight,
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: PaddingSizes.mainPadding,
-              ),
-              child: ListViewHeader(
-                headerLabel: widget.title ?? '',
-                onDelete: widget.onDelete,
-                onSearch: widget.onSearch,
-              ),
-            ),
-            widget.header,
-            Expanded(
-              child: ListView(
-                children: widget.rows,
-              ),
-            ),
-            Visibility(
-              visible: widget.showFooter,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: PaddingSizes.mainPadding,
-                ),
-                child: ListViewFooter(
-                  valueName: widget.valueName,
-                  totalItems: widget.totalItems ?? 0,
-                  pages: showPages
-                      ? 0
-                      : widget.totalItems! ~/ widget.itemsPerPage!,
-                  itemsPerPage: widget.totalItems ?? 0,
-                ),
-              ),
-            ),
-          ],
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: PaddingSizes.mainPadding,
+          ),
+          child: ListViewHeader(
+            headerLabel: widget.title ?? '',
+            onDelete: widget.onDelete,
+            onSearch: widget.onSearch,
+          ),
         ),
-      );
-    });
+        widget.header,
+        Expanded(
+          child: ListView(
+            children: widget.rows,
+          ),
+        ),
+        Visibility(
+          visible: widget.showFooter,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: PaddingSizes.mainPadding,
+            ),
+            child: ListViewFooter(
+              valueName: widget.valueName,
+              totalItems: widget.totalItems ?? 0,
+              pages: showPages ? 0 : widget.totalItems! ~/ widget.itemsPerPage!,
+              itemsPerPage: widget.totalItems ?? 0,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

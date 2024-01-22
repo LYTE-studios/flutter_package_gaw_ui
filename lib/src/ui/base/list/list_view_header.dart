@@ -34,7 +34,7 @@ class ListViewHeader extends StatelessWidget {
             child: MainText(
               headerLabel,
               textStyleOverride: TextStyles.mainStyleTitle.copyWith(
-                fontSize: 21,
+                fontSize: 18,
               ),
             ),
           ),

@@ -20,7 +20,7 @@ class BaseListHeader extends StatelessWidget {
           child: MainText(
             label,
             textStyleOverride: TextStyles.mainStyleTitle.copyWith(
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),
@@ -36,7 +36,7 @@ class BaseListHeader extends StatelessWidget {
         horizontal: PaddingSizes.bigPadding,
       ),
       child: Container(
-        height: 48,
+        height: 45,
         decoration: const BoxDecoration(
           border: Border(
             bottom: Borders.mainSide,

@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
@@ -15,7 +17,7 @@ class HeaderBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return ColorlessInkWell(
       onTap: goBack,
       child: SizedBox(
         height: 78,

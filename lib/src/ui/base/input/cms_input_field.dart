@@ -43,15 +43,15 @@ class _CmsInputFieldState extends State<CmsInputField> {
           color: GawTheme.unselectedText,
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: Borders.mainTintLightSide,
+          borderSide: Borders.lightSelectedInputSide,
           borderRadius: BorderRadius.circular(8),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: Borders.lightSide,
+          borderSide: Borders.lightUnselectedInputSide,
           borderRadius: BorderRadius.circular(8),
         ),
         border: OutlineInputBorder(
-          borderSide: Borders.lightSide,
+          borderSide: Borders.lightUnselectedInputSide,
           borderRadius: BorderRadius.circular(8),
         ),
         label: MainText(
@@ -60,7 +60,7 @@ class _CmsInputFieldState extends State<CmsInputField> {
         ),
         suffixIcon: !widget.isPasswordField
             ? const SizedBox()
-            : InkWell(
+            : ColorlessInkWell(
                 onTap: () {
                   setState(() {
                     showValues = !showValues;

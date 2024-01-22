@@ -74,6 +74,8 @@ class PixelPerfectIcons {
 
   // NAVIGATION
 
+  static const String customUser = '$customBasePath/2 User.svg';
+
   static const String profilePicture =
       '$customBasePath/default_profile_picture.svg';
   static const String sentMedium = '$customBasePath/sent.svg';
@@ -122,6 +124,8 @@ class PixelPerfectIcons {
   static const String checkMedium = '$mediumBasePath/UI Basic/check.svg';
 
   static const String calendarNormal = '$normalBasePath/UI Basic/calendar.svg';
+
+  static const String calendarMedium = '$mediumBasePath/UI Basic/calendar.svg';
 
   static const String leftArrowNormal = '$mediumBasePath/Arrows/Left 16.svg';
 
