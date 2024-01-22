@@ -53,7 +53,8 @@ class PixelPerfectIcons {
     arrowBack,
     washers,
     upload,
-    info,
+    netherlands,
+    unitedKingdom,
   ];
 
   static String resolvePackageName(String path) {
@@ -85,8 +86,6 @@ class PixelPerfectIcons {
   static const String bellMedium = '$customBasePath/bell.svg';
 
   static const String workMedium = '$customBasePath/work.svg';
-
-  static const String customUsers = '$customBasePath/users.svg';
 
   static const String notificationMedium = '$customBasePath/notification.svg';
 
@@ -180,5 +179,7 @@ class PixelPerfectIcons {
 
   static const String upload = '$customBasePath/upload.svg';
 
-  static const String info = '$customBasePath/info.svg';
+  static const String netherlands = '$customBasePath/netherlands.svg';
+
+  static const String unitedKingdom = '$customBasePath/united_kingdom.svg';
 }

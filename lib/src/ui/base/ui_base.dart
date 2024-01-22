@@ -60,3 +60,4 @@ export 'text/input_title_text.dart';
 export 'text/main_text.dart';
 export 'text/styles.dart';
 export 'tools/tool_selector.dart';
+export 'buttons/rotating_icon.dart';
