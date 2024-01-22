@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class DateIntervalPicker extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -121,9 +120,18 @@ class DateIntervalPickerState extends State<DateIntervalPicker>
 class DateRangePicker extends StatefulWidget {
   final Function(DateTime, DateTime)? onRangeSelected;
 
+  final bool isSheet;
+
+  final DateTime? initialStart;
+
+  final DateTime? initialEnd;
+
   const DateRangePicker({
     super.key,
     this.onRangeSelected,
+    this.isSheet = true,
+    this.initialStart,
+    this.initialEnd,
   });
 
   @override
@@ -131,40 +139,66 @@ class DateRangePicker extends StatefulWidget {
 }
 
 class DateRangePickerState extends State<DateRangePicker> {
-  DateTime? start;
+  DateRangePickerController controller = DateRangePickerController();
 
-  DateTime? end;
+  late DateTime? oldStart;
+  late DateTime? oldEnd;
+
+  late DateTime? start = widget.initialStart;
+  late DateTime? end = widget.initialEnd;
 
   @override
   Widget build(BuildContext context) {
+    if (oldStart != widget.initialStart || oldEnd != widget.initialEnd) {
+      setState(() {
+        start = widget.initialStart;
+        end = widget.initialEnd;
+
+        oldStart = widget.initialStart;
+        oldEnd = widget.initialEnd;
+      });
+      controller.notifyPropertyChangedListeners('update');
+    }
+
     return Padding(
-      padding: const EdgeInsets.all(PaddingSizes.mainPadding),
+      padding: !widget.isSheet
+          ? const EdgeInsets.all(PaddingSizes.smallPadding)
+          : const EdgeInsets.all(PaddingSizes.mainPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Center(
-            child: ToolSelector(),
-          ),
-          const SizedBox(
-            height: PaddingSizes.bigPadding,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: PaddingSizes.extraBigPadding,
-              left: PaddingSizes.bigPadding,
-              bottom: PaddingSizes.mainPadding,
-            ),
-            child: MainText(
-              LocaleKeys.selectDates.tr(),
-              textStyleOverride: TextStyles.titleStyle.copyWith(
-                fontSize: 18,
-                fontWeight: FontWeight.w800,
-              ),
+          Visibility(
+            visible: widget.isSheet,
+            child: Column(
+              children: [
+                const Center(
+                  child: ToolSelector(),
+                ),
+                const SizedBox(
+                  height: PaddingSizes.bigPadding,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: PaddingSizes.extraBigPadding,
+                    left: PaddingSizes.bigPadding,
+                    bottom: PaddingSizes.mainPadding,
+                  ),
+                  child: MainText(
+                    LocaleKeys.selectDates.tr(),
+                    textStyleOverride: TextStyles.titleStyle.copyWith(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(PaddingSizes.mainPadding),
+              padding: !widget.isSheet
+                  ? EdgeInsets.zero
+                  : const EdgeInsets.all(PaddingSizes.mainPadding),
               child: Column(
                 children: [
                   LayoutBuilder(
@@ -250,6 +284,11 @@ class DateRangePickerState extends State<DateRangePicker> {
                       child: SizedBox(
                         height: 540,
                         child: SfDateRangePicker(
+                          controller: DateRangePickerController(),
+                          initialSelectedRange: PickerDateRange(
+                            start,
+                            end,
+                          ),
                           backgroundColor: Colors.transparent,
                           onSelectionChanged:
                               (dateRangePickerSelectionChangedArgs) {
@@ -302,9 +341,11 @@ class DateRangePickerState extends State<DateRangePicker> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
+                    padding: EdgeInsets.symmetric(
                       horizontal: PaddingSizes.smallPadding,
-                      vertical: PaddingSizes.bigPadding,
+                      vertical: !widget.isSheet
+                          ? PaddingSizes.smallPadding
+                          : PaddingSizes.bigPadding,
                     ),
                     child: SizedBox(
                       width: double.infinity,
