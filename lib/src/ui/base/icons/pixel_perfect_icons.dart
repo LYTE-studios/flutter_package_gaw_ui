@@ -86,6 +86,8 @@ class PixelPerfectIcons {
 
   static const String workMedium = '$customBasePath/work.svg';
 
+  static const String customUsers = '$customBasePath/users.svg';
+
   static const String notificationMedium = '$customBasePath/notification.svg';
 
   static const String openNotificationMedium =

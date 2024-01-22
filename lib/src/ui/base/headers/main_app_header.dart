@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
-import 'package:gaw_ui/src/ui/base/headers/header_back_button.dart';
 import 'package:gaw_ui/src/utility/constants.dart';
 
 class MainAppHeader extends StatelessWidget {

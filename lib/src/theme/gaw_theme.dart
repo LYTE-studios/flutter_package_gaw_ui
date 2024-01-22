@@ -50,7 +50,7 @@ class GawTheme {
   );
 
   static const unselectedMainTint = ColorRef(
-    Color.fromRGBO(78, 171, 233, 0.6),
+    Color.fromRGBO(161, 213, 255, 0.6),
   );
 
   static const mainTintText = ColorRef(

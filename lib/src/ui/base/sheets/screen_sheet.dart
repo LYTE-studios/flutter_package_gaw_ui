@@ -29,7 +29,9 @@ class ScreenSheet extends StatelessWidget {
             topRight: Radius.circular(12),
           ),
         ),
-        child: SingleChildScrollView(child: child),
+        child: SingleChildScrollView(
+          child: child,
+        ),
       ),
     );
   }

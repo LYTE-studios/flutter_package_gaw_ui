@@ -198,7 +198,7 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
         barTouchData: BarTouchData(
           touchTooltipData: BarTouchTooltipData(
             tooltipBgColor: Colors.blueGrey,
-            getTooltipItem: (_a, _b, _c, _d) => null,
+            getTooltipItem: (a, b, c, d) => null,
           ),
         ),
         titlesData: FlTitlesData(

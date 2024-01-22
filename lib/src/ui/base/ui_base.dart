@@ -11,6 +11,7 @@ export 'divider/gaw_divider.dart';
 export 'filters/unselected_blur.dart';
 export 'forms/input/input_text_form.dart';
 export 'forms/static/form_item_divider.dart';
+export 'buttons/action_button.dart';
 export 'forms/static/form_number_selector.dart';
 export 'forms/static/form_sub_title.dart';
 export 'forms/static/form_title.dart';

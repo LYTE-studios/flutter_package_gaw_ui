@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
-import 'package:gaw_ui/src/ui/base/loading/loading_spinner.dart';
 
 class EditButton extends StatelessWidget {
   final String? label;
@@ -53,25 +52,32 @@ class EditButton extends StatelessWidget {
           padding: padding,
           alignment: Alignment.center,
           child: Center(
-              child: Row(
-            children: [
-              const SizedBox(
-                width: 10.5,
-                height: 10.5,
-                child: SvgIcon(PixelPerfectIcons.editNormal),
-              ),
-              const SizedBox(width: PaddingSizes.extraSmallPadding),
-              MainText(
-                label ?? '',
-                alignment: TextAlign.center,
-                textStyleOverride: textStyleOverride ??
-                    TextStyles.mainStyleTitle.copyWith(
-                      fontSize: fontSize ?? 18,
-                      color: textColor ?? GawTheme.text,
-                    ),
-              ),
-            ],
-          )),
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 16,
+                  height: 16,
+                  child: SvgIcon(
+                    PixelPerfectIcons.editNormal,
+                    color: GawTheme.text,
+                  ),
+                ),
+                const SizedBox(
+                  width: PaddingSizes.extraSmallPadding,
+                ),
+                MainText(
+                  label ?? '',
+                  alignment: TextAlign.center,
+                  textStyleOverride: textStyleOverride ??
+                      TextStyles.mainStyleTitle.copyWith(
+                        fontWeight: FontWeight.w700,
+                        fontSize: fontSize ?? 18,
+                        color: textColor ?? GawTheme.text,
+                      ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
