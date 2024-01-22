@@ -77,6 +77,8 @@ class PixelPerfectIcons {
 
   static const String customUser = '$customBasePath/2 User.svg';
 
+  static const String customUsers = '$customBasePath/users.svg';
+
   static const String profilePicture =
       '$customBasePath/default_profile_picture.svg';
   static const String sentMedium = '$customBasePath/sent.svg';
@@ -155,6 +157,8 @@ class PixelPerfectIcons {
   static const String lineChart = '$customBasePath/line_chart.svg';
 
   static const String applicationSent = '$customBasePath/application_sent.svg';
+
+  static const String info = '$customBasePath/info.svg';
 
   static const String emailSent = '$customBasePath/email_sent.svg';
 
