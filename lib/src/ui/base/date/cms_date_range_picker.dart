@@ -36,8 +36,9 @@ class CmsExpandableDateRangePicker extends StatelessWidget {
           ColorlessInkWell(
             onTap: toggleExpand,
             child: Padding(
-              padding: const EdgeInsets.all(
-                PaddingSizes.mainPadding,
+              padding: const EdgeInsets.only(
+                right: PaddingSizes.mainPadding,
+                top: PaddingSizes.mainPadding,
               ),
               child: Container(
                 width: 91,
@@ -136,11 +137,16 @@ class CmsDateRangePicker extends StatelessWidget {
             },
           ),
           Expanded(
-            child: DateRangePicker(
-              isSheet: false,
-              initialStart: initialStart,
-              initialEnd: initialEnd,
-              onRangeSelected: onUpdateDates,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: PaddingSizes.mainPadding,
+              ),
+              child: DateRangePicker(
+                isSheet: false,
+                initialStart: initialStart,
+                initialEnd: initialEnd,
+                onRangeSelected: onUpdateDates,
+              ),
             ),
           )
         ],
@@ -164,41 +170,60 @@ class DateIntervalSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Column(
-          children: [
-            buildCheckBox(
-              DateIntervalSelectable.thisYear,
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(
+              PaddingSizes.mainPadding,
             ),
-            buildCheckBox(
-              DateIntervalSelectable.thisMonth,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildCheckBox(
+                  DateIntervalSelectable.thisYear,
+                ),
+                buildCheckBox(
+                  DateIntervalSelectable.thisMonth,
+                ),
+                buildCheckBox(
+                  DateIntervalSelectable.thisWeek,
+                ),
+              ],
             ),
-            buildCheckBox(
-              DateIntervalSelectable.thisWeek,
-            ),
-          ],
+          ),
         ),
-        Column(
-          children: [
-            buildCheckBox(
-              DateIntervalSelectable.lastYear,
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(
+              PaddingSizes.mainPadding,
             ),
-            buildCheckBox(
-              DateIntervalSelectable.lastMonth,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildCheckBox(
+                  DateIntervalSelectable.lastYear,
+                ),
+                buildCheckBox(
+                  DateIntervalSelectable.lastMonth,
+                ),
+                buildCheckBox(
+                  DateIntervalSelectable.lastWeek,
+                ),
+              ],
             ),
-            buildCheckBox(
-              DateIntervalSelectable.lastWeek,
-            ),
-          ],
+          ),
         ),
       ],
     );
   }
 
   Widget buildCheckBox(DateIntervalSelectable selectable) {
-    return NamedCheckBox(
-      label: selectable.getLabel(),
-      onToggle: () => onIntervalSelected?.call(selectable),
-      value: value == selectable,
+    return Padding(
+      padding: const EdgeInsets.all(PaddingSizes.smallPadding),
+      child: NamedCheckBox(
+        label: selectable.getLabel(),
+        onToggle: () => onIntervalSelected?.call(selectable),
+        value: value == selectable,
+      ),
     );
   }
 }

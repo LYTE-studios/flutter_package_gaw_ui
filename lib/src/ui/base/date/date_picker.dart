@@ -163,29 +163,29 @@ class DateRangePickerState extends State<DateRangePicker> {
         children: [
           Visibility(
             visible: widget.isSheet,
-            child: const Column(
+            child: Column(
               children: [
-                Center(
+                const Center(
                   child: ToolSelector(),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: PaddingSizes.bigPadding,
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: PaddingSizes.extraBigPadding,
+                    left: PaddingSizes.bigPadding,
+                    bottom: PaddingSizes.mainPadding,
+                  ),
+                  child: MainText(
+                    LocaleKeys.selectDates.tr(),
+                    textStyleOverride: TextStyles.titleStyle.copyWith(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ),
               ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: PaddingSizes.extraBigPadding,
-              left: PaddingSizes.bigPadding,
-              bottom: PaddingSizes.mainPadding,
-            ),
-            child: MainText(
-              LocaleKeys.selectDates.tr(),
-              textStyleOverride: TextStyles.titleStyle.copyWith(
-                fontSize: 18,
-                fontWeight: FontWeight.w800,
-              ),
             ),
           ),
           Expanded(

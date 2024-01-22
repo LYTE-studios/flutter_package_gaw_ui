@@ -17,16 +17,21 @@ class NamedCheckBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SmallCheckBox(
-          onToggle: onToggle,
-          value: value,
-        ),
-        MainText(
-          label,
-        ),
-      ],
+    return ColorlessInkWell(
+      onTap: onToggle,
+      child: Row(
+        children: [
+          SmallCheckBox(
+            value: value,
+          ),
+          const SizedBox(
+            width: PaddingSizes.smallPadding,
+          ),
+          MainText(
+            label,
+          ),
+        ],
+      ),
     );
   }
 }
