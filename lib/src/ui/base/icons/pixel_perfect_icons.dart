@@ -53,6 +53,8 @@ class PixelPerfectIcons {
     arrowBack,
     washers,
     upload,
+    netherlands,
+    unitedKingdom,
   ];
 
   static String resolvePackageName(String path) {
@@ -172,4 +174,8 @@ class PixelPerfectIcons {
   static const String dropPin = '$customBasePath/drop_pin.svg';
 
   static const String upload = '$customBasePath/upload.svg';
+
+  static const String netherlands = '$customBasePath/netherlands.svg';
+
+  static const String unitedKingdom = '$customBasePath/united_kingdom.svg';
 }
