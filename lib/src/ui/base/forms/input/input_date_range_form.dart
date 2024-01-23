@@ -40,9 +40,9 @@ class InputDateRangeForm extends StatelessWidget {
       label: label,
       child: ColorlessInkWell(
         onTap: () => showPicker(context),
-        child: InputTextForm(
+        child: GawStandaloneTextField(
           hint: hint,
-          text: GawDateUtil.formatDateInterval(
+          text: GawDateUtil.formatFullDateInterval(
             start,
             end,
           ),

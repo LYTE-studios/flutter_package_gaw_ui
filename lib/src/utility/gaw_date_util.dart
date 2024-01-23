@@ -48,18 +48,50 @@ class GawDateUtil {
     return time.toString();
   }
 
-  static String formatDate(DateTime dateTime) {
+  static String formatDate(DateTime? dateTime) {
+    if (dateTime == null) {
+      return '';
+    }
     return '${dateTime.day}/${dateTime.month}';
+  }
+
+  static String? tryFormatFullDate(DateTime? dateTime) {
+    if (dateTime == null) {
+      return null;
+    }
+    return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
+  }
+
+  static String formatFullDate(DateTime? dateTime) {
+    if (dateTime == null) {
+      return '';
+    }
+    return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
+  }
+
+  static String? tryFormatTimeInterval(DateTime? startTime, DateTime? endTime) {
+    if (startTime == null || endTime == null) {
+      return null;
+    }
+
+    return '${formatTime(startTime.hour)}:${formatTime(startTime.minute)} - ${formatTime(endTime.hour)}:${formatTime(endTime.minute)}';
   }
 
   static String formatTimeInterval(DateTime startTime, DateTime endTime) {
     return '${formatTime(startTime.hour)}:${formatTime(startTime.minute)} - ${formatTime(endTime.hour)}:${formatTime(endTime.minute)}';
   }
 
-  static formatDateInterval(DateTime? startDate, DateTime? endDate) {
+  static String formatDateInterval(DateTime? startDate, DateTime? endDate) {
     if (startDate == null && endDate == null) {
       return 'Anytime';
     }
     return '${startDate == null ? '...' : GawDateUtil.formatDate(startDate)} - ${endDate == null ? '...' : GawDateUtil.formatDate(endDate)}';
+  }
+
+  static String formatFullDateInterval(DateTime? startDate, DateTime? endDate) {
+    if (startDate == null && endDate == null) {
+      return 'Anytime';
+    }
+    return '${startDate == null ? '...' : GawDateUtil.formatFullDate(startDate)} - ${endDate == null ? '...' : GawDateUtil.formatFullDate(endDate)}';
   }
 }
