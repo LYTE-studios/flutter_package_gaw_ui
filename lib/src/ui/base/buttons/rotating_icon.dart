@@ -51,7 +51,7 @@ class _RotatingIconState extends State<RotatingIcon>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(5.0),
       child: SizedBox(
         width: 16,
         height: 16,
@@ -59,24 +59,13 @@ class _RotatingIconState extends State<RotatingIcon>
           turns: widget.rotate ? -widget.turns : 0,
           duration: const Duration(milliseconds: 200),
           child: RotatedBox(
-            quarterTurns: widget.rotation,
-            child: SvgIcon(
-              widget.iconUrl,
-              color: widget.color,
-              )
-            ),
+              quarterTurns: widget.rotation,
+              child: SvgIcon(
+                widget.iconUrl,
+                color: widget.color,
+              )),
         ),
       ),
     );
   }
 }
-
-// Padding(
-//                 padding: const EdgeInsets.only(right: 4),
-//                 child: RotatingIcon(
-//                   iconUrl: PixelPerfectIcons.arrowRightMedium,
-//                   rotate: _rotateIcon,
-//                   turns: 0.5,
-//                   rotation: 1,
-//                 ),
-//               ),

@@ -18,7 +18,11 @@ class AddressButton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
-          color: GawTheme.mainTint,
+          border: Border.fromBorderSide(
+            Borders.mainSide.copyWith(
+              color: GawTheme.secondaryTint.withOpacity(0.6),
+            ),
+          ),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -27,7 +31,7 @@ class AddressButton extends StatelessWidget {
           ),
           child: MainText(
             label,
-            color: GawTheme.clearText,
+            color: GawTheme.secondaryTint.withOpacity(0.4),
             fontWeight: FontWeight.w600,
             fontSize: 10,
           ),

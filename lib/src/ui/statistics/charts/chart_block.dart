@@ -39,7 +39,9 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
         border: const Border.fromBorderSide(
           Borders.mainSide,
         ),
-        boxShadow: const [Shadows.mainShadow],
+        boxShadow: const [
+          Shadows.mainShadow,
+        ],
       ),
       margin: widget.overriddenPadding ?? const EdgeInsets.all(16),
       padding: const EdgeInsets.all(16),
@@ -197,7 +199,7 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
         maxY: widget.showWeekly ? 41 : 13,
         barTouchData: BarTouchData(
           touchTooltipData: BarTouchTooltipData(
-            tooltipBgColor: Colors.blueGrey,
+            tooltipBgColor: GawTheme.mainTint,
             getTooltipItem: (a, b, c, d) => null,
           ),
         ),
