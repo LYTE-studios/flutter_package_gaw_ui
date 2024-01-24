@@ -14,7 +14,9 @@ export 'src/mixins/screen_state_mixin.dart';
 export 'src/theme/fallback_theme.dart';
 export 'src/theme/gaw_theme.dart';
 // -- UI --
-export 'src/ui/ui.dart'; // -- UTILITY --
+export 'src/ui/ui.dart';
+export 'src/utility/dialog_util.dart';
+// -- UTILITY --
 export 'src/utility/gaw_date_util.dart';
 export 'src/utility/list_util.dart';
 export 'src/utility/routing_utils.dart';

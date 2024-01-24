@@ -118,7 +118,11 @@ class DateIntervalPickerState extends State<DateIntervalPicker>
 }
 
 class DateRangePicker extends StatefulWidget {
+  final bool singleDatePicker;
+
   final Function(DateTime, DateTime)? onRangeSelected;
+
+  final Function(DateTime)? onDateSelected;
 
   final bool isSheet;
 
@@ -128,6 +132,8 @@ class DateRangePicker extends StatefulWidget {
 
   const DateRangePicker({
     super.key,
+    this.singleDatePicker = false,
+    this.onDateSelected,
     this.onRangeSelected,
     this.isSheet = true,
     this.initialStart,
@@ -139,13 +145,13 @@ class DateRangePicker extends StatefulWidget {
 }
 
 class DateRangePickerState extends State<DateRangePicker> {
-  DateRangePickerController controller = DateRangePickerController();
-
-  late DateTime? oldStart;
-  late DateTime? oldEnd;
+  ValueKey<bool> pickerKey = const ValueKey(true);
 
   late DateTime? start = widget.initialStart;
   late DateTime? end = widget.initialEnd;
+
+  late DateTime? oldStart = start;
+  late DateTime? oldEnd = end;
 
   @override
   Widget build(BuildContext context) {
@@ -156,8 +162,9 @@ class DateRangePickerState extends State<DateRangePicker> {
 
         oldStart = widget.initialStart;
         oldEnd = widget.initialEnd;
+
+        pickerKey = ValueKey(!pickerKey.value);
       });
-      controller.notifyPropertyChangedListeners('update');
     }
 
     return Padding(
@@ -283,60 +290,131 @@ class DateRangePickerState extends State<DateRangePicker> {
                     child: SingleChildScrollView(
                       child: SizedBox(
                         height: 540,
-                        child: SfDateRangePicker(
-                          controller: DateRangePickerController(),
-                          initialSelectedRange: PickerDateRange(
-                            start,
-                            end,
-                          ),
-                          backgroundColor: Colors.transparent,
-                          onSelectionChanged:
-                              (dateRangePickerSelectionChangedArgs) {
-                            PickerDateRange range =
-                                dateRangePickerSelectionChangedArgs.value;
+                        child: widget.singleDatePicker
+                            ? SfDateRangePicker(
+                                key: pickerKey,
+                                backgroundColor: Colors.transparent,
+                                initialSelectedDate: widget.initialStart,
+                                onSelectionChanged:
+                                    (dateRangePickerSelectionChangedArgs) {
+                                  if (widget.singleDatePicker) {
+                                    setState(() {
+                                      start =
+                                          dateRangePickerSelectionChangedArgs
+                                              .value;
+                                    });
+                                    return;
+                                  }
 
-                            setState(() {
-                              start = range.startDate;
-                              end = range.endDate;
-                            });
-                          },
-                          viewSpacing: PaddingSizes.mainPadding,
-                          selectionMode: DateRangePickerSelectionMode.range,
-                          view: DateRangePickerView.month,
-                          selectionShape:
-                              DateRangePickerSelectionShape.rectangle,
-                          enableMultiView: true,
-                          allowViewNavigation: true,
-                          todayHighlightColor: GawTheme.secondaryTint,
-                          selectionRadius: 1,
-                          rangeSelectionColor:
-                              GawTheme.secondaryTint.withOpacity(
-                            0.1,
-                          ),
-                          startRangeSelectionColor: GawTheme.secondaryTint,
-                          endRangeSelectionColor: GawTheme.secondaryTint,
-                          navigationDirection:
-                              DateRangePickerNavigationDirection.vertical,
-                          navigationMode: DateRangePickerNavigationMode.scroll,
-                          headerStyle: DateRangePickerHeaderStyle(
-                            backgroundColor: GawTheme.pickerBackground,
-                            textStyle: TextStyles.titleStyle.copyWith(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          selectionColor: GawTheme.secondaryTint,
-                          monthViewSettings: DateRangePickerMonthViewSettings(
-                            viewHeaderHeight: 0,
-                            viewHeaderStyle: DateRangePickerViewHeaderStyle(
-                              backgroundColor: Colors.transparent,
-                              textStyle: TextStyles.mainStyle,
-                            ),
-                            dayFormat: 'E',
-                            firstDayOfWeek: 1,
-                            numberOfWeeksInView: 5,
-                          ),
-                        ),
+                                  PickerDateRange range =
+                                      dateRangePickerSelectionChangedArgs.value;
+
+                                  setState(() {
+                                    start = range.startDate;
+                                    end = range.endDate;
+                                  });
+                                },
+                                viewSpacing: PaddingSizes.mainPadding,
+                                selectionMode:
+                                    DateRangePickerSelectionMode.single,
+                                view: DateRangePickerView.month,
+                                selectionShape:
+                                    DateRangePickerSelectionShape.rectangle,
+                                enableMultiView: true,
+                                allowViewNavigation: true,
+                                todayHighlightColor: GawTheme.secondaryTint,
+                                selectionRadius: 1,
+                                rangeSelectionColor:
+                                    GawTheme.secondaryTint.withOpacity(
+                                  0.1,
+                                ),
+                                startRangeSelectionColor:
+                                    GawTheme.secondaryTint,
+                                endRangeSelectionColor: GawTheme.secondaryTint,
+                                navigationDirection:
+                                    DateRangePickerNavigationDirection.vertical,
+                                navigationMode:
+                                    DateRangePickerNavigationMode.scroll,
+                                headerStyle: DateRangePickerHeaderStyle(
+                                  backgroundColor: GawTheme.pickerBackground,
+                                  textStyle: TextStyles.titleStyle.copyWith(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                selectionColor: GawTheme.secondaryTint,
+                                monthViewSettings:
+                                    DateRangePickerMonthViewSettings(
+                                  viewHeaderHeight: 0,
+                                  viewHeaderStyle:
+                                      DateRangePickerViewHeaderStyle(
+                                    backgroundColor: Colors.transparent,
+                                    textStyle: TextStyles.mainStyle,
+                                  ),
+                                  dayFormat: 'E',
+                                  firstDayOfWeek: 1,
+                                  numberOfWeeksInView: 5,
+                                ),
+                              )
+                            : SfDateRangePicker(
+                                key: pickerKey,
+                                initialSelectedRange: PickerDateRange(
+                                  start,
+                                  end,
+                                ),
+                                backgroundColor: Colors.transparent,
+                                onSelectionChanged:
+                                    (dateRangePickerSelectionChangedArgs) {
+                                  PickerDateRange range =
+                                      dateRangePickerSelectionChangedArgs.value;
+
+                                  setState(() {
+                                    start = range.startDate;
+                                    end = range.endDate;
+                                  });
+                                },
+                                viewSpacing: PaddingSizes.mainPadding,
+                                selectionMode:
+                                    DateRangePickerSelectionMode.range,
+                                view: DateRangePickerView.month,
+                                selectionShape:
+                                    DateRangePickerSelectionShape.rectangle,
+                                enableMultiView: true,
+                                allowViewNavigation: true,
+                                todayHighlightColor: GawTheme.secondaryTint,
+                                selectionRadius: 1,
+                                rangeSelectionColor:
+                                    GawTheme.secondaryTint.withOpacity(
+                                  0.1,
+                                ),
+                                startRangeSelectionColor:
+                                    GawTheme.secondaryTint,
+                                endRangeSelectionColor: GawTheme.secondaryTint,
+                                navigationDirection:
+                                    DateRangePickerNavigationDirection.vertical,
+                                navigationMode:
+                                    DateRangePickerNavigationMode.scroll,
+                                headerStyle: DateRangePickerHeaderStyle(
+                                  backgroundColor: GawTheme.pickerBackground,
+                                  textStyle: TextStyles.titleStyle.copyWith(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                selectionColor: GawTheme.secondaryTint,
+                                monthViewSettings:
+                                    DateRangePickerMonthViewSettings(
+                                  viewHeaderHeight: 0,
+                                  viewHeaderStyle:
+                                      DateRangePickerViewHeaderStyle(
+                                    backgroundColor: Colors.transparent,
+                                    textStyle: TextStyles.mainStyle,
+                                  ),
+                                  dayFormat: 'E',
+                                  firstDayOfWeek: 1,
+                                  numberOfWeeksInView: 5,
+                                ),
+                              ),
                       ),
                     ),
                   ),
@@ -352,15 +430,22 @@ class DateRangePickerState extends State<DateRangePicker> {
                       height: 50,
                       child: GenericButton(
                         onTap: () {
+                          if (widget.singleDatePicker && start != null) {
+                            widget.onDateSelected?.call(start!);
+                            return;
+                          }
+
                           if (start == null || end == null) {
                             return;
                           }
+
                           widget.onRangeSelected?.call(start!, end!);
                         },
-                        label: LocaleKeys.selectDates.tr(),
-                        color: start == null || end == null
-                            ? GawTheme.unselectedBackground
-                            : GawTheme.secondaryTint,
+                        label: 'Select',
+                        color: (start != null && end != null) ||
+                                (widget.singleDatePicker && start != null)
+                            ? GawTheme.secondaryTint
+                            : GawTheme.unselectedBackground,
                         textColor: GawTheme.clearText,
                       ),
                     ),

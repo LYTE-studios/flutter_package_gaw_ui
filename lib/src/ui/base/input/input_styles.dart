@@ -23,4 +23,28 @@ class InputStyles {
       PaddingSizes.extraSmallPadding,
     ),
   );
+
+  static InputDecoration largeLightDecoration = InputDecoration(
+    focusedBorder: OutlineInputBorder(
+      borderSide: Borders.lightSelectedInputSide.copyWith(
+        color: GawTheme.mainTint,
+      ),
+      borderRadius: BorderRadius.circular(8),
+    ),
+    border: OutlineInputBorder(
+      borderSide: Borders.lightUnselectedInputSide.copyWith(
+        color: GawTheme.unselectedBackground,
+      ),
+      borderRadius: BorderRadius.circular(8),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderSide: Borders.lightUnselectedInputSide.copyWith(
+        color: GawTheme.unselectedBackground,
+      ),
+      borderRadius: BorderRadius.circular(8),
+    ),
+    contentPadding: const EdgeInsets.all(
+      PaddingSizes.extraSmallPadding,
+    ),
+  );
 }

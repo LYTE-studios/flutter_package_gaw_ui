@@ -65,18 +65,6 @@ final ThemeData fallbackTheme = ThemeData(
     floatingLabelBehavior: FloatingLabelBehavior.auto,
     isCollapsed: false,
     isDense: false,
-    focusedBorder: OutlineInputBorder(
-      borderSide: Borders.selectedInputSide,
-      borderRadius: BorderRadius.circular(8),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderSide: Borders.unselectedInputSide,
-      borderRadius: BorderRadius.circular(8),
-    ),
-    border: OutlineInputBorder(
-      borderSide: Borders.lightSide,
-      borderRadius: BorderRadius.circular(8),
-    ),
     fillColor: GawTheme.mainTint,
     labelStyle: TextStyles.mainStyle,
     floatingLabelStyle: TextStyles.mainStyle.copyWith(

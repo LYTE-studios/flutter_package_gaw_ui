@@ -11,17 +11,22 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  themed: ^5.0.0
-  flutter_svg: ^2.0.7
   carousel_slider: ^4.2.1
-  google_fonts: ^5.1.0
   toggle_switch: ^2.1.0
   syncfusion_flutter_datepicker: ^23.1.36
   syncfusion_flutter_charts: ^23.1.36
   smooth_page_indicator: ^1.1.0
-  easy_localization: ^3.0.2
   carousel_indicator: ^1.0.6
-  fl_chart: ^0.66.0
+  fl_chart: 0.66.0
+  image_picker: ^1.0.7
+  dotted_border: ^2.1.0
+  beamer: ^1.5.6
+  themed: ^5.0.0
+  flutter_svg: ^2.0.7
+  google_fonts: ^5.1.0
+  easy_localization: ^3.0.2
+  flutter_riverpod: ^2.3.10
+  freezed: ^2.4.1
 
 
 dev_dependencies:

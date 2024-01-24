@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
-import 'package:gaw_ui/src/ui/base/buttons/small_check_box.dart';
 
 class BigCheckBox extends StatelessWidget {
   final Function(bool value)? onTap;

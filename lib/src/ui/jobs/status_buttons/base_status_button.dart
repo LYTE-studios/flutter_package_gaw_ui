@@ -51,7 +51,7 @@ class BaseStatusButton extends StatelessWidget {
                   ),
           ),
           label == LocaleKeys.applyForJob.tr()
-              ? Positioned(
+              ? const Positioned(
                   right: 32,
                   top: 14,
                   child: SizedBox(

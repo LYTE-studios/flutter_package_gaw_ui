@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
-import 'package:gaw_ui/src/ui/base/headers/header_back_button.dart';
 import 'package:gaw_ui/src/utility/constants.dart';
 
 class LoginAppHeader extends StatelessWidget {
@@ -36,7 +35,7 @@ class LoginAppHeader extends StatelessWidget {
             ? [
                 BoxShadow(
                   color: GawTheme.unselectedText.withOpacity(0.7),
-                  offset: Offset(0, 4),
+                  offset: const Offset(0, 4),
                   blurRadius: 2,
                 ),
               ]

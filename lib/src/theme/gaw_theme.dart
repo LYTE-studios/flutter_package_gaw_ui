@@ -29,6 +29,10 @@ class GawTheme {
     Color.fromRGBO(217, 217, 217, 1),
   );
 
+  static const border = ColorRef(
+    Color.fromRGBO(189, 189, 189, 1),
+  );
+
   static const toolBarItem = ColorRef(
     Color.fromRGBO(155, 155, 155, 1),
   );
@@ -37,12 +41,16 @@ class GawTheme {
     Color.fromRGBO(51, 54, 63, 1),
   );
 
+  static const specialText = ColorRef(
+    Color.fromRGBO(66, 84, 102, 1),
+  );
+
   static const unselectedText = ColorRef(
     Color.fromRGBO(142, 146, 149, 1),
   );
 
   static const unselectedMainTint = ColorRef(
-    Color.fromRGBO(78, 171, 233, 0.6),
+    Color.fromRGBO(161, 213, 255, 0.6),
   );
 
   static const mainTintText = ColorRef(

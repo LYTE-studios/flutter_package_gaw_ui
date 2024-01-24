@@ -10,12 +10,15 @@ class TabbedView extends StatefulWidget {
 
   final Function(int)? onPageIndexChange;
 
+  final bool isScreenSheet;
+
   const TabbedView({
     super.key,
     required this.tabs,
     required this.selectedIndex,
     required this.pages,
     this.onPageIndexChange,
+    this.isScreenSheet = false,
   });
 
   @override
@@ -26,19 +29,30 @@ class _TabbedViewState extends State<TabbedView> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Row(
           children: buildHeaders(),
         ),
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: GawTheme.unselectedBackground,
+        Expanded(
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: GawTheme.unselectedBackground,
+              ),
+              boxShadow: const [
+                Shadows.heavyShadow,
+              ],
+              borderRadius: widget.isScreenSheet
+                  ? const BorderRadius.only(
+                      topLeft: Radius.circular(12),
+                      topRight: Radius.circular(12),
+                    )
+                  : BorderRadius.circular(7),
+              color: GawTheme.clearBackground,
             ),
-            borderRadius: BorderRadius.circular(7),
-            color: GawTheme.clearText,
+            child: widget.pages[widget.selectedIndex],
           ),
-          child: widget.pages[widget.selectedIndex],
         ),
       ],
     );
@@ -79,44 +93,36 @@ class _TabHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: PaddingSizes.smallPadding,
+      ),
+      child: ColorlessInkWell(
+        onTap: onTap,
         child: Container(
-          margin: const EdgeInsets.only(left: PaddingSizes.smallPadding),
-          padding: const EdgeInsets.only(
-            top: PaddingSizes.mainPadding,
-            left: PaddingSizes.bigPadding,
-            right: PaddingSizes.bigPadding,
-            bottom: PaddingSizes.smallPadding,
-          ),
+          height: 36,
+          width: 120,
           decoration: BoxDecoration(
-            boxShadow: selected
-                ? const [
-                    BoxShadow(
-                      offset: Offset(0, 1.2),
-                      blurRadius: 4.8,
-                      spreadRadius: 0,
-                      color: GawTheme.shadow,
-                    ),
-                  ]
-                : [],
+            boxShadow: const [
+              Shadows.mainShadow,
+            ],
             color: selected
-                ? GawTheme.mainTint
-                : GawTheme.pickerBackground,
+                ? GawTheme.unselectedMainTint
+                : GawTheme.unselectedBackground,
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(10),
               topRight: Radius.circular(10),
             ),
           ),
-          child: MainText(
-            label,
-            textStyleOverride: TextStyle(
-              color: selected
-                  ? GawTheme.secondaryTint
-                  : GawTheme.unselectedText,
-              fontWeight: FontWeight.w700,
+          child: Center(
+            child: MainText(
+              label,
+              textStyleOverride: TextStyle(
+                color:
+                    selected ? GawTheme.secondaryTint : GawTheme.unselectedText,
+                fontWeight: FontWeight.w700,
+                fontSize: 12,
+              ),
             ),
           ),
         ),

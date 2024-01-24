@@ -19,12 +19,12 @@ class Borders {
 
   static const BorderSide lightUnselectedInputSide = BorderSide(
     color: GawTheme.unselectedText,
-    width: 0.7,
+    width: 0.8,
   );
 
   static const BorderSide lightSelectedInputSide = BorderSide(
     color: GawTheme.mainTint,
-    width: 0.7,
+    width: 0.8,
   );
 
   static const BorderSide unselectedInputSide = BorderSide(
