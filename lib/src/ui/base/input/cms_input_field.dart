@@ -77,7 +77,9 @@ class _CmsInputFieldState extends State<CmsInputField> {
                         showValues
                             ? PixelPerfectIcons.eyeHideNormal
                             : PixelPerfectIcons.eyeNormal,
-                        color: GawTheme.unselectedText,
+                        color: showValues ? 
+                          GawTheme.mainTint
+                          : GawTheme.unselectedText,
                       ),
                     ),
                   ),
