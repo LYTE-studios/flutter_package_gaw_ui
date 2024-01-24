@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class DateIntervalPicker extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;

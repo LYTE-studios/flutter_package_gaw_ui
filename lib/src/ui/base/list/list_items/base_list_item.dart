@@ -35,7 +35,7 @@ class BaseListItem extends StatelessWidget {
         horizontal: PaddingSizes.bigPadding,
       ),
       child: Container(
-        height: 42,
+        height: 56,
         decoration: const BoxDecoration(
           border: Border(
             bottom: Borders.lightSide,

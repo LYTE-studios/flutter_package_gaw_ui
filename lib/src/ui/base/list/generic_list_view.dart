@@ -36,10 +36,6 @@ class GenericListView extends StatefulWidget {
     required this.header,
   });
 
-  static const double sColumn = 120;
-  static const double mColumn = 160;
-  static const double lColumn = 210;
-
   @override
   State<GenericListView> createState() => _GenericListViewState();
 }
@@ -50,30 +46,39 @@ class _GenericListViewState extends State<GenericListView> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: PaddingSizes.mainPadding,
-          ),
-          child: ListViewHeader(
+    return LayoutBuilder(builder: (context, constraints) {
+      return Column(
+        children: [
+          ListViewHeader(
             headerLabel: widget.title ?? '',
             onDelete: widget.onDelete,
             onSearch: widget.onSearch,
           ),
-        ),
-        widget.header,
-        Expanded(
-          child: ListView(
-            children: widget.rows,
-          ),
-        ),
-        Visibility(
-          visible: widget.showFooter,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: PaddingSizes.mainPadding,
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minWidth: 700,
+                ),
+                child: SizedBox(
+                  width: constraints.maxWidth,
+                  child: Column(
+                    children: [
+                      widget.header,
+                      Expanded(
+                        child: ListView(
+                          children: widget.rows,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
+          ),
+          Visibility(
+            visible: widget.showFooter,
             child: ListViewFooter(
               valueName: widget.valueName,
               totalItems: widget.totalItems ?? 0,
@@ -81,8 +86,8 @@ class _GenericListViewState extends State<GenericListView> {
               itemsPerPage: widget.totalItems ?? 0,
             ),
           ),
-        ),
-      ],
-    );
+        ],
+      );
+    });
   }
 }

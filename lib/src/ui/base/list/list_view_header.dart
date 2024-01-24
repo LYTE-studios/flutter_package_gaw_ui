@@ -18,23 +18,19 @@ class ListViewHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 56,
-      decoration: const BoxDecoration(
-        border: Border(
-          bottom: Borders.mainSide,
-        ),
-      ),
       child: Row(
         children: [
           Padding(
             padding: const EdgeInsets.only(
-              left: PaddingSizes.smallPadding,
+              left: PaddingSizes.bigPadding,
             ),
             child: MainText(
               headerLabel,
               textStyleOverride: TextStyles.mainStyleTitle.copyWith(
-                fontSize: 18,
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
               ),
             ),
           ),

@@ -35,6 +35,7 @@ export 'input/form_input_field.dart';
 export 'input/input_styles.dart';
 export 'layout/tabbed_view.dart';
 export 'list/generic_list_view.dart';
+export 'list/row_items/action_button_row_item.dart';
 export 'list/list_items/base_list_header.dart';
 export 'list/list_items/base_list_item.dart';
 export 'list/list_items/selectable_list_item.dart';

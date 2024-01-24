@@ -13,42 +13,38 @@ class BaseListHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> widgets = [];
 
-    items.forEach((label, width) {
-      widgets.add(
-        SizedBox(
-          width: width,
-          child: MainText(
-            label,
-            textStyleOverride: TextStyles.mainStyleTitle.copyWith(
-              fontWeight: FontWeight.w600,
+    items.forEach(
+      (label, width) {
+        widgets.add(
+          SizedBox(
+            width: width,
+            child: BaseHeaderItem(
+              label: label,
             ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
 
     widgets.add(
       const Spacer(),
     );
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: PaddingSizes.bigPadding,
-      ),
-      child: Container(
-        height: 45,
-        decoration: const BoxDecoration(
-          border: Border(
-            bottom: Borders.mainSide,
-          ),
+    return Container(
+      height: 45,
+      decoration: const BoxDecoration(
+        color: GawTheme.clearBackground,
+        border: Border(
+          top: Borders.lightSide,
+          bottom: Borders.lightSide,
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: PaddingSizes.smallPadding,
-          ),
-          child: Row(
-            children: widgets,
-          ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: PaddingSizes.smallPadding + PaddingSizes.bigPadding,
+        ),
+        child: Row(
+          children: widgets,
         ),
       ),
     );

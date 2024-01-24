@@ -49,6 +49,7 @@ class ListViewFooter extends StatelessWidget {
     return Container(
       height: 42,
       decoration: const BoxDecoration(
+        color: GawTheme.clearText,
         border: Border(
           top: Borders.mainSide,
         ),

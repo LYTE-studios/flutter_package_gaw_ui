@@ -37,6 +37,13 @@ class GawDateUtil {
     return DateTime.fromMillisecondsSinceEpoch(dateTime * 1000);
   }
 
+  static DateTime? tryFromApi(int? dateTime) {
+    if (dateTime == null) {
+      return null;
+    }
+    return DateTime.fromMillisecondsSinceEpoch(dateTime * 1000);
+  }
+
   static int toApi(DateTime dateTime) {
     return dateTime.millisecondsSinceEpoch ~/ 1000;
   }

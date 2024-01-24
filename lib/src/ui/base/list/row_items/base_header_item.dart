@@ -21,6 +21,11 @@ class BaseHeaderItem extends StatelessWidget {
     return BaseRowItem(
       child: MainText(
         label,
+        textStyleOverride: TextStyles.mainStyle.copyWith(
+          color: GawTheme.specialText,
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }
