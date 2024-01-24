@@ -44,7 +44,7 @@ class InputStyles {
       borderRadius: BorderRadius.circular(8),
     ),
     contentPadding: const EdgeInsets.all(
-      PaddingSizes.extraSmallPadding,
+      PaddingSizes.smallPadding,
     ),
   );
 }

@@ -1,6 +1,7 @@
 library gaw_ui;
 
 export 'package:fl_chart/fl_chart.dart';
+export 'package:flutter_riverpod/flutter_riverpod.dart';
 export 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 // -- TRANSLATIONS --

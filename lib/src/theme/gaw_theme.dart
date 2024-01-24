@@ -78,7 +78,7 @@ class GawTheme {
   );
 
   static const error = ColorRef(
-    Color.fromRGBO(232, 47, 0, 1),
+    Color.fromRGBO(209, 61, 28, 1),
   );
 
   static const success = ColorRef(

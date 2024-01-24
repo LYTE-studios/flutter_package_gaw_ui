@@ -55,6 +55,7 @@ export 'selectables/colorless_ink_well.dart';
 export 'shadow/bottom_shadow.dart';
 export 'shadow/shadows.dart';
 export 'forms/layout/form_item.dart';
+export 'forms/input/input_selection_form.dart';
 export 'forms/layout/gaw_form.dart';
 export 'forms/layout/form_row.dart';
 export 'forms/input/input_date_range_form.dart';

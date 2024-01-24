@@ -22,6 +22,9 @@ class GenericButton extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
 
   final double minHeight;
+  final double minWidth;
+
+  final bool outline;
 
   const GenericButton({
     super.key,
@@ -35,6 +38,8 @@ class GenericButton extends StatelessWidget {
     this.padding,
     this.loading = false,
     this.minHeight = 45,
+    this.minWidth = 120,
+    this.outline = false,
   });
 
   @override
@@ -43,12 +48,17 @@ class GenericButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         constraints: BoxConstraints(
-          minWidth: 120,
+          minWidth: minWidth,
           minHeight: minHeight,
         ),
         decoration: BoxDecoration(
           color: color ?? GawTheme.mainTint,
           borderRadius: BorderRadius.circular(5),
+          border: !outline
+              ? null
+              : const Border.fromBorderSide(
+                  Borders.mainSide,
+                ),
           boxShadow: const [
             Shadows.mainShadow,
           ],
