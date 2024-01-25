@@ -54,94 +54,43 @@ class ListViewFooter extends StatelessWidget {
           top: Borders.mainSide,
         ),
       ),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 56,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: PaddingSizes.smallPadding,
-                vertical: PaddingSizes.smallPadding,
-              ),
-              child: TextField(
-                onSubmitted: (value) {
-                  int? items = int.tryParse(value);
-
-                  if (items == null) {
-                    return;
-                  }
-
-                  if (items <= totalItems) {
-                    onChangeItemsPerPage?.call(items);
-                  }
-                },
-                textAlign: TextAlign.center,
-                style: TextStyles.mainStyle.copyWith(
-                  fontSize: 12,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: PaddingSizes.mainPadding,
+        ),
+        child: Row(
+          children: [
+            SizedBox(
+              width: 56,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: PaddingSizes.smallPadding,
+                  vertical: PaddingSizes.smallPadding,
                 ),
-                decoration: InputStyles.mainDecoration,
-              ),
-            ),
-          ),
-          MainText(
-            LocaleKeys.paramPerPage.tr(
-              namedArgs: {
-                ListViewFooter.kItems: name,
-              },
-            ),
-            textStyleOverride: TextStyles.mainStyle.copyWith(
-              color: GawTheme.unselectedText,
-              fontSize: 14,
-            ),
-          ),
-          const SizedBox(
-            width: PaddingSizes.smallPadding,
-          ),
-          MainText(
-            LocaleKeys.paramOfParamParam.tr(
-              namedArgs: {
-                ListViewFooter.kRange: getRange(),
-                ListViewFooter.kTotal: totalItems.toString(),
-                ListViewFooter.kItems: name,
-              },
-            ),
-          ),
-          const Spacer(),
-          SizedBox(
-            width: 56,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: PaddingSizes.smallPadding,
-                vertical: PaddingSizes.smallPadding,
-              ),
-              child: TextField(
-                onSubmitted: (value) {
-                  int? newPage = int.tryParse(value);
+                child: TextField(
+                  onSubmitted: (value) {
+                    int? items = int.tryParse(value);
 
-                  if (newPage == null) {
-                    return;
-                  }
+                    if (items == null) {
+                      return;
+                    }
 
-                  if (newPage <= pages) {
-                    onChangePage?.call(pages);
-                  }
-                },
-                textAlign: TextAlign.center,
-                style: TextStyles.mainStyle.copyWith(
-                  fontSize: 12,
+                    if (items <= totalItems) {
+                      onChangeItemsPerPage?.call(items);
+                    }
+                  },
+                  textAlign: TextAlign.center,
+                  style: TextStyles.mainStyle.copyWith(
+                    fontSize: 12,
+                  ),
+                  decoration: InputStyles.mainDecoration,
                 ),
-                decoration: InputStyles.mainDecoration,
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: PaddingSizes.extraSmallPadding,
-            ),
-            child: MainText(
-              LocaleKeys.ofParamPages.tr(
+            MainText(
+              LocaleKeys.paramPerPage.tr(
                 namedArgs: {
-                  ListViewFooter.kPages: pages.toString(),
+                  ListViewFooter.kItems: name,
                 },
               ),
               textStyleOverride: TextStyles.mainStyle.copyWith(
@@ -149,41 +98,97 @@ class ListViewFooter extends StatelessWidget {
                 fontSize: 14,
               ),
             ),
-          ),
-          SizedBox(
-            height: 12,
-            width: 12,
-            child: GestureDetector(
-              onTap: () {
-                if (page > 0) {
-                  onChangePage?.call(page - 1);
-                }
-              },
-              child: const RotatedBox(
-                quarterTurns: 2,
-                child: SvgIcon(
+            const SizedBox(
+              width: PaddingSizes.smallPadding,
+            ),
+            MainText(
+              LocaleKeys.paramOfParamParam.tr(
+                namedArgs: {
+                  ListViewFooter.kRange: getRange(),
+                  ListViewFooter.kTotal: totalItems.toString(),
+                  ListViewFooter.kItems: name,
+                },
+              ),
+            ),
+            const Spacer(),
+            SizedBox(
+              width: 56,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: PaddingSizes.smallPadding,
+                  vertical: PaddingSizes.smallPadding,
+                ),
+                child: TextField(
+                  onSubmitted: (value) {
+                    int? newPage = int.tryParse(value);
+
+                    if (newPage == null) {
+                      return;
+                    }
+
+                    if (newPage <= pages) {
+                      onChangePage?.call(pages);
+                    }
+                  },
+                  textAlign: TextAlign.center,
+                  style: TextStyles.mainStyle.copyWith(
+                    fontSize: 12,
+                  ),
+                  decoration: InputStyles.mainDecoration,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: PaddingSizes.extraSmallPadding,
+              ),
+              child: MainText(
+                LocaleKeys.ofParamPages.tr(
+                  namedArgs: {
+                    ListViewFooter.kPages: pages.toString(),
+                  },
+                ),
+                textStyleOverride: TextStyles.mainStyle.copyWith(
+                  color: GawTheme.unselectedText,
+                  fontSize: 14,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 12,
+              width: 12,
+              child: GestureDetector(
+                onTap: () {
+                  if (page > 0) {
+                    onChangePage?.call(page - 1);
+                  }
+                },
+                child: const RotatedBox(
+                  quarterTurns: 2,
+                  child: SvgIcon(
+                    PixelPerfectIcons.arrowRightMedium,
+                    color: GawTheme.text,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 12,
+              width: 12,
+              child: GestureDetector(
+                onTap: () {
+                  if (page < pages) {
+                    onChangePage?.call(page + 1);
+                  }
+                },
+                child: const SvgIcon(
                   PixelPerfectIcons.arrowRightMedium,
                   color: GawTheme.text,
                 ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 12,
-            width: 12,
-            child: GestureDetector(
-              onTap: () {
-                if (page < pages) {
-                  onChangePage?.call(page + 1);
-                }
-              },
-              child: const SvgIcon(
-                PixelPerfectIcons.arrowRightMedium,
-                color: GawTheme.text,
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

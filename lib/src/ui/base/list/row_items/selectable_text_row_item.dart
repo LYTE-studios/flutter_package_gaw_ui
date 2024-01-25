@@ -29,6 +29,7 @@ class SelectableTextRowItem extends StatelessWidget {
 
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
+              elevation: 0,
               duration: const Duration(
                 seconds: 1,
               ),

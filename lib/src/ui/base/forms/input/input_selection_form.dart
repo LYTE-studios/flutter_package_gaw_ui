@@ -3,19 +3,19 @@ import 'package:gaw_ui/gaw_ui.dart';
 import 'package:gaw_ui/src/ui/base/forms/input/input_form.dart';
 
 class InputSelectionForm extends StatefulWidget {
-  final String label;
+  final String? label;
 
-  final Function(String value)? onSelected;
+  final Function(dynamic value)? onSelected;
 
   final Function(String? value)? onChanged;
 
   final String? hint;
 
-  final Map<String, String> options;
+  final Map<dynamic, String> options;
 
   const InputSelectionForm({
     super.key,
-    required this.label,
+    this.label,
     this.onSelected,
     this.onChanged,
     this.hint,

@@ -11,8 +11,10 @@ class GawForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      child: Column(
-        children: rows,
+      child: SingleChildScrollView(
+        child: Column(
+          children: rows,
+        ),
       ),
     );
   }

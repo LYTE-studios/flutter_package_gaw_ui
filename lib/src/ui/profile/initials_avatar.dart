@@ -1,10 +1,41 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
+import 'package:http/http.dart';
 
-class InitialsAvatar extends StatelessWidget {
+class InitialsAvatar extends StatefulWidget {
   final String initials;
 
-  const InitialsAvatar({super.key, required this.initials});
+  final String? imageUrl;
+
+  const InitialsAvatar({
+    super.key,
+    required this.initials,
+    this.imageUrl,
+  });
+
+  @override
+  State<InitialsAvatar> createState() => _InitialsAvatarState();
+}
+
+class _InitialsAvatarState extends State<InitialsAvatar> {
+  Uint8List? bytes;
+
+  void loadImage() {
+    // if the url is null, return null.
+    if (widget.imageUrl == null) {
+      return;
+    }
+
+    get(
+      Uri.parse(widget.imageUrl!),
+    ).then((Response response) {
+      setState(() {
+        bytes = response.bodyBytes;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,23 +43,26 @@ class InitialsAvatar extends StatelessWidget {
       constraints: const BoxConstraints(
         minHeight: 48,
       ),
-      decoration: const BoxDecoration(
-        shape: BoxShape.circle,
-        color: GawTheme.unselectedBackground,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        color: GawTheme.darkBackground,
       ),
-      child: Center(
-        child: MainText(
-          initials,
-          alignment: TextAlign.center,
-          textStyleOverride: TextStyles.titleStyle.copyWith(
-            fontSize: 14,
-            color: GawTheme.text.withOpacity(
-              0.9,
+      child: bytes != null
+          ? Image.memory(
+              bytes!,
+              fit: BoxFit.fill,
+            )
+          : Center(
+              child: MainText(
+                widget.initials,
+                alignment: TextAlign.center,
+                textStyleOverride: TextStyles.titleStyle.copyWith(
+                  fontSize: 14,
+                  color: GawTheme.clearText,
+                  overflow: TextOverflow.fade,
+                ),
+              ),
             ),
-            overflow: TextOverflow.fade,
-          ),
-        ),
-      ),
     );
   }
 }

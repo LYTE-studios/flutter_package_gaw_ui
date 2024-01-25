@@ -52,17 +52,12 @@ class ActionButton extends StatelessWidget {
                       : Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Visibility(
-                              visible: icon != null,
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: PaddingSizes.extraSmallPadding,
-                                ),
-                                child: SvgIcon(
-                                  icon ?? '',
-                                  color: GawTheme.text,
-                                ),
-                              ),
+                            SvgIcon(
+                              icon ?? '',
+                              color: GawTheme.text,
+                            ),
+                            const SizedBox(
+                              width: PaddingSizes.smallPadding,
                             ),
                             _TextItem(
                               label: label,

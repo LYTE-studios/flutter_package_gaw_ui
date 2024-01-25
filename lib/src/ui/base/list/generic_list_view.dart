@@ -13,6 +13,7 @@ class GenericListView extends StatefulWidget {
   final Function(String)? onSearch;
 
   final bool showFooter;
+  final bool showHeader;
 
   final List<Widget> rows;
 
@@ -30,6 +31,7 @@ class GenericListView extends StatefulWidget {
     this.onDelete,
     this.onSearch,
     this.showFooter = true,
+    this.showHeader = true,
     required this.rows,
     this.totalItems,
     this.itemsPerPage,
@@ -49,10 +51,13 @@ class _GenericListViewState extends State<GenericListView> {
     return LayoutBuilder(builder: (context, constraints) {
       return Column(
         children: [
-          ListViewHeader(
-            headerLabel: widget.title ?? '',
-            onDelete: widget.onDelete,
-            onSearch: widget.onSearch,
+          Visibility(
+            visible: widget.showHeader,
+            child: ListViewHeader(
+              headerLabel: widget.title ?? '',
+              onDelete: widget.onDelete,
+              onSearch: widget.onSearch,
+            ),
           ),
           Expanded(
             child: SingleChildScrollView(

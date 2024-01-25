@@ -15,23 +15,32 @@ class BasicSnackBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        color: GawTheme.clearBackground,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          MainText(
-            title ?? '',
-            textStyleOverride: TextStyles.mainStyleTitle,
-          ),
-          MainText(
-            description ?? '',
-            textStyleOverride: TextStyles.mainStyle.copyWith(
-              color: GawTheme.unselectedText,
+      decoration: BoxDecoration(
+          color: GawTheme.clearText,
+          border: const Border.fromBorderSide(Borders.lightSide),
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: const [
+            Shadows.heavyShadow,
+          ]),
+      child: Padding(
+        padding: const EdgeInsets.all(
+          PaddingSizes.mainPadding,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            MainText(
+              title ?? '',
+              textStyleOverride: TextStyles.mainStyleTitle,
             ),
-          )
-        ],
+            MainText(
+              description ?? '',
+              textStyleOverride: TextStyles.mainStyle.copyWith(
+                color: GawTheme.unselectedText,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -15,31 +15,30 @@ class ShelfOverviewBlock extends StatelessWidget {
           color: GawTheme.mainTint,
           borderRadius: BorderRadius.circular(12),
         ),
-        child: const Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: 180,
-              child: StatisticsOverviewBlock(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: PaddingSizes.mainPadding,
+          ),
+          child: const Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              StatisticsOverviewBlock(
                 value: '5',
                 description: 'Jobs scheduled',
                 paddingOverride: EdgeInsets.symmetric(
                   vertical: PaddingSizes.bigPadding,
                 ),
               ),
-            ),
-            SizedBox(
-              width: 180,
-              child: StatisticsOverviewBlock(
+              StatisticsOverviewBlock(
                 value: '5',
                 description: 'Jobs done',
                 paddingOverride: EdgeInsets.symmetric(
                   vertical: PaddingSizes.bigPadding,
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

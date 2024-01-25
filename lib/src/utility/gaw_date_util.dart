@@ -33,6 +33,13 @@ class GawDateUtil {
     return '${GawDateUtil.monthName(dateTime.month)} ${dateTime.day}, ${dateTime.year}';
   }
 
+  static String? tryFormatReadableDate(DateTime? dateTime) {
+    if (dateTime == null) {
+      return null;
+    }
+    return '${GawDateUtil.monthName(dateTime.month)} ${dateTime.day} ${dateTime.year}';
+  }
+
   static DateTime fromApi(int dateTime) {
     return DateTime.fromMillisecondsSinceEpoch(dateTime * 1000);
   }
