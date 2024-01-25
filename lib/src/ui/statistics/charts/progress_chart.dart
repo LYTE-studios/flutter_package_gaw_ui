@@ -50,6 +50,9 @@ class _ProgressChartState extends State<ProgressChart>
     if (widget.isLoading) {
       valueController.repeat(
         reverse: true,
+        period: const Duration(
+          milliseconds: 400,
+        ),
       );
     } else {
       valueController.animateTo(progressValue);

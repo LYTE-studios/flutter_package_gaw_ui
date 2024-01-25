@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 
 class ShelfOverviewBlock extends StatelessWidget {
-  const ShelfOverviewBlock({super.key});
+  final int? scheduledCount;
+
+  final int? doneCount;
+
+  const ShelfOverviewBlock({
+    super.key,
+    required this.scheduledCount,
+    required this.doneCount,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,21 +27,21 @@ class ShelfOverviewBlock extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
             horizontal: PaddingSizes.mainPadding,
           ),
-          child: const Column(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               StatisticsOverviewBlock(
-                value: '5',
+                value: scheduledCount?.toString() ?? '',
                 description: 'Jobs scheduled',
-                paddingOverride: EdgeInsets.symmetric(
+                paddingOverride: const EdgeInsets.symmetric(
                   vertical: PaddingSizes.bigPadding,
                 ),
               ),
               StatisticsOverviewBlock(
-                value: '5',
+                value: doneCount?.toString() ?? '',
                 description: 'Jobs done',
-                paddingOverride: EdgeInsets.symmetric(
+                paddingOverride: const EdgeInsets.symmetric(
                   vertical: PaddingSizes.bigPadding,
                 ),
               ),

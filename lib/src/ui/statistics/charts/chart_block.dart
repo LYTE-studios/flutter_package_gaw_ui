@@ -138,66 +138,35 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
   Widget buildBarChart(List<FlSpot> weeklyDataPoints) {
     final barGroups = <BarChartGroupData>[];
     DateTime now = DateTime.now();
-    if (!widget.showWeekly) {
-      for (var i = 0; i < weeklyDataPoints.length; i++) {
-        final spot = weeklyDataPoints[i];
-        Color barColor;
-        if (i < now.weekday) {
-          barColor = GawTheme.mainTint;
-        } else {
-          barColor = GawTheme.secondaryTint;
-        }
-        barGroups.add(
-          BarChartGroupData(
-            x: i,
-            barRods: [
-              BarChartRodData(
-                toY: spot.y,
-                color: barColor,
-                width: 10,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(6),
-                  topRight: Radius.circular(6),
-                ),
-              ),
-            ],
-            // additional styling if necessary
-          ),
-        );
+    for (var i = 0; i < weeklyDataPoints.length; i++) {
+      final spot = weeklyDataPoints[i];
+      Color barColor;
+      if (i < now.weekday) {
+        barColor = GawTheme.mainTint;
+      } else {
+        barColor = GawTheme.secondaryTint;
       }
-    } else {
-      for (var i = 0; i < weeklyDataPoints.length; i++) {
-        final spot = weeklyDataPoints[i];
-        Color barColor;
-        if (i <= now.month) {
-          barColor = GawTheme.mainTint;
-        } else {
-          barColor = GawTheme.secondaryTint;
-        }
-        barGroups.add(
-          BarChartGroupData(
-            x: i,
-            barRods: [
-              BarChartRodData(
-                toY: spot.y,
-                color: barColor,
-                width: 10,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(6),
-                  topRight: Radius.circular(6),
-                ),
+      barGroups.add(
+        BarChartGroupData(
+          x: i,
+          barRods: [
+            BarChartRodData(
+              toY: spot.y,
+              color: barColor,
+              width: 10,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(6),
+                topRight: Radius.circular(6),
               ),
-            ],
-            // additional styling if necessary
-          ),
-        );
-      }
+            ),
+          ],
+        ),
+      );
     }
 
     return BarChart(
       BarChartData(
         alignment: BarChartAlignment.spaceAround,
-        maxY: widget.showWeekly ? 41 : 13,
         barTouchData: BarTouchData(
           touchTooltipData: BarTouchTooltipData(
             tooltipBgColor: GawTheme.mainTint,
@@ -209,18 +178,17 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
           bottomTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
+              interval: 1,
               reservedSize: 20, // Reserve space for titles
-              getTitlesWidget:
-                  widget.showWeekly ? bottomTitlesMonths : bottomTitles,
+              getTitlesWidget: bottomTitles,
             ),
           ),
-          leftTitles: AxisTitles(
+          leftTitles: const AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
               reservedSize: 24,
               interval: 1,
-              getTitlesWidget:
-                  widget.showWeekly ? leftMonthlyTitles : leftTitles,
+              getTitlesWidget: leftTitles,
             ),
           ),
           topTitles: const AxisTitles(
@@ -235,10 +203,11 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
           ),
         ),
         gridData: FlGridData(
-            show: true,
-            drawVerticalLine: false,
-            drawHorizontalLine: true,
-            horizontalInterval: widget.showWeekly ? 10.0 : 4.0),
+          show: true,
+          drawVerticalLine: false,
+          drawHorizontalLine: true,
+          horizontalInterval: widget.showWeekly ? 10.0 : 4.0,
+        ),
         borderData: FlBorderData(
           show: true,
           border: const Border(
@@ -297,17 +266,18 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
     return LineChart(
       LineChartData(
         gridData: FlGridData(
-            show: true,
-            drawVerticalLine: false,
-            horizontalInterval: widget.showWeekly ? 10.0 : 4.0),
+          show: true,
+          drawVerticalLine: false,
+          horizontalInterval: widget.showWeekly ? 10.0 : 4.0,
+        ),
         titlesData: FlTitlesData(
           show: true,
           bottomTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
+              interval: 1,
               reservedSize: 20, // Reserve space for titles
-              getTitlesWidget:
-                  widget.showWeekly ? bottomTitlesMonths : bottomTitles,
+              getTitlesWidget: bottomTitles,
             ),
           ),
           leftTitles: AxisTitles(
@@ -351,7 +321,6 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
             ),
           ),
         ),
-        maxY: widget.showWeekly ? 41 : 13,
         lineBarsData: [
           // Replace these placeholders with your actual data
           LineChartBarData(
@@ -395,15 +364,16 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
 }
 
 Widget bottomTitles(double value, TitleMeta meta) {
-  final titles = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  Widget text = Text(
-    titles[value.toInt()],
-    style: const TextStyle(
-      color: GawTheme.text,
-      fontWeight: FontWeight.normal,
-      fontSize: 10,
+  if (meta.axisPosition % meta.appliedInterval != 0) {
+    return const SizedBox();
+  }
+
+  Widget text = MainText(
+    GawDateUtil.formatDate(
+      GawDateUtil.fromApi(
+        value.round(),
+      ),
     ),
-    textAlign: TextAlign.center,
   );
   return SideTitleWidget(
     axisSide: meta.axisSide,
@@ -450,15 +420,9 @@ Widget leftTitles(double value, TitleMeta meta) {
     fontWeight: FontWeight.normal,
     fontSize: 10,
   );
-  String text;
-  if (value == 4) {
-    text = '4h';
-  } else if (value == 8) {
-    text = '8h';
-  } else if (value == 12) {
-    text = '12h';
-  } else {
-    return Container();
+  String text = '';
+  if (value % 5 == 0) {
+    text = '${value}h';
   }
   return SideTitleWidget(
     axisSide: meta.axisSide,

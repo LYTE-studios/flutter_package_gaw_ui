@@ -1,3 +1,5 @@
+import 'package:tuple/tuple.dart';
+
 class GawDateUtil {
   static String monthName(int month) {
     switch (month) {
@@ -27,6 +29,31 @@ class GawDateUtil {
         return 'December';
     }
     return '';
+  }
+
+  static Tuple2<DateTime, DateTime> getWeekRange() {
+    DateTime now = DateTime.now();
+    DateTime today = DateTime(
+      now.year,
+      now.month,
+      now.day,
+    );
+
+    int weekday = now.weekday;
+
+    DateTime begin = today.subtract(
+      Duration(
+        days: weekday - 1,
+      ),
+    );
+
+    DateTime end = today.add(
+      Duration(
+        days: 7 - weekday,
+      ),
+    );
+
+    return Tuple2(begin, end);
   }
 
   static String formatReadableDate(DateTime dateTime) {

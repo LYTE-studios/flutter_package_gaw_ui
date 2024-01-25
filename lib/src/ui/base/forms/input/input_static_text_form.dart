@@ -8,6 +8,8 @@ class InputStaticTextForm extends StatelessWidget {
   final String? hint;
   final String? text;
 
+  final bool frozen;
+
   final Function()? onTap;
 
   final String? icon;
@@ -18,6 +20,7 @@ class InputStaticTextForm extends StatelessWidget {
     this.hint,
     this.text,
     this.onTap,
+    this.frozen = false,
     this.icon,
   });
 
@@ -31,6 +34,7 @@ class InputStaticTextForm extends StatelessWidget {
           hint: hint,
           text: text,
           icon: icon,
+          frozen: frozen,
           enabled: false,
         ),
       ),

@@ -28,6 +28,7 @@ dependencies:
   flutter_riverpod: ^2.3.10
   freezed: ^2.4.1
   http: ^1.2.0
+  tuple: ^2.0.2
 
 
 dev_dependencies:

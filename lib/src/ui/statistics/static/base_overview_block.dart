@@ -13,7 +13,7 @@ class BaseOverviewBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: GawTheme.clearBackground,
+        color: GawTheme.clearText,
         borderRadius: BorderRadius.circular(12),
         boxShadow: const [
           Shadows.mainShadow,

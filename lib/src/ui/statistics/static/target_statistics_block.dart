@@ -9,10 +9,13 @@ class TargetStatisticsBlock extends StatelessWidget {
 
   final double increaseAmount;
 
+  final bool loading;
+
   const TargetStatisticsBlock({
     super.key,
     required this.jobsCount,
     required this.increaseAmount,
+    this.loading = false,
   });
 
   @override
@@ -24,34 +27,37 @@ class TargetStatisticsBlock extends StatelessWidget {
           padding: const EdgeInsets.all(
             PaddingSizes.mainPadding,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const IconBlock(
-                icon: PixelPerfectIcons.customUser,
-              ),
-              const Spacer(),
-              MainText(
-                'Jobs',
-                textStyleOverride: TextStyles.titleStyle.copyWith(
-                  fontSize: 16,
+          child: LoadingSwitcher(
+            loading: loading,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const IconBlock(
+                  icon: PixelPerfectIcons.customUser,
                 ),
-              ),
-              Row(
-                children: [
-                  MainText(
-                    jobsCount.toString(),
-                    textStyleOverride: TextStyles.mainStyleTitle,
+                const Spacer(),
+                MainText(
+                  'Jobs',
+                  textStyleOverride: TextStyles.titleStyle.copyWith(
+                    fontSize: 16,
                   ),
-                  const SizedBox(
-                    width: PaddingSizes.smallPadding,
-                  ),
-                  IncrementDescription(
-                    increment: increaseAmount,
-                  ),
-                ],
-              ),
-            ],
+                ),
+                Row(
+                  children: [
+                    MainText(
+                      jobsCount.toString(),
+                      textStyleOverride: TextStyles.mainStyleTitle,
+                    ),
+                    const SizedBox(
+                      width: PaddingSizes.smallPadding,
+                    ),
+                    IncrementDescription(
+                      increment: increaseAmount,
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
