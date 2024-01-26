@@ -14,6 +14,7 @@ dependencies:
   carousel_slider: ^4.2.1
   toggle_switch: ^2.1.0
   syncfusion_flutter_datepicker: ^23.1.36
+  widget_to_marker: ^1.0.4
   syncfusion_flutter_charts: ^23.1.36
   smooth_page_indicator: ^1.1.0
   carousel_indicator: ^1.0.6
@@ -22,13 +23,15 @@ dependencies:
   dotted_border: ^2.1.0
   beamer: ^1.5.6
   themed: ^5.0.0
-  flutter_svg: ^2.0.7
+  flutter_svg: ^2.0.9
   google_fonts: ^5.1.0
   easy_localization: ^3.0.2
   flutter_riverpod: ^2.3.10
   freezed: ^2.4.1
   http: ^1.2.0
   tuple: ^2.0.2
+  google_maps_flutter: ^2.5.0
+  google_map_polyline_new: ^0.3.0+2
 
 
 dev_dependencies:

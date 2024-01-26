@@ -26,7 +26,7 @@ class ProgressChart extends StatefulWidget {
 }
 
 class _ProgressChartState extends State<ProgressChart>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   double get progressValue =>
       (widget.maxValue == 0 ? 0 : (widget.value / widget.maxValue));
 
@@ -46,6 +46,9 @@ class _ProgressChartState extends State<ProgressChart>
       setState(() {});
     });
 
+  @override
+  bool get wantKeepAlive => true;
+
   void setAnimation() {
     if (widget.isLoading) {
       valueController.repeat(
@@ -60,7 +63,14 @@ class _ProgressChartState extends State<ProgressChart>
   }
 
   @override
+  void dispose() {
+    valueController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     setAnimation();
     return SizedBox(
       height: widget.size,
