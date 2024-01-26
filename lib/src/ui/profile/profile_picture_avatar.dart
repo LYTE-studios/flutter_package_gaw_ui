@@ -23,7 +23,7 @@ class ProfilePictureAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       double imageSize =
-          constraints.maxWidth - (showCircle ? PaddingSizes.mainPadding : 0);
+          constraints.maxWidth - (showCircle ? PaddingSizes.bigPadding : 0);
       return Container(
         height: constraints.maxHeight,
         width: constraints.maxWidth,
@@ -41,16 +41,21 @@ class ProfilePictureAvatar extends StatelessWidget {
         child: Stack(
           children: [
             Center(
-              child: SizedBox(
-                width: imageSize,
-                height: imageSize,
-                child: imageUrl == null
-                    ? Image.asset(
-                        'assets/images/core/default_profile_picture.png',
-                        package: kPackageName,
-                        fit: BoxFit.fill,
-                      )
-                    : Image.network(imageUrl!),
+              child: ClipOval(
+                child: SizedBox(
+                  height: imageSize,
+                  width: imageSize,
+                  child: imageUrl == null
+                      ? Image.asset(
+                          'assets/images/core/default_profile_picture.png',
+                          package: kPackageName,
+                          fit: BoxFit.fill,
+                        )
+                      : Image.network(
+                          imageUrl!,
+                          fit: BoxFit.fill,
+                        ),
+                ),
               ),
             ),
             if (canEdit) // Show the edit button only if canEdit is true

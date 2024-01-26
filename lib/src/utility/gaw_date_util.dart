@@ -82,6 +82,14 @@ class GawDateUtil {
     return dateTime.millisecondsSinceEpoch ~/ 1000;
   }
 
+  static int? tryToApi(DateTime? dateTime) {
+    if (dateTime == null) {
+      return null;
+    }
+
+    return dateTime.millisecondsSinceEpoch ~/ 1000;
+  }
+
   static String formatTime(int time) {
     if (time < 10) {
       return '0$time';

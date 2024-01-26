@@ -11,19 +11,20 @@ class CmsExpandableDateRangePicker extends StatelessWidget {
   final DateTime? initialStart;
   final DateTime? initialEnd;
 
-  final Function(DateIntervalSelectable)? onUpdateSelectable;
+  final Function(DateIntervalSelectable?)? onUpdateSelectable;
 
   final DateIntervalSelectable? selectable;
 
-  const CmsExpandableDateRangePicker(
-      {super.key,
-      this.onUpdateDates,
-      this.toggleExpand,
-      this.expanded = false,
-      this.initialStart,
-      this.initialEnd,
-      this.onUpdateSelectable,
-      this.selectable});
+  const CmsExpandableDateRangePicker({
+    super.key,
+    this.onUpdateDates,
+    this.toggleExpand,
+    this.expanded = false,
+    this.initialStart,
+    this.initialEnd,
+    this.onUpdateSelectable,
+    this.selectable,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +100,7 @@ class CmsExpandableDateRangePicker extends StatelessWidget {
 class CmsDateRangePicker extends StatelessWidget {
   final Function(DateTime startTime, DateTime endTime)? onUpdateDates;
 
-  final Function(DateIntervalSelectable)? onUpdateSelectable;
+  final Function(DateIntervalSelectable?)? onUpdateSelectable;
 
   final DateTime? initialStart;
   final DateTime? initialEnd;
@@ -146,6 +147,7 @@ class CmsDateRangePicker extends StatelessWidget {
                 isSheet: false,
                 initialStart: initialStart,
                 initialEnd: initialEnd,
+                onDateChanged: () => onUpdateSelectable?.call(null),
                 onRangeSelected: onUpdateDates,
               ),
             ),
@@ -159,7 +161,7 @@ class CmsDateRangePicker extends StatelessWidget {
 class DateIntervalSelector extends StatelessWidget {
   final DateIntervalSelectable? value;
 
-  final Function(DateIntervalSelectable)? onIntervalSelected;
+  final Function(DateIntervalSelectable?)? onIntervalSelected;
 
   const DateIntervalSelector({
     super.key,
@@ -179,14 +181,20 @@ class DateIntervalSelector extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                buildCheckBox(
-                  DateIntervalSelectable.thisYear,
+                _CheckBox(
+                  selectable: DateIntervalSelectable.thisYear,
+                  selected: value,
+                  onTap: onIntervalSelected,
                 ),
-                buildCheckBox(
-                  DateIntervalSelectable.thisMonth,
+                _CheckBox(
+                  selectable: DateIntervalSelectable.thisMonth,
+                  selected: value,
+                  onTap: onIntervalSelected,
                 ),
-                buildCheckBox(
-                  DateIntervalSelectable.thisWeek,
+                _CheckBox(
+                  selectable: DateIntervalSelectable.thisWeek,
+                  selected: value,
+                  onTap: onIntervalSelected,
                 ),
               ],
             ),
@@ -200,14 +208,20 @@ class DateIntervalSelector extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                buildCheckBox(
-                  DateIntervalSelectable.lastYear,
+                _CheckBox(
+                  selectable: DateIntervalSelectable.lastYear,
+                  selected: value,
+                  onTap: onIntervalSelected,
                 ),
-                buildCheckBox(
-                  DateIntervalSelectable.lastMonth,
+                _CheckBox(
+                  selectable: DateIntervalSelectable.lastMonth,
+                  selected: value,
+                  onTap: onIntervalSelected,
                 ),
-                buildCheckBox(
-                  DateIntervalSelectable.lastWeek,
+                _CheckBox(
+                  selectable: DateIntervalSelectable.lastWeek,
+                  selected: value,
+                  onTap: onIntervalSelected,
                 ),
               ],
             ),
@@ -216,14 +230,29 @@ class DateIntervalSelector extends StatelessWidget {
       ],
     );
   }
+}
 
-  Widget buildCheckBox(DateIntervalSelectable selectable) {
+class _CheckBox extends StatelessWidget {
+  final Function(DateIntervalSelectable?)? onTap;
+
+  final DateIntervalSelectable? selected;
+
+  final DateIntervalSelectable selectable;
+
+  const _CheckBox({
+    this.selected,
+    this.onTap,
+    required this.selectable,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(PaddingSizes.smallPadding),
       child: NamedCheckBox(
         label: selectable.getLabel(),
-        onToggle: () => onIntervalSelected?.call(selectable),
-        value: value == selectable,
+        onToggle: () => onTap?.call(selectable),
+        value: selected == selectable,
       ),
     );
   }

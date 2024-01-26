@@ -1,8 +1,5 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
-import 'package:http/http.dart';
 
 class InitialsAvatar extends StatefulWidget {
   final String initials;
@@ -20,23 +17,6 @@ class InitialsAvatar extends StatefulWidget {
 }
 
 class _InitialsAvatarState extends State<InitialsAvatar> {
-  Uint8List? bytes;
-
-  void loadImage() {
-    // if the url is null, return null.
-    if (widget.imageUrl == null) {
-      return;
-    }
-
-    get(
-      Uri.parse(widget.imageUrl!),
-    ).then((Response response) {
-      setState(() {
-        bytes = response.bodyBytes;
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,12 +24,12 @@ class _InitialsAvatarState extends State<InitialsAvatar> {
         minHeight: 48,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: GawTheme.darkBackground,
+        color: GawTheme.unselectedBackground,
+        shape: BoxShape.circle,
       ),
-      child: bytes != null
-          ? Image.memory(
-              bytes!,
+      child: widget.imageUrl != null
+          ? Image.network(
+              widget.imageUrl!,
               fit: BoxFit.fill,
             )
           : Center(
@@ -58,7 +38,7 @@ class _InitialsAvatarState extends State<InitialsAvatar> {
                 alignment: TextAlign.center,
                 textStyleOverride: TextStyles.titleStyle.copyWith(
                   fontSize: 14,
-                  color: GawTheme.clearText,
+                  color: GawTheme.text,
                   overflow: TextOverflow.fade,
                 ),
               ),

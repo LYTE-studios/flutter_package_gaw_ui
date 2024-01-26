@@ -125,6 +125,8 @@ class DateRangePicker extends StatefulWidget {
 
   final Function(DateTime)? onDateSelected;
 
+  final Function()? onDateChanged;
+
   final bool isSheet;
 
   final DateTime? initialStart;
@@ -136,6 +138,7 @@ class DateRangePicker extends StatefulWidget {
     this.singleDatePicker = false,
     this.onDateSelected,
     this.onRangeSelected,
+    this.onDateChanged,
     this.isSheet = true,
     this.initialStart,
     this.initialEnd,
@@ -298,6 +301,8 @@ class DateRangePickerState extends State<DateRangePicker> {
                                 initialSelectedDate: widget.initialStart,
                                 onSelectionChanged:
                                     (dateRangePickerSelectionChangedArgs) {
+                                  widget.onDateChanged?.call();
+
                                   if (widget.singleDatePicker) {
                                     setState(() {
                                       start =
@@ -366,6 +371,8 @@ class DateRangePickerState extends State<DateRangePicker> {
                                 backgroundColor: Colors.transparent,
                                 onSelectionChanged:
                                     (dateRangePickerSelectionChangedArgs) {
+                                  widget.onDateChanged?.call();
+
                                   PickerDateRange range =
                                       dateRangePickerSelectionChangedArgs.value;
 

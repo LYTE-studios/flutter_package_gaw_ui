@@ -29,9 +29,10 @@ class ProfileRowItem extends StatelessWidget {
           SizedBox(
             height: 27,
             width: 27,
-            child: InitialsAvatar(
-              initials: initials ??
-                  '${firstName?.split('').first ?? ''} ${lastName?.split('').first}',
+            child: ProfilePictureAvatar(
+              showCircle: false,
+              canEdit: false,
+              imageUrl: imageUrl,
             ),
           ),
           const SizedBox(

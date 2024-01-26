@@ -33,32 +33,33 @@ class _ProgressChartState extends State<ProgressChart>
   late final Animation<double> valueAnimation = Tween<double>(
     begin: 0,
     end: 1,
-  ).animate(valueController);
+  ).chain(CurveTween(curve: Curves.elasticIn)).animate(valueController);
 
   late final AnimationController valueController = AnimationController(
     vsync: this,
-    reverseDuration: Duration.zero,
     duration: const Duration(
-      milliseconds: 300,
+      seconds: 1,
     ),
-    value: widget.isLoading ? null : progressValue,
   )..addListener(() {
       setState(() {});
     });
+
+  bool animating = false;
 
   @override
   bool get wantKeepAlive => true;
 
   void setAnimation() {
-    if (widget.isLoading) {
-      valueController.repeat(
-        reverse: true,
-        period: const Duration(
-          milliseconds: 400,
-        ),
-      );
+    if (!widget.isLoading) {
+      if (animating) {
+        valueController.animateTo(progressValue);
+      }
+      animating = false;
     } else {
-      valueController.animateTo(progressValue);
+      if (!animating) {
+        valueController.repeat();
+      }
+      animating = true;
     }
   }
 

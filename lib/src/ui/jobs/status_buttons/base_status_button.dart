@@ -23,11 +23,7 @@ class BaseStatusButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         color: color,
         boxShadow: const [
-          BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.25),
-            offset: Offset(0, 2),
-            blurRadius: 4,
-          ),
+          Shadows.heavyShadow,
         ],
       ),
       child: Stack(

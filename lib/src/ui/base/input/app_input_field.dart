@@ -38,7 +38,7 @@ class _AppInputFieldState extends State<AppInputField> {
       autocorrect: !widget.isPasswordField,
       controller: widget.controller,
       cursorColor: GawTheme.mainTint,
-      decoration: InputDecoration(
+      decoration: InputStyles.mainDecoration.copyWith(
         label: MainText(widget.hint ?? ''),
         floatingLabelStyle: TextStyles.mainStyle.copyWith(
           color:
@@ -53,8 +53,7 @@ class _AppInputFieldState extends State<AppInputField> {
                   });
                 },
                 child: SizedBox(
-                  width: 32,
-                  height: 32,
+                  width: 42,
                   child: Center(
                     child: SizedBox(
                       height: 28,
@@ -63,15 +62,17 @@ class _AppInputFieldState extends State<AppInputField> {
                         showValues
                             ? PixelPerfectIcons.eyeHideNormal
                             : PixelPerfectIcons.eyeNormal,
-                        color: GawTheme.unselectedText,
+                        color: showValues
+                            ? GawTheme.mainTint
+                            : GawTheme.unselectedText,
                       ),
                     ),
                   ),
                 ),
               ),
         contentPadding: const EdgeInsets.symmetric(
-          horizontal: PaddingSizes.smallPadding,
-          vertical: PaddingSizes.mainPadding + PaddingSizes.extraSmallPadding,
+          horizontal: PaddingSizes.mainPadding,
+          vertical: PaddingSizes.bigPadding,
         ),
       ),
     );

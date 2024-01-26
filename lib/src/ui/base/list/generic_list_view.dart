@@ -12,6 +12,11 @@ class GenericListView extends StatefulWidget {
 
   final Function(String)? onSearch;
 
+  final int? page;
+
+  final Function(int)? onEditItemCount;
+  final Function(int)? onChangePage;
+
   final bool showFooter;
   final bool showHeader;
 
@@ -29,12 +34,15 @@ class GenericListView extends StatefulWidget {
     this.loading = false,
     this.valueName,
     this.onDelete,
+    this.page,
     this.onSearch,
     this.showFooter = true,
     this.showHeader = true,
     required this.rows,
     this.totalItems,
     this.itemsPerPage,
+    this.onEditItemCount,
+    this.onChangePage,
     required this.header,
   });
 
@@ -45,6 +53,18 @@ class GenericListView extends StatefulWidget {
 class _GenericListViewState extends State<GenericListView> {
   late final bool showPages =
       widget.totalItems == null || widget.itemsPerPage == null;
+
+  int getPageCount() {
+    if (widget.itemsPerPage == null || widget.totalItems == null) {
+      return 0;
+    }
+
+    if (widget.itemsPerPage! >= widget.rows.length) {
+      return 1;
+    }
+
+    return widget.totalItems! ~/ widget.itemsPerPage!;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,9 +105,15 @@ class _GenericListViewState extends State<GenericListView> {
           Visibility(
             visible: widget.showFooter,
             child: ListViewFooter(
+              items: (widget.itemsPerPage ?? 0) > (widget.totalItems ?? 0)
+                  ? (widget.totalItems ?? 0)
+                  : (widget.itemsPerPage ?? 0),
+              page: widget.page,
+              onChangePage: widget.onChangePage,
+              onChangeItemsPerPage: widget.onEditItemCount,
               valueName: widget.valueName,
               totalItems: widget.totalItems ?? 0,
-              pages: showPages ? 0 : widget.totalItems! ~/ widget.itemsPerPage!,
+              pages: getPageCount(),
               itemsPerPage: widget.totalItems ?? 0,
             ),
           ),
