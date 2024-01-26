@@ -32,6 +32,7 @@ class InputStaticTextForm extends StatelessWidget {
         onTap: onTap,
         child: GawStandaloneTextField(
           hint: hint,
+          controller: TextEditingController(),
           text: text,
           icon: icon,
           frozen: frozen,

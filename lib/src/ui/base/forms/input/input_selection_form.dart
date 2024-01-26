@@ -38,6 +38,7 @@ class _InputSelectionFormState extends State<InputSelectionForm> {
       label: widget.label,
       child: LayoutBuilder(builder: (context, constraints) {
         return DropdownMenu(
+          menuHeight: 180,
           inputDecorationTheme: InputDecorationTheme(
             focusedBorder: OutlineInputBorder(
               borderSide: Borders.lightSelectedInputSide.copyWith(
@@ -65,9 +66,7 @@ class _InputSelectionFormState extends State<InputSelectionForm> {
           ),
           width: constraints.maxWidth,
           controller: controller,
-          onSelected: (value) {
-            widget.onSelected?.call(value as String);
-          },
+          onSelected: widget.onSelected,
           dropdownMenuEntries: buildEntries(),
         );
       }),
@@ -77,7 +76,7 @@ class _InputSelectionFormState extends State<InputSelectionForm> {
   List<DropdownMenuEntry> buildEntries() {
     List<DropdownMenuEntry> entries = [];
 
-    for (String key in widget.options.keys) {
+    for (dynamic key in widget.options.keys) {
       entries.add(
         DropdownMenuEntry(
           value: key,
