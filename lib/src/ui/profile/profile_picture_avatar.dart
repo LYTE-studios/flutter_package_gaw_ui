@@ -53,6 +53,13 @@ class ProfilePictureAvatar extends StatelessWidget {
                         )
                       : Image.network(
                           imageUrl!,
+                          errorBuilder: (context, object, error) {
+                            return Image.asset(
+                              'assets/images/core/default_profile_picture.png',
+                              package: kPackageName,
+                              fit: BoxFit.fill,
+                            );
+                          },
                           fit: BoxFit.fill,
                         ),
                 ),

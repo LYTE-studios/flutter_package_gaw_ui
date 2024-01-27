@@ -92,15 +92,18 @@ class _GenericListViewState extends State<GenericListView> {
                     children: [
                       widget.header,
                       Expanded(
-                        child: widget.rows.isEmpty
-                            ? const Center(
-                                child: MainText(
-                                  'No items',
+                        child: LoadingSwitcher(
+                          loading: widget.loading,
+                          child: widget.rows.isEmpty
+                              ? const Center(
+                                  child: MainText(
+                                    'No items',
+                                  ),
+                                )
+                              : ListView(
+                                  children: widget.rows,
                                 ),
-                              )
-                            : ListView(
-                                children: widget.rows,
-                              ),
+                        ),
                       ),
                     ],
                   ),

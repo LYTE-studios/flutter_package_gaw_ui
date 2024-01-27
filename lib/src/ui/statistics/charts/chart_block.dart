@@ -21,6 +21,22 @@ class StatisticsChartContainer extends StatefulWidget {
     this.overriddenPadding,
   }) : super(key: key);
 
+  static double largestValue(List<FlSpot> values, double minimum) {
+    double largest = 0;
+
+    for (FlSpot spot in values) {
+      if (spot.y > largest) {
+        largest = spot.y;
+      }
+    }
+
+    if (minimum > largest) {
+      return minimum;
+    }
+
+    return largest + 3;
+  }
+
   @override
   // ignore: library_private_types_in_public_api
   _StatisticsChartContainerState createState() =>
@@ -61,7 +77,7 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
                   trendHours: widget.trend.abs(),
                   isPositiveTrend: widget.trend >= 0 ? true : false,
                 ),
-                !isBarChart ? buildBarChartButton() : buildLineChartButton(),
+                // !isBarChart ? buildBarChartButton() : buildLineChartButton(),
               ],
             ),
             const SizedBox(height: PaddingSizes.smallPadding),
@@ -93,16 +109,16 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
   }
 
   Widget buildBarChartButton() {
-    return CircleAvatar(
-      backgroundColor: GawTheme.secondaryTint,
-      radius: 20, // Adjust the size to your needs
-      child: InkWell(
-        onTap: () {
-          setState(() {
-            isBarChart = !isBarChart;
-          });
-        },
-        child: const SvgIcon(
+    return ColorlessInkWell(
+      onTap: () {
+        setState(() {
+          isBarChart = !isBarChart;
+        });
+      },
+      child: const CircleAvatar(
+        backgroundColor: GawTheme.secondaryTint,
+        radius: 20,
+        child: SvgIcon(
           PixelPerfectIcons.barChart,
           color: GawTheme.clearBackground,
         ),
@@ -111,16 +127,16 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
   }
 
   Widget buildLineChartButton() {
-    return CircleAvatar(
-      backgroundColor: GawTheme.secondaryTint,
-      radius: 20, // Adjust the size to your needs
-      child: InkWell(
-        onTap: () {
-          setState(() {
-            isBarChart = !isBarChart;
-          });
-        },
-        child: const SvgIcon(
+    return ColorlessInkWell(
+      onTap: () {
+        setState(() {
+          isBarChart = !isBarChart;
+        });
+      },
+      child: const CircleAvatar(
+        backgroundColor: GawTheme.secondaryTint,
+        radius: 20,
+        child: SvgIcon(
           PixelPerfectIcons.lineChart,
           color: GawTheme.clearBackground,
         ),
@@ -137,35 +153,48 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
 
   Widget buildBarChart(List<FlSpot> weeklyDataPoints) {
     final barGroups = <BarChartGroupData>[];
-    DateTime now = DateTime.now();
+
+    double interval = getInterval(weeklyDataPoints.length);
+
+    double total = 0;
+
+    List<FlSpot> spots = [];
+
     for (var i = 0; i < weeklyDataPoints.length; i++) {
       final spot = weeklyDataPoints[i];
-      Color barColor;
-      if (i < now.weekday) {
-        barColor = GawTheme.mainTint;
-      } else {
-        barColor = GawTheme.secondaryTint;
-      }
-      barGroups.add(
-        BarChartGroupData(
-          x: i,
-          barRods: [
-            BarChartRodData(
-              toY: spot.y,
-              color: barColor,
-              width: 10,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(6),
-                topRight: Radius.circular(6),
+
+      total += spot.y;
+
+      if (i % interval.round() == 0 || i == weeklyDataPoints.length - 1) {
+        spots.add(
+          FlSpot(spot.x.roundToDouble(), total),
+        );
+        barGroups.add(
+          BarChartGroupData(
+            x: spot.x.round(),
+            barRods: [
+              BarChartRodData(
+                toY: total,
+                color: GawTheme.mainTint,
+                width: 10,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(6),
+                  topRight: Radius.circular(6),
+                ),
               ),
-            ),
-          ],
-        ),
-      );
+            ],
+          ),
+        );
+        total = 0;
+      }
     }
 
     return BarChart(
       BarChartData(
+        maxY: StatisticsChartContainer.largestValue(
+          spots,
+          24,
+        ),
         alignment: BarChartAlignment.spaceAround,
         barTouchData: BarTouchData(
           touchTooltipData: BarTouchTooltipData(
@@ -178,17 +207,19 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
           bottomTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
-              interval: 1,
-              reservedSize: 20, // Reserve space for titles
-              getTitlesWidget: bottomTitles,
+              interval: getInterval(widget.weeklyStatistics.length),
+              reservedSize: 32, // Reserve space for titles
+              getTitlesWidget: (double value, TitleMeta meta) =>
+                  bottomTitles(value, meta, widget.weeklyStatistics),
             ),
           ),
-          leftTitles: const AxisTitles(
+          leftTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
-              reservedSize: 24,
-              interval: 1,
-              getTitlesWidget: leftTitles,
+              reservedSize: 32,
+              interval: getYInterval(spots),
+              getTitlesWidget: (double value, TitleMeta meta) =>
+                  leftTitles(value, meta, widget.weeklyStatistics),
             ),
           ),
           topTitles: const AxisTitles(
@@ -204,9 +235,9 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
         ),
         gridData: FlGridData(
           show: true,
+          verticalInterval: getYInterval(spots),
           drawVerticalLine: false,
           drawHorizontalLine: true,
-          horizontalInterval: widget.showWeekly ? 10.0 : 4.0,
         ),
         borderData: FlBorderData(
           show: true,
@@ -235,58 +266,36 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
   }
 
   Widget buildLineChart(List<FlSpot> dataPoints) {
-    DateTime now = DateTime.now();
-    int currentDayIndex = now.weekday - 1; // Considering 0 is Monday.
-
-    List<FlSpot> pastDataPoints = [];
-    List<FlSpot> futureDataPoints = [];
-    if (!widget.showWeekly) {
-      for (var i = 0; i < dataPoints.length; i++) {
-        if (i <= currentDayIndex) {
-          pastDataPoints.add(dataPoints[i]);
-          if (i == currentDayIndex) {
-            futureDataPoints.add(dataPoints[i]);
-          }
-        } else {
-          futureDataPoints.add(dataPoints[i]);
-        }
-      }
-    } else {
-      for (var i = 0; i < dataPoints.length; i++) {
-        if (i <= now.month) {
-          pastDataPoints.add(dataPoints[i]);
-          if (i == now.month) {
-            futureDataPoints.add(dataPoints[i]);
-          }
-        } else {
-          futureDataPoints.add(dataPoints[i]);
-        }
-      }
-    }
     return LineChart(
       LineChartData(
-        gridData: FlGridData(
+        maxY: StatisticsChartContainer.largestValue(
+          widget.weeklyStatistics,
+          24,
+        ),
+        gridData: const FlGridData(
           show: true,
           drawVerticalLine: false,
-          horizontalInterval: widget.showWeekly ? 10.0 : 4.0,
         ),
         titlesData: FlTitlesData(
           show: true,
           bottomTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
-              interval: 1,
-              reservedSize: 20, // Reserve space for titles
-              getTitlesWidget: bottomTitles,
+              interval: getInterval(widget.weeklyStatistics.length),
+              reservedSize: 20,
+              // getTitlesWidget: (double value, TitleMeta meta) =>
+              //     bottomTitles(value, meta, widget.weeklyStatistics),
             ),
           ),
           leftTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
-              reservedSize: 28,
-              interval: 1,
-              getTitlesWidget:
-                  widget.showWeekly ? leftMonthlyTitles : leftTitles,
+              reservedSize: 32,
+              interval: StatisticsChartContainer.largestValue(
+                      widget.weeklyStatistics, 30) /
+                  5,
+              getTitlesWidget: (double value, TitleMeta meta) =>
+                  leftTitles(value, meta, widget.weeklyStatistics),
             ),
           ),
           topTitles: const AxisTitles(
@@ -307,24 +316,11 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
               color: Colors.grey,
               width: 0.5,
             ),
-            left: BorderSide(
-              color: Colors.white,
-              width: 0,
-            ),
-            right: BorderSide(
-              color: Colors.white,
-              width: 0,
-            ),
-            top: BorderSide(
-              color: Colors.white,
-              width: 0,
-            ),
           ),
         ),
         lineBarsData: [
-          // Replace these placeholders with your actual data
           LineChartBarData(
-            spots: pastDataPoints,
+            spots: widget.weeklyStatistics,
             isCurved: false,
             color: GawTheme.mainTint,
             barWidth: 4,
@@ -333,26 +329,9 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
               show: true,
               getDotPainter: (p0, p1, p2, p3) => FlDotCirclePainter(
                 radius: 2,
-                color: Colors.white,
+                color: GawTheme.clearText,
                 strokeWidth: 0,
-                strokeColor: Colors.blue,
-              ),
-            ),
-            belowBarData: BarAreaData(show: false),
-          ),
-          LineChartBarData(
-            spots: futureDataPoints,
-            isCurved: false,
-            color: GawTheme.secondaryTint,
-            barWidth: 4,
-            isStrokeCapRound: false,
-            dotData: FlDotData(
-              show: true,
-              getDotPainter: (p0, p1, p2, p3) => FlDotCirclePainter(
-                radius: 2,
-                color: Colors.white,
-                strokeWidth: 0,
-                strokeColor: Colors.blue,
+                strokeColor: GawTheme.mainTint,
               ),
             ),
             belowBarData: BarAreaData(show: false),
@@ -363,15 +342,44 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
   }
 }
 
-Widget bottomTitles(double value, TitleMeta meta) {
-  if (meta.axisPosition % meta.appliedInterval != 0) {
+double getYInterval(List<FlSpot> spots) {
+  return StatisticsChartContainer.largestValue(spots, 30) / 5;
+}
+
+double getInterval(int length) {
+  const int interval = 15;
+
+  if (length < interval) {
+    return 1;
+  }
+
+  return length / interval;
+}
+
+Widget bottomTitles(double value, TitleMeta meta, List<FlSpot> spots) {
+  int index = spots.indexOf(
+      spots.firstWhere((element) => element.x.round() == value.toInt()));
+
+  if (index % meta.appliedInterval.round() != 0 && index != spots.length - 1) {
     return const SizedBox();
   }
 
-  Widget text = MainText(
-    GawDateUtil.formatDate(
-      GawDateUtil.fromApi(
-        value.round(),
+  Widget text = Padding(
+    padding: const EdgeInsets.only(
+      right: PaddingSizes.mainPadding,
+    ),
+    child: RotationTransition(
+      turns: const AlwaysStoppedAnimation(-45 / 360),
+      child: MainText(
+        GawDateUtil.formatDate(
+          GawDateUtil.fromApi(
+            value.round(),
+          ),
+        ),
+        textStyleOverride: TextStyles.mainStyle.copyWith(
+          fontWeight: FontWeight.w500,
+          fontSize: 12,
+        ),
       ),
     ),
   );
@@ -383,76 +391,17 @@ Widget bottomTitles(double value, TitleMeta meta) {
   );
 }
 
-Widget bottomTitlesMonths(double value, TitleMeta meta) {
-  final titles = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    "Nov",
-    "Dec"
-  ];
-  Widget text = Text(
-    titles[value.toInt()],
-    style: const TextStyle(
-      color: GawTheme.text,
-      fontWeight: FontWeight.normal,
-      fontSize: 10,
+Widget leftTitles(double value, TitleMeta meta, List<FlSpot> spots) {
+  return SideTitleWidget(
+    axisSide: meta.axisSide,
+    space: 3,
+    child: MainText(
+      '${value.round()}h',
+      textStyleOverride: TextStyles.mainStyle.copyWith(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+      ),
     ),
-    textAlign: TextAlign.center,
-  );
-  return SideTitleWidget(
-    axisSide: meta.axisSide,
-    space: 8.0, // Space from the chart bar
-    child: text,
-  );
-}
-
-Widget leftTitles(double value, TitleMeta meta) {
-  const style = TextStyle(
-    color: GawTheme.text,
-    fontWeight: FontWeight.normal,
-    fontSize: 10,
-  );
-  String text = '';
-  if (value % 5 == 0) {
-    text = '${value}h';
-  }
-  return SideTitleWidget(
-    axisSide: meta.axisSide,
-    space: 3,
-    child: Text(text, style: style),
-  );
-}
-
-Widget leftMonthlyTitles(double value, TitleMeta meta) {
-  const style = TextStyle(
-    color: GawTheme.text,
-    fontWeight: FontWeight.normal,
-    fontSize: 10,
-  );
-  String text;
-  if (value == 10) {
-    text = '10h';
-  } else if (value == 20) {
-    text = '20h';
-  } else if (value == 30) {
-    text = '30h';
-  } else if (value == 40) {
-    text = '40h';
-  } else {
-    return Container();
-  }
-  return SideTitleWidget(
-    axisSide: meta.axisSide,
-    space: 3,
-    child: Text(text, style: style),
   );
 }
 

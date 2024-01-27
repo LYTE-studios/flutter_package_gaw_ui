@@ -25,7 +25,7 @@ class ShelfOverviewBlock extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: PaddingSizes.mainPadding,
+            horizontal: PaddingSizes.extraBigPadding,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
