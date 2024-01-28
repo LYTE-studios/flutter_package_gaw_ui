@@ -7,10 +7,13 @@ class ApplyStatusButton extends StatelessWidget {
 
   final Function()? onTap;
 
+  final Color? color;
+
   const ApplyStatusButton({
     super.key,
     this.label,
     this.onTap,
+    this.color,
   });
 
   @override
@@ -19,7 +22,7 @@ class ApplyStatusButton extends StatelessWidget {
       onTap: onTap,
       child: BaseStatusButton(
         label: label ?? LocaleKeys.applyForJob.tr(),
-        color: GawTheme.mainTint,
+        color: color ?? GawTheme.mainTint,
       ),
     );
   }

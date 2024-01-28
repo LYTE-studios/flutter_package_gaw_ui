@@ -71,7 +71,7 @@ class PageSwitch extends StatelessWidget {
                             pageNames[0],
                             textStyleOverride: TextStyles.titleStyle.copyWith(
                               fontSize: 15,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w900,
                               color: selectedIndex == 0
                                   ? GawTheme.text
                                   : GawTheme.unselectedText,

@@ -51,16 +51,8 @@ class ProfilePictureAvatar extends StatelessWidget {
                           package: kPackageName,
                           fit: BoxFit.fill,
                         )
-                      : Image.network(
-                          imageUrl!,
-                          errorBuilder: (context, object, error) {
-                            return Image.asset(
-                              'assets/images/core/default_profile_picture.png',
-                              package: kPackageName,
-                              fit: BoxFit.fill,
-                            );
-                          },
-                          fit: BoxFit.fill,
+                      : ProfilePictureImageBox(
+                          imageUrl: imageUrl!,
                         ),
                 ),
               ),
@@ -96,5 +88,29 @@ class ProfilePictureAvatar extends StatelessWidget {
         ),
       );
     });
+  }
+}
+
+class ProfilePictureImageBox extends StatelessWidget {
+  final String imageUrl;
+
+  const ProfilePictureImageBox({
+    super.key,
+    required this.imageUrl,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.network(
+      imageUrl,
+      errorBuilder: (context, object, error) {
+        return Image.asset(
+          'assets/images/core/default_profile_picture.png',
+          package: kPackageName,
+          fit: BoxFit.fill,
+        );
+      },
+      fit: BoxFit.fill,
+    );
   }
 }

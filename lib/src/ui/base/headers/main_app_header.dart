@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
-import 'package:gaw_ui/src/utility/constants.dart';
 
 class MainAppHeader extends StatelessWidget {
   final String? label;
@@ -37,15 +36,10 @@ class MainAppHeader extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          // remove logic
-          useBanner && false
-              ? SizedBox(
-                  height: height,
-                  child: Image.asset(
-                    'assets/images/core/logo_header.png',
-                    package: kPackageName,
-                    fit: BoxFit.fitHeight,
-                  ),
+          useBanner
+              ? const SvgImage(
+                  'assets/images/banner/gaw_banner.svg',
+                  fit: BoxFit.fitHeight,
                 )
               : const SizedBox(),
           Row(

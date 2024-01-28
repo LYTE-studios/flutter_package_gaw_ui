@@ -57,7 +57,7 @@ class StatisticsOverviewBlock extends StatelessWidget {
                   description,
                   alignment: TextAlign.left,
                   textStyleOverride: TextStyles.mainStyle.copyWith(
-                    fontSize: 11,
+                    fontSize: 10,
                     fontWeight: FontWeight.w800,
                     color: GawTheme.statsText,
                   ),

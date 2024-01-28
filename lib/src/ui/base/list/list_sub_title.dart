@@ -21,37 +21,42 @@ class ListSubTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SizedBox(
-          width: !homePage ? PaddingSizes.mainPadding : 0,
-        ),
-        MainText(
-          label,
-          textStyleOverride: TextStyles.mainStyleTitle.copyWith(
-            fontWeight: FontWeight.w700,
-            fontSize: 15,
+    return Padding(
+      padding: const EdgeInsets.only(
+        bottom: PaddingSizes.smallPadding,
+      ),
+      child: Row(
+        children: [
+          SizedBox(
+            width: !homePage ? PaddingSizes.mainPadding : 0,
           ),
-        ),
-        const Spacer(),
-        Visibility(
-          visible: showViewMore,
-          child: InkWell(
-            onTap: onViewMore,
-            child: MainText(
-              '${LocaleKeys.viewAll.tr()} +',
-              textStyleOverride: TextStyles.mainStyle.copyWith(
-                color: GawTheme.secondaryTint,
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
+          MainText(
+            label,
+            textStyleOverride: TextStyles.mainStyleTitle.copyWith(
+              fontWeight: FontWeight.w700,
+              fontSize: 15,
+            ),
+          ),
+          const Spacer(),
+          Visibility(
+            visible: showViewMore,
+            child: InkWell(
+              onTap: onViewMore,
+              child: MainText(
+                '${LocaleKeys.viewAll.tr()} +',
+                textStyleOverride: TextStyles.mainStyle.copyWith(
+                  color: GawTheme.secondaryTint,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ),
-        ),
-        SizedBox(
-          width: !homePage ? PaddingSizes.bigPadding : 0,
-        ),
-      ],
+          SizedBox(
+            width: !homePage ? PaddingSizes.bigPadding : 0,
+          ),
+        ],
+      ),
     );
   }
 }

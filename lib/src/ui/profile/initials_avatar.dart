@@ -23,14 +23,13 @@ class _InitialsAvatarState extends State<InitialsAvatar> {
       constraints: const BoxConstraints(
         minHeight: 48,
       ),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: GawTheme.unselectedBackground,
         shape: BoxShape.circle,
       ),
       child: widget.imageUrl != null
-          ? Image.network(
-              widget.imageUrl!,
-              fit: BoxFit.fill,
+          ? ProfilePictureImageBox(
+              imageUrl: widget.imageUrl!,
             )
           : Center(
               child: MainText(

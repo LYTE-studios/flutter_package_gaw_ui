@@ -49,6 +49,10 @@ class GawTheme {
     Color.fromRGBO(246, 246, 251, 1),
   );
 
+  static const interText = ColorRef(
+    Color.fromRGBO(18, 18, 18, 1),
+  );
+
   static const unselectedText = ColorRef(
     Color.fromRGBO(142, 146, 149, 1),
   );
