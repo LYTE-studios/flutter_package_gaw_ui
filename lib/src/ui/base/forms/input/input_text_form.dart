@@ -139,9 +139,8 @@ class _GawStandaloneTextFieldState extends State<GawStandaloneTextField> {
                         ),
                       ),
                     ),
-              contentPadding: const EdgeInsets.symmetric(
-                vertical: PaddingSizes.smallPadding,
-                horizontal: PaddingSizes.mainPadding,
+              contentPadding: const EdgeInsets.all(
+                PaddingSizes.mainPadding,
               ),
               hintStyle: TextStyles.mainStyle
                   .copyWith(fontSize: widget.fontSize ?? 14),

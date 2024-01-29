@@ -151,7 +151,7 @@ static const Map<String,dynamic> en = {
   "December": "December",
   "hi": "Hi",
   "productivity": "Productivity",
-  "week": "Weej",
+  "week": "Week",
   "month": "Month",
   "jobsDoneThisWeek": "Jobs done this week",
   "jobsScheduledThisWeek": "Jobs scheduled this week",

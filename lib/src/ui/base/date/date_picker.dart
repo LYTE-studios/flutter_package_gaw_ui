@@ -48,7 +48,7 @@ class DateIntervalPickerState extends State<DateIntervalPicker>
       milliseconds: 300,
     ),
     duration: const Duration(
-      milliseconds: 1000,
+      milliseconds: 500,
     ),
   );
 

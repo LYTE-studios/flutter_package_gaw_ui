@@ -26,7 +26,7 @@ class NotificationIcon extends StatelessWidget {
           ),
           Positioned(
             top: 0,
-            right: size / 4,
+            right: PaddingSizes.extraSmallPadding,
             child: Visibility(
               visible: openNotifications,
               child: Container(

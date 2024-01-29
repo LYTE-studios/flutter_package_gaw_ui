@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 
@@ -10,6 +12,7 @@ class CmsExpandableDateRangePicker extends StatelessWidget {
 
   final DateTime? initialStart;
   final DateTime? initialEnd;
+  final DateTime? maxDate;
 
   final Function(DateIntervalSelectable?)? onUpdateSelectable;
 
@@ -24,6 +27,7 @@ class CmsExpandableDateRangePicker extends StatelessWidget {
     this.initialEnd,
     this.onUpdateSelectable,
     this.selectable,
+    this.maxDate,
   });
 
   @override
@@ -84,6 +88,7 @@ class CmsExpandableDateRangePicker extends StatelessWidget {
                 child: CmsDateRangePicker(
                   initialStart: initialStart,
                   initialEnd: initialEnd,
+                  maxDate: maxDate,
                   onUpdateDates: onUpdateDates,
                   onUpdateSelectable: onUpdateSelectable,
                   selectable: selectable,
@@ -104,6 +109,7 @@ class CmsDateRangePicker extends StatelessWidget {
 
   final DateTime? initialStart;
   final DateTime? initialEnd;
+  final DateTime? maxDate;
 
   final DateIntervalSelectable? selectable;
 
@@ -113,6 +119,7 @@ class CmsDateRangePicker extends StatelessWidget {
     this.initialStart,
     this.initialEnd,
     this.selectable,
+    this.maxDate,
     this.onUpdateSelectable,
   });
 
@@ -145,6 +152,7 @@ class CmsDateRangePicker extends StatelessWidget {
               ),
               child: DateRangePicker(
                 isSheet: false,
+                maxDate: maxDate,
                 initialStart: initialStart,
                 initialEnd: initialEnd,
                 onDateChanged: () => onUpdateSelectable?.call(null),

@@ -33,12 +33,12 @@ class _ProgressChartState extends State<ProgressChart>
   late final Animation<double> valueAnimation = Tween<double>(
     begin: 0,
     end: 1,
-  ).chain(CurveTween(curve: Curves.elasticIn)).animate(valueController);
+  ).chain(CurveTween(curve: Curves.easeInCubic)).animate(valueController);
 
   late final AnimationController valueController = AnimationController(
     vsync: this,
     duration: const Duration(
-      seconds: 1,
+      milliseconds: 500,
     ),
   )..addListener(() {
       setState(() {});
@@ -109,7 +109,7 @@ class _ProgressChartState extends State<ProgressChart>
           child: CircularProgressIndicator(
             strokeWidth: 8,
             strokeCap: StrokeCap.round,
-            value: valueAnimation.value,
+            value: valueController.value,
             backgroundColor: GawTheme.unselectedBackground,
             valueColor: AlwaysStoppedAnimation<Color>(
               widget.color ?? GawTheme.mainTint,

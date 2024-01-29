@@ -9,6 +9,7 @@ class DoneStateBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseStateBlock(
+      iconName: PixelPerfectIcons.checkMedium,
       color: GawTheme.unselectedBackground.withOpacity(0.4),
       label: LocaleKeys.viewMore.tr(),
       textColor: GawTheme.text.withOpacity(

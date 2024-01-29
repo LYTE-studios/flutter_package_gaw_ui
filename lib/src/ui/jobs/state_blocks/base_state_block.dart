@@ -27,6 +27,7 @@ class BaseStateBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 128,
       constraints: const BoxConstraints(
         minWidth: 92,
       ),

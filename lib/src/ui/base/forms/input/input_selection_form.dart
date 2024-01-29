@@ -9,16 +9,22 @@ class InputSelectionForm extends StatefulWidget {
 
   final Function(String? value)? onChanged;
 
+  final dynamic value;
+
   final String? hint;
 
   final Map<dynamic, String> options;
+
+  final bool enabled;
 
   const InputSelectionForm({
     super.key,
     this.label,
     this.onSelected,
     this.onChanged,
+    this.value,
     this.hint,
+    this.enabled = true,
     required this.options,
   });
 
@@ -27,10 +33,11 @@ class InputSelectionForm extends StatefulWidget {
 }
 
 class _InputSelectionFormState extends State<InputSelectionForm> {
-  late final TextEditingController controller = TextEditingController()
-    ..addListener(
-      () => widget.onChanged?.call(controller.text),
-    );
+  late final TextEditingController controller =
+      TextEditingController(text: widget.options[widget.value])
+        ..addListener(
+          () => widget.onChanged?.call(controller.text),
+        );
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +45,7 @@ class _InputSelectionFormState extends State<InputSelectionForm> {
       label: widget.label,
       child: LayoutBuilder(builder: (context, constraints) {
         return DropdownMenu(
+          enabled: widget.enabled,
           menuHeight: 180,
           inputDecorationTheme: InputDecorationTheme(
             focusedBorder: OutlineInputBorder(

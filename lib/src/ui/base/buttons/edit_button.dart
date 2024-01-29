@@ -3,6 +3,7 @@ import 'package:gaw_ui/gaw_ui.dart';
 
 class EditButton extends StatelessWidget {
   final String? label;
+  final String? icon;
 
   final Function()? onTap;
 
@@ -26,6 +27,7 @@ class EditButton extends StatelessWidget {
     this.textColor,
     this.textStyleOverride,
     this.fontSize,
+    this.icon,
     this.padding,
     this.minHeight = 45,
   });
@@ -53,13 +55,18 @@ class EditButton extends StatelessWidget {
           alignment: Alignment.center,
           child: Center(
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(
-                  width: 16,
-                  height: 16,
-                  child: SvgIcon(
-                    PixelPerfectIcons.editNormal,
-                    color: GawTheme.text,
+                Visibility(
+                  visible: icon != null,
+                  child: SizedBox(
+                    width: 16,
+                    height: 16,
+                    child: SvgIcon(
+                      icon ?? PixelPerfectIcons.editNormal,
+                      color: textColor ?? GawTheme.text,
+                    ),
                   ),
                 ),
                 const SizedBox(
