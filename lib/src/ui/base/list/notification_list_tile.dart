@@ -16,15 +16,16 @@ class NotificationsListTile extends StatelessWidget {
 
   final Color color;
 
-  const NotificationsListTile(
-      {super.key,
-      required this.label,
-      this.svgIcon = 'assets/images/core/main_logo_small.svg',
-      this.onTap,
-      required this.date,
-      this.onlyTopRadius = false,
-      this.onlyBottomRadius = false,
-      this.color = GawTheme.secondaryTint});
+  const NotificationsListTile({
+    super.key,
+    required this.label,
+    this.svgIcon = 'assets/images/core/main_logo_small.svg',
+    this.onTap,
+    required this.date,
+    this.onlyTopRadius = false,
+    this.onlyBottomRadius = false,
+    this.color = GawTheme.secondaryTint,
+  });
 
   final Radius radius = const Radius.circular(12);
 
@@ -57,33 +58,36 @@ class NotificationsListTile extends StatelessWidget {
 
     return InkWell(
       onTap: onTap,
-      child: LayoutBuilder(builder: (context, constraints) {
-        return Ink(
-          height: 56,
-          width: constraints.maxWidth,
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: borderRadius,
-          ),
-          child: Row(
-            children: [
-              const SizedBox(width: PaddingSizes.smallPadding),
-              CircleAvatar(
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          return Ink(
+            height: 56,
+            width: constraints.maxWidth,
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: borderRadius,
+            ),
+            child: Row(
+              children: [
+                const SizedBox(width: PaddingSizes.smallPadding),
+                CircleAvatar(
                   backgroundColor: GawTheme.background,
                   child: SvgIcon(
                     svgIcon,
                     color: GawTheme.mainTint,
-                  )),
-              const SizedBox(width: PaddingSizes.smallPadding),
-              Expanded(
-                child: containsApprovalOrDenial()
-                    ? _formatJobConfirm()
-                    : (label.length < 45 ? _formatNormal() : _formatLong()),
-              ),
-            ],
-          ),
-        );
-      }),
+                  ),
+                ),
+                const SizedBox(width: PaddingSizes.smallPadding),
+                Expanded(
+                  child: containsApprovalOrDenial()
+                      ? _formatJobConfirm()
+                      : (label.length < 45 ? _formatNormal() : _formatLong()),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 

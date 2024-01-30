@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gaw_ui/gaw_ui.dart';
 import 'package:gaw_ui/src/utility/constants.dart';
 
 class MainLogoSmall extends StatelessWidget {
@@ -11,10 +12,18 @@ class MainLogoSmall extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      assetName,
-      package: kPackageName,
-      fit: fit ?? BoxFit.fitHeight,
+    return Container(
+      color: GawTheme.mainTint,
+      child: Padding(
+        padding: const EdgeInsets.all(
+          PaddingSizes.smallPadding,
+        ),
+        child: SvgPicture.asset(
+          assetName,
+          package: kPackageName,
+          fit: fit ?? BoxFit.fitHeight,
+        ),
+      ),
     );
   }
 }

@@ -22,6 +22,7 @@ class NamedCheckBox extends StatelessWidget {
       child: Row(
         children: [
           SmallCheckBox(
+            onToggle: onToggle,
             value: value,
           ),
           const SizedBox(

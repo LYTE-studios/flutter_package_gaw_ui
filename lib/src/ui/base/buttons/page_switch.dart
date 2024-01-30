@@ -42,67 +42,69 @@ class PageSwitch extends StatelessWidget {
               padding: EdgeInsets.all(
                 switchPadding,
               ),
-              child: LayoutBuilder(builder: (context, constraints) {
-                return Stack(
-                  children: [
-                    AnimatedAlign(
-                      alignment: selectedIndex == 0
-                          ? Alignment.centerLeft
-                          : Alignment.centerRight,
-                      duration: const Duration(
-                        milliseconds: 200,
-                      ),
-                      child: Container(
-                        width: constraints.maxWidth / 2,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          color: GawTheme.clearBackground,
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return Stack(
+                    children: [
+                      AnimatedAlign(
+                        alignment: selectedIndex == 0
+                            ? Alignment.centerLeft
+                            : Alignment.centerRight,
+                        duration: const Duration(
+                          milliseconds: 200,
+                        ),
+                        child: Container(
+                          width: constraints.maxWidth / 2,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            color: GawTheme.clearBackground,
+                          ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      top: 0,
-                      bottom: 0,
-                      left: 0,
-                      child: SizedBox(
-                        width: constraints.maxWidth / 2,
-                        child: Center(
-                          child: MainText(
-                            pageNames[0],
-                            textStyleOverride: TextStyles.titleStyle.copyWith(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: selectedIndex == 0
-                                  ? GawTheme.text
-                                  : GawTheme.unselectedText,
+                      Positioned(
+                        top: 0,
+                        bottom: 0,
+                        left: 0,
+                        child: SizedBox(
+                          width: constraints.maxWidth / 2,
+                          child: Center(
+                            child: MainText(
+                              pageNames[0],
+                              textStyleOverride: TextStyles.titleStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w900,
+                                color: selectedIndex == 0
+                                    ? GawTheme.text
+                                    : GawTheme.unselectedText,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      top: 0,
-                      bottom: 0,
-                      right: 0,
-                      child: SizedBox(
-                        width: constraints.maxWidth / 2,
-                        child: Center(
-                          child: MainText(
-                            pageNames[1],
-                            textStyleOverride: TextStyles.titleStyle.copyWith(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: selectedIndex == 1
-                                  ? GawTheme.text
-                                  : GawTheme.unselectedText,
+                      Positioned(
+                        top: 0,
+                        bottom: 0,
+                        right: 0,
+                        child: SizedBox(
+                          width: constraints.maxWidth / 2,
+                          child: Center(
+                            child: MainText(
+                              pageNames[1],
+                              textStyleOverride: TextStyles.titleStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w900,
+                                color: selectedIndex == 1
+                                    ? GawTheme.text
+                                    : GawTheme.unselectedText,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                );
-              }),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
         );

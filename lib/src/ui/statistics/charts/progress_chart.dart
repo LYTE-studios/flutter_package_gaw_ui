@@ -26,38 +26,52 @@ class ProgressChart extends StatefulWidget {
 }
 
 class _ProgressChartState extends State<ProgressChart>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   double get progressValue =>
       (widget.maxValue == 0 ? 0 : (widget.value / widget.maxValue));
 
   late final Animation<double> valueAnimation = Tween<double>(
     begin: 0,
     end: 1,
-  ).animate(valueController);
+  ).chain(CurveTween(curve: Curves.easeInCubic)).animate(valueController);
 
   late final AnimationController valueController = AnimationController(
     vsync: this,
-    reverseDuration: Duration.zero,
     duration: const Duration(
-      milliseconds: 300,
+      milliseconds: 500,
     ),
-    value: widget.isLoading ? null : progressValue,
   )..addListener(() {
       setState(() {});
     });
 
+  bool animating = false;
+
+  @override
+  bool get wantKeepAlive => true;
+
   void setAnimation() {
-    if (widget.isLoading) {
-      valueController.repeat(
-        reverse: true,
-      );
+    if (!widget.isLoading) {
+      if (animating) {
+        valueController.animateTo(progressValue);
+      }
+      animating = false;
     } else {
-      valueController.animateTo(progressValue);
+      if (!animating) {
+        valueController.repeat();
+      }
+      animating = true;
     }
   }
 
   @override
+  void dispose() {
+    valueController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     setAnimation();
     return SizedBox(
       height: widget.size,
@@ -95,7 +109,7 @@ class _ProgressChartState extends State<ProgressChart>
           child: CircularProgressIndicator(
             strokeWidth: 8,
             strokeCap: StrokeCap.round,
-            value: valueAnimation.value,
+            value: valueController.value,
             backgroundColor: GawTheme.unselectedBackground,
             valueColor: AlwaysStoppedAnimation<Color>(
               widget.color ?? GawTheme.mainTint,

@@ -45,6 +45,14 @@ class GawTheme {
     Color.fromRGBO(66, 84, 102, 1),
   );
 
+  static const specialBackground = ColorRef(
+    Color.fromRGBO(246, 246, 251, 1),
+  );
+
+  static const interText = ColorRef(
+    Color.fromRGBO(18, 18, 18, 1),
+  );
+
   static const unselectedText = ColorRef(
     Color.fromRGBO(142, 146, 149, 1),
   );
@@ -78,7 +86,7 @@ class GawTheme {
   );
 
   static const error = ColorRef(
-    Color.fromRGBO(232, 47, 0, 1),
+    Color.fromRGBO(209, 61, 28, 1),
   );
 
   static const success = ColorRef(

@@ -21,7 +21,7 @@ class SelectableTextRowItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseRowItem(
-      child: GestureDetector(
+      child: ColorlessInkWell(
         onTap: () {
           if (value == null) {
             return;
@@ -29,6 +29,7 @@ class SelectableTextRowItem extends StatelessWidget {
 
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
+              elevation: 0,
               duration: const Duration(
                 seconds: 1,
               ),
@@ -48,12 +49,8 @@ class SelectableTextRowItem extends StatelessWidget {
           );
         },
         child: Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           children: [
-            MainText(
-              value ?? '',
-              alignment: TextAlign.left,
-            ),
             Visibility(
               visible: value != null,
               child: const Padding(
@@ -68,6 +65,12 @@ class SelectableTextRowItem extends StatelessWidget {
                     color: GawTheme.unselectedText,
                   ),
                 ),
+              ),
+            ),
+            Expanded(
+              child: MainText(
+                value ?? '',
+                alignment: TextAlign.left,
               ),
             ),
           ],

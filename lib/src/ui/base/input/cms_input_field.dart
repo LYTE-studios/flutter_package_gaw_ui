@@ -10,6 +10,8 @@ class CmsInputField extends StatefulWidget {
 
   final bool isPasswordField;
 
+  final Function()? onSubmitted;
+
   final bool enabled;
 
   const CmsInputField({
@@ -19,6 +21,7 @@ class CmsInputField extends StatefulWidget {
     this.hint,
     this.isPasswordField = false,
     this.enabled = true,
+    this.onSubmitted,
   });
 
   @override
@@ -37,6 +40,7 @@ class _CmsInputFieldState extends State<CmsInputField> {
       autocorrect: !widget.isPasswordField,
       controller: widget.controller,
       cursorColor: GawTheme.mainTint,
+      onSubmitted: (_) => widget.onSubmitted?.call(),
       decoration: InputDecoration(
         hintText: widget.hint,
         hintStyle: TextStyles.mainStyle.copyWith(
@@ -77,9 +81,9 @@ class _CmsInputFieldState extends State<CmsInputField> {
                         showValues
                             ? PixelPerfectIcons.eyeHideNormal
                             : PixelPerfectIcons.eyeNormal,
-                        color: showValues ? 
-                          GawTheme.mainTint
-                          : GawTheme.unselectedText,
+                        color: showValues
+                            ? GawTheme.mainTint
+                            : GawTheme.unselectedText,
                       ),
                     ),
                   ),

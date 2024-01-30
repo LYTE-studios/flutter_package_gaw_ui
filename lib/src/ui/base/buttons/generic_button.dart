@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
-import 'package:gaw_ui/src/ui/base/loading/loading_spinner.dart';
 
 class GenericButton extends StatelessWidget {
   final String? label;
@@ -22,6 +21,13 @@ class GenericButton extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
 
   final double minHeight;
+  final double minWidth;
+
+  final bool outline;
+
+  final double? radius;
+
+  final String? icon;
 
   const GenericButton({
     super.key,
@@ -35,6 +41,10 @@ class GenericButton extends StatelessWidget {
     this.padding,
     this.loading = false,
     this.minHeight = 45,
+    this.minWidth = 120,
+    this.outline = false,
+    this.radius,
+    this.icon,
   });
 
   @override
@@ -43,44 +53,65 @@ class GenericButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         constraints: BoxConstraints(
-          minWidth: 120,
+          minWidth: minWidth,
           minHeight: minHeight,
         ),
         decoration: BoxDecoration(
           color: color ?? GawTheme.mainTint,
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(radius ?? 5),
+          border: !outline
+              ? null
+              : Border.fromBorderSide(
+                  Borders.mainSide.copyWith(
+                    color: GawTheme.secondaryTint,
+                  ),
+                ),
           boxShadow: const [
             Shadows.mainShadow,
           ],
         ),
         padding: padding,
         alignment: Alignment.center,
-        child: Center(
-          child: loading
-              ? const LoadingSpinner(
-                  color: GawTheme.clearBackground,
-                )
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Visibility(
-                      visible: headerIcon != null,
-                      child: SvgIcon(
-                        headerIcon ?? '',
-                        color: textColor ?? GawTheme.mainTint,
-                      ),
-                    ),
-                    MainText(
-                      label ?? '',
-                      alignment: TextAlign.center,
-                      textStyleOverride: textStyleOverride ??
-                          TextStyles.mainStyleTitle.copyWith(
-                            fontSize: fontSize ?? 18,
-                            color: textColor ?? GawTheme.mainTintText,
-                          ),
-                    ),
-                  ],
+        child: LoadingSwitcher(
+          color: textColor ?? GawTheme.clearText,
+          loading: loading,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Visibility(
+                visible: headerIcon != null,
+                child: SvgIcon(
+                  headerIcon ?? '',
+                  color: textColor ?? GawTheme.mainTint,
                 ),
+              ),
+              MainText(
+                label ?? '',
+                alignment: TextAlign.center,
+                textStyleOverride: textStyleOverride ??
+                    TextStyles.mainStyleTitle.copyWith(
+                      fontSize: fontSize ?? 18,
+                      color: textColor ?? GawTheme.mainTintText,
+                    ),
+              ),
+              Visibility(
+                visible: icon != null,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    right: PaddingSizes.mainPadding,
+                  ),
+                  child: SizedBox(
+                    width: 21,
+                    height: 21,
+                    child: SvgIcon(
+                      icon ?? '',
+                      color: textColor ?? GawTheme.mainTint,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

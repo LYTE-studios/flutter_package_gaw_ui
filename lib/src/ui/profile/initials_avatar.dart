@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 
-class InitialsAvatar extends StatelessWidget {
+class InitialsAvatar extends StatefulWidget {
   final String initials;
 
-  const InitialsAvatar({super.key, required this.initials});
+  final String? imageUrl;
 
+  const InitialsAvatar({
+    super.key,
+    required this.initials,
+    this.imageUrl,
+  });
+
+  @override
+  State<InitialsAvatar> createState() => _InitialsAvatarState();
+}
+
+class _InitialsAvatarState extends State<InitialsAvatar> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,22 +24,24 @@ class InitialsAvatar extends StatelessWidget {
         minHeight: 48,
       ),
       decoration: const BoxDecoration(
-        shape: BoxShape.circle,
         color: GawTheme.unselectedBackground,
+        shape: BoxShape.circle,
       ),
-      child: Center(
-        child: MainText(
-          initials,
-          alignment: TextAlign.center,
-          textStyleOverride: TextStyles.titleStyle.copyWith(
-            fontSize: 14,
-            color: GawTheme.text.withOpacity(
-              0.9,
+      child: widget.imageUrl != null
+          ? ProfilePictureImageBox(
+              imageUrl: widget.imageUrl!,
+            )
+          : Center(
+              child: MainText(
+                widget.initials,
+                alignment: TextAlign.center,
+                textStyleOverride: TextStyles.titleStyle.copyWith(
+                  fontSize: 14,
+                  color: GawTheme.text,
+                  overflow: TextOverflow.fade,
+                ),
+              ),
             ),
-            overflow: TextOverflow.fade,
-          ),
-        ),
-      ),
     );
   }
 }

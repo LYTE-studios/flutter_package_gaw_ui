@@ -22,6 +22,11 @@ class TextRowItem extends StatelessWidget {
       child: MainText(
         value ?? '',
         alignment: TextAlign.left,
+        textStyleOverride: TextStyles.mainStyle.copyWith(
+          color: GawTheme.specialText,
+          fontWeight: FontWeight.w500,
+          fontSize: 14,
+        ),
       ),
     );
   }

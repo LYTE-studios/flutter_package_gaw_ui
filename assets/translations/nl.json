@@ -87,16 +87,14 @@
   "apply": "Aanmelden",
   "approved": "Geaccepteerd",
   "rejected": "Afgewezen",
-  "pending": "In afwachting",
+  "pending": "Open",
   "applyForJob": "Aanmelden voor job",
   "cancelled": "Geannuleerd",
   "completed": "Voltooid",
   "completedJobs": "Voltooide Jobs",
-
   "home": "Home",
   "statistics": "Statistieken",
   "jobs": "Jobs",
   "history": "Geschiedenis",
   "settings": "Instellingen"
-  
 }

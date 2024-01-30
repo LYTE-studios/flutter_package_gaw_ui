@@ -1,3 +1,5 @@
+import 'package:tuple/tuple.dart';
+
 class GawDateUtil {
   static String monthName(int month) {
     switch (month) {
@@ -29,15 +31,62 @@ class GawDateUtil {
     return '';
   }
 
+  static Tuple2<DateTime, DateTime> getWeekRange() {
+    DateTime now = DateTime.now();
+    DateTime today = DateTime(
+      now.year,
+      now.month,
+      now.day,
+    );
+
+    int weekday = now.weekday;
+
+    DateTime begin = today.subtract(
+      Duration(
+        days: weekday - 1,
+      ),
+    );
+
+    DateTime end = today.add(
+      Duration(
+        days: 7 - weekday,
+      ),
+    );
+
+    return Tuple2(begin, end);
+  }
+
   static String formatReadableDate(DateTime dateTime) {
     return '${GawDateUtil.monthName(dateTime.month)} ${dateTime.day}, ${dateTime.year}';
+  }
+
+  static String? tryFormatReadableDate(DateTime? dateTime) {
+    if (dateTime == null) {
+      return null;
+    }
+    return '${GawDateUtil.monthName(dateTime.month)} ${dateTime.day} ${dateTime.year}';
   }
 
   static DateTime fromApi(int dateTime) {
     return DateTime.fromMillisecondsSinceEpoch(dateTime * 1000);
   }
 
+  static DateTime? tryFromApi(int? dateTime) {
+    if (dateTime == null) {
+      return null;
+    }
+    return DateTime.fromMillisecondsSinceEpoch(dateTime * 1000);
+  }
+
   static int toApi(DateTime dateTime) {
+    return dateTime.millisecondsSinceEpoch ~/ 1000;
+  }
+
+  static int? tryToApi(DateTime? dateTime) {
+    if (dateTime == null) {
+      return null;
+    }
+
     return dateTime.millisecondsSinceEpoch ~/ 1000;
   }
 

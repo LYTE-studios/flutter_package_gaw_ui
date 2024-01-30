@@ -1,5 +1,7 @@
 class ListUtil {
-  static double sColumn = 140;
-  static double mColumn = 180;
-  static double lColumn = 240;
+  static const double xSColumn = 64;
+  static const double sColumn = 98;
+  static const double mColumn = 142;
+  static const double lColumn = 186;
+  static const double xLColumn = 210;
 }

@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 
 class ShelfOverviewBlock extends StatelessWidget {
-  const ShelfOverviewBlock({super.key});
+  final int? scheduledCount;
+
+  final int? doneCount;
+
+  const ShelfOverviewBlock({
+    super.key,
+    required this.scheduledCount,
+    required this.doneCount,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,31 +23,30 @@ class ShelfOverviewBlock extends StatelessWidget {
           color: GawTheme.mainTint,
           borderRadius: BorderRadius.circular(12),
         ),
-        child: const Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: 180,
-              child: StatisticsOverviewBlock(
-                value: '5',
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: PaddingSizes.extraBigPadding,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              StatisticsOverviewBlock(
+                value: scheduledCount?.toString() ?? '',
                 description: 'Jobs scheduled',
-                paddingOverride: EdgeInsets.symmetric(
+                paddingOverride: const EdgeInsets.symmetric(
                   vertical: PaddingSizes.bigPadding,
                 ),
               ),
-            ),
-            SizedBox(
-              width: 180,
-              child: StatisticsOverviewBlock(
-                value: '5',
+              StatisticsOverviewBlock(
+                value: doneCount?.toString() ?? '',
                 description: 'Jobs done',
-                paddingOverride: EdgeInsets.symmetric(
+                paddingOverride: const EdgeInsets.symmetric(
                   vertical: PaddingSizes.bigPadding,
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -14,14 +14,15 @@ class SettingsListTile extends StatelessWidget {
 
   final Color color;
 
-  const SettingsListTile(
-      {super.key,
-      required this.label,
-      this.trailing,
-      this.onTap,
-      this.onlyTopRadius = false,
-      this.onlyBottomRadius = false,
-      this.color = GawTheme.clearBackground});
+  const SettingsListTile({
+    super.key,
+    required this.label,
+    this.trailing,
+    this.onTap,
+    this.onlyTopRadius = false,
+    this.onlyBottomRadius = false,
+    this.color = GawTheme.clearBackground,
+  });
 
   final Radius radius = const Radius.circular(12);
 
@@ -43,7 +44,7 @@ class SettingsListTile extends StatelessWidget {
       );
     }
 
-    return InkWell(
+    return ColorlessInkWell(
       onTap: onTap,
       child: LayoutBuilder(builder: (context, constraints) {
         return Ink(

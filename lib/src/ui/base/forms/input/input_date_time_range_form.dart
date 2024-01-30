@@ -10,6 +10,8 @@ class InputDateTimeRangeForm extends StatelessWidget {
   final DateTime? startTime;
   final DateTime? endTime;
 
+  final bool enabled;
+
   final Function(DateTime)? onSelectDate;
   final Function(DateTime start, DateTime end)? onSelectTimeRange;
 
@@ -19,6 +21,7 @@ class InputDateTimeRangeForm extends StatelessWidget {
     this.startTime,
     this.endTime,
     this.onSelectDate,
+    this.enabled = true,
     this.onSelectTimeRange,
   });
 
@@ -57,6 +60,8 @@ class GawStandaloneTimeRangePicker extends StatelessWidget {
 
   final DateTime? endTime;
 
+  final bool enabled;
+
   final Function(DateTime start, DateTime end)? onUpdateTimes;
 
   const GawStandaloneTimeRangePicker({
@@ -64,9 +69,13 @@ class GawStandaloneTimeRangePicker extends StatelessWidget {
     this.startTime,
     this.endTime,
     this.onUpdateTimes,
+    this.enabled = true,
   });
 
   void showPicker(BuildContext context) {
+    if (!enabled) {
+      return;
+    }
     DialogUtil.show(
       dialog: TimeRangePickerDialog(
         onSubmit: onUpdateTimes,

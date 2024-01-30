@@ -2,6 +2,39 @@
 
 abstract class  LocaleKeys {
   static const customers = 'customers';
+  static const welcomeBack = 'welcomeBack';
+  static const unserviced = 'unserviced';
+  static const onAverage = 'onAverage';
+  static const name = 'name';
+  static const Phone = 'Phone';
+  static const Company = 'Company';
+  static const washer = 'washer';
+  static const addNewWasher = 'addNewWasher';
+  static const createNewJob = 'createNewJob';
+  static const dutch = 'dutch';
+  static const french = 'french';
+  static const english = 'english';
+  static const registered = 'registered';
+  static const active = 'active';
+  static const duplicate = 'duplicate';
+  static const Edit = 'Edit';
+  static const automaticallyLogOutAfter = 'automaticallyLogOutAfter';
+  static const afterOneHour = 'afterOneHour';
+  static const afterOneDay = 'afterOneDay';
+  static const afterOneWeek = 'afterOneWeek';
+  static const notification = 'notification';
+  static const both = 'both';
+  static const january = 'january';
+  static const February = 'February';
+  static const March = 'March';
+  static const April = 'April';
+  static const May = 'May';
+  static const June = 'June';
+  static const August = 'August';
+  static const September = 'September';
+  static const October = 'October';
+  static const November = 'November';
+  static const December = 'December';
   static const hi = 'hi';
   static const productivity = 'productivity';
   static const week = 'week';
@@ -13,6 +46,8 @@ abstract class  LocaleKeys {
   static const setLocation = 'setLocation';
   static const search = 'search';
   static const items = 'items';
+  static const outOfAllPlannedJobs = 'outOfAllPlannedJobs';
+  static const outOfAllJobs = 'outOfAllJobs';
   static const paramPerPage = 'paramPerPage';
   static const ofParamPages = 'ofParamPages';
   static const paramOfParamParam = 'paramOfParamParam';
@@ -58,6 +93,7 @@ abstract class  LocaleKeys {
   static const applyForJob = 'applyForJob';
   static const cancelled = 'cancelled';
   static const completed = 'completed';
+  static const completedJobs = 'completedJobs';
   static const home = 'home';
   static const statistics = 'statistics';
   static const jobs = 'jobs';

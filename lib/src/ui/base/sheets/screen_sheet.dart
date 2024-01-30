@@ -6,10 +6,13 @@ class ScreenSheet extends StatelessWidget {
   final double topPadding;
   final bool hasBackground;
 
+  final bool fullScreen;
+
   const ScreenSheet({
     super.key,
     this.topPadding = 0,
     this.hasBackground = true,
+    this.fullScreen = true,
     required this.child,
   });
 
@@ -19,17 +22,19 @@ class ScreenSheet extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         horizontal: PaddingSizes.mainPadding,
       ).copyWith(top: topPadding),
-      child: Container(
-        width: double.infinity,
-        height: MediaQuery.of(context).size.height - topPadding,
-        decoration: BoxDecoration(
-          color: hasBackground ? GawTheme.clearText : Colors.transparent,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(12),
-            topRight: Radius.circular(12),
-          ),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(12),
+          topRight: Radius.circular(12),
         ),
-        child: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          height: !fullScreen
+              ? null
+              : MediaQuery.of(context).size.height - topPadding,
+          decoration: BoxDecoration(
+            color: hasBackground ? GawTheme.clearText : Colors.transparent,
+          ),
           child: child,
         ),
       ),

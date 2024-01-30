@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
@@ -8,10 +7,13 @@ class HeaderBackButton extends StatelessWidget {
 
   final Function()? goBack;
 
+  final double? widthOverride;
+
   const HeaderBackButton({
     super.key,
     this.goBack,
     this.color,
+    this.widthOverride,
   });
 
   @override
@@ -20,7 +22,7 @@ class HeaderBackButton extends StatelessWidget {
       onTap: goBack,
       child: SizedBox(
         height: 78,
-        width: 250,
+        width: widthOverride ?? 250,
         child: Column(
           children: [
             const Spacer(),

@@ -4,6 +4,8 @@ import 'package:gaw_ui/src/ui/base/date/date_range_picker_dialog.dart';
 import 'package:gaw_ui/src/ui/base/forms/input/input_form.dart';
 
 class InputDateRangeForm extends StatelessWidget {
+  final bool enabled;
+
   final String? label;
 
   final String? hint;
@@ -16,6 +18,7 @@ class InputDateRangeForm extends StatelessWidget {
 
   const InputDateRangeForm({
     super.key,
+    this.enabled = true,
     this.label,
     this.hint,
     this.start,
@@ -24,6 +27,9 @@ class InputDateRangeForm extends StatelessWidget {
   });
 
   void showPicker(BuildContext context) {
+    if (!enabled) {
+      return;
+    }
     DialogUtil.show(
       dialog: GawDateRangePickerDialog(
         initialStart: start,

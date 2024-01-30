@@ -12,11 +12,14 @@ class StatisticsOverviewBlock extends StatelessWidget {
 
   final EdgeInsets? paddingOverride;
 
+  final bool loading;
+
   const StatisticsOverviewBlock({
     super.key,
     required this.value,
     required this.description,
     this.paddingOverride,
+    this.loading = false,
   });
 
   @override
@@ -28,34 +31,39 @@ class StatisticsOverviewBlock extends StatelessWidget {
             horizontal: PaddingSizes.smallPadding,
           ),
       child: BaseOverviewBlock(
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: PaddingSizes.bigPadding,
-            left: PaddingSizes.bigPadding,
-            bottom: PaddingSizes.bigPadding,
-            right: PaddingSizes.smallPadding,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              MainText(
-                value,
-                textStyleOverride: TextStyles.titleStyle.copyWith(
-                  fontSize: 48,
-                  fontWeight: FontWeight.w900,
-                  color: Colors.black,
+        child: LoadingSwitcher(
+          loading: loading,
+          child: Padding(
+            padding: const EdgeInsets.only(
+              top: PaddingSizes.mainPadding,
+              left: PaddingSizes.mainPadding,
+              bottom: PaddingSizes.mainPadding,
+              right: PaddingSizes.mainPadding,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                MainText(
+                  value,
+                  alignment: TextAlign.left,
+                  textStyleOverride: TextStyles.titleStyle.copyWith(
+                    fontSize: 48,
+                    fontWeight: FontWeight.w900,
+                    color: GawTheme.text,
+                  ),
                 ),
-              ),
-              MainText(
-                description,
-                textStyleOverride: TextStyles.mainStyle.copyWith(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w800,
-                  color: GawTheme.statsText,
+                MainText(
+                  description,
+                  alignment: TextAlign.left,
+                  textStyleOverride: TextStyles.mainStyle.copyWith(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w800,
+                    color: GawTheme.statsText,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
