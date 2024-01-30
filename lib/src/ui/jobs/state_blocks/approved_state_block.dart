@@ -10,7 +10,9 @@ class ApprovedStateBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseStateBlock(
       color: GawTheme.success,
+      iconName: PixelPerfectIcons.checkMedium,
       label: LocaleKeys.approved.tr(),
+      isLeadingIcon: true,
     );
   }
 }

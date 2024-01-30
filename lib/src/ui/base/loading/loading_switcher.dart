@@ -7,12 +7,14 @@ class LoadingSwitcher extends StatelessWidget {
   final Widget child;
 
   final Color? backgroundColor;
+  final Color? color;
 
   const LoadingSwitcher({
     super.key,
     this.loading = true,
     required this.child,
     this.backgroundColor,
+    this.color,
   });
 
   @override
@@ -24,7 +26,9 @@ class LoadingSwitcher extends StatelessWidget {
       child: loading
           ? Container(
               color: backgroundColor ?? Colors.transparent,
-              child: const LoadingSpinner(),
+              child: LoadingSpinner(
+                color: color,
+              ),
             )
           : child,
     );

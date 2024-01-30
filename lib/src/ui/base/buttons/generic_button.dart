@@ -73,6 +73,7 @@ class GenericButton extends StatelessWidget {
         padding: padding,
         alignment: Alignment.center,
         child: LoadingSwitcher(
+          color: textColor ?? GawTheme.clearText,
           loading: loading,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

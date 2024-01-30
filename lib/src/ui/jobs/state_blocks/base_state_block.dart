@@ -27,7 +27,7 @@ class BaseStateBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 128,
+      width: 136,
       constraints: const BoxConstraints(
         minWidth: 92,
       ),
@@ -40,7 +40,7 @@ class BaseStateBlock extends StatelessWidget {
                 color: GawTheme.unselectedText,
               ),
         borderRadius: BorderRadius.circular(
-          14,
+          16,
         ),
       ),
       child: IntrinsicWidth(
