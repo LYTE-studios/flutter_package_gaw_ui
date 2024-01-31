@@ -30,15 +30,10 @@ class _ProgressChartState extends State<ProgressChart>
   double get progressValue =>
       (widget.maxValue == 0 ? 0 : (widget.value / widget.maxValue));
 
-  late final Animation<double> valueAnimation = Tween<double>(
-    begin: 0,
-    end: 1,
-  ).chain(CurveTween(curve: Curves.easeInCubic)).animate(valueController);
-
   late final AnimationController valueController = AnimationController(
     vsync: this,
     duration: const Duration(
-      milliseconds: 500,
+      milliseconds: 800,
     ),
   )..addListener(() {
       setState(() {});
@@ -57,6 +52,7 @@ class _ProgressChartState extends State<ProgressChart>
       animating = false;
     } else {
       if (!animating) {
+        valueController.value = 0;
         valueController.repeat();
       }
       animating = true;
@@ -73,6 +69,7 @@ class _ProgressChartState extends State<ProgressChart>
   Widget build(BuildContext context) {
     super.build(context);
     setAnimation();
+
     return SizedBox(
       height: widget.size,
       width: widget.size,
@@ -109,7 +106,13 @@ class _ProgressChartState extends State<ProgressChart>
           child: CircularProgressIndicator(
             strokeWidth: 8,
             strokeCap: StrokeCap.round,
-            value: valueController.value,
+            value: widget.isLoading
+                ? valueController
+                    .drive(
+                      CurveTween(curve: Curves.easeIn),
+                    )
+                    .value
+                : valueController.value,
             backgroundColor: GawTheme.unselectedBackground,
             valueColor: AlwaysStoppedAnimation<Color>(
               widget.color ?? GawTheme.mainTint,
