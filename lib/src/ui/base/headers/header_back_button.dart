@@ -9,11 +9,17 @@ class HeaderBackButton extends StatelessWidget {
 
   final double? widthOverride;
 
+  final double? heightOverride;
+
+  final double? size;
+
   const HeaderBackButton({
     super.key,
     this.goBack,
     this.color,
     this.widthOverride,
+    this.heightOverride,
+    this.size,
   });
 
   @override
@@ -21,7 +27,7 @@ class HeaderBackButton extends StatelessWidget {
     return ColorlessInkWell(
       onTap: goBack,
       child: SizedBox(
-        height: 78,
+        height: heightOverride ?? 78,
         width: widthOverride ?? 250,
         child: Column(
           children: [
@@ -44,7 +50,7 @@ class HeaderBackButton extends StatelessWidget {
                       color: color ?? GawTheme.mainTintText,
                       textStyleOverride: TextStyles.titleStyle.copyWith(
                         color: color ?? GawTheme.mainTintText,
-                        fontSize: 18,
+                        fontSize: size ?? 18,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -52,9 +58,11 @@ class HeaderBackButton extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
-              height: PaddingSizes.bigPadding,
-            ),
+            heightOverride != null
+                ? const SizedBox()
+                : const SizedBox(
+                    height: PaddingSizes.bigPadding,
+                  ),
           ],
         ),
       ),
