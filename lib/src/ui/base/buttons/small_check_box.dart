@@ -6,10 +6,13 @@ class SmallCheckBox extends StatelessWidget {
 
   final Function()? onToggle;
 
+  final Color? color;
+
   const SmallCheckBox({
     super.key,
     required this.value,
     this.onToggle,
+    this.color,
   });
 
   @override
@@ -20,7 +23,7 @@ class SmallCheckBox extends StatelessWidget {
         width: 24,
         height: 24,
         decoration: BoxDecoration(
-          color: value ? GawTheme.secondaryTint : Colors.transparent,
+          color: value ? color ?? GawTheme.secondaryTint : Colors.transparent,
           borderRadius: BorderRadius.circular(8),
           border: value
               ? null

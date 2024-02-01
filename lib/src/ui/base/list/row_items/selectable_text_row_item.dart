@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gaw_ui/gaw_ui.dart';
-import 'package:gaw_ui/src/ui/base/list/row_items/base_row_item.dart';
 import 'package:gaw_ui/src/ui/base/snack_bars/basic_snack_bar.dart';
 
 class SelectableTextRowItem extends StatelessWidget {
@@ -48,32 +47,43 @@ class SelectableTextRowItem extends StatelessWidget {
             ),
           );
         },
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Visibility(
-              visible: value != null,
-              child: const Padding(
-                padding: EdgeInsets.all(
-                  PaddingSizes.extraSmallPadding,
-                ),
-                child: SizedBox(
-                  height: 15,
-                  width: 15,
-                  child: SvgIcon(
-                    PixelPerfectIcons.documentNormal,
-                    color: GawTheme.unselectedText,
+        child: Padding(
+          padding: const EdgeInsets.only(
+            right: PaddingSizes.smallPadding,
+          ),
+          child: LayoutBuilder(builder: (context, constraints) {
+            return Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: constraints.maxWidth - 20,
+                  ),
+                  child: MainText(
+                    value ?? '',
+                    overflow: TextOverflow.ellipsis,
+                    alignment: TextAlign.left,
                   ),
                 ),
-              ),
-            ),
-            Expanded(
-              child: MainText(
-                value ?? '',
-                alignment: TextAlign.left,
-              ),
-            ),
-          ],
+                Visibility(
+                  visible: value != null,
+                  child: const Padding(
+                    padding: EdgeInsets.all(
+                      PaddingSizes.extraMiniPadding,
+                    ),
+                    child: SizedBox(
+                      height: 15,
+                      width: 15,
+                      child: SvgIcon(
+                        PixelPerfectIcons.customCopy,
+                        color: GawTheme.unselectedText,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          }),
         ),
       ),
     );

@@ -84,7 +84,7 @@ class _GenericListViewState extends State<GenericListView> {
               scrollDirection: Axis.horizontal,
               child: ConstrainedBox(
                 constraints: const BoxConstraints(
-                  minWidth: 700,
+                  minWidth: 1100,
                 ),
                 child: SizedBox(
                   width: constraints.maxWidth,

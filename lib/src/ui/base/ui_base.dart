@@ -1,5 +1,6 @@
 library ui_base;
 
+export 'animation_builders/splash_logo.dart';
 export 'borders/borders.dart';
 export 'buttons/action_button.dart';
 export 'buttons/big_check_box.dart';
@@ -34,8 +35,6 @@ export 'icons/notification_icon.dart';
 export 'icons/pixel_perfect_icons.dart';
 export 'icons/svg_icon.dart';
 export 'images/svg_image.dart';
-export 'list/list_items/selection_list_item.dart';
-export 'list/list_items/selection_list_header.dart';
 export 'input/app_dropdown_field.dart';
 export 'input/app_input_field.dart';
 export 'input/app_switch_field.dart';
@@ -57,6 +56,7 @@ export 'list/row_items/base_row_item.dart';
 export 'list/row_items/icon_row_item.dart';
 export 'list/row_items/profile_row_item.dart';
 export 'list/row_items/selectable_text_row_item.dart';
+export 'list/row_items/status_row_item.dart';
 export 'list/row_items/text_row_item.dart';
 export 'list/settings_list_tile.dart';
 export 'loading/loading_switcher.dart';

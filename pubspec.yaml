@@ -32,6 +32,7 @@ dependencies:
   tuple: ^2.0.2
   google_maps_flutter: ^2.5.0
   google_map_polyline_new: ^0.3.0+2
+  lottie: ^3.0.0
 
 
 dev_dependencies:
@@ -52,6 +53,7 @@ flutter:
     - assets/icons/pixel_perfect/Medium/SVG/Arrows/
     - assets/icons/pixel_perfect/Normal/SVG/Arrows/
     - assets/icons/custom/
+    - assets/videos/
 
   fonts:
     - family: General Sans

@@ -57,7 +57,7 @@ class ActionButton extends StatelessWidget {
                               color: GawTheme.text,
                             ),
                             const SizedBox(
-                              width: PaddingSizes.smallPadding,
+                              width: PaddingSizes.extraSmallPadding,
                             ),
                             _TextItem(
                               label: label,
