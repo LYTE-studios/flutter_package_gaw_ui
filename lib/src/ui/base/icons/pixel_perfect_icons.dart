@@ -58,6 +58,7 @@ class PixelPerfectIcons {
     upload,
     netherlands,
     unitedKingdom,
+    customEye,
     'assets/images/banner/banner_item_1.svg',
     'assets/images/banner/banner_item_2.svg',
     'assets/images/banner/banner_item_3.svg',
@@ -86,6 +87,7 @@ class PixelPerfectIcons {
   static const String customAdd = '$customBasePath/add.svg';
   static const String customSort = '$customBasePath/sort.svg';
   static const String customCopy = '$customBasePath/copy.svg';
+  static const String customEye = '$customBasePath/view_eye.svg';
 
   static const String customUsers = '$customBasePath/users.svg';
 

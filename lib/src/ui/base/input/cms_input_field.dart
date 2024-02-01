@@ -78,7 +78,7 @@ class _CmsInputFieldState extends State<CmsInputField> {
                       height: 28,
                       width: 28,
                       child: SvgIcon(
-                        showValues
+                        !showValues
                             ? PixelPerfectIcons.eyeHideNormal
                             : PixelPerfectIcons.eyeNormal,
                         color: showValues

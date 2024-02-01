@@ -20,70 +20,73 @@ class SelectableTextRowItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseRowItem(
-      child: ColorlessInkWell(
-        onTap: () {
-          if (value == null) {
-            return;
-          }
+      child: SizedBox(
+        width: fixedWidth,
+        child: ColorlessInkWell(
+          onTap: () {
+            if (value == null) {
+              return;
+            }
 
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              elevation: 0,
-              duration: const Duration(
-                seconds: 1,
-              ),
-              backgroundColor: Colors.transparent,
-              content: BasicSnackBar(
-                title: 'Copied!',
-                description:
-                    '${value ?? 'something..'} got copied to your clipboard',
-              ),
-            ),
-          );
-
-          Clipboard.setData(
-            ClipboardData(
-              text: value ?? '',
-            ),
-          );
-        },
-        child: Padding(
-          padding: const EdgeInsets.only(
-            right: PaddingSizes.smallPadding,
-          ),
-          child: LayoutBuilder(builder: (context, constraints) {
-            return Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: constraints.maxWidth - 20,
-                  ),
-                  child: MainText(
-                    value ?? '',
-                    overflow: TextOverflow.ellipsis,
-                    alignment: TextAlign.left,
-                  ),
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                elevation: 0,
+                duration: const Duration(
+                  seconds: 1,
                 ),
-                Visibility(
-                  visible: value != null,
-                  child: const Padding(
-                    padding: EdgeInsets.all(
-                      PaddingSizes.extraMiniPadding,
+                backgroundColor: Colors.transparent,
+                content: BasicSnackBar(
+                  title: 'Copied!',
+                  description:
+                      '${value ?? 'something..'} got copied to your clipboard',
+                ),
+              ),
+            );
+
+            Clipboard.setData(
+              ClipboardData(
+                text: value ?? '',
+              ),
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(
+              right: PaddingSizes.smallPadding,
+            ),
+            child: LayoutBuilder(builder: (context, constraints) {
+              return Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: constraints.maxWidth - 20,
                     ),
-                    child: SizedBox(
-                      height: 15,
-                      width: 15,
-                      child: SvgIcon(
-                        PixelPerfectIcons.customCopy,
-                        color: GawTheme.unselectedText,
+                    child: MainText(
+                      value ?? '',
+                      overflow: TextOverflow.ellipsis,
+                      alignment: TextAlign.left,
+                    ),
+                  ),
+                  Visibility(
+                    visible: value != null,
+                    child: const Padding(
+                      padding: EdgeInsets.all(
+                        PaddingSizes.extraMiniPadding,
+                      ),
+                      child: SizedBox(
+                        height: 15,
+                        width: 15,
+                        child: SvgIcon(
+                          PixelPerfectIcons.customCopy,
+                          color: GawTheme.unselectedText,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            );
-          }),
+                ],
+              );
+            }),
+          ),
         ),
       ),
     );

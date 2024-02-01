@@ -37,18 +37,21 @@ class BaseListItem extends StatelessWidget {
       );
     });
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: PaddingSizes.bigPadding,
-      ),
-      child: ColorlessInkWell(
-        onTap: onSelected,
-        child: Container(
-          height: 56,
-          decoration: const BoxDecoration(
-            border: Border(
-              bottom: Borders.lightSide,
-            ),
+    return ColorlessInkWell(
+      onTap: onSelected,
+      child: Container(
+        height: 56,
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: Borders.lightSide,
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(
+            left: onSelected == null
+                ? PaddingSizes.bigPadding
+                : PaddingSizes.mainPadding,
+            right: PaddingSizes.bigPadding,
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(
@@ -58,17 +61,34 @@ class BaseListItem extends StatelessWidget {
               children: [
                 Visibility(
                   visible: onUpdate != null,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      right: PaddingSizes.smallPadding,
-                    ),
-                    child: SizedBox(
-                      height: 21,
-                      width: 21,
-                      child: SmallCheckBox(
-                        value: selected,
-                        color: GawTheme.mainTint,
-                        onToggle: () => onUpdate?.call(!selected),
+                  child: ColorlessInkWell(
+                    onTap: () => onUpdate?.call(!selected),
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: PaddingSizes.mainPadding,
+                        right: PaddingSizes.mainPadding,
+                        bottom: PaddingSizes.mainPadding,
+                      ),
+                      child: Container(
+                        width: 21,
+                        height: 21,
+                        decoration: BoxDecoration(
+                          color:
+                              selected ? GawTheme.mainTint : Colors.transparent,
+                          borderRadius: BorderRadius.circular(8),
+                          border: selected
+                              ? null
+                              : Border.all(
+                                  width: 1,
+                                  color: GawTheme.unselectedText,
+                                ),
+                        ),
+                        child: selected
+                            ? const SvgIcon(
+                                PixelPerfectIcons.checkMedium,
+                                color: GawTheme.mainTintText,
+                              )
+                            : const SizedBox(),
                       ),
                     ),
                   ),
