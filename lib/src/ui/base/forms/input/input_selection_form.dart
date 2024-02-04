@@ -17,6 +17,8 @@ class InputSelectionForm extends StatefulWidget {
 
   final bool enabled;
 
+  final bool enableText;
+
   const InputSelectionForm({
     super.key,
     this.label,
@@ -25,6 +27,7 @@ class InputSelectionForm extends StatefulWidget {
     this.value,
     this.hint,
     this.enabled = true,
+    this.enableText = true,
     required this.options,
   });
 
@@ -44,6 +47,31 @@ class _InputSelectionFormState extends State<InputSelectionForm> {
     return InputForm(
       label: widget.label,
       child: LayoutBuilder(builder: (context, constraints) {
+        if (!widget.enabled) {
+          return Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: GawTheme.specialBackground,
+              border: const Border.fromBorderSide(
+                Borders.lightSide,
+              ),
+            ),
+            padding: const EdgeInsets.symmetric(
+              vertical: PaddingSizes.mainPadding + 2,
+              horizontal: PaddingSizes.mainPadding,
+            ),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: MainText(
+                widget.options[widget.value] ?? '',
+                textStyleOverride: TextStyles.mainStyle.copyWith(
+                  fontSize: 14,
+                  color: GawTheme.text,
+                ),
+              ),
+            ),
+          );
+        }
         return DropdownMenu(
           enabled: widget.enabled,
           menuHeight: 180,

@@ -31,7 +31,7 @@ class _BaseHeaderItemState extends State<BaseHeaderItem> {
             widget.label,
             textStyleOverride: TextStyles.mainStyle.copyWith(
               color: GawTheme.specialText,
-              fontSize: 14,
+              fontSize: 13,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -63,8 +63,8 @@ class _BaseHeaderItemState extends State<BaseHeaderItem> {
                   }
                 },
                 child: const SizedBox(
-                  height: 21,
-                  width: 21,
+                  height: 18,
+                  width: 18,
                   child: SvgIcon(
                     PixelPerfectIcons.customSort,
                     color: GawTheme.text,

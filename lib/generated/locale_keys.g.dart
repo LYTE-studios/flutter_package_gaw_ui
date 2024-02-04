@@ -12,6 +12,7 @@ abstract class  LocaleKeys {
   static const welcomeBack = 'welcomeBack';
   static const unserviced = 'unserviced';
   static const onAverage = 'onAverage';
+  static const phone = 'phone';
   static const name = 'name';
   static const Phone = 'Phone';
   static const Company = 'Company';

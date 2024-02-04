@@ -6,14 +6,18 @@ class ListViewHeader extends StatefulWidget {
   final String headerLabel;
 
   final Function(String)? onSearch;
+  final Function(String)? onChange;
 
   final Function()? onDelete;
+  final bool canDelete;
 
   const ListViewHeader({
     super.key,
     required this.headerLabel,
     this.onSearch,
+    this.onChange,
     this.onDelete,
+    this.canDelete = false,
   });
 
   @override
@@ -42,31 +46,31 @@ class _ListViewHeaderState extends State<ListViewHeader> {
             ),
           ),
           const Spacer(),
-          Visibility(
-            visible: widget.onDelete != null,
-            child: ColorlessInkWell(
-              onTap: widget.onDelete,
-              onExitHover: () {
-                setState(() {
-                  hoveringDelete = false;
-                });
-              },
-              onHover: () {
-                setState(() {
-                  hoveringDelete = true;
-                });
-              },
-              child: SizedBox(
-                height: 24,
-                width: 24,
-                child: SvgIcon(
-                  PixelPerfectIcons.trashMedium,
-                  color:
-                      hoveringDelete ? GawTheme.error : GawTheme.unselectedText,
+          !widget.canDelete
+              ? const SizedBox()
+              : ColorlessInkWell(
+                  onTap: widget.onDelete,
+                  onExitHover: () {
+                    setState(() {
+                      hoveringDelete = false;
+                    });
+                  },
+                  onHover: () {
+                    setState(() {
+                      hoveringDelete = true;
+                    });
+                  },
+                  child: SizedBox(
+                    height: 24,
+                    width: 24,
+                    child: SvgIcon(
+                      PixelPerfectIcons.trashMedium,
+                      color: widget.canDelete
+                          ? GawTheme.error
+                          : GawTheme.unselectedText,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
           Visibility(
             visible: widget.onSearch != null,
             child: Padding(
@@ -78,6 +82,7 @@ class _ListViewHeaderState extends State<ListViewHeader> {
                 width: 180,
                 child: TextField(
                   onSubmitted: widget.onSearch,
+                  onChanged: widget.onChange,
                   cursorHeight: 16,
                   decoration: InputStyles.largeDecoration.copyWith(
                     hintText: LocaleKeys.search.tr(),

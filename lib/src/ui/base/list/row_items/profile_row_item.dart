@@ -48,6 +48,7 @@ class ProfileRowItem extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 textStyleOverride: TextStyles.mainStyle.copyWith(
                   color: GawTheme.specialText,
+                  fontSize: 13,
                   fontWeight: FontWeight.w700,
                 ),
               ),

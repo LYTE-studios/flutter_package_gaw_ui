@@ -37,6 +37,7 @@ class _TabbedViewState extends State<TabbedView> {
         Expanded(
           child: Container(
             decoration: BoxDecoration(
+              color: GawTheme.clearText,
               border: Border.all(
                 color: GawTheme.unselectedBackground,
               ),
@@ -49,7 +50,6 @@ class _TabbedViewState extends State<TabbedView> {
                       topRight: Radius.circular(12),
                     )
                   : BorderRadius.circular(7),
-              color: GawTheme.clearBackground,
             ),
             child: widget.pages[widget.selectedIndex],
           ),

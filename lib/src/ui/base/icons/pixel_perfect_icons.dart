@@ -1,4 +1,4 @@
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/services.dart' show FontLoader, rootBundle;
 import 'package:gaw_ui/src/utility/constants.dart';
 
 class PixelPerfectIcons {
@@ -59,6 +59,8 @@ class PixelPerfectIcons {
     netherlands,
     unitedKingdom,
     customEye,
+    netherlands,
+    unitedKingdom,
     'assets/images/banner/banner_item_1.svg',
     'assets/images/banner/banner_item_2.svg',
     'assets/images/banner/banner_item_3.svg',
@@ -70,6 +72,10 @@ class PixelPerfectIcons {
 
   static Future<void> loadIcons() async {
     List<Future> futures = [];
+    final FontLoader fontLoader = FontLoader('General Sans');
+
+    await fontLoader.load();
+
     for (String icon in preloads) {
       futures.add(
         Future(

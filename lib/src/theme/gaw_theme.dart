@@ -7,7 +7,7 @@ class GawTheme {
   );
 
   static const secondaryTint = ColorRef(
-    Color.fromRGBO(11, 91, 164, 1),
+    Color.fromRGBO(53, 115, 183, 1),
   );
 
   static const background = ColorRef(

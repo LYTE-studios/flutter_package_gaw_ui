@@ -9,6 +9,7 @@ class GenericListView extends StatefulWidget {
   final String? valueName;
 
   final Function()? onDelete;
+  final bool canDelete;
 
   final Function(String)? onSearch;
 
@@ -34,6 +35,7 @@ class GenericListView extends StatefulWidget {
     this.loading = false,
     this.valueName,
     this.onDelete,
+    this.canDelete = false,
     this.page,
     this.onSearch,
     this.showFooter = true,
@@ -50,9 +52,12 @@ class GenericListView extends StatefulWidget {
   State<GenericListView> createState() => _GenericListViewState();
 }
 
-class _GenericListViewState extends State<GenericListView> {
+class _GenericListViewState extends State<GenericListView>
+    with ScreenStateMixin {
   late final bool showPages =
       widget.totalItems == null || widget.itemsPerPage == null;
+
+  bool isLateLoading = false;
 
   int getPageCount() {
     if (widget.itemsPerPage == null || widget.totalItems == null) {
@@ -66,6 +71,26 @@ class _GenericListViewState extends State<GenericListView> {
     return widget.totalItems! ~/ widget.itemsPerPage!;
   }
 
+  void setLateLoader(String query) {
+    if (isLateLoading) {
+      return;
+    }
+
+    setData(() {
+      isLateLoading = true;
+    });
+    Future.delayed(
+      const Duration(
+        milliseconds: 700,
+      ),
+    ).then((_) {
+      setData(() {
+        isLateLoading = false;
+      });
+      widget.onSearch?.call(query);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
@@ -76,7 +101,13 @@ class _GenericListViewState extends State<GenericListView> {
             child: ListViewHeader(
               headerLabel: widget.title ?? '',
               onDelete: widget.onDelete,
-              onSearch: widget.onSearch,
+              onChange: (String value) {
+                setLateLoader(value);
+              },
+              onSearch: (String value) {
+                widget.onSearch?.call(value);
+              },
+              canDelete: widget.canDelete,
             ),
           ),
           Expanded(
@@ -84,7 +115,7 @@ class _GenericListViewState extends State<GenericListView> {
               scrollDirection: Axis.horizontal,
               child: ConstrainedBox(
                 constraints: const BoxConstraints(
-                  minWidth: 1064,
+                  minWidth: 1100,
                 ),
                 child: SizedBox(
                   width: constraints.maxWidth,

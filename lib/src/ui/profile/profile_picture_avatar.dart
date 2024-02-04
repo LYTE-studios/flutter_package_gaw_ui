@@ -94,9 +94,12 @@ class ProfilePictureAvatar extends StatelessWidget {
 class ProfilePictureImageBox extends StatelessWidget {
   final String imageUrl;
 
+  final String? initials;
+
   const ProfilePictureImageBox({
     super.key,
     required this.imageUrl,
+    this.initials,
   });
 
   @override
@@ -104,6 +107,12 @@ class ProfilePictureImageBox extends StatelessWidget {
     return Image.network(
       imageUrl,
       errorBuilder: (context, object, error) {
+        if (initials != null) {
+          return InitialsBlock(
+            initials: initials!,
+            color: GawTheme.clearText,
+          );
+        }
         return Image.asset(
           'assets/images/core/default_profile_picture.png',
           package: kPackageName,

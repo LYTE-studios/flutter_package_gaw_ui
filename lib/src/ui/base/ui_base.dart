@@ -29,6 +29,7 @@ export 'forms/static/form_sub_title.dart';
 export 'forms/static/form_title.dart';
 export 'forms/static/wizard_header.dart';
 export 'headers/header_back_button.dart';
+export 'snack_bars/basic_snack_bar.dart';
 export 'headers/login_app_header.dart';
 export 'headers/main_app_header.dart';
 export 'icons/notification_icon.dart';

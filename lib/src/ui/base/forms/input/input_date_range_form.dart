@@ -48,6 +48,7 @@ class InputDateRangeForm extends StatelessWidget {
         onTap: () => showPicker(context),
         child: GawStandaloneTextField(
           hint: hint,
+          frozen: !enabled,
           text: GawDateUtil.formatFullDateInterval(
             start,
             end,

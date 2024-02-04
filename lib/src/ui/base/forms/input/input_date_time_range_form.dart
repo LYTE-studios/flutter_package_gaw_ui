@@ -36,7 +36,8 @@ class InputDateTimeRangeForm extends StatelessWidget {
             child: GawStandaloneDatePicker(
               date: startTime,
               endDate: endTime,
-              onUpdateDate: onSelectDate,
+              enabled: enabled,
+              onUpdateDate: !enabled ? null : onSelectDate,
             ),
           ),
           const SizedBox(
@@ -46,7 +47,8 @@ class InputDateTimeRangeForm extends StatelessWidget {
             child: GawStandaloneTimeRangePicker(
               startTime: startTime,
               endTime: endTime,
-              onUpdateTimes: onSelectTimeRange,
+              enabled: enabled,
+              onUpdateTimes: !enabled ? null : onSelectTimeRange,
             ),
           ),
         ],
@@ -92,6 +94,7 @@ class GawStandaloneTimeRangePicker extends StatelessWidget {
       onTap: () => showPicker(context),
       child: GawStandaloneTextField(
         enabled: false,
+        frozen: !enabled,
         icon: PixelPerfectIcons.clockNormal,
         hint: 'Job time',
         text: GawDateUtil.tryFormatTimeInterval(startTime, endTime),
@@ -107,14 +110,20 @@ class GawStandaloneDatePicker extends StatelessWidget {
 
   final DateTime? endDate;
 
+  final bool enabled;
+
   const GawStandaloneDatePicker({
     super.key,
     this.date,
     this.endDate,
     this.onUpdateDate,
+    this.enabled = true,
   });
 
   void showPicker(BuildContext context) {
+    if (!enabled) {
+      return;
+    }
     DialogUtil.show(
       dialog: GawDatePickerDialog(
         initialDate: date,
@@ -138,6 +147,7 @@ class GawStandaloneDatePicker extends StatelessWidget {
       onTap: () => showPicker(context),
       child: GawStandaloneTextField(
         enabled: false,
+        frozen: !enabled,
         hint: 'Job date',
         icon: PixelPerfectIcons.calendarMedium,
         text: currentDateInterval ?? GawDateUtil.tryFormatFullDate(date),
