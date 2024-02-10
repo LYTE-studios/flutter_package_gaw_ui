@@ -17,26 +17,46 @@ class InitialsAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: const BoxConstraints(
-        minHeight: 48,
-      ),
-      decoration: BoxDecoration(
-        color:
-            isBlock ? GawTheme.darkBackground : GawTheme.unselectedBackground,
-        shape: isBlock ? BoxShape.rectangle : BoxShape.circle,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: imageUrl != null
-          ? ProfilePictureImageBox(
-              imageUrl: imageUrl!,
-              initials: initials,
-            )
-          : InitialsBlock(
-              initials: initials,
-              color: GawTheme.clearText,
+    return isBlock
+        ? ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Container(
+              constraints: const BoxConstraints(
+                minHeight: 48,
+              ),
+              decoration: const BoxDecoration(
+                color: GawTheme.darkBackground,
+              ),
+              child: imageUrl != null
+                  ? ProfilePictureImageBox(
+                      imageUrl: imageUrl!,
+                      initials: initials,
+                    )
+                  : InitialsBlock(
+                      initials: initials,
+                      color: GawTheme.clearText,
+                    ),
             ),
-    );
+          )
+        : ClipOval(
+            child: Container(
+              constraints: const BoxConstraints(
+                minHeight: 48,
+              ),
+              decoration: const BoxDecoration(
+                color: GawTheme.unselectedBackground,
+                shape: BoxShape.circle,
+              ),
+              child: imageUrl != null
+                  ? ProfilePictureImageBox(
+                      imageUrl: imageUrl!,
+                    )
+                  : InitialsBlock(
+                      initials: initials,
+                      color: GawTheme.text,
+                    ),
+            ),
+          );
   }
 }
 
@@ -58,7 +78,7 @@ class InitialsBlock extends StatelessWidget {
         initials,
         alignment: TextAlign.center,
         textStyleOverride: TextStyles.titleStyle.copyWith(
-          fontSize: 14,
+          fontSize: 16,
           color: color ?? GawTheme.text,
           overflow: TextOverflow.fade,
         ),

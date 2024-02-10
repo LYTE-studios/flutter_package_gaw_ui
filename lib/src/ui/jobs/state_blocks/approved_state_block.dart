@@ -8,10 +8,10 @@ class ApprovedStateBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseStateBlock(
+    return const BaseStateBlock(
       color: GawTheme.success,
       iconName: PixelPerfectIcons.checkMedium,
-      label: LocaleKeys.approved.tr(),
+      label: 'Approved',
       isLeadingIcon: true,
     );
   }

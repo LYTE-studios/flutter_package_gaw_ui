@@ -22,7 +22,7 @@ class GawTheme {
   );
 
   static const clearBackground = ColorRef(
-    Color.fromRGBO(248, 248, 248, 1),
+    Color.fromRGBO(250, 250, 250, 1),
   );
 
   static const unselectedBackground = ColorRef(

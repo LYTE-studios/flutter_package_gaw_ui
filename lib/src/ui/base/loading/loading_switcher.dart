@@ -26,9 +26,11 @@ class LoadingSwitcher extends StatelessWidget {
       ),
       child: loading
           ? Padding(
-              padding: const EdgeInsets.all(
-                PaddingSizes.smallPadding,
-              ),
+              padding: backgroundColor != null
+                  ? EdgeInsets.zero
+                  : const EdgeInsets.all(
+                      PaddingSizes.smallPadding,
+                    ),
               child: Container(
                 color: backgroundColor ?? Colors.transparent,
                 child: LoadingSpinner(

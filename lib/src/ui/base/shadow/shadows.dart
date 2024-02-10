@@ -30,6 +30,12 @@ class Shadows {
     blurRadius: 3,
   );
 
+  static BoxShadow ultraLightShadow = BoxShadow(
+    color: GawTheme.shadow.withOpacity(0.001),
+    spreadRadius: 2,
+    blurRadius: 3,
+  );
+
   static const BoxShadow bottomSheetShadow = BoxShadow(
     color: GawTheme.shadow,
     offset: Offset(

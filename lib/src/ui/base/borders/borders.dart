@@ -1,3 +1,4 @@
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 
@@ -5,6 +6,11 @@ class Borders {
   static const BorderSide mainSide = BorderSide(
     color: GawTheme.unselectedText,
     width: 0.3,
+  );
+
+  static const BorderSide thickMainTintSide = BorderSide(
+    color: GawTheme.mainTint,
+    width: 1.5,
   );
 
   static const BorderSide lightSide = BorderSide(

@@ -61,6 +61,8 @@ class PixelPerfectIcons {
     customEye,
     netherlands,
     unitedKingdom,
+    customNotification,
+    customApplicationDocument,
     'assets/images/banner/banner_item_1.svg',
     'assets/images/banner/banner_item_2.svg',
     'assets/images/banner/banner_item_3.svg',
@@ -94,6 +96,10 @@ class PixelPerfectIcons {
   static const String customSort = '$customBasePath/sort.svg';
   static const String customCopy = '$customBasePath/copy.svg';
   static const String customEye = '$customBasePath/view_eye.svg';
+  static const String customApplicationDocument =
+      '$customBasePath/application_document.svg';
+  static const String customNotification =
+      '$customBasePath/custom_notification.svg';
 
   static const String customUsers = '$customBasePath/users.svg';
 
@@ -169,6 +175,7 @@ class PixelPerfectIcons {
   static const String documentNormal = '$normalBasePath/UI Basic/document.svg';
 
   static const String xNormal = '$normalBasePath/UI Basic/cancel.svg';
+  static const String xMedium = '$mediumBasePath/UI Basic/cancel.svg';
 
   static const String barChart = '$customBasePath/bar_chart.svg';
 
