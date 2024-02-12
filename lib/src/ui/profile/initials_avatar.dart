@@ -1,47 +1,88 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 
-class InitialsAvatar extends StatefulWidget {
+class InitialsAvatar extends StatelessWidget {
   final String initials;
 
   final String? imageUrl;
+
+  final bool isBlock;
 
   const InitialsAvatar({
     super.key,
     required this.initials,
     this.imageUrl,
+    this.isBlock = false,
   });
 
   @override
-  State<InitialsAvatar> createState() => _InitialsAvatarState();
+  Widget build(BuildContext context) {
+    return isBlock
+        ? ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Container(
+              constraints: const BoxConstraints(
+                minHeight: 48,
+              ),
+              decoration: const BoxDecoration(
+                color: GawTheme.darkBackground,
+              ),
+              child: imageUrl != null
+                  ? ProfilePictureImageBox(
+                      imageUrl: imageUrl!,
+                      initials: initials,
+                    )
+                  : InitialsBlock(
+                      initials: initials,
+                      color: GawTheme.clearText,
+                    ),
+            ),
+          )
+        : ClipOval(
+            child: Container(
+              constraints: const BoxConstraints(
+                minHeight: 48,
+              ),
+              decoration: const BoxDecoration(
+                color: GawTheme.unselectedBackground,
+                shape: BoxShape.circle,
+              ),
+              child: imageUrl != null
+                  ? ProfilePictureImageBox(
+                      imageUrl: imageUrl!,
+                    )
+                  : InitialsBlock(
+                      initials: initials,
+                      color: GawTheme.text,
+                    ),
+            ),
+          );
+  }
 }
 
-class _InitialsAvatarState extends State<InitialsAvatar> {
+class InitialsBlock extends StatelessWidget {
+  final String initials;
+
+  final Color? color;
+
+  const InitialsBlock({
+    super.key,
+    required this.initials,
+    this.color,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: const BoxConstraints(
-        minHeight: 48,
+    return Center(
+      child: MainText(
+        initials,
+        alignment: TextAlign.center,
+        textStyleOverride: TextStyles.titleStyle.copyWith(
+          fontSize: 16,
+          color: color ?? GawTheme.text,
+          overflow: TextOverflow.fade,
+        ),
       ),
-      decoration: const BoxDecoration(
-        color: GawTheme.unselectedBackground,
-        shape: BoxShape.circle,
-      ),
-      child: widget.imageUrl != null
-          ? ProfilePictureImageBox(
-              imageUrl: widget.imageUrl!,
-            )
-          : Center(
-              child: MainText(
-                widget.initials,
-                alignment: TextAlign.center,
-                textStyleOverride: TextStyles.titleStyle.copyWith(
-                  fontSize: 14,
-                  color: GawTheme.text,
-                  overflow: TextOverflow.fade,
-                ),
-              ),
-            ),
     );
   }
 }

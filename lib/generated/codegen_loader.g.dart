@@ -15,10 +15,18 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> nl = {
+  "oops": "Oops...",
+  "newCopy": "New",
+  "customer": "Customer",
+  "customerName": "Customer name",
+  "createNewCustomer": "Create new Customer",
+  "hours": "Hours",
+  "email": "Email",
   "customers": "Klanten",
   "welcomeBack": "Welkom terug",
   "unserviced": "Klanten",
   "onAverage": "Gemiddeld",
+  "phone": "Telefoon",
   "name": "Naam",
   "Phone": "Tel",
   "Company": "Bedrijf",
@@ -115,6 +123,14 @@ class CodegenLoader extends AssetLoader{
   "settings": "Instellingen"
 };
 static const Map<String,dynamic> en = {
+  "oops": "Oops...",
+  "newCopy": "New",
+  "customer": "Customer",
+  "customerName": "Customer name",
+  "createNewCustomer": "Create new Customer",
+  "hours": "Hours",
+  "email": "Email",
+  "phone": "Phone",
   "customers": "Customers",
   "welcomeBack": "Welcome back",
   "unserviced": "Unserviced",
@@ -215,6 +231,14 @@ static const Map<String,dynamic> en = {
   "settings": "Settings"
 };
 static const Map<String,dynamic> fr = {
+  "oops": "Oops...",
+  "newCopy": "New",
+  "customer": "Customer",
+  "customerName": "Customer name",
+  "createNewCustomer": "Create new Customer",
+  "hours": "Hours",
+  "email": "Email",
+  "phone": "Phone",
   "customers": "Clients",
   "hi": "Salut",
   "productivity": "Productivité",

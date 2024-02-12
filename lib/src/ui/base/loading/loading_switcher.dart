@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/src/ui/base/loading/loading_spinner.dart';
+import 'package:gaw_ui/src/ui/base/padding/padding_sizes.dart';
 
 class LoadingSwitcher extends StatelessWidget {
   final bool loading;
@@ -24,10 +25,17 @@ class LoadingSwitcher extends StatelessWidget {
         milliseconds: 200,
       ),
       child: loading
-          ? Container(
-              color: backgroundColor ?? Colors.transparent,
-              child: LoadingSpinner(
-                color: color,
+          ? Padding(
+              padding: backgroundColor != null
+                  ? EdgeInsets.zero
+                  : const EdgeInsets.all(
+                      PaddingSizes.smallPadding,
+                    ),
+              child: Container(
+                color: backgroundColor ?? Colors.transparent,
+                child: LoadingSpinner(
+                  color: color,
+                ),
               ),
             )
           : child,

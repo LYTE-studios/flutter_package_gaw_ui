@@ -29,7 +29,7 @@ class _RotatingIconState extends State<RotatingIcon>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 400),
       vsync: this,
     );
   }

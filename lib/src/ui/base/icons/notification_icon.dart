@@ -5,11 +5,14 @@ import '../../../../gaw_ui.dart';
 class NotificationIcon extends StatelessWidget {
   final bool openNotifications;
 
+  final String? iconOverride;
+
   final double size;
 
   const NotificationIcon({
     super.key,
     this.openNotifications = false,
+    this.iconOverride,
     this.size = 18,
   });
 
@@ -20,8 +23,8 @@ class NotificationIcon extends StatelessWidget {
       height: size,
       child: Stack(
         children: [
-          const SvgIcon(
-            PixelPerfectIcons.bellMedium,
+          SvgIcon(
+            iconOverride ?? PixelPerfectIcons.bellMedium,
             color: GawTheme.clearBackground,
           ),
           Positioned(

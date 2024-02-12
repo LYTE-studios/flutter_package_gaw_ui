@@ -2,19 +2,30 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 
-class ListViewHeader extends StatelessWidget {
+class ListViewHeader extends StatefulWidget {
   final String headerLabel;
 
   final Function(String)? onSearch;
+  final Function(String)? onChange;
 
   final Function()? onDelete;
+  final bool canDelete;
 
   const ListViewHeader({
     super.key,
     required this.headerLabel,
     this.onSearch,
+    this.onChange,
     this.onDelete,
+    this.canDelete = false,
   });
+
+  @override
+  State<ListViewHeader> createState() => _ListViewHeaderState();
+}
+
+class _ListViewHeaderState extends State<ListViewHeader> {
+  bool hoveringDelete = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +38,7 @@ class ListViewHeader extends StatelessWidget {
               left: PaddingSizes.bigPadding,
             ),
             child: MainText(
-              headerLabel,
+              widget.headerLabel,
               textStyleOverride: TextStyles.mainStyleTitle.copyWith(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
@@ -35,22 +46,33 @@ class ListViewHeader extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          Visibility(
-            visible: onDelete != null,
-            child: GestureDetector(
-              onTap: onDelete,
-              child: const SizedBox(
-                height: 24,
-                width: 24,
-                child: SvgIcon(
-                  PixelPerfectIcons.trashMedium,
-                  color: GawTheme.unselectedText,
+          !widget.canDelete
+              ? const SizedBox()
+              : ColorlessInkWell(
+                  onTap: widget.onDelete,
+                  onExitHover: () {
+                    setState(() {
+                      hoveringDelete = false;
+                    });
+                  },
+                  onHover: () {
+                    setState(() {
+                      hoveringDelete = true;
+                    });
+                  },
+                  child: SizedBox(
+                    height: 24,
+                    width: 24,
+                    child: SvgIcon(
+                      PixelPerfectIcons.trashMedium,
+                      color: widget.canDelete
+                          ? GawTheme.error
+                          : GawTheme.unselectedText,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
           Visibility(
-            visible: onSearch != null,
+            visible: widget.onSearch != null,
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: PaddingSizes.mainPadding,
@@ -59,7 +81,9 @@ class ListViewHeader extends StatelessWidget {
               child: SizedBox(
                 width: 180,
                 child: TextField(
-                  onSubmitted: onSearch,
+                  onSubmitted: widget.onSearch,
+                  onChanged: widget.onChange,
+                  cursorHeight: 16,
                   decoration: InputStyles.largeDecoration.copyWith(
                     hintText: LocaleKeys.search.tr(),
                     prefixIcon: const Padding(

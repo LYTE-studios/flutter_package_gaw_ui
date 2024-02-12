@@ -34,36 +34,44 @@ class ActionButton extends StatelessWidget {
               height: height ?? 32,
               constraints: const BoxConstraints(
                 minWidth: 156,
+                maxWidth: 256,
               ),
               decoration: BoxDecoration(
                 color: GawTheme.clearText,
                 borderRadius: BorderRadius.circular(4),
                 border: const Border.fromBorderSide(Borders.lightSide),
               ),
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: PaddingSizes.smallPadding,
+              child: IntrinsicWidth(
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: PaddingSizes.smallPadding,
+                    ),
+                    child: icon == null
+                        ? _TextItem(
+                            label: label,
+                          )
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              const SizedBox(
+                                width: PaddingSizes.smallPadding,
+                              ),
+                              SvgIcon(
+                                icon ?? '',
+                                color: GawTheme.text,
+                              ),
+                              const SizedBox(
+                                width: PaddingSizes.extraSmallPadding,
+                              ),
+                              Expanded(
+                                child: _TextItem(
+                                  label: label,
+                                ),
+                              ),
+                            ],
+                          ),
                   ),
-                  child: icon == null
-                      ? _TextItem(
-                          label: label,
-                        )
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SvgIcon(
-                              icon ?? '',
-                              color: GawTheme.text,
-                            ),
-                            const SizedBox(
-                              width: PaddingSizes.smallPadding,
-                            ),
-                            _TextItem(
-                              label: label,
-                            ),
-                          ],
-                        ),
                 ),
               ),
             ),
@@ -87,7 +95,7 @@ class _TextItem extends StatelessWidget {
       label,
       alignment: TextAlign.center,
       textStyleOverride: TextStyles.mainStyle.copyWith(
-        fontSize: 10,
+        fontSize: 12,
         fontWeight: FontWeight.w700,
       ),
     );

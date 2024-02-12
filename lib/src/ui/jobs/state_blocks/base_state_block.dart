@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
+import 'package:gaw_ui/src/ui/base/text/auto_sized_text.dart';
 
 class BaseStateBlock extends StatelessWidget {
   final Color color;
@@ -56,26 +57,25 @@ class BaseStateBlock extends StatelessWidget {
                   ? const SizedBox()
                   : iconName == null
                       ? const SizedBox.shrink()
-                      : Row(
-                          children: [
-                            SvgIcon(
-                              iconName!,
-                              color: textColor ?? GawTheme.mainTintText,
-                            ),
-                            const SizedBox(
-                              width: PaddingSizes.extraMiniPadding,
-                            ),
-                          ],
+                      : Padding(
+                          padding: const EdgeInsets.all(
+                            PaddingSizes.extraMiniPadding,
+                          ),
+                          child: SvgIcon(
+                            iconName!,
+                            color: textColor ?? GawTheme.mainTintText,
+                          ),
                         ),
               Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: PaddingSizes.extraSmallPadding,
                 ),
-                child: MainText(
+                child: AutoSizedText(
                   label,
+                  maxSize: 64,
                   textStyleOverride: TextStyles.mainStyle.copyWith(
                     color: textColor ?? GawTheme.mainTintText,
-                    fontSize: 16,
+                    fontSize: 14,
                   ),
                 ),
               ),

@@ -1,4 +1,4 @@
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/services.dart' show FontLoader, rootBundle;
 import 'package:gaw_ui/src/utility/constants.dart';
 
 class PixelPerfectIcons {
@@ -9,6 +9,9 @@ class PixelPerfectIcons {
   static const String customBasePath = 'assets/icons/custom';
 
   static List<String> preloads = [
+    customAdd,
+    customSort,
+    customCopy,
     profilePicture,
     logoutMedium,
     bellMedium,
@@ -55,6 +58,14 @@ class PixelPerfectIcons {
     upload,
     netherlands,
     unitedKingdom,
+    customEye,
+    netherlands,
+    unitedKingdom,
+    customNotification,
+    customApplicationDocument,
+    'assets/images/banner/banner_item_1.svg',
+    'assets/images/banner/banner_item_2.svg',
+    'assets/images/banner/banner_item_3.svg',
   ];
 
   static String resolvePackageName(String path) {
@@ -63,6 +74,10 @@ class PixelPerfectIcons {
 
   static Future<void> loadIcons() async {
     List<Future> futures = [];
+    final FontLoader fontLoader = FontLoader('General Sans');
+
+    await fontLoader.load();
+
     for (String icon in preloads) {
       futures.add(
         Future(
@@ -76,6 +91,15 @@ class PixelPerfectIcons {
   // NAVIGATION
 
   static const String customUser = '$customBasePath/2 User.svg';
+
+  static const String customAdd = '$customBasePath/add.svg';
+  static const String customSort = '$customBasePath/sort.svg';
+  static const String customCopy = '$customBasePath/copy.svg';
+  static const String customEye = '$customBasePath/view_eye.svg';
+  static const String customApplicationDocument =
+      '$customBasePath/application_document.svg';
+  static const String customNotification =
+      '$customBasePath/custom_notification.svg';
 
   static const String customUsers = '$customBasePath/users.svg';
 
@@ -151,6 +175,7 @@ class PixelPerfectIcons {
   static const String documentNormal = '$normalBasePath/UI Basic/document.svg';
 
   static const String xNormal = '$normalBasePath/UI Basic/cancel.svg';
+  static const String xMedium = '$mediumBasePath/UI Basic/cancel.svg';
 
   static const String barChart = '$customBasePath/bar_chart.svg';
 

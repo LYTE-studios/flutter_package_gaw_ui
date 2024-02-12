@@ -5,10 +5,15 @@ class ColorlessInkWell extends StatelessWidget {
 
   final Function()? onTap;
 
+  final Function()? onHover;
+  final Function()? onExitHover;
+
   const ColorlessInkWell({
     super.key,
     required this.child,
     this.onTap,
+    this.onHover,
+    this.onExitHover,
   });
 
   @override
@@ -18,6 +23,13 @@ class ColorlessInkWell extends StatelessWidget {
       hoverColor: Colors.transparent,
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
+      onHover: (bool value) {
+        if (value) {
+          onHover?.call();
+        } else {
+          onExitHover?.call();
+        }
+      },
       onTap: onTap,
       child: child,
     );

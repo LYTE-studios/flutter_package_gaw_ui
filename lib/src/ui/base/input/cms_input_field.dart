@@ -31,9 +31,17 @@ class CmsInputField extends StatefulWidget {
 class _CmsInputFieldState extends State<CmsInputField> {
   late bool showValues = !widget.isPasswordField;
 
+  late final FocusNode focusNode = FocusNode()
+    ..addListener(() {
+      setState(
+        () {},
+      );
+    });
+
   @override
   Widget build(BuildContext context) {
     return TextField(
+      focusNode: focusNode,
       enabled: widget.enabled,
       obscureText: !showValues,
       enableSuggestions: !widget.isPasswordField,
@@ -41,7 +49,11 @@ class _CmsInputFieldState extends State<CmsInputField> {
       controller: widget.controller,
       cursorColor: GawTheme.mainTint,
       onSubmitted: (_) => widget.onSubmitted?.call(),
-      decoration: InputDecoration(
+      decoration: InputStyles.mainDecoration.copyWith(
+        floatingLabelStyle: TextStyles.mainStyle.copyWith(
+          color:
+              focusNode.hasFocus ? GawTheme.mainTint : GawTheme.unselectedText,
+        ),
         hintText: widget.hint,
         hintStyle: TextStyles.mainStyle.copyWith(
           color: GawTheme.unselectedText,
@@ -60,7 +72,6 @@ class _CmsInputFieldState extends State<CmsInputField> {
         ),
         label: MainText(
           widget.label ?? '',
-          color: GawTheme.unselectedText,
         ),
         suffixIcon: !widget.isPasswordField
             ? const SizedBox()
@@ -78,7 +89,7 @@ class _CmsInputFieldState extends State<CmsInputField> {
                       height: 28,
                       width: 28,
                       child: SvgIcon(
-                        showValues
+                        !showValues
                             ? PixelPerfectIcons.eyeHideNormal
                             : PixelPerfectIcons.eyeNormal,
                         color: showValues

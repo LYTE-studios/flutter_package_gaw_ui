@@ -1,4 +1,12 @@
 {
+  "oops": "Oops...",
+  "newCopy": "New",
+  "customer": "Customer",
+  "customerName": "Customer name",
+  "createNewCustomer": "Create new Customer",
+  "hours": "Hours",
+  "email": "Email",
+  "phone": "Phone",
   "customers": "Customers",
   "welcomeBack": "Welcome back",
   "unserviced": "Unserviced",

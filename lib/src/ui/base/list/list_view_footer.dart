@@ -45,20 +45,6 @@ class ListViewFooter extends StatefulWidget {
 }
 
 class _ListViewFooterState extends State<ListViewFooter> {
-  late final TextEditingController tecItems = TextEditingController(
-    text: widget.itemsPerPage.toString(),
-  )..addListener(() {
-      int? items = int.tryParse(tecItems.text);
-
-      if (items == null) {
-        return;
-      }
-
-      if (items <= widget.totalItems) {
-        widget.onChangeItemsPerPage?.call(items);
-      }
-    });
-
   late final TextEditingController tecPage = TextEditingController(
     text: widget.page?.toString() ?? '',
   )..addListener(() {
@@ -107,10 +93,13 @@ class _ListViewFooterState extends State<ListViewFooter> {
                   vertical: PaddingSizes.smallPadding,
                 ),
                 child: TextField(
+                  onSubmitted: (String value) =>
+                      widget.onChangeItemsPerPage?.call(int.parse(value)),
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly,
                   ],
                   textAlign: TextAlign.center,
+                  cursorHeight: 14,
                   style: TextStyles.mainStyle.copyWith(
                     fontSize: 12,
                   ),
@@ -150,9 +139,16 @@ class _ListViewFooterState extends State<ListViewFooter> {
                   vertical: PaddingSizes.smallPadding,
                 ),
                 child: TextField(
+                  onSubmitted: (String value) {
+                    int index = int.parse(value);
+
+                    if (index <= widget.pages) {
+                      widget.onChangePage?.call(index);
+                    }
+                  },
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  controller: tecPage,
                   textAlign: TextAlign.center,
+                  cursorHeight: 14,
                   style: TextStyles.mainStyle.copyWith(
                     fontSize: 12,
                   ),
@@ -179,7 +175,7 @@ class _ListViewFooterState extends State<ListViewFooter> {
             SizedBox(
               height: 12,
               width: 12,
-              child: GestureDetector(
+              child: ColorlessInkWell(
                 onTap: () {
                   if (page > 0) {
                     widget.onChangePage?.call(page - 1);
@@ -197,7 +193,7 @@ class _ListViewFooterState extends State<ListViewFooter> {
             SizedBox(
               height: 12,
               width: 12,
-              child: GestureDetector(
+              child: ColorlessInkWell(
                 onTap: () {
                   if (page < widget.pages) {
                     widget.onChangePage?.call(page + 1);

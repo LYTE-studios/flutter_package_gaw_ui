@@ -1,10 +1,18 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
 abstract class  LocaleKeys {
+  static const oops = 'oops';
+  static const newCopy = 'newCopy';
+  static const customer = 'customer';
+  static const customerName = 'customerName';
+  static const createNewCustomer = 'createNewCustomer';
+  static const hours = 'hours';
+  static const email = 'email';
   static const customers = 'customers';
   static const welcomeBack = 'welcomeBack';
   static const unserviced = 'unserviced';
   static const onAverage = 'onAverage';
+  static const phone = 'phone';
   static const name = 'name';
   static const Phone = 'Phone';
   static const Company = 'Company';

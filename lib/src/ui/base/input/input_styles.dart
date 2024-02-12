@@ -6,8 +6,9 @@ class InputStyles {
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
     ),
-    contentPadding: const EdgeInsets.all(
-      PaddingSizes.extraSmallPadding,
+    contentPadding: const EdgeInsets.symmetric(
+      horizontal: PaddingSizes.extraSmallPadding,
+      vertical: PaddingSizes.smallPadding,
     ),
   );
 

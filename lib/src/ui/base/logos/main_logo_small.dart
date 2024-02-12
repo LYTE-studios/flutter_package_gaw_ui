@@ -6,7 +6,13 @@ import 'package:gaw_ui/src/utility/constants.dart';
 class MainLogoSmall extends StatelessWidget {
   final BoxFit? fit;
 
-  const MainLogoSmall({super.key, this.fit});
+  final Color? color;
+
+  const MainLogoSmall({
+    super.key,
+    this.fit,
+    this.color,
+  });
 
   static const String assetName = 'assets/images/core/main_logo_small.svg';
 
@@ -22,6 +28,7 @@ class MainLogoSmall extends StatelessWidget {
           assetName,
           package: kPackageName,
           fit: fit ?? BoxFit.fitHeight,
+          color: color,
         ),
       ),
     );
