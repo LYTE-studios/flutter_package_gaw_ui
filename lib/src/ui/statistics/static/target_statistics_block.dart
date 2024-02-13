@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 import 'package:gaw_ui/src/ui/base/icons/icon_block.dart';
@@ -37,7 +38,7 @@ class TargetStatisticsBlock extends StatelessWidget {
                 ),
                 const Spacer(),
                 MainText(
-                  'Jobs',
+                  LocaleKeys.jobs.tr(),
                   textStyleOverride: TextStyles.titleStyle.copyWith(
                     fontSize: 16,
                   ),

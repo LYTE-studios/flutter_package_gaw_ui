@@ -8,9 +8,9 @@ class ApplyStateBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseStateBlock(
+    return const BaseStateBlock(
       color: GawTheme.mainTint,
-      label: LocaleKeys.apply.tr(),
+      label: 'Apply',
       iconName: PixelPerfectIcons.arrowRightCircleMedium,
     );
   }

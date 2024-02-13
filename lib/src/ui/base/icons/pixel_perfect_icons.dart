@@ -95,6 +95,7 @@ class PixelPerfectIcons {
   static const String customAdd = '$customBasePath/add.svg';
   static const String customSort = '$customBasePath/sort.svg';
   static const String customCopy = '$customBasePath/copy.svg';
+  static const String customPhone = '$customBasePath/phone.svg';
   static const String customEye = '$customBasePath/view_eye.svg';
   static const String customApplicationDocument =
       '$customBasePath/application_document.svg';

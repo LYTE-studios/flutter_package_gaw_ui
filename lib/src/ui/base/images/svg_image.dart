@@ -12,6 +12,7 @@ class SvgImage extends StatelessWidget {
   final double? width;
 
   final Color? color;
+  final bool rawPath;
 
   const SvgImage(
     this.assetName, {
@@ -20,6 +21,7 @@ class SvgImage extends StatelessWidget {
     this.width,
     this.height,
     this.color,
+        this.rawPath = false,
   });
 
   @override
@@ -29,7 +31,7 @@ class SvgImage extends StatelessWidget {
         assetName,
         height: height,
         width: width,
-        package: kPackageName,
+        package: rawPath ? null: kPackageName,
         fit: fit ?? BoxFit.fitWidth,
         colorFilter:
             color == null ? null : ColorFilter.mode(color!, BlendMode.srcIn),

@@ -10,7 +10,7 @@ class PendingStateBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseStateBlock(
       color: GawTheme.unselectedBackground.withOpacity(0.4),
-      label: LocaleKeys.pending.tr(),
+      label: 'Pending',
       textColor: GawTheme.text.withOpacity(
         0.6,
       ),

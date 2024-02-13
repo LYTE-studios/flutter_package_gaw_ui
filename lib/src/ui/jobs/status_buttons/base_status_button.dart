@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 
@@ -7,6 +6,8 @@ class BaseStatusButton extends StatelessWidget {
 
   final Color color;
 
+  final String? icon;
+
   final bool loading;
 
   const BaseStatusButton({
@@ -14,6 +15,7 @@ class BaseStatusButton extends StatelessWidget {
     required this.label,
     required this.color,
     this.loading = false,
+    this.icon,
   });
 
   @override
@@ -46,18 +48,19 @@ class BaseStatusButton extends StatelessWidget {
                     ),
                   ),
           ),
-          label == LocaleKeys.applyForJob.tr()
-              ? const Positioned(
+          icon != null
+              ? Positioned(
                   right: 32,
                   top: 14,
                   child: SizedBox(
                     height: 28,
                     width: 28,
                     child: SvgIcon(
-                      PixelPerfectIcons.arrowRightCircleMedium,
+                      icon!,
                       color: GawTheme.clearText,
                     ),
-                  ))
+                  ),
+                )
               : const SizedBox(),
         ],
       ),
