@@ -9,6 +9,7 @@ class ApprovedStateBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return const BaseStateBlock(
       color: GawTheme.success,
+      // TODO COPY
       label: 'Approved',
     );
   }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gaw_ui/gaw_ui.dart';
-import 'package:gaw_ui/src/ui/base/snack_bars/basic_snack_bar.dart';
 
 class SelectableTextRowItem extends StatelessWidget {
   final String? value;
@@ -36,6 +35,7 @@ class SelectableTextRowItem extends StatelessWidget {
                 ),
                 backgroundColor: Colors.transparent,
                 content: BasicSnackBar(
+                  // TODO COPY
                   title: 'Copied!',
                   description:
                       '${value ?? 'something..'} got copied to your clipboard',
@@ -68,7 +68,7 @@ class SelectableTextRowItem extends StatelessWidget {
                     ),
                   ),
                   Visibility(
-                    visible: value != null,
+                    visible: value?.isNotEmpty ?? false,
                     child: const Padding(
                       padding: EdgeInsets.all(
                         PaddingSizes.extraMiniPadding,

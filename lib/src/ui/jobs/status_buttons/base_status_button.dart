@@ -68,7 +68,6 @@ class BaseStatusButton extends StatelessWidget {
   }
 
   Widget buttonContent(ctx, bool isApply) {
-    //if (!isApply) {
     return MainText(
       label,
       textStyleOverride: TextStyles.titleStyle.copyWith(
@@ -77,28 +76,5 @@ class BaseStatusButton extends StatelessWidget {
         fontWeight: FontWeight.w900,
       ),
     );
-    /*} else {
-      return Stack(
-        alignment: Alignment.center,
-        children: [
-          /*Positioned(
-            right: 0, //MediaQuery.of(ctx).size.width / 4,
-            child: const SvgIcon(
-              PixelPerfectIcons.arrowRightCircleMedium,
-              color: GawTheme.clearText,
-            ),
-          ),*/
-          Text(
-            label,
-            style: const TextStyle(
-              color: GawTheme.clearText, // Text color
-              fontSize: 18,
-              fontWeight: FontWeight.w900,
-            ),
-            textAlign: TextAlign.center,
-          )
-        ],
-      );
-    }*/
   }
 }

@@ -86,6 +86,7 @@ extension DateIntervalSelectableExtension on DateIntervalSelectable {
 
   String getLabel() {
     switch (this) {
+      // TODO COPY
       case DateIntervalSelectable.thisYear:
         return 'This year';
       case DateIntervalSelectable.lastYear:
