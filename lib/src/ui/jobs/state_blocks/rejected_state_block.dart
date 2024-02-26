@@ -9,6 +9,7 @@ class RejectedStateBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return const BaseStateBlock(
       color: GawTheme.error,
+      // TODO COPY
       label: 'Denied',
     );
   }

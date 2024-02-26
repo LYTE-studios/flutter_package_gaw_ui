@@ -107,6 +107,7 @@ class _TimeRangePickerState extends State<TimeRangePickerDialog> {
                   ],
                 ),
                 child: MainText(
+                  // TODO COPY
                   'Select times',
                   textStyleOverride: TextStyles.mainStyle.copyWith(
                     fontWeight: FontWeight.bold,
@@ -166,6 +167,7 @@ class _TimeRangePickerState extends State<TimeRangePickerDialog> {
                       ),
                     ),
                     child: MainText(
+                      // TODO COPY
                       'Confirm times',
                       textStyleOverride: TextStyles.mainStyle.copyWith(
                         color: GawTheme.clearText,
@@ -254,6 +256,7 @@ class _CustomTimeRangePickerState extends State<CustomTimeRangePicker> {
               Container(
                 alignment: Alignment.center,
                 child: MainText(
+                  // TODO COPY
                   widget.isStart ? 'Start time:' : 'End time:',
                   alignment: TextAlign.center,
                   textStyleOverride: TextStyles.mainStyle.copyWith(
@@ -280,6 +283,7 @@ class _CustomTimeRangePickerState extends State<CustomTimeRangePicker> {
                     builder: (context, index) {
                       return Center(
                         child: MainText(
+                          // TODO COPY
                           '$index h',
                           textStyleOverride: TextStyles.mainStyle.copyWith(
                             color: GawTheme.text,
@@ -309,6 +313,7 @@ class _CustomTimeRangePickerState extends State<CustomTimeRangePicker> {
                     builder: (context, index) {
                       return Center(
                         child: MainText(
+                          // TODO COPY
                           '$index min',
                           textStyleOverride: TextStyles.mainStyle.copyWith(
                             color: GawTheme.text,

@@ -18,7 +18,7 @@ class RotatingIcon extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _RotatingIconState createState() => _RotatingIconState();
+  State<RotatingIcon> createState() => _RotatingIconState();
 }
 
 class _RotatingIconState extends State<RotatingIcon>

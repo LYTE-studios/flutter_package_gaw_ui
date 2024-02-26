@@ -63,18 +63,19 @@ class GawStandaloneTextField extends StatefulWidget {
   final String? icon;
   final int? lines;
 
-  const GawStandaloneTextField(
-      {super.key,
-      this.hint,
-      this.fontSize,
-      this.controller,
-      this.callback,
-      this.enabled = true,
-      this.frozen = false,
-      this.text,
-      this.number = false,
-      this.icon,
-      this.lines});
+  const GawStandaloneTextField({
+    super.key,
+    this.hint,
+    this.fontSize,
+    this.controller,
+    this.callback,
+    this.enabled = true,
+    this.frozen = false,
+    this.text,
+    this.number = false,
+    this.icon,
+    this.lines,
+  });
 
   @override
   State<GawStandaloneTextField> createState() => _GawStandaloneTextFieldState();
@@ -150,6 +151,7 @@ class _GawStandaloneTextFieldState extends State<GawStandaloneTextField> {
             ),
             style: TextStyles.mainStyle.copyWith(
               fontSize: widget.fontSize ?? 14,
+              color: GawTheme.text,
               fontWeight: FontWeight.w500,
             ),
             controller: _controller,

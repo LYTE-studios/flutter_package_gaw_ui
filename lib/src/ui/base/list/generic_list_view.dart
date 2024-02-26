@@ -129,6 +129,7 @@ class _GenericListViewState extends State<GenericListView>
                           child: widget.rows.isEmpty
                               ? const Center(
                                   child: MainText(
+                                    // TODO COPY
                                     'No items',
                                   ),
                                 )

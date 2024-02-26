@@ -63,7 +63,7 @@ class GenericButton extends StatelessWidget {
               ? null
               : Border.fromBorderSide(
                   Borders.mainSide.copyWith(
-                    color: GawTheme.secondaryTint,
+                    color: textColor ?? GawTheme.secondaryTint,
                   ),
                 ),
           boxShadow: const [
@@ -97,8 +97,8 @@ class GenericButton extends StatelessWidget {
               Visibility(
                 visible: icon != null,
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                    right: PaddingSizes.mainPadding,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: PaddingSizes.smallPadding,
                   ),
                   child: SizedBox(
                     width: 21,

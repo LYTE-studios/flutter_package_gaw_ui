@@ -12,6 +12,8 @@ class InputDateTimeRangeForm extends StatelessWidget {
 
   final bool enabled;
 
+  final String? hint;
+
   final Function(DateTime)? onSelectDate;
   final Function(DateTime start, DateTime end)? onSelectTimeRange;
 
@@ -23,6 +25,7 @@ class InputDateTimeRangeForm extends StatelessWidget {
     this.onSelectDate,
     this.enabled = true,
     this.onSelectTimeRange,
+    this.hint,
   });
 
   @override
@@ -96,6 +99,7 @@ class GawStandaloneTimeRangePicker extends StatelessWidget {
         enabled: false,
         frozen: !enabled,
         icon: PixelPerfectIcons.clockNormal,
+        // TDDO COPY
         hint: 'Job time',
         text: GawDateUtil.tryFormatTimeInterval(startTime, endTime),
       ),

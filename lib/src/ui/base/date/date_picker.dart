@@ -526,6 +526,7 @@ class DateRangePickerState extends State<DateRangePicker> {
 
                               widget.onRangeSelected?.call(start!, end!);
                             },
+                            // TODO COPY
                             label: 'Select',
                             color: (start != null && end != null) ||
                                     (widget.singleDatePicker && start != null)
