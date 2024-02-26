@@ -18,3 +18,4 @@ export 'src/utility/gaw_date_util.dart';
 export 'src/utility/geo_util.dart';
 export 'src/utility/list_util.dart';
 export 'src/utility/routing_utils.dart';
+export 'src/utility/size_util.dart';

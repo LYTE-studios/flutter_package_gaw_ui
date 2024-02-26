@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 import 'package:gaw_ui/src/utility/constants.dart';
+import 'package:gaw_ui/src/utility/size_util.dart';
 
 class LoginAppHeader extends StatelessWidget {
   final String label;
@@ -19,7 +20,7 @@ class LoginAppHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 290,
+      height: SizeUtil.isBigSize(context) ? 290 : 210,
       width: double.infinity,
       decoration: BoxDecoration(
         color: GawTheme.secondaryTint,
@@ -41,41 +42,45 @@ class LoginAppHeader extends StatelessWidget {
               ]
             : null,
       ),
-      child: Stack(
-        children: [
-          Positioned(
-            bottom: PaddingSizes.mainPadding,
-            left: PaddingSizes.bigPadding,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                onGoBack == null
-                    ? const SizedBox.shrink()
-                    : HeaderBackButton(
-                        color: GawTheme.mainTintText,
-                        goBack: onGoBack,
-                      ),
-                const SizedBox(
-                  height: PaddingSizes.mainPadding,
-                ),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    maxWidth: 240,
+      child: SafeArea(
+        top: true,
+        bottom: false,
+        child: Stack(
+          children: [
+            Positioned(
+              bottom: PaddingSizes.mainPadding,
+              left: PaddingSizes.bigPadding,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  onGoBack == null
+                      ? const SizedBox.shrink()
+                      : HeaderBackButton(
+                          color: GawTheme.mainTintText,
+                          goBack: onGoBack,
+                        ),
+                  const SizedBox(
+                    height: PaddingSizes.mainPadding,
                   ),
-                  child: MainText(
-                    label,
-                    textStyleOverride: TextStyles.titleStyle.copyWith(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 30,
-                      color: GawTheme.mainTintText,
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxWidth: 240,
+                    ),
+                    child: MainText(
+                      label,
+                      textStyleOverride: TextStyles.titleStyle.copyWith(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 30,
+                        color: GawTheme.mainTintText,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

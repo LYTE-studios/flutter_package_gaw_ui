@@ -30,7 +30,7 @@ class MainAppHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height ?? 180,
+      height: height ?? (SizeUtil.isBigSize(context) ? 180 : 150),
       decoration: BoxDecoration(
         color: colorless ? null : GawTheme.secondaryTint,
       ),
