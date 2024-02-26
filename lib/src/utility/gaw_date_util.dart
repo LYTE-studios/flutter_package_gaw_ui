@@ -68,18 +68,27 @@ class GawDateUtil {
   }
 
   static DateTime fromApi(int dateTime) {
-    return DateTime.fromMillisecondsSinceEpoch(dateTime * 1000);
+    return DateTime.fromMillisecondsSinceEpoch(dateTime * 1000).toLocal();
   }
 
   static DateTime? tryFromApi(int? dateTime) {
     if (dateTime == null) {
       return null;
     }
-    return DateTime.fromMillisecondsSinceEpoch(dateTime * 1000);
+    return fromApi(dateTime);
   }
 
   static int toApi(DateTime dateTime) {
-    return dateTime.millisecondsSinceEpoch ~/ 1000;
+    DateTime utc = DateTime.utc(
+      dateTime.year,
+      dateTime.month,
+      dateTime.day,
+      dateTime.hour,
+      dateTime.minute,
+      dateTime.second,
+    );
+
+    return utc.millisecondsSinceEpoch ~/ 1000;
   }
 
   static int? tryToApi(DateTime? dateTime) {
@@ -87,7 +96,7 @@ class GawDateUtil {
       return null;
     }
 
-    return dateTime.millisecondsSinceEpoch ~/ 1000;
+    return toApi(dateTime);
   }
 
   static String formatTime(int time) {
