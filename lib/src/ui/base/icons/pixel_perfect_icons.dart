@@ -129,6 +129,8 @@ class PixelPerfectIcons {
       '$mediumBasePath/Arrows/Trend Up 4.svg';
 
   static const String waterDripNormal = '$customBasePath/water_drip.svg';
+  static const String warningMedium =
+      '$mediumBasePath/UI Basic/warning-circle.svg';
 
   static const String timeDiamondpNormal = '$customBasePath/time-diamond.svg';
 
