@@ -93,8 +93,15 @@ class _ListViewFooterState extends State<ListViewFooter> {
                   vertical: PaddingSizes.smallPadding,
                 ),
                 child: TextField(
-                  onSubmitted: (String value) =>
-                      widget.onChangeItemsPerPage?.call(int.parse(value)),
+                  onSubmitted: (String value) {
+                    int items = int.parse(value);
+
+                    if (items < 1) {
+                      return;
+                    }
+
+                    widget.onChangeItemsPerPage?.call(items);
+                  },
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly,
                   ],

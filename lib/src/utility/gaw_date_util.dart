@@ -79,16 +79,7 @@ class GawDateUtil {
   }
 
   static int toApi(DateTime dateTime) {
-    DateTime utc = DateTime.utc(
-      dateTime.year,
-      dateTime.month,
-      dateTime.day,
-      dateTime.hour,
-      dateTime.minute,
-      dateTime.second,
-    );
-
-    return utc.millisecondsSinceEpoch ~/ 1000;
+    return dateTime.millisecondsSinceEpoch ~/ 1000;
   }
 
   static int? tryToApi(DateTime? dateTime) {
