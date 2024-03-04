@@ -126,6 +126,10 @@ class GawDateUtil {
     return '${formatTime(startTime.hour)}:${formatTime(startTime.minute)} - ${formatTime(endTime.hour)}:${formatTime(endTime.minute)}';
   }
 
+  static String formatTimeString(DateTime dateTime) {
+    return '${formatTime(dateTime.hour)}:${formatTime(dateTime.minute)}';
+  }
+
   static String formatTimeInterval(DateTime startTime, DateTime endTime) {
     return '${formatTime(startTime.hour)}:${formatTime(startTime.minute)} - ${formatTime(endTime.hour)}:${formatTime(endTime.minute)}';
   }

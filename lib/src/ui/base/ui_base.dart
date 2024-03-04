@@ -12,6 +12,7 @@ export 'buttons/named_check_box.dart';
 export 'buttons/page_switch.dart';
 export 'buttons/rotating_icon.dart';
 export 'buttons/small_check_box.dart';
+export 'forms/input/input_form.dart';
 export 'date/cms_date_range_picker.dart';
 export 'date/date_picker.dart';
 export 'divider/gaw_divider.dart';
