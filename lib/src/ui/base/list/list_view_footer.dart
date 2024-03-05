@@ -146,12 +146,23 @@ class _ListViewFooterState extends State<ListViewFooter> {
                   vertical: PaddingSizes.smallPadding,
                 ),
                 child: TextField(
+                  controller: TextEditingController(
+                    text: widget.page?.toString(),
+                  ),
                   onSubmitted: (String value) {
                     int index = int.parse(value);
 
+                    if (index <= 0) {
+                      widget.onChangePage?.call(1);
+                      return;
+                    }
+
                     if (index <= widget.pages) {
                       widget.onChangePage?.call(index);
+                      return;
                     }
+
+                    widget.onChangePage?.call(widget.pages);
                   },
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   textAlign: TextAlign.center,
@@ -184,7 +195,7 @@ class _ListViewFooterState extends State<ListViewFooter> {
               width: 12,
               child: ColorlessInkWell(
                 onTap: () {
-                  if (page > 0) {
+                  if (page > 1) {
                     widget.onChangePage?.call(page - 1);
                   }
                 },

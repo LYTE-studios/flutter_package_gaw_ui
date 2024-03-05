@@ -64,11 +64,13 @@ class _GenericListViewState extends State<GenericListView>
       return 0;
     }
 
-    if (widget.itemsPerPage! >= widget.rows.length) {
-      return 1;
+    double count = widget.totalItems! / widget.itemsPerPage!;
+
+    if (count.roundToDouble() < count) {
+      return count.round() + 1;
     }
 
-    return widget.totalItems! ~/ widget.itemsPerPage!;
+    return count.round();
   }
 
   void setLateLoader(String query) {
@@ -147,9 +149,7 @@ class _GenericListViewState extends State<GenericListView>
           Visibility(
             visible: widget.showFooter,
             child: ListViewFooter(
-              items: (widget.itemsPerPage ?? 0) > (widget.totalItems ?? 0)
-                  ? (widget.totalItems ?? 0)
-                  : (widget.itemsPerPage ?? 0),
+              items: widget.rows.length,
               page: widget.page,
               onChangePage: widget.onChangePage,
               onChangeItemsPerPage: widget.onEditItemCount,
