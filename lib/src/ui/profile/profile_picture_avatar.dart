@@ -159,7 +159,8 @@ class ProfilePictureImageBox extends StatelessWidget {
 
     return Image.network(
       imageUrl!,
-      errorBuilder: (context, object, error) {
+      fit: BoxFit.fill,
+      errorBuilder: (context, error, stackTrace) {
         if (initials != null) {
           return InitialsBlock(
             initials: initials!,
@@ -173,7 +174,6 @@ class ProfilePictureImageBox extends StatelessWidget {
           fit: BoxFit.cover,
         );
       },
-      fit: BoxFit.cover,
     );
   }
 }

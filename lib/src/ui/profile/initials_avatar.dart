@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
+import 'package:gaw_ui/src/ui/base/text/auto_sized_text.dart';
 
 class InitialsAvatar extends StatelessWidget {
   final String initials;
@@ -44,7 +45,7 @@ class InitialsAvatar extends StatelessWidget {
                 minHeight: 48,
               ),
               decoration: const BoxDecoration(
-                color: GawTheme.unselectedBackground,
+                color: GawTheme.darkBackground,
                 shape: BoxShape.circle,
               ),
               child: imageUrl != null
@@ -53,7 +54,6 @@ class InitialsAvatar extends StatelessWidget {
                     )
                   : InitialsBlock(
                       initials: initials,
-                      color: GawTheme.text,
                     ),
             ),
           );
@@ -74,13 +74,19 @@ class InitialsBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: MainText(
-        initials,
-        alignment: TextAlign.center,
-        textStyleOverride: TextStyles.titleStyle.copyWith(
-          fontSize: 16,
-          color: color ?? GawTheme.text,
-          overflow: TextOverflow.fade,
+      child: Padding(
+        padding: const EdgeInsets.all(
+          PaddingSizes.mainPadding,
+        ),
+        child: AutoSizedText(
+          initials,
+          softWrap: true,
+          alignment: TextAlign.center,
+          textStyleOverride: TextStyles.titleStyle.copyWith(
+            fontSize: 16,
+            color: color ?? GawTheme.clearText,
+            overflow: TextOverflow.fade,
+          ),
         ),
       ),
     );

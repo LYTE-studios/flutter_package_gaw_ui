@@ -1,6 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-// ignore_for_file: prefer_single_quotes
+// ignore_for_file: prefer_single_quotes, avoid_renaming_method_parameters
 
 import 'dart:ui';
 
@@ -80,6 +80,7 @@ class CodegenLoader extends AssetLoader{
   "dateAndTime": "Datum & tijd",
   "location": "Locatie",
   "iAmPayingForMyOwnTransport": "Ik betaal mijn eigen transportkosten",
+  "iAmNotPayingForMyOwnTransport": "Ik betaal niet mijn eigen transportkosten",
   "fromYou": "van jou",
   "jobInfo": "Job info",
   "anytime": "Altijd",
@@ -120,7 +121,29 @@ class CodegenLoader extends AssetLoader{
   "statistics": "Statistieken",
   "jobs": "Jobs",
   "history": "Geschiedenis",
-  "settings": "Instellingen"
+  "settings": "Instellingen",
+  "select": "Selecteren",
+  "deleteMyAccount": "Mijn account verwijderen",
+  "iStartedAt": "Ik begon om:",
+  "iEndedAt": "Ik eindigde om:",
+  "confirmTimes": "Uren bevestigen",
+  "noJobs": "Geen jobs",
+  "noAppliedJobs": "Geen ingetekende jobs",
+  "startAddress": "Start adres",
+  "chooseLocation": "Kies locatie",
+  "february": "Februari",
+  "march": "Maart",
+  "april": "April",
+  "may": "Mei",
+  "june": "Juni",
+  "july": "Juli",
+  "august": "Augustus",
+  "september": "September",
+  "october": "Oktober",
+  "november": "November",
+  "december": "December",
+  "from": "Van",
+  "until": "Tot"
 };
 static const Map<String,dynamic> en = {
   "oops": "Oops...",
@@ -155,16 +178,17 @@ static const Map<String,dynamic> en = {
   "notification": "Notification",
   "both": "Both",
   "january": "January",
-  "February": "February",
-  "March": "March",
-  "April": "April",
-  "May": "May",
-  "June": "June",
-  "August": "August",
-  "September": "September",
-  "October": "October",
-  "November": "November",
-  "December": "December",
+  "february": "February",
+  "march": "March",
+  "april": "April",
+  "may": "May",
+  "june": "June",
+  "july": "July",
+  "august": "August",
+  "september": "September",
+  "october": "October",
+  "november": "November",
+  "december": "December",
   "hi": "Hi",
   "productivity": "Productivity",
   "week": "Week",
@@ -188,6 +212,7 @@ static const Map<String,dynamic> en = {
   "dateAndTime": "Date & Time",
   "location": "Location",
   "iAmPayingForMyOwnTransport": "I am paying for my own transport",
+  "iAmNotPayingForMyOwnTransport": "I am not paying for my own transport",
   "fromYou": "From you",
   "jobInfo": "Job info",
   "anytime": "Anytime",
@@ -228,7 +253,18 @@ static const Map<String,dynamic> en = {
   "statistics": "Statistics",
   "jobs": "Jobs",
   "history": "History",
-  "settings": "Settings"
+  "settings": "Settings",
+  "select": "Select",
+  "deleteMyAccount": "Delete my account",
+  "iStartedAt": "I started at:",
+  "iEndedAt": "I ended at:",
+  "confirmTimes": "Confirm times",
+  "noJobs": "No jobs",
+  "noAppliedJobs": "No applied jobs",
+  "startAddress": "Start address",
+  "chooseLocation": "Choose location",
+  "from": "From",
+  "until": "Until"
 };
 static const Map<String,dynamic> fr = {
   "oops": "Oops...",
@@ -261,6 +297,7 @@ static const Map<String,dynamic> fr = {
   "dateAndTime": "Date & heure",
   "location": "Lieu",
   "iAmPayingForMyOwnTransport": "Je paie mon propre transport",
+  "iAmNotPayingForMyOwnTransport": "Je ne paie pas mon propre transport",
   "fromYou": "De toi",
   "jobInfo": "Informations du job",
   "anytime": "À tout moment",
@@ -300,7 +337,30 @@ static const Map<String,dynamic> fr = {
   "statistics": "Statistiques",
   "jobs": "Jobs",
   "history": "Histoire",
-  "settings": "Paramètres"
+  "settings": "Paramètres",
+  "select": "Choisir",
+  "deleteMyAccount": "Supprimer mon compte",
+  "iStartedAt": "J'ai commencé à:",
+  "iEndedAt": "J'ai terminé à :",
+  "confirmTimes": "Confirmer les horaires",
+  "noJobs": "Pas de jobs",
+  "noAppliedJobs": "Pas de jobs postulé",
+  "startAddress": "Adresse de départ",
+  "chooseLocation": "Choisir lieu",
+  "january": "Janvier",
+  "february": "Février",
+  "march": "Mars",
+  "april": "Avril",
+  "may": "Mai",
+  "june": "Juin",
+  "july": "Juillet",
+  "august": "Août",
+  "september": "Septembre",
+  "october": "Octobre",
+  "november": "November",
+  "december": "Décembre",
+  "from": "De",
+  "until": "Jusqu'à"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"nl": nl, "en": en, "fr": fr};
 }

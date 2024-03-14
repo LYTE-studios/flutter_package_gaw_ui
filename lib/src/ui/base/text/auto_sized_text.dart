@@ -10,6 +10,8 @@ class AutoSizedText extends StatelessWidget {
 
   final double maxSize;
 
+  final double? maxHeight;
+
   final double defaultSize;
 
   final TextStyle? textStyleOverride;
@@ -20,6 +22,8 @@ class AutoSizedText extends StatelessWidget {
 
   final FontWeight? fontWeight;
 
+  final bool softWrap;
+
   const AutoSizedText(
     this.text, {
     super.key,
@@ -29,8 +33,10 @@ class AutoSizedText extends StatelessWidget {
     this.alignment,
     this.minSize = 56,
     this.maxSize = 256,
+    this.maxHeight,
     this.defaultSize = 128,
     this.fontWeight,
+    this.softWrap = false,
   });
 
   @override
@@ -39,12 +45,13 @@ class AutoSizedText extends StatelessWidget {
       constraints: BoxConstraints(
         minWidth: minSize,
         maxWidth: maxSize,
+        maxHeight: maxHeight ?? double.infinity,
       ),
       child: FittedBox(
         fit: BoxFit.scaleDown,
         child: Text(
           text,
-          softWrap: false,
+          softWrap: softWrap,
           textAlign: alignment,
           overflow: overflow ?? TextOverflow.clip,
           style: textStyleOverride ??

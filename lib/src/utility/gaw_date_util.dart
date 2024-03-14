@@ -1,32 +1,34 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:gaw_ui/gaw_ui.dart';
 import 'package:tuple/tuple.dart';
 
 class GawDateUtil {
   static String monthName(int month) {
     switch (month) {
       case 1:
-        return 'January';
+        return LocaleKeys.january.tr();
       case 2:
-        return 'February';
+        return LocaleKeys.february.tr();
       case 3:
-        return 'March';
+        return LocaleKeys.march.tr();
       case 4:
-        return 'April';
+        return LocaleKeys.april.tr();
       case 5:
-        return 'May';
+        return LocaleKeys.may.tr();
       case 6:
-        return 'June';
+        return LocaleKeys.june.tr();
       case 7:
-        return 'July';
+        return LocaleKeys.july.tr();
       case 8:
-        return 'August';
+        return LocaleKeys.august.tr();
       case 9:
-        return 'September';
+        return LocaleKeys.september.tr();
       case 10:
-        return 'October';
+        return LocaleKeys.october.tr();
       case 11:
-        return 'November';
+        return LocaleKeys.november.tr();
       case 12:
-        return 'December';
+        return LocaleKeys.december.tr();
     }
     return '';
   }
@@ -78,16 +80,29 @@ class GawDateUtil {
     return fromApi(dateTime);
   }
 
-  static int toApi(DateTime dateTime) {
+  static int toApi(DateTime dateTime, {bool toEndOfDay = false}) {
+    if (toEndOfDay) {
+      dateTime = DateTime(
+        dateTime.year,
+        dateTime.month,
+        dateTime.day,
+        23,
+        59,
+      );
+    }
+
     return dateTime.millisecondsSinceEpoch ~/ 1000;
   }
 
-  static int? tryToApi(DateTime? dateTime) {
+  static int? tryToApi(DateTime? dateTime, {bool toEndOfDay = false}) {
     if (dateTime == null) {
       return null;
     }
 
-    return toApi(dateTime);
+    return toApi(
+      dateTime,
+      toEndOfDay: toEndOfDay,
+    );
   }
 
   static String formatTime(int time) {
@@ -136,14 +151,14 @@ class GawDateUtil {
 
   static String formatDateInterval(DateTime? startDate, DateTime? endDate) {
     if (startDate == null && endDate == null) {
-      return 'Anytime';
+      return LocaleKeys.anytime.tr();
     }
     return '${startDate == null ? '...' : GawDateUtil.formatDate(startDate)} - ${endDate == null ? '...' : GawDateUtil.formatDate(endDate)}';
   }
 
   static String formatFullDateInterval(DateTime? startDate, DateTime? endDate) {
     if (startDate == null && endDate == null) {
-      return 'Anytime';
+      return LocaleKeys.anytime.tr();
     }
     return '${startDate == null ? '...' : GawDateUtil.formatFullDate(startDate)} - ${endDate == null ? '...' : GawDateUtil.formatFullDate(endDate)}';
   }

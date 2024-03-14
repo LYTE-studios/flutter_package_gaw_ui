@@ -10,6 +10,7 @@ export 'buttons/edit_button.dart';
 export 'buttons/generic_button.dart';
 export 'buttons/named_check_box.dart';
 export 'buttons/page_switch.dart';
+export 'text/auto_sized_text.dart';
 export 'buttons/rotating_icon.dart';
 export 'buttons/small_check_box.dart';
 export 'forms/input/input_form.dart';

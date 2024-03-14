@@ -66,6 +66,7 @@ abstract class  LocaleKeys {
   static const dateAndTime = 'dateAndTime';
   static const location = 'location';
   static const iAmPayingForMyOwnTransport = 'iAmPayingForMyOwnTransport';
+  static const iAmNotPayingForMyOwnTransport = 'iAmNotPayingForMyOwnTransport';
   static const fromYou = 'fromYou';
   static const jobInfo = 'jobInfo';
   static const anytime = 'anytime';
@@ -107,5 +108,27 @@ abstract class  LocaleKeys {
   static const jobs = 'jobs';
   static const history = 'history';
   static const settings = 'settings';
+  static const select = 'select';
+  static const deleteMyAccount = 'deleteMyAccount';
+  static const iStartedAt = 'iStartedAt';
+  static const iEndedAt = 'iEndedAt';
+  static const confirmTimes = 'confirmTimes';
+  static const noJobs = 'noJobs';
+  static const noAppliedJobs = 'noAppliedJobs';
+  static const startAddress = 'startAddress';
+  static const chooseLocation = 'chooseLocation';
+  static const february = 'february';
+  static const march = 'march';
+  static const april = 'april';
+  static const may = 'may';
+  static const june = 'june';
+  static const july = 'july';
+  static const august = 'august';
+  static const september = 'september';
+  static const october = 'october';
+  static const november = 'november';
+  static const december = 'december';
+  static const from = 'from';
+  static const until = 'until';
 
 }

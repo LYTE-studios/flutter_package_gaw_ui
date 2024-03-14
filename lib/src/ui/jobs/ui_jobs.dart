@@ -7,6 +7,7 @@ export 'state_blocks/approved_state_block.dart';
 export 'state_blocks/apply_state_block.dart';
 export 'status_buttons/apply_status_button.dart';
 export 'buttons/address_button.dart';
+export 'state_blocks/cancelled_state_block.dart';
 export 'status_buttons/approved_status_button.dart';
 export 'status_buttons/base_status_button.dart';
 export 'status_buttons/cancelled_status_button.dart';

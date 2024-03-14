@@ -29,22 +29,30 @@ class BigCheckBox extends StatelessWidget {
             color: value ? GawTheme.secondaryTint : GawTheme.unselectedText,
           ),
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: PaddingSizes.bigPadding,
+        child: Padding(
+          padding: const EdgeInsets.only(
+            right: PaddingSizes.mainPadding,
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: PaddingSizes.bigPadding,
+                ),
+                child: SmallCheckBox(
+                  value: value,
+                ),
               ),
-              child: SmallCheckBox(
-                value: value,
+              Expanded(
+                child: AutoSizedText(
+                  label ?? '',
+                  alignment: TextAlign.left,
+                  color: value ? GawTheme.secondaryTint : GawTheme.text,
+                ),
               ),
-            ),
-            MainText(
-              label ?? '',
-              color: value ? GawTheme.secondaryTint : GawTheme.text,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
