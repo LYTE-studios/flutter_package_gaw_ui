@@ -24,7 +24,7 @@ dependencies:
   beamer: ^1.5.6
   themed: ^5.0.0
   flutter_svg: ^2.0.9
-  google_fonts: ^5.1.0
+  google_fonts: ^6.0.0
   easy_localization: ^3.0.2
   flutter_riverpod: ^2.3.10
   freezed: ^2.4.1
