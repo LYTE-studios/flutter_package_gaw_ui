@@ -11,6 +11,7 @@ export 'buttons/generic_button.dart';
 export 'buttons/named_check_box.dart';
 export 'buttons/page_switch.dart';
 export 'text/auto_sized_text.dart';
+export 'date/time_range_picker_dialog.dart';
 export 'buttons/rotating_icon.dart';
 export 'buttons/small_check_box.dart';
 export 'forms/input/input_form.dart';

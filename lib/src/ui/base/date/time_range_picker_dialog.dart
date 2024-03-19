@@ -8,11 +8,14 @@ class TimeRangePickerDialog extends StatefulWidget {
 
   final DateTime? initialEnd;
 
+  final String? title;
+
   const TimeRangePickerDialog({
     super.key,
     this.onSubmit,
     this.initialStart,
     this.initialEnd,
+    this.title,
   });
 
   @override
@@ -61,9 +64,9 @@ class _TimeRangePickerState extends State<TimeRangePickerDialog> {
       minuteEnd,
     );
 
-    widget.onSubmit?.call(startDate, endDate);
+    Navigator.of(context).pop();
 
-    Navigator.pop(context);
+    widget.onSubmit?.call(startDate, endDate);
   }
 
   @override
@@ -108,7 +111,7 @@ class _TimeRangePickerState extends State<TimeRangePickerDialog> {
                 ),
                 child: MainText(
                   // TODO COPY
-                  'Select times',
+                  widget.title ?? 'Select times',
                   textStyleOverride: TextStyles.mainStyle.copyWith(
                     fontWeight: FontWeight.bold,
                     fontSize: 14, // Adjust the font size as needed
