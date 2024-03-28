@@ -116,12 +116,15 @@ class GawStandaloneDatePicker extends StatelessWidget {
 
   final bool enabled;
 
+  final String? label;
+
   const GawStandaloneDatePicker({
     super.key,
     this.date,
     this.endDate,
     this.onUpdateDate,
     this.enabled = true,
+    this.label,
   });
 
   void showPicker(BuildContext context) {
@@ -152,7 +155,7 @@ class GawStandaloneDatePicker extends StatelessWidget {
       child: GawStandaloneTextField(
         enabled: false,
         frozen: !enabled,
-        hint: 'Job date',
+        hint: label ?? 'Job date',
         icon: PixelPerfectIcons.calendarMedium,
         text: currentDateInterval ?? GawDateUtil.tryFormatFullDate(date),
       ),

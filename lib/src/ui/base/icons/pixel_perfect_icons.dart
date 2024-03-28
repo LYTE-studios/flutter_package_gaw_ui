@@ -2,6 +2,8 @@ import 'package:flutter/services.dart' show FontLoader, rootBundle;
 import 'package:gaw_ui/src/utility/constants.dart';
 
 class PixelPerfectIcons {
+  static const String packageName = kPackageName;
+
   static const String normalBasePath = 'assets/icons/pixel_perfect/Normal/SVG';
   static const String mediumBasePath = 'assets/icons/pixel_perfect/Medium/SVG';
   static const String boldBasePath = 'assets/icons/pixel_perfect/Bold/SVG';

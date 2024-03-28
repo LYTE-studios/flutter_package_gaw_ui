@@ -6,7 +6,7 @@ class StatisticsChartContainer extends StatefulWidget {
   final List<FlSpot> weeklyStatistics;
   final int averageHours;
   final bool isTrend;
-  final int trend;
+  final int? trend;
   final bool showWeekly;
 
   final EdgeInsets? overriddenPadding;
@@ -48,61 +48,49 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: GawTheme.clearBackground,
-        borderRadius: BorderRadius.circular(18),
-        border: const Border.fromBorderSide(
-          Borders.mainSide,
-        ),
-        boxShadow: const [
-          Shadows.mainShadow,
-        ],
-      ),
-      margin: widget.overriddenPadding ?? const EdgeInsets.all(16),
-      padding: const EdgeInsets.all(16),
-      child: SizedBox(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                StatisticsSummaryWidget(
-                  averageHours: widget.averageHours,
-                  trendHours: widget.trend.abs(),
-                  isPositiveTrend: widget.trend >= 0 ? true : false,
-                ),
-                // !isBarChart ? buildBarChartButton() : buildLineChartButton(),
-              ],
-            ),
-            const SizedBox(height: PaddingSizes.smallPadding),
-            Expanded(
-              child: isBarChart
-                  ? buildBarChart(widget.weeklyStatistics)
-                  : buildLineChart(widget.weeklyStatistics),
-            ),
-            const SizedBox(height: PaddingSizes.bigPadding),
-            const Legend(
-              items: [
-                LegendItem(
-                  color: GawTheme.mainTint,
-                  text: 'Completed jobs',
-                ),
-                SizedBox(width: PaddingSizes.extraBigPadding),
-                // Adjust the space as needed
-                LegendItem(
-                  color: GawTheme.secondaryTint,
-                  text: 'Scheduled jobs',
-                ),
-              ],
-            ),
-            const SizedBox(height: PaddingSizes.bigPadding),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(18),
+      child: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: GawTheme.clearBackground,
+          borderRadius: BorderRadius.circular(18),
+          border: const Border.fromBorderSide(
+            Borders.mainSide,
+          ),
+          boxShadow: const [
+            Shadows.mainShadow,
           ],
+        ),
+        margin: widget.overriddenPadding ?? const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
+        child: SizedBox(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  StatisticsSummaryWidget(
+                    averageHours: widget.averageHours,
+                    trendHours: widget.trend?.abs(),
+                    isPositiveTrend: (widget.trend ?? 0) >= 0 ? true : false,
+                  ),
+                  // !isBarChart ? buildBarChartButton() : buildLineChartButton(),
+                ],
+              ),
+              const SizedBox(height: PaddingSizes.smallPadding),
+              Expanded(
+                child: isBarChart
+                    ? buildBarChart(widget.weeklyStatistics)
+                    : buildLineChart(widget.weeklyStatistics),
+              ),
+              const SizedBox(height: PaddingSizes.bigPadding),
+            ],
+          ),
         ),
       ),
     );
@@ -216,7 +204,7 @@ class _StatisticsChartContainerState extends State<StatisticsChartContainer> {
           leftTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
-              reservedSize: 32,
+              reservedSize: 48,
               interval: getYInterval(spots),
               getTitlesWidget: (double value, TitleMeta meta) =>
                   leftTitles(value, meta, widget.weeklyStatistics),
@@ -347,7 +335,7 @@ double getYInterval(List<FlSpot> spots) {
 }
 
 double getInterval(int length) {
-  const int interval = 15;
+  const int interval = 32;
 
   if (length < interval) {
     return 1;
@@ -407,7 +395,7 @@ Widget leftTitles(double value, TitleMeta meta, List<FlSpot> spots) {
 
 class StatisticsSummaryWidget extends StatelessWidget {
   final int averageHours;
-  final int trendHours;
+  final int? trendHours;
   final bool isPositiveTrend;
 
   const StatisticsSummaryWidget({
@@ -440,27 +428,30 @@ class StatisticsSummaryWidget extends StatelessWidget {
               fontWeight: FontWeight.w900,
             ),
           ),
-          Row(
-            children: [
-              const Text(
-                'On average',
-                style: TextStyle(
-                  color: GawTheme.text,
-                  fontSize: 12,
+          Visibility(
+            visible: trendHours != null,
+            child: Row(
+              children: [
+                const Text(
+                  'Total ',
+                  style: TextStyle(
+                    color: GawTheme.text,
+                    fontSize: 12,
+                  ),
                 ),
-              ),
-              Icon(
-                trendIcon,
-                color: trendColor,
-              ),
-              Text(
-                '${trendHours}h',
-                style: TextStyle(
+                Icon(
+                  trendIcon,
                   color: trendColor,
-                  fontSize: 12,
                 ),
-              ),
-            ],
+                Text(
+                  '${trendHours}h',
+                  style: TextStyle(
+                    color: trendColor,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
+            ),
           ),
           // Add more Text widgets for other summary data as needed
         ],
