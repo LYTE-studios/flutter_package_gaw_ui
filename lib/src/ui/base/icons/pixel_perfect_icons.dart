@@ -220,4 +220,5 @@ class PixelPerfectIcons {
   static const String netherlands = '$customBasePath/netherlands.svg';
 
   static const String unitedKingdom = '$customBasePath/united_kingdom.svg';
+  static const String france = '$customBasePath/france.svg';
 }
