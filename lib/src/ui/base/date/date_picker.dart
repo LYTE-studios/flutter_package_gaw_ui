@@ -231,10 +231,7 @@ class DateRangePickerState extends State<DateRangePicker> {
     }
 
     return ClipRRect(
-      borderRadius: const BorderRadius.only(
-        topRight: Radius.circular(12),
-        topLeft: Radius.circular(12),
-      ),
+      borderRadius: BorderRadius.circular(12),
       child: Scaffold(
         backgroundColor: GawTheme.background,
         body: Padding(
@@ -432,7 +429,7 @@ class DateRangePickerState extends State<DateRangePicker> {
                                       ),
                                       dayFormat: 'E',
                                       firstDayOfWeek: 1,
-                                      numberOfWeeksInView: 5,
+                                      numberOfWeeksInView: 4,
                                     ),
                                   )
                                 : SfDateRangePicker(
@@ -498,7 +495,7 @@ class DateRangePickerState extends State<DateRangePicker> {
                                       ),
                                       dayFormat: 'E',
                                       firstDayOfWeek: 1,
-                                      numberOfWeeksInView: 5,
+                                      numberOfWeeksInView: 4,
                                     ),
                                   ),
                           ),
@@ -506,9 +503,8 @@ class DateRangePickerState extends State<DateRangePicker> {
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(
-                          vertical: !widget.isSheet
-                              ? PaddingSizes.smallPadding
-                              : PaddingSizes.bigPadding,
+                          vertical:
+                              !widget.isSheet ? 0 : PaddingSizes.bigPadding,
                         ),
                         child: SizedBox(
                           width: double.infinity,

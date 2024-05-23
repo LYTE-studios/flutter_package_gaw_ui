@@ -63,6 +63,7 @@ class PixelPerfectIcons {
     customEye,
     netherlands,
     unitedKingdom,
+    france,
     customNotification,
     customApplicationDocument,
     'assets/images/banner/banner_item_1.svg',
