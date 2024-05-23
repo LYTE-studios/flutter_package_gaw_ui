@@ -75,6 +75,7 @@
   "myJobs": "Mijn jobs",
   "viewAll": "Alles bekijken",
   "selectDates": "Datums selecteren",
+  "selectTimes": "Uren selecteren",
   "sun": "Zon",
   "mon": "Maa",
   "tue": "Din",
@@ -127,5 +128,18 @@
   "november": "November",
   "december": "December",
   "from": "Van",
-  "until": "Tot"
+  "until": "Tot",
+  "lastWeek": "Vorige week",
+  "lastMonth": "Vorige maand",
+  "thisYear": "Dit jaar",
+  "lastYear": "Vorig jaar",
+  "filter": "Filter",
+  "noItems": "Geen resultaten",
+  "startTime": "Begin",
+  "endTime": "Eind",
+  "h": "u",
+  "copied": "Gekopieerd",
+  "something": "Iets",
+  "gotCopiedToYourClipboard": "werd gekopieerd naar je klembord",
+  "denied": "Afgewezen"
 }

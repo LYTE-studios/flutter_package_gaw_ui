@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 
@@ -69,8 +70,7 @@ class CmsExpandableDateRangePicker extends StatelessWidget {
                     width: PaddingSizes.mainPadding,
                   ),
                   MainText(
-                    // TODO COPY
-                    'Filter',
+                    LocaleKeys.filter.tr(),
                     color: color ?? GawTheme.clearBackground,
                   ),
                 ],

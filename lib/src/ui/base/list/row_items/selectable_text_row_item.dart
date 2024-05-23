@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gaw_ui/gaw_ui.dart';
@@ -35,10 +36,9 @@ class SelectableTextRowItem extends StatelessWidget {
                 ),
                 backgroundColor: Colors.transparent,
                 content: BasicSnackBar(
-                  // TODO COPY
-                  title: 'Copied!',
+                  title: '${LocaleKeys.copied.tr()}!',
                   description:
-                      '${value ?? 'something..'} got copied to your clipboard',
+                      '${value ?? '${LocaleKeys.something.tr()}..'} ${LocaleKeys.gotCopiedToYourClipboard.tr()}',
                 ),
               ),
             );

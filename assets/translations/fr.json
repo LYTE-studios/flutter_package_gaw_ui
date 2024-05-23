@@ -92,5 +92,19 @@
   "november": "November",
   "december": "Décembre",
   "from": "De",
-  "until": "Jusqu'à"
+  "until": "Jusqu'à",
+  "lastWeek": "La semaine dernière",
+  "lastMonth": "Le mois dernier",
+  "thisYear": "Cette année",
+  "lastYear": "L'année dernière",
+  "selectTimes": "Sélectionner les heures",
+  "filter": "Filtre",
+  "noItems": "Pas d'articles",
+  "startTime": "Heure de début",
+  "endTime": "Heure de fin",
+  "h": "h",
+  "copied": "Copié",
+  "something": "Quelque chose",
+  "gotCopiedToYourClipboard": "a été copié dans le presse-papiers",
+  "denied": "Refusé"
 }

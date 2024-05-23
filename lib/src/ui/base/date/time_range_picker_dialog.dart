@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 
@@ -110,8 +111,7 @@ class _TimeRangePickerState extends State<TimeRangePickerDialog> {
                   ],
                 ),
                 child: MainText(
-                  // TODO COPY
-                  widget.title ?? 'Select times',
+                  widget.title ?? LocaleKeys.selectTimes.tr(),
                   textStyleOverride: TextStyles.mainStyle.copyWith(
                     fontWeight: FontWeight.bold,
                     fontSize: 14, // Adjust the font size as needed
@@ -170,8 +170,7 @@ class _TimeRangePickerState extends State<TimeRangePickerDialog> {
                       ),
                     ),
                     child: MainText(
-                      // TODO COPY
-                      'Confirm times',
+                      LocaleKeys.confirmTimes.tr(),
                       textStyleOverride: TextStyles.mainStyle.copyWith(
                         color: GawTheme.clearText,
                       ),
@@ -259,8 +258,9 @@ class _CustomTimeRangePickerState extends State<CustomTimeRangePicker> {
               Container(
                 alignment: Alignment.center,
                 child: MainText(
-                  // TODO COPY
-                  widget.isStart ? 'Start time:' : 'End time:',
+                  widget.isStart
+                      ? '${LocaleKeys.startTime.tr()}:'
+                      : '${LocaleKeys.endTime.tr()}:',
                   alignment: TextAlign.center,
                   textStyleOverride: TextStyles.mainStyle.copyWith(
                     fontSize: 12,
@@ -286,8 +286,7 @@ class _CustomTimeRangePickerState extends State<CustomTimeRangePicker> {
                     builder: (context, index) {
                       return Center(
                         child: MainText(
-                          // TODO COPY
-                          '$index h',
+                          '$index ${LocaleKeys.h.tr()}',
                           textStyleOverride: TextStyles.mainStyle.copyWith(
                             color: GawTheme.text,
                             fontWeight: FontWeight.w500,
@@ -316,7 +315,6 @@ class _CustomTimeRangePickerState extends State<CustomTimeRangePicker> {
                     builder: (context, index) {
                       return Center(
                         child: MainText(
-                          // TODO COPY
                           '$index min',
                           textStyleOverride: TextStyles.mainStyle.copyWith(
                             color: GawTheme.text,

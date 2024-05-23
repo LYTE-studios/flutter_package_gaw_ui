@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 import 'package:gaw_ui/src/ui/jobs/state_blocks/base_state_block.dart';
@@ -9,8 +10,7 @@ class PendingStateBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseStateBlock(
       color: GawTheme.unselectedBackground.withOpacity(0.4),
-      // TODO COPY
-      label: 'Pending',
+      label: LocaleKeys.pending.tr(),
       textColor: GawTheme.text.withOpacity(
         0.6,
       ),

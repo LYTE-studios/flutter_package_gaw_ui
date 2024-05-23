@@ -77,6 +77,7 @@ abstract class  LocaleKeys {
   static const myJobs = 'myJobs';
   static const viewAll = 'viewAll';
   static const selectDates = 'selectDates';
+  static const selectTimes = 'selectTimes';
   static const sun = 'sun';
   static const mon = 'mon';
   static const tue = 'tue';
@@ -130,5 +131,18 @@ abstract class  LocaleKeys {
   static const december = 'december';
   static const from = 'from';
   static const until = 'until';
+  static const lastWeek = 'lastWeek';
+  static const lastMonth = 'lastMonth';
+  static const thisYear = 'thisYear';
+  static const lastYear = 'lastYear';
+  static const filter = 'filter';
+  static const noItems = 'noItems';
+  static const startTime = 'startTime';
+  static const endTime = 'endTime';
+  static const h = 'h';
+  static const copied = 'copied';
+  static const something = 'something';
+  static const gotCopiedToYourClipboard = 'gotCopiedToYourClipboard';
+  static const denied = 'denied';
 
 }

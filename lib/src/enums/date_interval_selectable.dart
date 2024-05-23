@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:tuple/tuple.dart';
@@ -86,19 +87,18 @@ extension DateIntervalSelectableExtension on DateIntervalSelectable {
 
   String getLabel() {
     switch (this) {
-      // TODO COPY
       case DateIntervalSelectable.thisYear:
-        return 'This year';
+        return LocaleKeys.thisYear.tr();
       case DateIntervalSelectable.lastYear:
-        return 'Last year';
+        return LocaleKeys.lastYear.tr();
       case DateIntervalSelectable.thisMonth:
-        return 'This month';
+        return LocaleKeys.thisMonth.tr();
       case DateIntervalSelectable.lastMonth:
-        return 'Last month';
+        return LocaleKeys.lastMonth.tr();
       case DateIntervalSelectable.thisWeek:
-        return 'This week';
+        return LocaleKeys.thisWeek.tr();
       case DateIntervalSelectable.lastWeek:
-        return 'Last week';
+        return LocaleKeys.lastWeek.tr();
     }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 
@@ -129,10 +130,9 @@ class _GenericListViewState extends State<GenericListView>
                         child: LoadingSwitcher(
                           loading: widget.loading,
                           child: widget.rows.isEmpty
-                              ? const Center(
+                              ? Center(
                                   child: MainText(
-                                    // TODO COPY
-                                    'No items',
+                                    LocaleKeys.noItems.tr(),
                                   ),
                                 )
                               : ListView(

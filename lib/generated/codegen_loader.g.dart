@@ -91,6 +91,7 @@ class CodegenLoader extends AssetLoader{
   "myJobs": "Mijn jobs",
   "viewAll": "Alles bekijken",
   "selectDates": "Datums selecteren",
+  "selectTimes": "Uren selecteren",
   "sun": "Zon",
   "mon": "Maa",
   "tue": "Din",
@@ -143,7 +144,20 @@ class CodegenLoader extends AssetLoader{
   "november": "November",
   "december": "December",
   "from": "Van",
-  "until": "Tot"
+  "until": "Tot",
+  "lastWeek": "Vorige week",
+  "lastMonth": "Vorige maand",
+  "thisYear": "Dit jaar",
+  "lastYear": "Vorig jaar",
+  "filter": "Filter",
+  "noItems": "Geen resultaten",
+  "startTime": "Begin",
+  "endTime": "Eind",
+  "h": "u",
+  "copied": "Gekopieerd",
+  "something": "Iets",
+  "gotCopiedToYourClipboard": "werd gekopieerd naar je klembord",
+  "denied": "Afgewezen"
 };
 static const Map<String,dynamic> en = {
   "oops": "Oops...",
@@ -218,11 +232,16 @@ static const Map<String,dynamic> en = {
   "anytime": "Anytime",
   "thisWeek": "This week",
   "thisMonth": "This month",
+  "lastWeek": "Last week",
+  "lastMonth": "Last month",
+  "thisYear": "This year",
+  "lastYear": "Last year",
   "earlier": "Eerlier",
   "upcomingJobs": "Upcoming jobs",
   "myJobs": "My jobs",
   "viewAll": "View all",
   "selectDates": "Select Dates",
+  "selectTimes": "Select Times",
   "sun": "Sun",
   "mon": "Mon",
   "tue": "Tue",
@@ -260,11 +279,20 @@ static const Map<String,dynamic> en = {
   "iEndedAt": "I ended at:",
   "confirmTimes": "Confirm times",
   "noJobs": "No jobs",
+  "noItems": "No items",
   "noAppliedJobs": "No applied jobs",
   "startAddress": "Start address",
   "chooseLocation": "Choose location",
   "from": "From",
-  "until": "Until"
+  "until": "Until",
+  "filter": "Filter",
+  "startTime": "Start time",
+  "endTime": "End time",
+  "h": "h",
+  "copied": "Copied",
+  "something": "Something",
+  "gotCopiedToYourClipboard": "got copied to your clipboard",
+  "denied": "Denied"
 };
 static const Map<String,dynamic> fr = {
   "oops": "Oops...",
@@ -360,7 +388,21 @@ static const Map<String,dynamic> fr = {
   "november": "November",
   "december": "Décembre",
   "from": "De",
-  "until": "Jusqu'à"
+  "until": "Jusqu'à",
+  "lastWeek": "La semaine dernière",
+  "lastMonth": "Le mois dernier",
+  "thisYear": "Cette année",
+  "lastYear": "L'année dernière",
+  "selectTimes": "Sélectionner les heures",
+  "filter": "Filtre",
+  "noItems": "Pas d'articles",
+  "startTime": "Heure de début",
+  "endTime": "Heure de fin",
+  "h": "h",
+  "copied": "Copié",
+  "something": "Quelque chose",
+  "gotCopiedToYourClipboard": "a été copié dans le presse-papiers",
+  "denied": "Refusé"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"nl": nl, "en": en, "fr": fr};
 }

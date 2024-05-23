@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 import 'package:gaw_ui/src/ui/jobs/state_blocks/base_state_block.dart';
@@ -7,10 +8,9 @@ class ApprovedStateBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const BaseStateBlock(
+    return BaseStateBlock(
       color: GawTheme.success,
-      // TODO COPY
-      label: 'Approved',
+      label: LocaleKeys.approved.tr(),
     );
   }
 }
