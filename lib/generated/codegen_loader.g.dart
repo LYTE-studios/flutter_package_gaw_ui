@@ -157,7 +157,8 @@ class CodegenLoader extends AssetLoader{
   "copied": "Gekopieerd",
   "something": "Iets",
   "gotCopiedToYourClipboard": "werd gekopieerd naar je klembord",
-  "denied": "Afgewezen"
+  "denied": "Afgewezen",
+  "goBack": "Terug"
 };
 static const Map<String,dynamic> en = {
   "oops": "Oops...",
@@ -292,7 +293,8 @@ static const Map<String,dynamic> en = {
   "copied": "Copied",
   "something": "Something",
   "gotCopiedToYourClipboard": "got copied to your clipboard",
-  "denied": "Denied"
+  "denied": "Denied",
+  "goBack": "Go back"
 };
 static const Map<String,dynamic> fr = {
   "oops": "Oops...",
@@ -402,7 +404,8 @@ static const Map<String,dynamic> fr = {
   "copied": "Copié",
   "something": "Quelque chose",
   "gotCopiedToYourClipboard": "a été copié dans le presse-papiers",
-  "denied": "Refusé"
+  "denied": "Refusé",
+  "goBack": "Retourner"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"nl": nl, "en": en, "fr": fr};
 }

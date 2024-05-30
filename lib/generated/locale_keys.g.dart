@@ -144,5 +144,6 @@ abstract class  LocaleKeys {
   static const something = 'something';
   static const gotCopiedToYourClipboard = 'gotCopiedToYourClipboard';
   static const denied = 'denied';
+  static const goBack = 'goBack';
 
 }
