@@ -6,4 +6,5 @@ class ListUtil {
   static const double mColumn = 142;
   static const double lColumn = 186;
   static const double xLColumn = 210;
+  static const double hugeColumn = 320;
 }

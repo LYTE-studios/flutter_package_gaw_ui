@@ -66,6 +66,7 @@ class PixelPerfectIcons {
     france,
     customNotification,
     customApplicationDocument,
+    download,
     'assets/images/banner/banner_item_1.svg',
     'assets/images/banner/banner_item_2.svg',
     'assets/images/banner/banner_item_3.svg',
@@ -110,6 +111,8 @@ class PixelPerfectIcons {
       '$customBasePath/custom_notification.svg';
 
   static const String customUsers = '$customBasePath/users.svg';
+
+  static const String download = '$customBasePath/download.svg';
 
   static const String profilePicture =
       '$customBasePath/default_profile_picture.svg';
