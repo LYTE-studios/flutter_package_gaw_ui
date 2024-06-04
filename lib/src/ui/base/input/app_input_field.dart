@@ -6,13 +6,19 @@ class AppInputField extends StatefulWidget {
 
   final String? hint;
 
+  final Widget? prefix;
+
   final bool isPasswordField;
+
+  final bool readOnly;
 
   const AppInputField({
     super.key,
     required this.controller,
     this.hint,
+    this.prefix,
     this.isPasswordField = false,
+    this.readOnly = false,
   });
 
   @override
@@ -38,12 +44,14 @@ class _AppInputFieldState extends State<AppInputField> {
       autocorrect: !widget.isPasswordField,
       controller: widget.controller,
       cursorColor: GawTheme.mainTint,
+      readOnly: widget.readOnly,
       decoration: InputStyles.mainDecoration.copyWith(
         label: MainText(widget.hint ?? ''),
         floatingLabelStyle: TextStyles.mainStyle.copyWith(
           color:
               focusNode.hasFocus ? GawTheme.mainTint : GawTheme.unselectedText,
         ),
+        prefix: widget.prefix,
         suffixIcon: !widget.isPasswordField
             ? const SizedBox()
             : GestureDetector(
