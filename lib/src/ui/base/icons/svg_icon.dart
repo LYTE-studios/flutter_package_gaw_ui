@@ -12,12 +12,15 @@ class SvgIcon extends StatelessWidget {
 
   final bool useRootPackage;
 
+  final bool useRawColors;
+
   const SvgIcon(
     this.assetName, {
     super.key,
     this.color,
     this.fit,
     this.useRootPackage = false,
+        this.useRawColors = false,
   });
 
   @override
@@ -26,7 +29,7 @@ class SvgIcon extends StatelessWidget {
       assetName,
       package: useRootPackage ? null : kPackageName,
       fit: fit ?? BoxFit.contain,
-      colorFilter: ColorFilter.mode(
+      colorFilter: useRawColors ? null: ColorFilter.mode(
         color ?? GawTheme.mainTint,
         BlendMode.srcIn,
       ),
