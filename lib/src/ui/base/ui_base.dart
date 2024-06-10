@@ -1,5 +1,6 @@
 library ui_base;
 
+export 'input/input_styles.dart';
 export 'animation_builders/splash_logo.dart';
 export 'borders/borders.dart';
 export 'forms/input/input_multi_selection_form.dart';
@@ -10,6 +11,7 @@ export 'buttons/edit_button.dart';
 export 'buttons/generic_button.dart';
 export 'buttons/named_check_box.dart';
 export 'buttons/page_switch.dart';
+export 'buttons/text_download_button.dart';
 export 'text/auto_sized_text.dart';
 export 'date/time_range_picker_dialog.dart';
 export 'buttons/rotating_icon.dart';
@@ -44,7 +46,6 @@ export 'input/app_input_field.dart';
 export 'input/app_switch_field.dart';
 export 'input/cms_input_field.dart';
 export 'input/form_input_field.dart';
-export 'input/input_styles.dart';
 export 'layout/tabbed_view.dart';
 export 'list/generic_list_view.dart';
 export 'list/list_items/base_list_header.dart';
