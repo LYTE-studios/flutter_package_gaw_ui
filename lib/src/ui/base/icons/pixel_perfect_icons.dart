@@ -67,6 +67,7 @@ class PixelPerfectIcons {
     customNotification,
     customApplicationDocument,
     download,
+    chat,
     'assets/images/banner/banner_item_1.svg',
     'assets/images/banner/banner_item_2.svg',
     'assets/images/banner/banner_item_3.svg',
@@ -225,4 +226,6 @@ class PixelPerfectIcons {
 
   static const String unitedKingdom = '$customBasePath/united_kingdom.svg';
   static const String france = '$customBasePath/france.svg';
+
+  static const String chat = '$customBasePath/chat.svg';
 }
