@@ -53,7 +53,7 @@ final ThemeData fallbackTheme = ThemeData(
   disabledColor: GawTheme.unselectedBackground,
   dividerColor: GawTheme.unselectedText,
   focusColor: GawTheme.mainTint,
-  highlightColor: GawTheme.mainTint,
+  highlightColor: Colors.transparent,
   hintColor: GawTheme.unselectedText,
   hoverColor: Colors.transparent,
   iconTheme: _iconThemeData,

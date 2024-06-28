@@ -14,7 +14,7 @@ class TextDownloadButton extends StatelessWidget {
   @override
   Widget build(BuildContext) {
     return GestureDetector(
-      onTap: () => onTap,
+      onTap: onTap,
       child: Container(
         child: Row(children: [
           SizedBox(

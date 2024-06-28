@@ -45,7 +45,7 @@ class BigCheckBox extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: AutoSizedText(
+                child: MainText(
                   label ?? '',
                   alignment: TextAlign.left,
                   color: value ? GawTheme.secondaryTint : GawTheme.text,
