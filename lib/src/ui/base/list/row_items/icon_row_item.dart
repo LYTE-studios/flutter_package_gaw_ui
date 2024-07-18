@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
-import 'package:gaw_ui/src/ui/base/list/row_items/base_row_item.dart';
 
 class IconRowItem extends StatelessWidget {
   final String icon;
 
+  final String? secondIcon;
+
+  final Function()? onTap;
+
+  final Function()? onTapSecond;
+
   const IconRowItem({
     super.key,
     required this.icon,
+    this.secondIcon,
+    this.onTap,
+    this.onTapSecond,
   });
 
   @override
@@ -18,10 +26,42 @@ class IconRowItem extends StatelessWidget {
         BaseRowItem(
           child: SizedBox(
             height: 24,
-            width: 24,
-            child: SvgIcon(
-              icon,
-              color: GawTheme.unselectedText,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ColorlessInkWell(
+                  onTap: () {
+                    onTap?.call();
+                  },
+                  child: SvgIcon(
+                    icon,
+                    color: GawTheme.unselectedText,
+                  ),
+                ),
+                Visibility(
+                  visible: secondIcon != null,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        width: PaddingSizes.mainPadding,
+                      ),
+                      ColorlessInkWell(
+                        onTap: () {
+                          onTapSecond?.call();
+                        },
+                        child: SvgIcon(
+                          secondIcon ?? '',
+                          color: GawTheme.unselectedText,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ),

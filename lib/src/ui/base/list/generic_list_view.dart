@@ -30,6 +30,8 @@ class GenericListView extends StatefulWidget {
 
   final Widget header;
 
+  final double? minWidth;
+
   const GenericListView({
     super.key,
     this.title,
@@ -47,6 +49,7 @@ class GenericListView extends StatefulWidget {
     this.onEditItemCount,
     this.onChangePage,
     required this.header,
+    this.minWidth,
   });
 
   @override
@@ -59,6 +62,8 @@ class _GenericListViewState extends State<GenericListView>
       widget.totalItems == null || widget.itemsPerPage == null;
 
   bool isLateLoading = false;
+
+  String? currentQuery;
 
   int getPageCount() {
     if (widget.itemsPerPage == null || widget.totalItems == null) {
@@ -75,6 +80,10 @@ class _GenericListViewState extends State<GenericListView>
   }
 
   void setLateLoader(String query) {
+    setData(() {
+      currentQuery = query;
+    });
+
     if (isLateLoading) {
       return;
     }
@@ -90,7 +99,13 @@ class _GenericListViewState extends State<GenericListView>
       setData(() {
         isLateLoading = false;
       });
-      widget.onSearch?.call(query);
+
+      if (currentQuery == query) {
+        widget.onSearch?.call(query);
+        return;
+      }
+
+      setLateLoader(currentQuery ?? '');
     });
   }
 
@@ -107,9 +122,7 @@ class _GenericListViewState extends State<GenericListView>
               onChange: (String value) {
                 setLateLoader(value);
               },
-              onSearch: (String value) {
-                widget.onSearch?.call(value);
-              },
+              onSearch: widget.onSearch,
               canDelete: widget.canDelete,
             ),
           ),
@@ -117,8 +130,8 @@ class _GenericListViewState extends State<GenericListView>
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: ConstrainedBox(
-                constraints: const BoxConstraints(
-                  minWidth: 1121,
+                constraints: BoxConstraints(
+                  minWidth: widget.minWidth ?? 1121,
                 ),
                 child: SizedBox(
                   width: constraints.maxWidth,
