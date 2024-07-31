@@ -3,6 +3,38 @@ import 'package:gaw_ui/gaw_ui.dart';
 import 'package:tuple/tuple.dart';
 
 class GawDateUtil {
+  static int getApiStartOfMonth() {
+    DateTime now = DateTime.now();
+
+    DateTime startOfMonth = DateTime(
+      now.year,
+      now.month,
+      1,
+      0,
+      0,
+    );
+
+    return GawDateUtil.toApiUtc(startOfMonth);
+  }
+
+  static int getApiEndOfMonth() {
+    DateTime now = DateTime.now();
+
+    DateTime endOfMonth = DateTime(
+      now.year,
+      now.month + 1,
+      1,
+      0,
+      0,
+    ).subtract(
+      const Duration(
+        minutes: 1,
+      ),
+    );
+
+    return GawDateUtil.toApiUtc(endOfMonth);
+  }
+
   static String monthName(int month) {
     switch (month) {
       case 1:
@@ -78,6 +110,19 @@ class GawDateUtil {
       return null;
     }
     return fromApi(dateTime);
+  }
+
+  static int toApiUtc(DateTime dateTime) {
+    dateTime = DateTime.utc(
+      dateTime.year,
+      dateTime.month,
+      dateTime.day,
+      dateTime.hour,
+      dateTime.minute,
+      dateTime.second,
+    );
+
+    return dateTime.millisecondsSinceEpoch ~/ 1000;
   }
 
   static int toApi(DateTime dateTime, {bool toEndOfDay = false}) {
