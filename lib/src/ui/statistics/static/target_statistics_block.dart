@@ -6,7 +6,9 @@ import 'package:gaw_ui/src/ui/statistics/static/base_overview_block.dart';
 import 'package:gaw_ui/src/ui/statistics/static/increment_description.dart';
 
 class TargetStatisticsBlock extends StatelessWidget {
-  final int jobsCount;
+  final int? jobsCount;
+
+  final int? candidatesCount;
 
   final double increaseAmount;
 
@@ -14,7 +16,8 @@ class TargetStatisticsBlock extends StatelessWidget {
 
   const TargetStatisticsBlock({
     super.key,
-    required this.jobsCount,
+    this.jobsCount,
+    this.candidatesCount,
     required this.increaseAmount,
     this.loading = false,
   });
@@ -30,33 +33,62 @@ class TargetStatisticsBlock extends StatelessWidget {
           ),
           child: LoadingSwitcher(
             loading: loading,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
               children: [
-                const IconBlock(
-                  icon: PixelPerfectIcons.customUser,
-                ),
-                const Spacer(),
-                MainText(
-                  LocaleKeys.jobs.tr(),
-                  textStyleOverride: TextStyles.titleStyle.copyWith(
-                    fontSize: 16,
+                if (jobsCount != null)
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const IconBlock(
+                          icon: PixelPerfectIcons.timeDiamondpNormal,
+                        ),
+                        const Spacer(),
+                        MainText(
+                          LocaleKeys.jobs.tr(),
+                          textStyleOverride: TextStyles.titleStyle.copyWith(
+                            fontSize: 16,
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            MainText(
+                              jobsCount.toString(),
+                              textStyleOverride: TextStyles.mainStyleTitle,
+                            ),
+                            const SizedBox(
+                              width: PaddingSizes.smallPadding,
+                            ),
+                            IncrementDescription(
+                              increment: increaseAmount,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Row(
-                  children: [
-                    MainText(
-                      jobsCount.toString(),
-                      textStyleOverride: TextStyles.mainStyleTitle,
+                if (candidatesCount != null)
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const IconBlock(
+                          icon: PixelPerfectIcons.customUser,
+                        ),
+                        const Spacer(),
+                        MainText(
+                          'Candidates',
+                          textStyleOverride: TextStyles.titleStyle.copyWith(
+                            fontSize: 16,
+                          ),
+                        ),
+                        MainText(
+                          candidatesCount.toString(),
+                          textStyleOverride: TextStyles.mainStyleTitle,
+                        ),
+                      ],
                     ),
-                    const SizedBox(
-                      width: PaddingSizes.smallPadding,
-                    ),
-                    IncrementDescription(
-                      increment: increaseAmount,
-                    ),
-                  ],
-                ),
+                  ),
               ],
             ),
           ),

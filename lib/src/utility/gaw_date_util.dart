@@ -112,6 +112,23 @@ class GawDateUtil {
     return fromApi(dateTime);
   }
 
+  static int? tryToApiUtc(DateTime? dateTime) {
+    if (dateTime == null) {
+      return null;
+    }
+
+    dateTime = DateTime.utc(
+      dateTime.year,
+      dateTime.month,
+      dateTime.day,
+      dateTime.hour,
+      dateTime.minute,
+      dateTime.second,
+    );
+
+    return dateTime.millisecondsSinceEpoch ~/ 1000;
+  }
+
   static int toApiUtc(DateTime dateTime) {
     dateTime = DateTime.utc(
       dateTime.year,
