@@ -124,6 +124,7 @@ class _TabbedViewState extends State<TabbedView> {
               ),
               Expanded(
                 child: Container(
+                  clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(
                     color: GawTheme.clearText,
                     border: Border.all(

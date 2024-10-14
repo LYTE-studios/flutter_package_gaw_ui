@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
-import 'package:gaw_ui/src/ui/base/text/auto_sized_text.dart';
 
 class InitialsAvatar extends StatelessWidget {
   final String initials;
@@ -22,9 +21,8 @@ class InitialsAvatar extends StatelessWidget {
         ? ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: Container(
-              constraints: const BoxConstraints(
-                minHeight: 48,
-              ),
+              height: 40,
+              width: 40,
               decoration: const BoxDecoration(
                 color: GawTheme.darkBackground,
               ),
