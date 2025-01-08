@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
+import 'package:lyte_studios_flutter_ui/lyte_studios_flutter_ui.dart';
 
 class GenericListView extends StatefulWidget {
   final String? title;
@@ -80,7 +81,7 @@ class _GenericListViewState extends State<GenericListView>
   }
 
   void setLateLoader(String query) {
-    setData(() {
+    setState(() {
       currentQuery = query;
     });
 
@@ -88,7 +89,7 @@ class _GenericListViewState extends State<GenericListView>
       return;
     }
 
-    setData(() {
+    setState(() {
       isLateLoading = true;
     });
     Future.delayed(
@@ -96,7 +97,7 @@ class _GenericListViewState extends State<GenericListView>
         milliseconds: 700,
       ),
     ).then((_) {
-      setData(() {
+      setState(() {
         isLateLoading = false;
       });
 

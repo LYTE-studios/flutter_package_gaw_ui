@@ -4,7 +4,7 @@ import 'package:gaw_ui/gaw_ui.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class DateIntervalPicker extends StatefulWidget {
-  final GlobalKey<ScaffoldState> scaffoldKey;
+  final GlobalKey<ScaffoldMessengerState> scaffoldKey;
 
   final DateTime? startDate;
 
