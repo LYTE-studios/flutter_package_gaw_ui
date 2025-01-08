@@ -32,12 +32,6 @@ dependencies:
   lottie: ^3.0.0
   multi_dropdown: ^2.1.3
 
-
-  lyte_studios_flutter_ui:
-    git:
-      url: https://github.com/LYTE-studios/lyte_studios_flutter_ui
-      ref: release/0.0.1
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
