@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
-import 'package:gaw_ui/src/ui/base/forms/input/input_form.dart';
 
 class InputSelectionForm extends StatefulWidget {
   final String? label;
@@ -44,68 +43,78 @@ class _InputSelectionFormState extends State<InputSelectionForm> {
 
   @override
   Widget build(BuildContext context) {
-    return InputForm(
-      label: widget.label,
-      child: LayoutBuilder(builder: (context, constraints) {
-        if (!widget.enabled) {
-          return Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: GawTheme.specialBackground,
-              border: const Border.fromBorderSide(
-                Borders.lightSide,
-              ),
-            ),
-            padding: const EdgeInsets.symmetric(
-              vertical: PaddingSizes.mainPadding + 2,
-              horizontal: PaddingSizes.mainPadding,
-            ),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: MainText(
-                widget.options[widget.value] ?? '',
-                textStyleOverride: TextStyles.mainStyle.copyWith(
-                  fontSize: 14,
-                  color: GawTheme.text,
+    return Theme(
+      data: ThemeData(
+        hoverColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+      ),
+      child: InputForm(
+        label: widget.label,
+        child: LayoutBuilder(builder: (context, constraints) {
+          if (!widget.enabled) {
+            return Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: GawTheme.specialBackground,
+                border: const Border.fromBorderSide(
+                  Borders.lightSide,
                 ),
               ),
+              padding: const EdgeInsets.symmetric(
+                vertical: PaddingSizes.mainPadding + 2,
+                horizontal: PaddingSizes.mainPadding,
+              ),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: MainText(
+                  widget.options[widget.value] ?? '',
+                  textStyleOverride: TextStyles.mainStyle.copyWith(
+                    fontSize: 14,
+                    color: GawTheme.text,
+                  ),
+                ),
+              ),
+            );
+          }
+          return ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: DropdownMenu(
+              enabled: widget.enabled,
+              menuHeight: 180,
+              inputDecorationTheme: InputDecorationTheme(
+                focusedBorder: OutlineInputBorder(
+                  borderSide: Borders.lightSelectedInputSide.copyWith(
+                    color: GawTheme.mainTint,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: Borders.lightUnselectedInputSide.copyWith(
+                    color: GawTheme.unselectedBackground,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: Borders.lightUnselectedInputSide.copyWith(
+                    color: GawTheme.unselectedBackground,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                contentPadding: const EdgeInsets.all(
+                  PaddingSizes.smallPadding,
+                ),
+                hintStyle: TextStyles.mainStyle.copyWith(fontSize: 14),
+                labelStyle: TextStyles.mainStyle.copyWith(fontSize: 14),
+              ),
+              width: constraints.maxWidth,
+              controller: controller,
+              onSelected: widget.onSelected,
+              dropdownMenuEntries: buildEntries(),
             ),
           );
-        }
-        return DropdownMenu(
-          enabled: widget.enabled,
-          menuHeight: 180,
-          inputDecorationTheme: InputDecorationTheme(
-            focusedBorder: OutlineInputBorder(
-              borderSide: Borders.lightSelectedInputSide.copyWith(
-                color: GawTheme.mainTint,
-              ),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            border: OutlineInputBorder(
-              borderSide: Borders.lightUnselectedInputSide.copyWith(
-                color: GawTheme.unselectedBackground,
-              ),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: Borders.lightUnselectedInputSide.copyWith(
-                color: GawTheme.unselectedBackground,
-              ),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            contentPadding: const EdgeInsets.all(
-              PaddingSizes.smallPadding,
-            ),
-            hintStyle: TextStyles.mainStyle.copyWith(fontSize: 14),
-            labelStyle: TextStyles.mainStyle.copyWith(fontSize: 14),
-          ),
-          width: constraints.maxWidth,
-          controller: controller,
-          onSelected: widget.onSelected,
-          dropdownMenuEntries: buildEntries(),
-        );
-      }),
+        }),
+      ),
     );
   }
 

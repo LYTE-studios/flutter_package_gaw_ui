@@ -75,6 +75,13 @@ final ThemeData fallbackTheme = ThemeData(
     errorStyle: TextStyles.mainStyle.copyWith(
       color: GawTheme.error,
     ),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+    ),
+    contentPadding: const EdgeInsets.symmetric(
+      horizontal: PaddingSizes.extraSmallPadding,
+      vertical: PaddingSizes.smallPadding,
+    ),
   ),
   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
   primaryColor: GawTheme.mainTint,

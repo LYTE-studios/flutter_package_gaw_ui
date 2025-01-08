@@ -5,8 +5,6 @@ export 'generated/codegen_loader.g.dart';
 export 'generated/locale_keys.g.dart';
 // -- ENUMS --
 export 'src/enums/ui_enums.dart';
-// -- MIXINS --
-export 'src/mixins/screen_state_mixin.dart';
 // -- THEME --
 export 'src/theme/fallback_theme.dart';
 export 'src/theme/gaw_theme.dart';

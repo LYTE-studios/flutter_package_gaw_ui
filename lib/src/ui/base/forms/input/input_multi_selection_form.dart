@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
-import 'package:gaw_ui/src/ui/base/forms/input/input_form.dart';
 
 class InputMultiSelectionForm extends StatefulWidget {
   final List<String> selectedOptions;
@@ -47,54 +46,61 @@ class _InputMultiSelectionFormState extends State<InputMultiSelectionForm> {
 
   @override
   Widget build(BuildContext context) {
-    return InputForm(
-      label: widget.label,
-      child: Container(
-        margin: const EdgeInsets.only(top: 10.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          border: Border.fromBorderSide(
-            Borders.lightUnselectedInputSide.copyWith(
-              color: GawTheme.unselectedBackground,
+    return Theme(
+      data: ThemeData(
+        hoverColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+      ),
+      child: InputForm(
+        label: widget.label,
+        child: Container(
+          margin: const EdgeInsets.only(top: 10.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            border: Border.fromBorderSide(
+              Borders.lightUnselectedInputSide.copyWith(
+                color: GawTheme.unselectedBackground,
+              ),
             ),
           ),
-        ),
-        child: ExpansionTile(
-          controller: controller,
-          title: MainText(
-            getSelectedText(),
-            color: widget.selectedOptions.isEmpty
-                ? GawTheme.unselectedText
-                : GawTheme.text,
-          ),
-          collapsedTextColor: GawTheme.text,
-          textColor: GawTheme.text,
-          iconColor: GawTheme.text,
-          collapsedShape: const RoundedRectangleBorder(),
-          shape: const RoundedRectangleBorder(),
-          children: <Widget>[
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: widget.options.length,
-              itemBuilder: (BuildContext context, int index) {
-                return _ViewItem(
-                  item: widget.options.keys.toList()[index],
-                  icon: widget.options.values.toList()[index],
-                  selected: (String value) {
-                    if (!widget.isMulti) {
-                      setState(() {
-                        controller.collapse();
-                      });
-                    }
-                    widget.onUpdate?.call(value);
-                  },
-                  itemSelected: widget.selectedOptions.contains(
-                    widget.options.keys.toList()[index],
-                  ),
-                );
-              },
+          child: ExpansionTile(
+            controller: controller,
+            title: MainText(
+              getSelectedText(),
+              color: widget.selectedOptions.isEmpty
+                  ? GawTheme.unselectedText
+                  : GawTheme.text,
             ),
-          ],
+            collapsedTextColor: GawTheme.text,
+            textColor: GawTheme.text,
+            iconColor: GawTheme.text,
+            collapsedShape: const RoundedRectangleBorder(),
+            shape: const RoundedRectangleBorder(),
+            children: <Widget>[
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: widget.options.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return _ViewItem(
+                    item: widget.options.keys.toList()[index],
+                    icon: widget.options.values.toList()[index],
+                    selected: (String value) {
+                      if (!widget.isMulti) {
+                        setState(() {
+                          controller.collapse();
+                        });
+                      }
+                      widget.onUpdate?.call(value);
+                    },
+                    itemSelected: widget.selectedOptions.contains(
+                      widget.options.keys.toList()[index],
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
