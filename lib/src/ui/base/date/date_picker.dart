@@ -54,14 +54,12 @@ class DateIntervalPickerState extends State<DateIntervalPicker>
 
   void showPicker() {
     widget.onShowPicker?.call();
-    controller = (showModalBottomSheet(
+    showModalBottomSheet(
       context: widget.parentContext,
-      builder: //widget.scaffoldKey.currentState?.showBottomSheet(
-          (context) => DateRangePicker(
+      builder: (context) => DateRangePicker(
         minDate: widget.minDate,
         maxDate: widget.maxDate,
         onRangeSelected: (start, end) {
-          //controller?.close();
           widget.onRangeSelected?.call(start, end);
           Navigator.of(context).pop();
         },
@@ -77,9 +75,9 @@ class DateIntervalPickerState extends State<DateIntervalPicker>
       constraints: BoxConstraints(
         maxHeight: widget.parentContext.size!.height * 0.85,
       ),
-    )..whenComplete(() {
-        widget.onPopPicker?.call();
-      })) as PersistentBottomSheetController?;
+    ).whenComplete(() {
+      widget.onPopPicker?.call();
+    });
   }
 
   void closeSheet() {
