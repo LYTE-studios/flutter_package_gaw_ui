@@ -396,13 +396,11 @@ class DateRangePickerState extends State<DateRangePicker> {
                                     todayHighlightColor: GawTheme.secondaryTint,
                                     selectionRadius: 1,
                                     rangeSelectionColor:
-                                        GawTheme.secondaryTint.withOpacity(
+                                        GawTheme.mainTint.withOpacity(
                                       0.1,
                                     ),
-                                    startRangeSelectionColor:
-                                        GawTheme.secondaryTint,
-                                    endRangeSelectionColor:
-                                        GawTheme.secondaryTint,
+                                    startRangeSelectionColor: GawTheme.mainTint,
+                                    endRangeSelectionColor: GawTheme.mainTint,
                                     navigationDirection:
                                         DateRangePickerNavigationDirection
                                             .vertical,
@@ -416,7 +414,7 @@ class DateRangePickerState extends State<DateRangePicker> {
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
-                                    selectionColor: GawTheme.secondaryTint,
+                                    selectionColor: GawTheme.mainTint,
                                     monthViewSettings:
                                         DateRangePickerMonthViewSettings(
                                       viewHeaderHeight: 0,
@@ -463,13 +461,11 @@ class DateRangePickerState extends State<DateRangePicker> {
                                     todayHighlightColor: GawTheme.secondaryTint,
                                     selectionRadius: 1,
                                     rangeSelectionColor:
-                                        GawTheme.secondaryTint.withOpacity(
+                                        GawTheme.mainTint.withOpacity(
                                       0.1,
                                     ),
-                                    startRangeSelectionColor:
-                                        GawTheme.secondaryTint,
-                                    endRangeSelectionColor:
-                                        GawTheme.secondaryTint,
+                                    startRangeSelectionColor: GawTheme.mainTint,
+                                    endRangeSelectionColor: GawTheme.mainTint,
                                     navigationDirection:
                                         DateRangePickerNavigationDirection
                                             .vertical,
@@ -482,7 +478,7 @@ class DateRangePickerState extends State<DateRangePicker> {
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
-                                    selectionColor: GawTheme.secondaryTint,
+                                    selectionColor: GawTheme.mainTint,
                                     monthViewSettings:
                                         DateRangePickerMonthViewSettings(
                                       viewHeaderHeight: 0,
@@ -523,7 +519,7 @@ class DateRangePickerState extends State<DateRangePicker> {
                             label: LocaleKeys.select.tr(),
                             color: (start != null && end != null) ||
                                     (widget.singleDatePicker && start != null)
-                                ? GawTheme.secondaryTint
+                                ? GawTheme.mainTint
                                 : GawTheme.unselectedBackground,
                           ),
                         ),
