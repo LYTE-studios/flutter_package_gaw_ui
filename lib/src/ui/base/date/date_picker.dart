@@ -154,6 +154,7 @@ class DateIntervalPickerState extends State<DateIntervalPicker>
                       child: SizedBox(
                         child: SvgIcon(
                           PixelPerfectIcons.trashMedium,
+                          size: 21,
                           color: GawTheme.error,
                         ),
                       ),
