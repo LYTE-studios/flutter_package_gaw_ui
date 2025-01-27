@@ -222,4 +222,9 @@ class PixelPerfectIcons {
   static const String france = '$customBasePath/france.svg';
 
   static const String chat = '$customBasePath/chat.svg';
+
+  static const String folderUpdate = '$customBasePath/folder_update.svg';
+  static const String passwordChange = '$customBasePath/password_change.svg';
+  static const String registrationComplete =
+      '$customBasePath/registration_complete.svg';
 }
