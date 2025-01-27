@@ -4,11 +4,13 @@ import 'package:gaw_ui/src/utility/constants.dart';
 class PixelPerfectIcons {
   static const String packageName = kPackageName;
 
-  static const String normalBasePath = 'assets/icons/pixel_perfect/Normal/SVG';
-  static const String mediumBasePath = 'assets/icons/pixel_perfect/Medium/SVG';
-  static const String boldBasePath = 'assets/icons/pixel_perfect/Bold/SVG';
+  static const String prefix = 'packages/$kPackageName/assets';
 
-  static const String customBasePath = 'assets/icons/custom';
+  static const String normalBasePath = '$prefix/icons/pixel_perfect/Normal/SVG';
+  static const String mediumBasePath = '$prefix/icons/pixel_perfect/Medium/SVG';
+  static const String boldBasePath = '$prefix/icons/pixel_perfect/Bold/SVG';
+
+  static const String customBasePath = '$prefix/icons/custom';
 
   static List<String> preloads = [
     customAdd,
@@ -68,29 +70,19 @@ class PixelPerfectIcons {
     customApplicationDocument,
     download,
     chat,
-    'assets/images/banner/banner_item_1.svg',
-    'assets/images/banner/banner_item_2.svg',
-    'assets/images/banner/banner_item_3.svg',
+    '$prefix/images/banner/banner_item_1.svg',
+    '$prefix/images/banner/banner_item_2.svg',
+    '$prefix/images/banner/banner_item_3.svg',
   ];
 
-  static String resolvePackageName(String path) {
-    return 'packages/$kPackageName/$path';
-  }
-
   static Future<void> loadIcons() async {
-    List<Future> futures = [];
     final FontLoader fontLoader = FontLoader('General Sans');
 
     await fontLoader.load();
 
     for (String icon in preloads) {
-      futures.add(
-        Future(
-          () => rootBundle.load(resolvePackageName(icon)),
-        ),
-      );
+      await rootBundle.load(icon);
     }
-    await Future.wait(futures);
   }
 
   // NAVIGATION
@@ -212,6 +204,8 @@ class PixelPerfectIcons {
   static const String removePicture = '$customBasePath/remove_picture.svg';
 
   static const String arrowBack = '$customBasePath/arrow_back.svg';
+
+  static const String backArrow = '$customBasePath/back_arrow.svg';
 
   static const String washers = '$customBasePath/washers.svg';
 

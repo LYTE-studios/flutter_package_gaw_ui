@@ -39,7 +39,6 @@ export 'headers/login_app_header.dart';
 export 'headers/main_app_header.dart';
 export 'icons/notification_icon.dart';
 export 'icons/pixel_perfect_icons.dart';
-export 'icons/svg_icon.dart';
 export 'images/svg_image.dart';
 export 'input/app_dropdown_field.dart';
 export 'input/app_input_field.dart';

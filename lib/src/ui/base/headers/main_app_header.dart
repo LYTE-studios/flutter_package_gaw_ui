@@ -33,7 +33,7 @@ class MainAppHeader extends StatelessWidget {
     return Container(
       height: height ?? (SizeUtil.isBigSize(context) ? 180 : 150),
       decoration: BoxDecoration(
-        color: colorless ? null : GawTheme.secondaryTint,
+        color: colorless ? null : GawTheme.mainTint,
       ),
       child: Stack(
         children: [

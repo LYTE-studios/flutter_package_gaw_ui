@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class GawTheme {
-  static const Color mainTint = Color.fromRGBO(78, 171, 233, 1);
+  static const Color mainTint = Color(0xFF0B1956);
 
-  static const Color secondaryTint = Color.fromRGBO(53, 115, 183, 1);
+  static const Color secondaryTint = Color(0xFFFB9EBB);
 
   static const Color background = Color.fromRGBO(240, 240, 240, 1);
 
@@ -29,7 +29,7 @@ class GawTheme {
 
   static const Color unselectedText = Color.fromRGBO(142, 146, 149, 1);
 
-  static const Color unselectedMainTint = Color.fromRGBO(161, 213, 255, 0.6);
+  static const Color unselectedMainTint = Color.fromARGB(109, 11, 25, 86);
 
   static const Color mainTintText = Color.fromRGBO(248, 248, 248, 1);
 

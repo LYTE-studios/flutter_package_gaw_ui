@@ -50,6 +50,7 @@ class FormInputField extends StatelessWidget {
               child: const Center(
                 child: SvgIcon(
                   PixelPerfectIcons.editNormal,
+                  size: 21,
                   color: GawTheme.unselectedText,
                 ),
               ),

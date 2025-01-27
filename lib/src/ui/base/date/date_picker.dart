@@ -4,7 +4,7 @@ import 'package:gaw_ui/gaw_ui.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class DateIntervalPicker extends StatefulWidget {
-  final GlobalKey<ScaffoldMessengerState> scaffoldKey;
+  final BuildContext parentContext;
 
   final DateTime? startDate;
 
@@ -23,7 +23,7 @@ class DateIntervalPicker extends StatefulWidget {
 
   const DateIntervalPicker({
     super.key,
-    required this.scaffoldKey,
+    required this.parentContext,
     this.onShowPicker,
     this.onPopPicker,
     this.startDate,
@@ -55,7 +55,7 @@ class DateIntervalPickerState extends State<DateIntervalPicker>
   void showPicker() {
     widget.onShowPicker?.call();
     controller = (showModalBottomSheet(
-      context: widget.scaffoldKey.currentContext!,
+      context: widget.parentContext,
       builder: //widget.scaffoldKey.currentState?.showBottomSheet(
           (context) => DateRangePicker(
         minDate: widget.minDate,
@@ -75,7 +75,7 @@ class DateIntervalPickerState extends State<DateIntervalPicker>
       )),
       backgroundColor: GawTheme.background,
       constraints: BoxConstraints(
-        maxHeight: widget.scaffoldKey.currentContext!.size!.height * 0.85,
+        maxHeight: widget.parentContext.size!.height * 0.85,
       ),
     )..whenComplete(() {
         widget.onPopPicker?.call();

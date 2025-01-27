@@ -25,6 +25,7 @@ class NotificationIcon extends StatelessWidget {
         children: [
           SvgIcon(
             iconOverride ?? PixelPerfectIcons.bellMedium,
+            size: 21,
             color: GawTheme.clearBackground,
           ),
           Positioned(
