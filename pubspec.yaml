@@ -14,8 +14,8 @@ dependencies:
   carousel_slider_plus: ^7.0.0
   cupertino_icons: ^1.0.2
   toggle_switch: ^2.1.0
-  syncfusion_flutter_datepicker: ^24.0.0
-  syncfusion_flutter_charts: ^24.0.0
+  syncfusion_flutter_datepicker: ^29.1.33
+  syncfusion_flutter_charts: ^29.1.33
   widget_to_marker: ^1.0.4
   smooth_page_indicator: ^1.1.0
   fl_chart: ^0.66.2

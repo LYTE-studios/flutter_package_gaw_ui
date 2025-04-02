@@ -1,5 +1,7 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
+// ignore_for_file: constant_identifier_names
+
 abstract class  LocaleKeys {
   static const oops = 'oops';
   static const newCopy = 'newCopy';
@@ -8,11 +10,31 @@ abstract class  LocaleKeys {
   static const createNewCustomer = 'createNewCustomer';
   static const hours = 'hours';
   static const email = 'email';
+  static const next = 'next';
+  static const welcomeToWerkr = 'welcomeToWerkr';
+  static const becomeAWerkr = 'becomeAWerkr';
+  static const alreadyAWerkr = 'alreadyAWerkr';
+  static const workWithWerkr = 'workWithWerkr';
+  static const emailAddress = 'emailAddress';
+  static const forgotPassword = 'forgotPassword';
+  static const resetPassword = 'resetPassword';
+  static const confirmPassword = 'confirmPassword';
+  static const passwordsDoNotMatch = 'passwordsDoNotMatch';
+  static const createANewPassword = 'createANewPassword';
+  static const setYourPassword = 'setYourPassword';
+  static const passwordHasBeenReset = 'passwordHasBeenReset';
+  static const youCanNowLogin = 'youCanNowLogin';
+  static const dontHaveAnAccount = 'dontHaveAnAccount';
+  static const register = 'register';
+  static const verifyYourEmail = 'verifyYourEmail';
+  static const verifyYourEmailDescription = 'verifyYourEmailDescription';
+  static const verificationCode = 'verificationCode';
+  static const yourCode = 'yourCode';
+  static const phone = 'phone';
   static const customers = 'customers';
   static const welcomeBack = 'welcomeBack';
   static const unserviced = 'unserviced';
   static const onAverage = 'onAverage';
-  static const phone = 'phone';
   static const name = 'name';
   static const Phone = 'Phone';
   static const Company = 'Company';
@@ -33,16 +55,17 @@ abstract class  LocaleKeys {
   static const notification = 'notification';
   static const both = 'both';
   static const january = 'january';
-  static const February = 'February';
-  static const March = 'March';
-  static const April = 'April';
-  static const May = 'May';
-  static const June = 'June';
-  static const August = 'August';
-  static const September = 'September';
-  static const October = 'October';
-  static const November = 'November';
-  static const December = 'December';
+  static const february = 'february';
+  static const march = 'march';
+  static const april = 'april';
+  static const may = 'may';
+  static const june = 'june';
+  static const july = 'july';
+  static const august = 'august';
+  static const september = 'september';
+  static const october = 'october';
+  static const november = 'november';
+  static const december = 'december';
   static const hi = 'hi';
   static const productivity = 'productivity';
   static const week = 'week';
@@ -72,6 +95,10 @@ abstract class  LocaleKeys {
   static const anytime = 'anytime';
   static const thisWeek = 'thisWeek';
   static const thisMonth = 'thisMonth';
+  static const lastWeek = 'lastWeek';
+  static const lastMonth = 'lastMonth';
+  static const thisYear = 'thisYear';
+  static const lastYear = 'lastYear';
   static const earlier = 'earlier';
   static const upcomingJobs = 'upcomingJobs';
   static const myJobs = 'myJobs';
@@ -115,35 +142,28 @@ abstract class  LocaleKeys {
   static const iEndedAt = 'iEndedAt';
   static const confirmTimes = 'confirmTimes';
   static const noJobs = 'noJobs';
+  static const noItems = 'noItems';
   static const noAppliedJobs = 'noAppliedJobs';
   static const startAddress = 'startAddress';
   static const chooseLocation = 'chooseLocation';
-  static const february = 'february';
-  static const march = 'march';
-  static const april = 'april';
-  static const may = 'may';
-  static const june = 'june';
-  static const july = 'july';
-  static const august = 'august';
-  static const september = 'september';
-  static const october = 'october';
-  static const november = 'november';
-  static const december = 'december';
   static const from = 'from';
   static const until = 'until';
-  static const lastWeek = 'lastWeek';
-  static const lastMonth = 'lastMonth';
-  static const thisYear = 'thisYear';
-  static const lastYear = 'lastYear';
   static const filter = 'filter';
-  static const noItems = 'noItems';
   static const startTime = 'startTime';
   static const endTime = 'endTime';
   static const h = 'h';
   static const copied = 'copied';
   static const something = 'something';
+  static const somethingWentWrong = 'somethingWentWrong';
+  static const codeIncorrect = 'codeIncorrect';
   static const gotCopiedToYourClipboard = 'gotCopiedToYourClipboard';
   static const denied = 'denied';
   static const goBack = 'goBack';
+  static const breakTime = 'breakTime';
+  static const aPlatformWhere = 'aPlatformWhere';
+  static const canExplore = 'canExplore';
+  static const jobPortfolio = 'jobPortfolio';
+  static const werkr = 'werkr';
+  static const letsLogin = 'letsLogin';
 
 }
