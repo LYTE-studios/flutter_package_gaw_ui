@@ -116,7 +116,7 @@ class _TabbedViewState extends State<TabbedView> {
                       visible: widget.onReloadTimes != null,
                       child: CmsExpandableDateRangePicker(
                         toggleExpand: controller.toggle,
-                        color: GawTheme.secondaryTint,
+                        color: GawTheme.mainTint,
                       ),
                     ),
                   ],
@@ -210,8 +210,7 @@ class _TabHeader extends StatelessWidget {
             child: MainText(
               label,
               textStyleOverride: TextStyle(
-                color:
-                    selected ? GawTheme.secondaryTint : GawTheme.unselectedText,
+                color: selected ? GawTheme.mainTint : GawTheme.unselectedText,
                 fontWeight: FontWeight.w700,
                 fontSize: 12,
               ),
