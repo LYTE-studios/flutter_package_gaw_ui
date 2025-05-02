@@ -7,6 +7,8 @@ class InputMultiSelectionForm extends StatefulWidget {
   final Function(String)? onUpdate;
   final String? label;
 
+  final double maxSize;
+
   final bool isMulti;
 
   const InputMultiSelectionForm({
@@ -16,6 +18,7 @@ class InputMultiSelectionForm extends StatefulWidget {
     this.onUpdate,
     this.label,
     this.isMulti = true,
+    this.maxSize = 150,
   });
 
   @override
@@ -24,7 +27,7 @@ class InputMultiSelectionForm extends StatefulWidget {
 }
 
 class _InputMultiSelectionFormState extends State<InputMultiSelectionForm> {
-  final ExpansionTileController controller = ExpansionTileController();
+  bool expanded = false;
 
   String getSelectedText() {
     if (widget.selectedOptions.isEmpty) {
@@ -56,6 +59,7 @@ class _InputMultiSelectionFormState extends State<InputMultiSelectionForm> {
         label: widget.label,
         child: Container(
           margin: const EdgeInsets.only(top: 10.0),
+          height: expanded ? widget.maxSize : null,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             border: Border.fromBorderSide(
@@ -64,40 +68,75 @@ class _InputMultiSelectionFormState extends State<InputMultiSelectionForm> {
               ),
             ),
           ),
-          child: ExpansionTile(
-            controller: controller,
-            title: MainText(
-              getSelectedText(),
-              color: widget.selectedOptions.isEmpty
-                  ? GawTheme.unselectedText
-                  : GawTheme.text,
-            ),
-            collapsedTextColor: GawTheme.text,
-            textColor: GawTheme.text,
-            iconColor: GawTheme.text,
-            collapsedShape: const RoundedRectangleBorder(),
-            shape: const RoundedRectangleBorder(),
-            children: <Widget>[
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: widget.options.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return _ViewItem(
-                    item: widget.options.keys.toList()[index],
-                    icon: widget.options.values.toList()[index],
-                    selected: (String value) {
-                      if (!widget.isMulti) {
-                        setState(() {
-                          controller.collapse();
-                        });
-                      }
-                      widget.onUpdate?.call(value);
-                    },
-                    itemSelected: widget.selectedOptions.contains(
-                      widget.options.keys.toList()[index],
-                    ),
-                  );
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ClearInkWell(
+                onTap: () {
+                  setState(() {
+                    expanded = !expanded;
+                  });
                 },
+                child: SizedBox(
+                  height: 42,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: PaddingSizes.mainPadding,
+                      vertical: PaddingSizes.mainPadding,
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: MainText(
+                            getSelectedText(),
+                            color: widget.selectedOptions.isEmpty
+                                ? GawTheme.unselectedText
+                                : GawTheme.text,
+                          ),
+                        ),
+                        AnimatedRotation(
+                          duration: const Duration(milliseconds: 200),
+                          turns: expanded ? .5 : 0,
+                          child: const SvgIcon(
+                            PixelPerfectIcons.arrowDown,
+                            size: 8,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Flexible(
+                child: AnimatedSize(
+                  duration: const Duration(milliseconds: 200),
+                  child: !expanded
+                      ? const SizedBox()
+                      : SizedBox(
+                          height: widget.maxSize - 44,
+                          child: ListView(
+                            children: widget.options.keys
+                                .map((e) => _ViewItem(
+                                      item: e,
+                                      icon: widget.options[e],
+                                      selected: (String value) {
+                                        if (!widget.isMulti) {
+                                          setState(() {
+                                            expanded = false;
+                                          });
+                                        }
+                                        widget.onUpdate?.call(value);
+                                      },
+                                      itemSelected:
+                                          widget.selectedOptions.contains(
+                                        e,
+                                      ),
+                                    ))
+                                .toList(),
+                          ),
+                        ),
+                ),
               ),
             ],
           ),

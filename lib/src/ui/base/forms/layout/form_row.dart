@@ -34,7 +34,7 @@ class FormRow extends StatelessWidget {
         ),
         Row(
           mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: formItems,
         ),
       ],

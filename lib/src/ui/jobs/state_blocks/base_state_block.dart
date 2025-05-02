@@ -46,7 +46,7 @@ class BaseStateBlock extends StatelessWidget {
       child: IntrinsicWidth(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: PaddingSizes.extraSmallPadding,
+            horizontal: PaddingSizes.smallPadding,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -58,11 +58,12 @@ class BaseStateBlock extends StatelessWidget {
                       ? const SizedBox.shrink()
                       : Padding(
                           padding: const EdgeInsets.only(
-                            left: PaddingSizes.extraMiniPadding,
+                            left: PaddingSizes.smallPadding,
                           ),
                           child: SvgIcon(
                             iconName!,
-                            color: textColor ?? GawTheme.mainTintText,
+                            size: 16,
+                            color: textColor ?? GawTheme.clearText,
                           ),
                         ),
               Padding(
@@ -72,8 +73,9 @@ class BaseStateBlock extends StatelessWidget {
                 child: MainText(
                   label,
                   textStyleOverride: TextStyles.mainStyle.copyWith(
-                    color: textColor ?? GawTheme.mainTintText,
+                    color: textColor ?? GawTheme.clearText,
                     fontSize: 14,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
@@ -81,16 +83,15 @@ class BaseStateBlock extends StatelessWidget {
                   ? const SizedBox()
                   : iconName == null
                       ? const SizedBox.shrink()
-                      : Row(
-                          children: [
-                            const SizedBox(
-                              width: PaddingSizes.extraMiniPadding,
-                            ),
-                            SvgIcon(
-                              iconName!,
-                              color: textColor ?? GawTheme.mainTintText,
-                            ),
-                          ],
+                      : Padding(
+                          padding: const EdgeInsets.only(
+                            right: PaddingSizes.smallPadding,
+                          ),
+                          child: SvgIcon(
+                            iconName!,
+                            size: 16,
+                            color: textColor ?? GawTheme.clearText,
+                          ),
                         ),
             ],
           ),

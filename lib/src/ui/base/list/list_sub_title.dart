@@ -32,9 +32,10 @@ class ListSubTitle extends StatelessWidget {
           ),
           MainText(
             label,
-            textStyleOverride: TextStyles.mainStyleTitle.copyWith(
+            textStyleOverride: TextStyles.titleStyle.copyWith(
               fontWeight: FontWeight.w700,
-              fontSize: 15,
+              fontSize: 19,
+              letterSpacing: 0,
             ),
           ),
           const Spacer(),
@@ -43,7 +44,7 @@ class ListSubTitle extends StatelessWidget {
             child: InkWell(
               onTap: onViewMore,
               child: MainText(
-                '${LocaleKeys.viewAll.tr()} +',
+                LocaleKeys.viewAll.tr(),
                 textStyleOverride: TextStyles.mainStyle.copyWith(
                   color: GawTheme.secondaryTint,
                   fontSize: 16,

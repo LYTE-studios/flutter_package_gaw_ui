@@ -138,7 +138,9 @@ class PixelPerfectIcons {
   static const String settingsNormal =
       '$mediumBasePath/UI Basic/settings-1.svg';
 
-  static const String personMedium = '$mediumBasePath/UI Basic/profile.svg';
+  static const String personMedium = '$customBasePath/person.svg';
+
+  static const String tag = '$customBasePath/tag.svg';
 
   static const String editNormal = '$normalBasePath/UI Basic/edit.svg';
 
@@ -156,9 +158,9 @@ class PixelPerfectIcons {
 
   static const String checkMedium = '$mediumBasePath/UI Basic/check.svg';
 
-  static const String calendarNormal = '$normalBasePath/UI Basic/calendar.svg';
+  static const String calendarNormal = '$customBasePath/calendar.svg';
 
-  static const String calendarMedium = '$mediumBasePath/UI Basic/calendar.svg';
+  static const String calendarMedium = '$customBasePath/calendar.svg';
 
   static const String leftArrowNormal = '$mediumBasePath/Arrows/Left 16.svg';
 
