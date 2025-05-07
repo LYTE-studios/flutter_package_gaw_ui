@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 import 'package:gaw_ui/src/utility/constants.dart';
-import 'package:gaw_ui/src/utility/size_util.dart';
 
 class LoginAppHeader extends StatelessWidget {
   final String label;

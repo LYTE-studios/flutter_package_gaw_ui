@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
 
 const ColorScheme _scheme = ColorScheme(
-  background: GawTheme.unselectedBackground,
   brightness: Brightness.light,
   error: GawTheme.error,
   errorContainer: GawTheme.error,
   inversePrimary: GawTheme.mainTintText,
   inverseSurface: GawTheme.secondaryTint,
-  onBackground: GawTheme.text,
   onError: GawTheme.error,
   onErrorContainer: GawTheme.error,
   onInverseSurface: GawTheme.text,
@@ -30,7 +28,7 @@ const ColorScheme _scheme = ColorScheme(
   shadow: GawTheme.shadow,
   surface: GawTheme.background,
   surfaceTint: GawTheme.secondaryTint,
-  surfaceVariant: GawTheme.clearBackground,
+  surfaceContainerHighest: GawTheme.clearBackground,
   tertiary: GawTheme.background,
   tertiaryContainer: GawTheme.background,
 );
@@ -49,7 +47,6 @@ final ThemeData fallbackTheme = ThemeData(
   canvasColor: GawTheme.background,
   cardColor: GawTheme.clearBackground,
   colorScheme: _scheme,
-  dialogBackgroundColor: GawTheme.clearBackground,
   disabledColor: GawTheme.unselectedBackground,
   dividerColor: GawTheme.unselectedText,
   focusColor: GawTheme.mainTint,
@@ -57,7 +54,6 @@ final ThemeData fallbackTheme = ThemeData(
   hintColor: GawTheme.unselectedText,
   hoverColor: Colors.transparent,
   iconTheme: _iconThemeData,
-  indicatorColor: GawTheme.text,
   inputDecorationTheme: InputDecorationTheme(
     alignLabelWithHint: false,
     filled: false,
@@ -95,5 +91,5 @@ final ThemeData fallbackTheme = ThemeData(
   splashFactory: InkSplash.splashFactory,
   unselectedWidgetColor: GawTheme.unselectedBackground,
   useMaterial3: true,
-  visualDensity: VisualDensity.compact,
+  visualDensity: VisualDensity.compact, dialogTheme: const DialogThemeData(backgroundColor: GawTheme.clearBackground), tabBarTheme: const TabBarThemeData(indicatorColor: GawTheme.text),
 );

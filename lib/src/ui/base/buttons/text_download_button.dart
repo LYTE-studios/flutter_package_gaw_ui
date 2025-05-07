@@ -17,7 +17,7 @@ class TextDownloadButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         child: Row(children: [
-          SizedBox(
+          const SizedBox(
             height: 32,
             width: 32,
             child: SvgIcon(PixelPerfectIcons.download),
@@ -26,7 +26,7 @@ class TextDownloadButton extends StatelessWidget {
           Text(
             text,
             style: TextStyles.mainStyle.copyWith(
-              color: Color.fromRGBO(78, 171, 233, 1),
+              color: const Color.fromRGBO(78, 171, 233, 1),
               fontSize: 14,
               fontWeight: FontWeight.w600,
             ),

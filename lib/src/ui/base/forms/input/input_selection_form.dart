@@ -127,13 +127,13 @@ class _InputSelectionFormState extends State<InputSelectionForm> {
           value: key,
           label: widget.options[key] ?? '',
           style: ButtonStyle(
-            shadowColor: MaterialStateColor.resolveWith(
+            shadowColor: WidgetStateColor.resolveWith(
               (states) => Colors.transparent,
             ),
-            foregroundColor: MaterialStateColor.resolveWith(
+            foregroundColor: WidgetStateColor.resolveWith(
               (states) => GawTheme.text,
             ),
-            backgroundColor: MaterialStateColor.resolveWith(
+            backgroundColor: WidgetStateColor.resolveWith(
               (states) => GawTheme.clearBackground,
             ),
           ),

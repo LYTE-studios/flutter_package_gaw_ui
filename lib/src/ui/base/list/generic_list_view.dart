@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
-import 'package:lyte_studios_flutter_ui/mixins/screen_state_mixin.dart';
 
 class GenericListView extends StatefulWidget {
   final String? title;

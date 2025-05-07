@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gaw_ui/gaw_ui.dart';
-import 'package:gaw_ui/src/ui/base/text/auto_sized_text.dart';
 
 class MainAppHeader extends StatelessWidget {
   final String? label;
