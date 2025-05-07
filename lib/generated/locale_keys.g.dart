@@ -2,7 +2,7 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class  LocaleKeys {
+abstract class LocaleKeys {
   static const oops = 'oops';
   static const newCopy = 'newCopy';
   static const customer = 'customer';
@@ -165,5 +165,70 @@ abstract class  LocaleKeys {
   static const jobPortfolio = 'jobPortfolio';
   static const werkr = 'werkr';
   static const letsLogin = 'letsLogin';
-
+  static const errorOccured = 'errorOccured';
+  static const pageNotFound = 'pageNotFound';
+  static const availableJobs = 'availableJobs';
+  static const recentlyApplied = 'recentlyApplied';
+  static const failedToRetrieveLocation = 'failedToRetrieveLocation';
+  static const noHistory = 'noHistory';
+  static const allowMedia = 'allowMedia';
+  static const chooseFromLibrary = 'chooseFromLibrary';
+  static const removeCurrentPicture = 'removeCurrentPicture';
+  static const takePhoto = 'takePhoto';
+  static const totalHours = 'totalHours';
+  static const all = 'all';
+  static const confirm = 'confirm';
+  static const confirmWorkingTimes = 'confirmWorkingTimes';
+  static const searchLocation = 'searchLocation';
+  static const setLocationOnMap = 'setLocationOnMap';
+  static const tapToSign = 'tapToSign';
+  static const workerSignature = 'workerSignature';
+  static const clientSignature = 'clientSignature';
+  static const adjustPin = 'adjustPin';
+  static const whatTypeOfJob = 'whatTypeOfJob';
+  static const howExperienced = 'howExperienced';
+  static const checkYourMail = 'checkYourMail';
+  static const requestPasswordReset = 'requestPasswordReset';
+  static const enterYourEmail = 'enterYourEmail';
+  static const weSentYourPasswordRecovery = 'weSentYourPasswordRecovery';
+  static const howExperiencedDescription = 'howExperiencedDescription';
+  static const whenAreYouLikelyToWork = 'whenAreYouLikelyToWork';
+  static const whenAreYouLikelyToWorkDescription =
+      'whenAreYouLikelyToWorkDescription';
+  static const youHaveRegistered = 'youHaveRegistered';
+  static const weWillReviewYourRegistration = 'weWillReviewYourRegistration';
+  static const whatYourLookingFor = 'whatYourLookingFor';
+  static const deleteApplication = 'deleteApplication';
+  static const yourSituation = 'yourSituation';
+  static const ensureAccuracy = 'ensureAccuracy';
+  static const yesDelete = 'yesDelete';
+  static const preferredLocations = 'preferredLocations';
+  static const preferredLocationsDescription = 'preferredLocationsDescription';
+  static const firstName = 'firstName';
+  static const youBeenRegistered = 'youBeenRegistered';
+  static const youBeenRegisteredDescription = 'youBeenRegisteredDescription';
+  static const surname = 'surname';
+  static const yourName = 'yourName';
+  static const agreeToOur = 'agreeToOur';
+  static const ago = 'ago';
+  static const letsCreateYourAccountHere = 'letsCreateYourAccountHere';
+  static const getStarted = 'getStarted';
+  static const fillInAllFields = 'fillInAllFields';
+  static const noNotificationsForLast7Days = 'noNotificationsForLast7Days';
+  static const moreThan30DaysAgo = 'moreThan30DaysAgo';
+  static const justNow = 'justNow';
+  static const notifications = 'notifications';
+  static const deleteAccountConfirmation = 'deleteAccountConfirmation';
+  static const no = 'no';
+  static const overview = 'overview';
+  static const applicationSent = 'applicationSent';
+  static const applicationSentDescription = 'applicationSentDescription';
+  static const breakCopy = 'breakCopy';
+  static const registerTime = 'registerTime';
+  static const seeMore = 'seeMore';
+  static const seeLess = 'seeLess';
+  static const note = 'note';
+  static const writeNoteHere = 'writeNoteHere';
+  static const downloadYourDayContract = 'downloadYourDayContract';
+  static const scheduledJobs = 'scheduledJobs';
 }
