@@ -77,7 +77,7 @@ class TargetStatisticsBlock extends StatelessWidget {
                         ),
                         const Spacer(),
                         MainText(
-                          'Candidates',
+                          'Shifts',
                           textStyleOverride: TextStyles.titleStyle.copyWith(
                             fontSize: 16,
                           ),

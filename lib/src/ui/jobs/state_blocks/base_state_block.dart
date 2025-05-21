@@ -29,7 +29,7 @@ class BaseStateBlock extends StatelessWidget {
     return Container(
       constraints: const BoxConstraints(
         minWidth: 81,
-        maxWidth: 136,
+        maxWidth: 156,
       ),
       height: 32,
       decoration: BoxDecoration(
@@ -66,16 +66,20 @@ class BaseStateBlock extends StatelessWidget {
                             color: textColor ?? GawTheme.clearText,
                           ),
                         ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: PaddingSizes.smallPadding,
-                ),
-                child: MainText(
-                  label,
-                  textStyleOverride: TextStyles.mainStyle.copyWith(
-                    color: textColor ?? GawTheme.clearText,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: PaddingSizes.smallPadding,
+                  ),
+                  child: MainText(
+                    label,
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: false,
+                    textStyleOverride: TextStyles.mainStyle.copyWith(
+                      color: textColor ?? GawTheme.clearText,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
